@@ -8,9 +8,10 @@ public static class FileSystem
     
     public static bool Save(string fileName, string extension, string content)
     {
+        extension = extension.Replace(".", "");
         try
         {
-            File.WriteAllText(@$"{Application.persistentDataPath}\Data\{fileName}{extension}", content);
+            File.WriteAllText(@$"{Application.dataPath}\Data\{fileName}.{extension}", content);
             return true;
         }
         catch
@@ -19,11 +20,12 @@ public static class FileSystem
         }
     }
 
-    public static bool Load(string fileName, string extension, out string fileLoaded)
+    public static bool Load(string fileName, string extension, out string[] linesReaded)
     {
+        extension = extension.Replace(".", "");
         try
         {
-            fileLoaded = File.ReadAllText(@$"{Application.persistentDataPath}\Data\{fileName}{extension}");
+            linesReaded = File.ReadAllLines(@$"{Application.dataPath}\Data\{fileName}.{extension}");
             return true;
         }
         catch
@@ -53,9 +55,10 @@ public static class FileSystem
 
     public static bool LoadJson(string fileName, string extension, out List<SavableEntity> savableEntities)
     {
+        extension = extension.Replace(".", "");
         try
         {
-            savableEntities = JsonUtility.FromJson<List<SavableEntity>>(@$"{Application.persistentDataPath}\Data\{fileName}{extension}");
+            savableEntities = JsonUtility.FromJson<List<SavableEntity>>(@$"{Application.dataPath}\Data\{fileName}.{extension}");
             savableEntities.ForEach(x => x.InstantiateEntity());
             return true;
         }
