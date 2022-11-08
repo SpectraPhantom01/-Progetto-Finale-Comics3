@@ -6,11 +6,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, ISubscriber
 {
+    
+    GameObject _gameObject; // debug
+    GameObject _gameObject2; // debug
+
+    // Corrected Variables
+    private InputSystem inputSystem;
+    private PlayerMovement playerMovement;
     private LanguageManager languageManager;
-    GameObject _gameObject;
-    GameObject _gameObject2;
     private void Awake()
     {
+        playerMovement = FindObjectOfType<PlayerMovement>();
+
+        if(playerMovement == null)
+            throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
+
+
         if (!FileSystem.Load("LanguageManager", "csv", out string[] fileLoaded))
             throw new Exception("File LanguageManager non caricato correttamente, controllare eventuali posizioni del file o il nome del file o l'estensione del file");
 
@@ -22,11 +33,27 @@ public class GameManager : MonoBehaviour, ISubscriber
         Publisher.Subscribe(this, typeof(LoadMessage));
         _gameObject = new GameObject();
         _gameObject2 = new GameObject();
+
+        inputSystem = new InputSystem();
+        inputSystem.Player.Enable();
+        inputSystem.Player.Movement.performed += Movement_started;
+        inputSystem.Player.Movement.canceled += Movement_canceled;
+
     }
-    
+
+    private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerMovement.Direction = obj.ReadValue<Vector2>();
+    }
+
+    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerMovement.Direction = obj.ReadValue<Vector2>();
+    }
+
     private void Start()
     {
-        Invoke("ChangeLanguage", 5);
+        //Invoke("ChangeLanguage", 5);
     }
     private void ChangeLanguage()
     {
