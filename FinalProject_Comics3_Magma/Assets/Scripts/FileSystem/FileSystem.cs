@@ -14,9 +14,9 @@ public static class FileSystem
             File.WriteAllText(@$"{Application.dataPath}\Data\{fileName}.{extension}", content);
             return true;
         }
-        catch
+        catch (Exception e)
         {
-            throw new IOException("File not saved");
+            throw new IOException($"File not saved {e.Message}");
         }
     }
 
@@ -28,43 +28,44 @@ public static class FileSystem
             linesReaded = File.ReadAllLines(@$"{Application.dataPath}\Data\{fileName}.{extension}");
             return true;
         }
-        catch
+        catch (Exception e)
         {
-            throw new IOException("File not loaded");
+            throw new IOException($"File not loaded: {e.Message}");
         }
     }
 
-    public static bool SaveJson(string fileName, string extension, List<SavableEntity> savableEntities)
+    public static bool SaveJson(string fileName, string extension, SavableInfosList savableEntities)
     {
         try
         {
             string json = string.Empty;
-            foreach (var item in savableEntities)
-            {
-                json += JsonUtility.ToJson(item) + Environment.NewLine;
-            }
-
+            //foreach (var item in savableEntities)
+            //{
+            //    json += JsonUtility.ToJson(item) + Environment.NewLine;
+            //}
+            json = JsonUtility.ToJson(savableEntities);
             Save(fileName, extension, json);
             return true;
         }
-        catch
+        catch (Exception e)
         {
-            throw new IOException("File not saved");
+            throw new IOException($"File not saved {e.Message}");
         }
     }
 
-    public static bool LoadJson(string fileName, string extension, out List<SavableEntity> savableEntities)
+    public static bool LoadJson(string fileName, string extension, out SavableInfosList savableInfos)
     {
         extension = extension.Replace(".", "");
         try
         {
-            savableEntities = JsonUtility.FromJson<List<SavableEntity>>(@$"{Application.dataPath}\Data\{fileName}.{extension}");
-            savableEntities.ForEach(x => x.InstantiateEntity());
+            var json = File.ReadAllText(@$"{Application.dataPath}\Data\{fileName}.{extension}");
+            savableInfos = JsonUtility.FromJson<SavableInfosList>(json);
+            //savableInfos = JsonUtility.FromJson<List<SavableInfos>>(@$"{Application.dataPath}\Data\{fileName}.{extension}");
             return true;
         }
-        catch
+        catch (Exception e)
         {
-            throw new IOException("File not loaded");
+            throw new IOException($"File not loaded: {e.Message}");
         }
     }
 }
