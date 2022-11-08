@@ -21,7 +21,6 @@ public class CharacterMovement : MonoBehaviour
         StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
 
-
         StateMachine.SetState(EPlayerState.Walking);
     }
 
@@ -47,6 +46,7 @@ public class CharacterMovement : MonoBehaviour
 
         InputDirection = new Vector2(x, y); // questo è il vettore effettivo di movimento che deve essere moltiplicato sul rigidbody per muovere il personaggio ecc.. ecc...
     }                                       // come sempre se trovi altre modalità di gestire la cosa, ben venga! Queste sono solo le funzioni che ho usato finora.
+
 
 
     // OLD CODE FOR FINAL PROJECT 2
