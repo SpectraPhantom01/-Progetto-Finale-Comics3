@@ -1,12 +1,36 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, ISubscriber
 {
-    
+    #region SINGLETON
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+                if (instance != null)
+                    return instance;
+
+                GameObject go = new GameObject("GameManager");
+                return go.AddComponent<GameManager>();
+            }
+            else
+                return instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
+    #endregion
+
+
     GameObject _gameObject; // debug
     GameObject _gameObject2; // debug
 
@@ -14,12 +38,29 @@ public class GameManager : MonoBehaviour, ISubscriber
     private InputSystem inputSystem;
     private PlayerMovement playerMovement;
     private LanguageManager languageManager;
+
+    // Properties
+    public PlayerMovement Player => playerMovement;
     private void Awake()
     {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        
         playerMovement = FindObjectOfType<PlayerMovement>();
 
-        if(playerMovement == null)
+        if (playerMovement == null)
             throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
+
+        // INPUT SYSTEM
+
+        inputSystem = new InputSystem();
+        inputSystem.Player.Enable();
+        inputSystem.Player.Movement.performed += Movement_started;
+        inputSystem.Player.Movement.canceled += Movement_canceled;
+
+        // END INPUT SYSTEM
+
 
 
         if (!FileSystem.Load("LanguageManager", "csv", out string[] fileLoaded))
@@ -33,12 +74,6 @@ public class GameManager : MonoBehaviour, ISubscriber
         Publisher.Subscribe(this, typeof(LoadMessage));
         _gameObject = new GameObject();
         _gameObject2 = new GameObject();
-
-        inputSystem = new InputSystem();
-        inputSystem.Player.Enable();
-        inputSystem.Player.Movement.performed += Movement_started;
-        inputSystem.Player.Movement.canceled += Movement_canceled;
-
     }
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -62,11 +97,11 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     public void OnPublish(IPublisherMessage message)
     {
-        if(message is SaveMessage saveMessage)
+        if (message is SaveMessage saveMessage)
         {
             StartCoroutine(SavingCoroutine());
         }
-        else if(message is LoadMessage loadMessage)
+        else if (message is LoadMessage loadMessage)
         {
             StartCoroutine(LoadingCoroutine());
         }
