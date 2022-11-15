@@ -107,6 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae3c0778cf93d040b6a4e44e0d4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxNumberPositions: 10
+  timeDeltaSavePosition: 1
+  timeLoseDustInHourglass: 1
+  amountLoseDust: 1
 --- !u!114 &3138579559502232296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e960259e4d90d434992e7657637e281c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 100
+  hourglasses:
+  - Time: 3
+  - Time: 50
+  - Time: 50
 --- !u!1 &7720948515912989646
 GameObject:
   m_ObjectHideFlags: 0
