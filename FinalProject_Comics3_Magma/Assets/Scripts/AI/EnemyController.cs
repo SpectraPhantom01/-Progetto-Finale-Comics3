@@ -37,6 +37,11 @@ public class EnemyController : MonoBehaviour, IAliveEntity
         behaviorTree.SetVariableValue("FieldOfView", newValue);
     }
 
+    public void SetFieldOfViewAngle(float newValue)
+    {
+        behaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
+    }
+
     public void Kill()
     {
         onKillEnemy.Invoke();

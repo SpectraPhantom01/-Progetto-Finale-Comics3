@@ -416,6 +416,8 @@ MonoBehaviour:
   _enemyControllers:
   - {fileID: 6314206864773732084}
   _fieldOfView: 50
+  _fieldOfViewAngleReset: 0
+  _fieldOfViewAngleOnSee: 0
 --- !u!1 &143323844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,6 +2366,8 @@ MonoBehaviour:
   _enemyControllers:
   - {fileID: 233489515}
   _fieldOfView: 25
+  _fieldOfViewAngleReset: 160
+  _fieldOfViewAngleOnSee: 360
 --- !u!4 &2137508794
 Transform:
   m_ObjectHideFlags: 0
