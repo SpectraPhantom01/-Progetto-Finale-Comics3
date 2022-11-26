@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,7 +127,994 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Tileset_provvisorio_0
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4afe799b88008439837bc74c7cd7e9
+      internalID: -713306164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c3392b63c74cb428dce676eb0db6f1
+      internalID: 1031129920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ed247809e117744ba995c589a9695a
+      internalID: 170167707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_3
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6efe5f315292c274ab37d2e6270fe209
+      internalID: 982313027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_4
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34c9cb3ad82b9a44882dbfb3db231f3
+      internalID: 511778638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_5
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55f3dd8447758054392256c8b9e24d4a
+      internalID: -1229158319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_6
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 3328
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01a07664697747946b15d12244a53c25
+      internalID: -1046089572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96c34b725c3a5f4181535fa53572a23
+      internalID: 2093161806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458409d4ec252e9458325dc7a09ec3dd
+      internalID: 2111263569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_9
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 890ddeba65fc1894d86b19b01cb6551f
+      internalID: -1554883426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_10
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a8bb4c8fa667f419252aa10149db1e
+      internalID: 1687893887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_11
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 803d414e61db373449b6d17ac5c88956
+      internalID: -541467370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_12
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d34a6db5c751f943ab584064c5a9069
+      internalID: -516153931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_13
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 2816
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857d18967695aa54ab9ce4ff2f4b4a6a
+      internalID: -1939123737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305df85e6896d484bb6764c2874d6263
+      internalID: -113784346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db626d61fd8d3f4c99115046784a3a4
+      internalID: -106543506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_16
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a11a45b38f83894d9ed217e521a436e
+      internalID: -65483106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dce27769727bdb4fbaf04fc54d218b5
+      internalID: -1498841458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_18
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc63be5bbd6620c41836e34c51d181cd
+      internalID: 830336794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_19
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780b795d69344ad41a92e0c310df1b48
+      internalID: -283662167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_20
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 2304
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 623c2024cd311524c9b7f381c0e34184
+      internalID: -1142530030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb610d850f6286408df0bcd8ea3eb8e
+      internalID: 971545686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_22
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5bf21f62bb43594da55467fde86e038
+      internalID: -2100395143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_23
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c40d1bd7fec8e4e98d115705467dda
+      internalID: 1925711743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_24
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65975b1bc0d6ee24b824c200865b9fe1
+      internalID: -36879163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_25
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbae0caeb83d4f4796ff90c1702b23c
+      internalID: 1208972047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_26
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c430f5fa09b82d46ae2812cc1df083d
+      internalID: -1532640912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_27
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 1792
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f844a4005956b4ebf37f3523353035
+      internalID: -659079048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e5947674fb09c44a70ca4393147a66
+      internalID: 56954691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_29
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c40cce6c30ca404191515e78feeae5a
+      internalID: -1508088468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_30
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14cd425a41a79e14f87b9ba8190aeea8
+      internalID: 758247443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793f8b84cd080194391005d8c2d236a9
+      internalID: 2099018132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_32
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bff5170cdc097a4982839229355302d
+      internalID: 889549253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_33
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5423068c98b087b45b3da92a80c5563f
+      internalID: 731259697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_34
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 1280
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d84ef01b0a1742743ac06de703c65fd4
+      internalID: 1162259822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_35
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3579d26d87f0fc54e97768c526fddcbe
+      internalID: -494554597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_36
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c352316338891243bbd9c63b951cbb6
+      internalID: 1847726567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_37
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e4c4650d1082347a16567d014bcd95
+      internalID: -110874439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_38
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 124520e68dbf8d84cb2278b533a0b01e
+      internalID: -2050678182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_39
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ebf21fa82152849a4c33a504d3be8d
+      internalID: 1765310334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_40
+      rect:
+        serializedVersion: 2
+        x: 2816
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b498fe9216dd214c8a3ae272aca0692
+      internalID: -1578111913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_41
+      rect:
+        serializedVersion: 2
+        x: 3328
+        y: 768
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b586cac8b38314588a937931c3941e
+      internalID: 1550234933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b3b316cfc879046a989157c1ecacef
+      internalID: -1442036948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_43
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6351cd41a0b4b49b475892a3bb7c59
+      internalID: 1017655911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_44
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6040047bc2d7c204aa775f6b14ea36ce
+      internalID: -1962200495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_45
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 256
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d7a18102bca624084f9535582fc762
+      internalID: 938484849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset_provvisorio_46
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 256
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c0c6660ca32b54bbc0c51333bbefcb
+      internalID: 1067800241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +1125,54 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tileset_provvisorio_8: 2111263569
+      Tileset_provvisorio_24: -36879163
+      Tileset_provvisorio_41: 1550234933
+      Tileset_provvisorio_7: 2093161806
+      Tileset_provvisorio_33: 731259697
+      Tileset_provvisorio_37: -110874439
+      Tileset_provvisorio_1: 1031129920
+      Tileset_provvisorio_26: -1532640912
+      Tileset_provvisorio_12: -516153931
+      Tileset_provvisorio_15: -106543506
+      Tileset_provvisorio_10: 1687893887
+      Tileset_provvisorio_29: -1508088468
+      Tileset_provvisorio_30: 758247443
+      Tileset_provvisorio_23: 1925711743
+      Tileset_provvisorio_4: 511778638
+      Tileset_provvisorio_42: -1442036948
+      Tileset_provvisorio_34: 1162259822
+      Tileset_provvisorio_0: -713306164
+      Tileset_provvisorio_32: 889549253
+      Tileset_provvisorio_27: -659079048
+      Tileset_provvisorio_3: 982313027
+      Tileset_provvisorio_40: -1578111913
+      Tileset_provvisorio_19: -283662167
+      Tileset_provvisorio_36: 1847726567
+      Tileset_provvisorio_22: -2100395143
+      Tileset_provvisorio_5: -1229158319
+      Tileset_provvisorio_39: 1765310334
+      Tileset_provvisorio_16: -65483106
+      Tileset_provvisorio_44: -1962200495
+      Tileset_provvisorio_9: -1554883426
+      Tileset_provvisorio_31: 2099018132
+      Tileset_provvisorio_21: 971545686
+      Tileset_provvisorio_45: 938484849
+      Tileset_provvisorio_25: 1208972047
+      Tileset_provvisorio_2: 170167707
+      Tileset_provvisorio_20: -1142530030
+      Tileset_provvisorio_6: -1046089572
+      Tileset_provvisorio_43: 1017655911
+      Tileset_provvisorio_17: -1498841458
+      Tileset_provvisorio_35: -494554597
+      Tileset_provvisorio_11: -541467370
+      Tileset_provvisorio_18: 830336794
+      Tileset_provvisorio_28: 56954691
+      Tileset_provvisorio_14: -113784346
+      Tileset_provvisorio_46: 1067800241
+      Tileset_provvisorio_13: -1939123737
+      Tileset_provvisorio_38: -2050678182
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
