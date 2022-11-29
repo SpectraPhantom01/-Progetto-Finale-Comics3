@@ -6,8 +6,6 @@ public class RoomTrigger : MonoBehaviour
 {
     [SerializeField] List<EnemyController> _enemyControllers;
     [SerializeField] float _fieldOfView;
-    [SerializeField] float _fieldOfViewAngleReset;
-    [SerializeField] float _fieldOfViewAngleOnSee;
 
     private void Start()
     {
@@ -25,7 +23,6 @@ public class RoomTrigger : MonoBehaviour
             foreach (var enemy in _enemyControllers)
             {
                 enemy.SetFieldOfView(_fieldOfView);
-                enemy.SetFieldOfViewAngle(_fieldOfViewAngleOnSee);
             }
         }
     }
