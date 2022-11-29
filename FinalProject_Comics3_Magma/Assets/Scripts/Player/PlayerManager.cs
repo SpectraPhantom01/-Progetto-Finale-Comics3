@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public bool IsAlive { get ; set ; }
     public string Name { get ; set ; }
-
+    public Damageable Damageable => _damageable;
     private float savePositionTimePassed;
     private float hourglassTimePassed;
     private Damageable _damageable;

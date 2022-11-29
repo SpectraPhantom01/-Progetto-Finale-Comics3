@@ -24,7 +24,8 @@ public class EnemyController : MonoBehaviour, IAliveEntity
 
     private void Start()
     {
-        Initialize("Target", GameManager.Instance.Player.gameObject);
+        if(GameManager.Instance.Player != null)
+            Initialize("Target", GameManager.Instance.Player.gameObject);
     }
 
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
