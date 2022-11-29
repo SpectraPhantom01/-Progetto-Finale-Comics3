@@ -8,6 +8,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] List<Hourglass> hourglasses;
 
     public float CurrentTimeLife => _currentTimeLife;
+    public int Hourglasses => hourglasses.Count;
 
     private float _currentTimeLife;
     private IAliveEntity _entity;
@@ -56,5 +57,15 @@ public class Damageable : MonoBehaviour
         _currentTimeLife += amount;
         Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{currentHourglass.Time}");
 
+    }
+
+    public void SetHourglasses(List<Hourglass> newHourglasses)
+    {
+        hourglasses = newHourglasses;
+    }
+
+    public void SetCurrentLife(float amount)
+    {
+        _currentTimeLife = amount;
     }
 }

@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 3138579559502232296}
   - component: {fileID: 9166515653511605295}
   - component: {fileID: 3682835986779401836}
+  - component: {fileID: 4272628589318761874}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxNumberPositions: 10
-  timeDeltaSavePosition: 1
+  timeDeltaSavePosition: 0.1
   timeLoseDustInHourglass: 1
   amountLoseDust: 1
 --- !u!114 &3138579559502232296
@@ -164,6 +165,18 @@ MonoBehaviour:
   - Time: 3
   - Time: 50
   - Time: 50
+--- !u!114 &4272628589318761874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138579559502232215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2959c367fbfc16648b7b0612aad0c480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7720948515912989646
 GameObject:
   m_ObjectHideFlags: 0
