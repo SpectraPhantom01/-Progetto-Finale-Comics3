@@ -6,46 +6,46 @@ using UnityEngine;
 // La chiamata del movimento deve essere gestita dall'esterno, così da poter riutilizzare questa funzione per gli NPC
 public class CharacterMovement : MonoBehaviour
 {
-    [HideInInspector]
-    public GenericStateMachine<EPlayerState> StateMachine;
+    //[HideInInspector]
+    //public GenericStateMachine<EPlayerState> StateMachine;
 
-    public Vector2 InputDirection;
+    //public Vector2 InputDirection;
 
-    void Start()
-    {
-        StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
-        StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
-        StateMachine.RegisterState(EPlayerState.Jumping, new JumpingCharacterState(this));
-        StateMachine.RegisterState(EPlayerState.Falling, new FallingCharacterState(this));
-        StateMachine.RegisterState(EPlayerState.Landing, new LandedCharacterState(this));
-        StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
-        StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
+    //void Start()
+    //{
+    //    StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
+    //    StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
+    //    StateMachine.RegisterState(EPlayerState.Jumping, new JumpingCharacterState(this));
+    //    StateMachine.RegisterState(EPlayerState.Falling, new FallingCharacterState(this));
+    //    StateMachine.RegisterState(EPlayerState.Landing, new LandedCharacterState(this));
+    //    StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
+    //    StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
 
-        StateMachine.SetState(EPlayerState.Walking);
-    }
+    //    StateMachine.SetState(EPlayerState.Walking);
+    //}
 
-    void Update()
-    {
-        StateMachine.OnUpdate();
-    }
+    //void Update()
+    //{
+    //    StateMachine.OnUpdate();
+    //}
 
-    public void MoveDirection(Vector2 newDirection) // questa funzione deve essere chiamata dall'esterno (per esempio dal PlayerManager che gestisce tutte le altre funzioni del player)
-    {
-        float x = newDirection.x;
-        float y = newDirection.y;
+    //public void MoveDirection(Vector2 newDirection) // questa funzione deve essere chiamata dall'esterno (per esempio dal PlayerManager che gestisce tutte le altre funzioni del player)
+    //{
+    //    float x = newDirection.x;
+    //    float y = newDirection.y;
 
-        if (x > 0) // non ricordo perché avessimo fatto questa cosa brutta e cattiva, ma se non ricordo male fu su suggerimento di Piccolino.
-            x = 1;
-        else if (x < 0)
-            x = -1;
+    //    if (x > 0) // non ricordo perché avessimo fatto questa cosa brutta e cattiva, ma se non ricordo male fu su suggerimento di Piccolino.
+    //        x = 1;
+    //    else if (x < 0)
+    //        x = -1;
 
-        if (y > 0) // idem
-            y = 1;
-        else if (y < 0)
-            y = -1;
+    //    if (y > 0) // idem
+    //        y = 1;
+    //    else if (y < 0)
+    //        y = -1;
 
-        InputDirection = new Vector2(x, y); // questo è il vettore effettivo di movimento che deve essere moltiplicato sul rigidbody per muovere il personaggio ecc.. ecc...
-    }                                       // come sempre se trovi altre modalità di gestire la cosa, ben venga! Queste sono solo le funzioni che ho usato finora.
+    //    InputDirection = new Vector2(x, y); // questo è il vettore effettivo di movimento che deve essere moltiplicato sul rigidbody per muovere il personaggio ecc.. ecc...
+    //}                                       // come sempre se trovi altre modalità di gestire la cosa, ben venga! Queste sono solo le funzioni che ho usato finora.
 
 
 

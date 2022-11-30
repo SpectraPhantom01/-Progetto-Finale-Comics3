@@ -92,6 +92,7 @@ Transform:
   m_Children:
   - {fileID: 1770608083448179934}
   - {fileID: 8501941478586589489}
+  - {fileID: 1894126378282331066}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,6 +123,12 @@ MonoBehaviour:
   maxSpeed: 6.5
   acceleration: 25
   deceleration: 35
+  attackPoint: {fileID: 1894126378282331066}
+  knockback: 20
+  _damageAmount: 0
+  _damageableMask:
+    serializedVersion: 2
+    m_Bits: 128
   Direction: {x: 0, y: 0}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
@@ -157,6 +164,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLife: 100
+  KBResistance: 0
+--- !u!1 &3569650284116705181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894126378282331066}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894126378282331066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569650284116705181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3138579559502232213}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7720948515912989646
 GameObject:
   m_ObjectHideFlags: 0

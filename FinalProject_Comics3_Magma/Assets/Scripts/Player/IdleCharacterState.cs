@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 // stato idle
 public class IdleCharacterState : State
 {
-    private CharacterMovement m_Owner;
+    private PlayerController m_Owner;
 
-    public IdleCharacterState(CharacterMovement owner)
+    public IdleCharacterState(PlayerController owner)
     {
         m_Owner = owner;
     }

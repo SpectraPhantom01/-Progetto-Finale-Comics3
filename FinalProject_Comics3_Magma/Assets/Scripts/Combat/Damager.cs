@@ -22,9 +22,8 @@ public class Damager : MonoBehaviour
             //    }
             //}
 
-            Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
-
-            damageable.Damage(_damageAmount);
+            //Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
+            //damageable.Damage(_damageAmount);
             
         }
     }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 // classe totalmente nuova, specifica per questo progetto
 public class AttackingCharacterState : State
 {
-    private CharacterMovement m_Owner;
+    private PlayerController m_Owner;
 
-    public AttackingCharacterState(CharacterMovement owner)
+    public AttackingCharacterState(PlayerController owner)
     {
         m_Owner = owner;
     }
