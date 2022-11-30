@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,27 +31,29 @@ public class GameManager : MonoBehaviour, ISubscriber
     }
     #endregion
 
+    [Header("Player Settings")]
+    [SerializeField] PlayerManager PlayerPrefab;
 
-    GameObject _gameObject; // debug
-    GameObject _gameObject2; // debug
+    [Header("Enemy Settings")]
+    [SerializeField] EnemyController EnemyPrefab;
 
     // Corrected Variables
     private InputSystem inputSystem;
-    private PlayerController playerController;
+    private PlayerMovement playerMovement;
     private LanguageManager languageManager;
 
     // Properties
-    public PlayerController Player => playerController;
+    public PlayerMovement Player => playerMovement;
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
 
         
-        playerController = FindObjectOfType<PlayerController>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
 
-        if (playerController == null)
-            throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
+        //if (playerMovement == null)
+        //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
         // INPUT SYSTEM
 
@@ -58,7 +61,6 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += Movement_started;
         inputSystem.Player.Movement.canceled += Movement_canceled;
-        inputSystem.Player.Attack.performed += Attack_performed;
 
         // END INPUT SYSTEM
 
@@ -73,23 +75,16 @@ public class GameManager : MonoBehaviour, ISubscriber
 
         Publisher.Subscribe(this, typeof(SaveMessage));
         Publisher.Subscribe(this, typeof(LoadMessage));
-        _gameObject = new GameObject();
-        _gameObject2 = new GameObject();
-    }
-
-    private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
-        playerController.Attack();
     }
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        playerController.Direction = obj.ReadValue<Vector2>();
+        playerMovement.Direction = obj.ReadValue<Vector2>();
     }
 
     private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        playerController.Direction = obj.ReadValue<Vector2>();
+        playerMovement.Direction = obj.ReadValue<Vector2>();
     }
 
     private void Start()
@@ -103,11 +98,11 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     public void OnPublish(IPublisherMessage message)
     {
-        if (message is SaveMessage saveMessage)
+        if (message is SaveMessage)
         {
             StartCoroutine(SavingCoroutine());
         }
-        else if (message is LoadMessage loadMessage)
+        else if (message is LoadMessage)
         {
             StartCoroutine(LoadingCoroutine());
         }
@@ -130,7 +125,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         float currentNtimeScale = Time.timeScale;
         Time.timeScale = 0;
         var savableEntities = FindObjectsOfType<SavableEntity>().ToList();
-        SavableInfosList savableInfosList = new SavableInfosList();
+        SavableInfosList savableInfosList = new();
         savableInfosList.SavableInfos = savableEntities.Select(x => x.SaveInfo()).ToList();
         yield return new WaitUntil(() => FileSystem.SaveJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", savableInfosList));
         Time.timeScale = currentNtimeScale;
@@ -140,7 +135,27 @@ public class GameManager : MonoBehaviour, ISubscriber
     {
         SavableInfosList savableEntities = null;
         yield return new WaitUntil(() => FileSystem.LoadJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", out savableEntities));
-        _gameObject.transform.position = new Vector3(savableEntities.SavableInfos[0].xPos, savableEntities.SavableInfos[0].yPos, savableEntities.SavableInfos[0].zPos);
-        _gameObject2.transform.position = new Vector3(savableEntities.SavableInfos[1].xPos, savableEntities.SavableInfos[1].yPos, savableEntities.SavableInfos[1].zPos);
+        foreach (var savableInfo in savableEntities.SavableInfos)
+        {
+            if(savableInfo.IsPlayer)
+            {
+                Debug.Log("Spawn player");
+                var player = Instantiate(PlayerPrefab, new Vector3(savableInfo.xPos, savableInfo.yPos, savableInfo.zPos), Quaternion.identity);
+                List<Hourglass> hourglasses = new List<Hourglass>();
+                hourglasses.Add(new Hourglass(savableInfo.currentHourglassLife));
+                for (int i = 1; i < savableInfo.hourglassQuantity; i++)
+                {
+                    hourglasses.Add(new Hourglass(50));
+                }
+                player.Damageable.SetHourglasses(hourglasses);
+                player.Damageable.SetCurrentLife(savableInfo.currentHourglassLife);
+            }
+            else
+            {
+                Debug.Log("Spawn enemy");
+            }
+        }
+        //_gameObject.transform.position = new Vector3(savableEntities.SavableInfos[0].xPos, savableEntities.SavableInfos[0].yPos, savableEntities.SavableInfos[0].zPos);
+        //_gameObject2.transform.position = new Vector3(savableEntities.SavableInfos[1].xPos, savableEntities.SavableInfos[1].yPos, savableEntities.SavableInfos[1].zPos);
     }
 }
