@@ -49,7 +49,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         private Collider2D[] overlap2DColliders;
 
         private int ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
-
+        private EnemyController _enemyController;
         // Returns success if an object was found otherwise failure
         public override TaskStatus OnUpdate()
         {
@@ -169,9 +169,11 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
 
             if (returnedObject.Value != null) {
                 // Return success if an object was found
+                _enemyController.SetFieldOfViewAngle(360);
                 return TaskStatus.Success;
             }
             // An object is not within sight so return failure
+            _enemyController.SetFieldOfViewAngle(160);
             return TaskStatus.Failure;
         }
 
@@ -187,7 +189,11 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             drawDebugRay = false;
             ignoreLayerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
         }
-
+        public override void OnAwake()
+        {
+            base.OnAwake();
+            _enemyController = gameObject.SearchComponent<EnemyController>();
+        }
         // Draw the line of sight representation within the scene window
         public override void OnDrawGizmos()
         {
