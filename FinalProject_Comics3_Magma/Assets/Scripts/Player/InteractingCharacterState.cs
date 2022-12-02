@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 public class InteractingCharacterState : State
 {
-    private CharacterMovement m_Owner;
+    private PlayerController m_Owner;
 
-    public InteractingCharacterState(CharacterMovement owner)
+    public InteractingCharacterState(PlayerController owner)
     {
         m_Owner = owner;
     }

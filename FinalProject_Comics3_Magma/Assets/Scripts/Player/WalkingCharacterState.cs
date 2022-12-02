@@ -3,9 +3,9 @@ using UnityEngine;
 // stato di walk. prende la direzione dall'owner (cioè dall'input)
 public class WalkingCharacterState : State
 {
-    private CharacterMovement m_Owner;
+    private PlayerController m_Owner;
 
-    public WalkingCharacterState(CharacterMovement owner)
+    public WalkingCharacterState(PlayerController owner)
     {
         m_Owner = owner;
     }

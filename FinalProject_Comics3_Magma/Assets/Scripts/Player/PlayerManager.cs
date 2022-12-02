@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if(hourglassTimePassed >= timeLoseDustInHourglass)
         {
             hourglassTimePassed = 0;
-            _damageable.Damage(amountLoseDust);
+            //_damageable.Damage(amountLoseDust);
         }
     }
 
