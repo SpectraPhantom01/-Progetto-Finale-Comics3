@@ -27,7 +27,6 @@ public class Damageable : MonoBehaviour
     public void Damage(float amount)
     {
         _currentTimeLife -= amount;
-        Debug.Log($"Got damage!!! TIME LIFE: {_currentTimeLife}/{currentHourglass.Time}");
 
         if (_currentTimeLife <= 0)
         {
