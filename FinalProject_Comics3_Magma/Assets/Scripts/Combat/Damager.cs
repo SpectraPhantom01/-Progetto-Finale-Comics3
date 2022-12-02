@@ -11,9 +11,8 @@ public class Damager : MonoBehaviour
     {
         if (_damageableMask.Contains(collision.gameObject.layer))
         {
-            Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
-
-            damageable.Damage(_damageAmount);
+            //Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
+            //damageable.Damage(_damageAmount);
         }
     }
 }

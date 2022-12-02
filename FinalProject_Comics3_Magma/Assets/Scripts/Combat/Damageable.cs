@@ -1,7 +1,10 @@
+using BehaviorDesigner.Runtime;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Damageable : MonoBehaviour
 {
@@ -13,6 +16,14 @@ public class Damageable : MonoBehaviour
     private float _currentTimeLife;
     private IAliveEntity _entity;
     private Hourglass currentHourglass;
+
+    private BehaviorTree _behaviorTree;
+    private NavMeshAgent _agent;
+    private Rigidbody2D _rb;
+
+    [Range(0, 100)]
+    [SerializeField] float KBResistance;
+
     private void Start()
     {
         if (hourglasses == null || hourglasses.Count == 0)
@@ -22,9 +33,13 @@ public class Damageable : MonoBehaviour
         currentHourglass = hourglasses.First();
         _currentTimeLife = currentHourglass.Time;
         _entity = gameObject.SearchComponent<IAliveEntity>();
+
+        _behaviorTree = gameObject.SearchComponent<BehaviorTree>();
+        _agent = gameObject.GetComponent<NavMeshAgent>();
+        _rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    public void Damage(float amount)
+    public void Damage(float amount, float KB, Vector2 direction)
     {
         _currentTimeLife -= amount;
         Debug.Log($"Got damage!!! TIME LIFE: {_currentTimeLife}/{currentHourglass.Time}");
@@ -43,6 +58,34 @@ public class Damageable : MonoBehaviour
 
             _currentTimeLife = currentHourglass.Time;
         }
+        else
+        {
+            StartCoroutine(KnockbackRoutine());
+            float calculatedKB = CalculateKB(KB);
+            _rb.AddForce(direction * calculatedKB, ForceMode2D.Impulse);
+        }
+    }
+
+    private float CalculateKB(float KB)
+    {
+        KBResistance = (KBResistance / 100);
+        KB = KB * (1 - KBResistance);
+        return KB;
+    }
+
+    private IEnumerator KnockbackRoutine()
+    {
+        if (_agent != null)
+            _agent.enabled = false;
+        if (_behaviorTree != null)
+            _behaviorTree.enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (_agent != null)
+            _agent.enabled = true;
+        if (_behaviorTree != null)
+            _behaviorTree.enabled = true;
     }
 
     public void Heal(float amount)

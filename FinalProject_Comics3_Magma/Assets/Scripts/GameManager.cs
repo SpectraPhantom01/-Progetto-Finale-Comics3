@@ -39,18 +39,19 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     // Corrected Variables
     private InputSystem inputSystem;
-    private PlayerMovement playerMovement;
+    private PlayerController playerController;
     private LanguageManager languageManager;
 
     // Properties
-    public PlayerMovement Player => playerMovement;
+    public PlayerController Player => playerController;
+
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
 
         
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerController = FindObjectOfType<PlayerController>();
 
         //if (playerMovement == null)
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += Movement_started;
         inputSystem.Player.Movement.canceled += Movement_canceled;
+        inputSystem.Player.Attack.performed += Attack_performed;
 
         // END INPUT SYSTEM
 
@@ -79,12 +81,20 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        playerMovement.Direction = obj.ReadValue<Vector2>();
+        playerController.Direction = obj.ReadValue<Vector2>();
     }
 
     private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        playerMovement.Direction = obj.ReadValue<Vector2>();
+        Vector2 readedDirection = obj.ReadValue<Vector2>();
+
+        playerController.Direction = readedDirection.normalized;
+        /*playerController.lastDirection = obj.ReadValue<Vector2>()*/;
+    }
+
+    private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerController.Attack();
     }
 
     private void Start()

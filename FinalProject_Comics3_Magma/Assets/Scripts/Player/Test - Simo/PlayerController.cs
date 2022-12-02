@@ -24,8 +24,9 @@ public class PlayerController : MonoBehaviour
 
     //InputSystem inputSystem;
 
-    Vector2 movement;
+    [HideInInspector] public Vector2 lastDirection;
     float value;
+    //Vector2 normalizedDirection;
     Rigidbody2D rb;
 
     bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
@@ -59,10 +60,12 @@ public class PlayerController : MonoBehaviour
         //Direction = inputSystem.Player.Movement.ReadValue<Vector2>(); // Direction salva i valori di movimento presi da input
         /*MoveDirection();*/ // Calcolo del movement applicando accelerazione e decelerazione su assi x e y
 
-        Vector2 test = Direction.normalized;
+        //normalizedDirection = Direction.normalized;
         //rb.velocity = new Vector2(movement.x, movement.y); // Movimento effettivo
-        Test();
-        rb.velocity = test * value;
+        MoveDirection();
+        
+        //rb.velocity += new Vector2(normalizedDirection.x + value * Time.fixedDeltaTime, normalizedDirection.y + value * Time.fixedDeltaTime);
+        //Debug.Log(rb.velocity);
     }
 
     //private void MoveDirection() // NOTA: aggiunto controllo sul cambio di direzione,
@@ -90,16 +93,22 @@ public class PlayerController : MonoBehaviour
     //    }
     //}
 
-    private void Test()
+    private void MoveDirection()
     {
         if (Direction.magnitude < 0.01f)
         {
             value = Mathf.MoveTowards(value, 0, deceleration * Time.fixedDeltaTime);
+
+            rb.velocity = lastDirection * value;
         }
         else
         {
+            //lastDirection = normalizedDirection;
+
             value += acceleration * Time.fixedDeltaTime;
             value = Mathf.Clamp(value, -maxSpeed, maxSpeed);
+
+            rb.velocity = Direction.normalized * value;
         }
     }
 
