@@ -4,50 +4,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IAliveEntity
+public class EnemyController : AI, IAliveEntity
 {
     public delegate void OnKillEnemy();
     public OnKillEnemy onKillEnemy;
 
     [SerializeField] GameObject damagerArea;
-
-    BehaviorTree behaviorTree;
-
+    public GameObject DamagerArea => damagerArea;
     public bool IsAlive { get; set; }
     public string Name { get ; set ; }
 
-    private void Awake()
-    {
-        behaviorTree = GetComponent<BehaviorTree>();
-        SetDamagerArea();
-    }
-
     private void SetDamagerArea()
     {
-        behaviorTree.SetVariableValue("DamagerArea", damagerArea);
+        BehaviorTree.SetVariableValue("DamagerArea", damagerArea);
     }
 
     private void Start()
     {
         if(GameManager.Instance.Player != null)
             Initialize("Target", GameManager.Instance.Player.gameObject);
+        SetDamagerArea();
     }
 
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         IsAlive = true;
         Name = "Enemy_" + Guid.NewGuid().ToString();
-        behaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
+        BehaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
     }
 
     public void SetFieldOfView(float newValue)
     {
-        behaviorTree.SetVariableValue("FieldOfView", newValue);
+        BehaviorTree.SetVariableValue("FieldOfView", newValue);
     }
 
     public void SetFieldOfViewAngle(float newValue)
     {
-        behaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
+        BehaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
     }
 
     public void SetActiveDamagerArea(bool active)
