@@ -210,7 +210,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: maxSpeed
-      value: 3.5
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: acceleration
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: deceleration
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: hourglasses.Array.data[0].Time
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
@@ -221,6 +233,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: avoidancePriority
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1885439899952289867, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -330,6 +354,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: avoidancePriority
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1885439899952289867, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -398,6 +434,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: avoidancePriority
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1885439899952289867, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -574,6 +622,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885439899952289865, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: avoidancePriority
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1885439899952289867, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
       propertyPath: m_RootOrder
       value: 2
