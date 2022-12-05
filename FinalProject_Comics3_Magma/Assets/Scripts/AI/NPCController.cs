@@ -14,5 +14,17 @@ public class NPCController : AI
         BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
     }
 
+#if UNITY_EDITOR
+    [Header("Gizmo Settings")]
+    [SerializeField] Color lineColor;
+    private void OnDrawGizmos()
+    {
+        if (patrolPath == null) return;
+        if (patrolPath.transform.GetChild(0) == null) return;
 
+        Gizmos.color = lineColor;
+        Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
+
+    }
+#endif 
 }
