@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         Vector2 readedDirection = obj.ReadValue<Vector2>();
 
         playerController.Direction = readedDirection.normalized;
-        /*playerController.lastDirection = obj.ReadValue<Vector2>()*/;
+        playerController.lastDirection = readedDirection.normalized;
     }
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
