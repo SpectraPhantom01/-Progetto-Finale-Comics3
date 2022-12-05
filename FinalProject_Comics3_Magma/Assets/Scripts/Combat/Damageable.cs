@@ -35,8 +35,8 @@ public class Damageable : MonoBehaviour
         _entity = gameObject.SearchComponent<IAliveEntity>();
 
         _behaviorTree = gameObject.SearchComponent<BehaviorTree>();
-        _agent = gameObject.GetComponent<NavMeshAgent>();
-        _rb = gameObject.GetComponent<Rigidbody2D>();
+        _agent = gameObject.SearchComponent<NavMeshAgent>();
+        _rb = gameObject.SearchComponent<Rigidbody2D>();
     }
 
     public void Damage(float amount, float KB, Vector2 direction)
