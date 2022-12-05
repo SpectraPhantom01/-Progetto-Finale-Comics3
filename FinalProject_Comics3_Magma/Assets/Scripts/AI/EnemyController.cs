@@ -19,6 +19,11 @@ public class EnemyController : MonoBehaviour, IAliveEntity
     private void Awake()
     {
         behaviorTree = GetComponent<BehaviorTree>();
+        SetDamagerArea();
+    }
+
+    private void SetDamagerArea()
+    {
         behaviorTree.SetVariableValue("DamagerArea", damagerArea);
     }
 
@@ -43,6 +48,11 @@ public class EnemyController : MonoBehaviour, IAliveEntity
     public void SetFieldOfViewAngle(float newValue)
     {
         behaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
+    }
+
+    public void SetActiveDamagerArea(bool active)
+    {
+        damagerArea.SetActive(active);
     }
 
     public void Kill()
