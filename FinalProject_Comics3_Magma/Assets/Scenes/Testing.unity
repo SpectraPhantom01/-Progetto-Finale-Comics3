@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1065630008}
+    - target: {fileID: 6111055004306408026, guid: ae2df2ba2952d9444992748b483d1889, type: 3}
+      propertyPath: FieldOfViewAngle
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae2df2ba2952d9444992748b483d1889, type: 3}
 --- !u!1 &861681075
@@ -786,6 +790,10 @@ PrefabInstance:
     - target: {fileID: 1885439899952289870, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587555541766990553, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}
+      propertyPath: FieldOfViewAngle
+      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebad59227f921f6459cfeb55c25a7410, type: 3}

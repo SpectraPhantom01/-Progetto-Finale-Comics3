@@ -45,7 +45,6 @@ public class Damager : MonoBehaviour
 
             damageableList.ForEach(damageable => GiveDamage(damageable));
         }
-
     }
 
 #if UNITY_EDITOR

@@ -9,7 +9,7 @@ using UnityEngine.AI;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] List<Hourglass> hourglasses;
-
+    [SerializeField] float playerLockTime = 0.1f;
     public float CurrentTimeLife => _currentTimeLife;
     public int Hourglasses => hourglasses.Count;
 
@@ -77,7 +77,7 @@ public class Damageable : MonoBehaviour
         {
             if(_isPlayer)
             {
-                playerManager.LockMovement(0.5f);
+                playerManager.LockMovement(playerLockTime);
             }
             else
             {

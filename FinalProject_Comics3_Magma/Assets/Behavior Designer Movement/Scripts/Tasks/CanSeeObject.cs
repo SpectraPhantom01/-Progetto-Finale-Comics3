@@ -173,7 +173,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 return TaskStatus.Success;
             }
             // An object is not within sight so return failure
-            _enemyController.SetFieldOfViewAngle(160);
+            _enemyController.SetFieldOfViewAngle(_enemyController.FieldOfViewAngle);
             return TaskStatus.Failure;
         }
 

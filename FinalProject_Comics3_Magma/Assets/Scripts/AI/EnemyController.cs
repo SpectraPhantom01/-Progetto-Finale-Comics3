@@ -11,6 +11,7 @@ public class EnemyController : AI, IAliveEntity
 
     [Header("Settings")]
     [SerializeField] EEnemyType enemyType;
+    [SerializeField] public float FieldOfViewAngle;
 
     [Header("References")]
     [SerializeField] PatrolPath patrolPath;
