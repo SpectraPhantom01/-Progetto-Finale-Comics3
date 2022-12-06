@@ -13,24 +13,21 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] EEnemyType enemyType;
 
     [Header("References")]
-    [SerializeField] GameObject damagerArea;
     [SerializeField] PatrolPath patrolPath;
 
-    public GameObject DamagerArea => damagerArea;
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name { get ; set ; }
 
-    private void SetDamagerArea()
-    {
-        BehaviorTree.SetVariableValue("DamagerArea", damagerArea);
-    }
+    private Damager _damager;
 
     private void Start()
     {
-        if(GameManager.Instance.Player != null)
+        _damager = gameObject.SearchComponent<Damager>();
+
+        if (GameManager.Instance.Player != null)
             Initialize("Target", GameManager.Instance.Player.gameObject);
-        SetDamagerArea();
+
     }
 
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
@@ -38,7 +35,7 @@ public class EnemyController : AI, IAliveEntity
         IsAlive = true;
         Name = "Enemy_" + Guid.NewGuid().ToString();
         BehaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
-
+        BehaviorTree.SetVariableValue("Damager", _damager.gameObject);
         switch (enemyType)
         {
             case EEnemyType.LavaSlime:
@@ -59,9 +56,9 @@ public class EnemyController : AI, IAliveEntity
         BehaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
     }
 
-    public void SetActiveDamagerArea(bool active)
+    public void Attack()
     {
-        damagerArea.SetActive(active);
+        _damager.Attack();
     }
 
     public void Kill()

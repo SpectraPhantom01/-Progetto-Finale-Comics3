@@ -8,6 +8,10 @@ public class AI : MonoBehaviour
 {
     [HideInInspector] public BehaviorTree BehaviorTree;
     [HideInInspector] public NavMeshAgent Agent;
+    [Space(20)]
+
+    public EDirection CurrentDirection = EDirection.Down;
+
     private void Awake()
     {
         BehaviorTree = gameObject.SearchComponent<BehaviorTree>();
@@ -17,5 +21,10 @@ public class AI : MonoBehaviour
             BehaviorTree.SetVariableValue("StoppingDistance", Agent.stoppingDistance);
         }
        
+    }
+    private void Update()
+    {
+        if (Agent.velocity.magnitude > 0.01f)
+            CurrentDirection = Agent.velocity.CalculateDirection();
     }
 }

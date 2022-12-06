@@ -174,7 +174,6 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             }
             // An object is not within sight so return failure
             _enemyController.SetFieldOfViewAngle(160);
-            _enemyController.SetActiveDamagerArea(false);
             return TaskStatus.Failure;
         }
 

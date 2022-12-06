@@ -15,14 +15,32 @@ public class Damageable : MonoBehaviour
 
     private float _currentTimeLife;
     private IAliveEntity _entity;
-    private Hourglass currentHourglass;
+    private Hourglass _currentHourglass;
 
     private BehaviorTree _behaviorTree;
     private NavMeshAgent _agent;
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidBody;
+    private AI ai;
+    private PlayerManager playerManager;
+    private bool _isPlayer;
 
     [Range(0, 100)]
-    [SerializeField] float KBResistance;
+    [SerializeField] float KnockBackResistance;
+
+    private void Awake()
+    {
+        ai = gameObject.SearchComponent<AI>();
+        _rigidBody = gameObject.SearchComponent<Rigidbody2D>();
+        playerManager = gameObject.SearchComponent<PlayerManager>();
+        if(ai != null)
+        {
+            _behaviorTree = ai.BehaviorTree;
+            _agent = ai.Agent;
+            _isPlayer = false;
+        }
+        else
+            _isPlayer = true;
+    }
 
     private void Start()
     {
@@ -30,46 +48,49 @@ public class Damageable : MonoBehaviour
             throw new ArgumentNullException($"La lista delle clessidre è vuota!!! {gameObject.name}");
 
 
-        currentHourglass = hourglasses.First();
-        _currentTimeLife = currentHourglass.Time;
+        _currentHourglass = hourglasses.First();
+        _currentTimeLife = _currentHourglass.Time;
         _entity = gameObject.SearchComponent<IAliveEntity>();
 
-        _behaviorTree = gameObject.SearchComponent<BehaviorTree>();
-        _agent = gameObject.SearchComponent<NavMeshAgent>();
-        _rb = gameObject.SearchComponent<Rigidbody2D>();
     }
 
-    public void Damage(float amount, float KB, Vector2 direction)
+    public void Damage(float amount, float knockBack, Vector2 direction)
     {
         _currentTimeLife -= amount;
 
         if (_currentTimeLife <= 0)
         {
-            hourglasses.Remove(currentHourglass);
+            hourglasses.Remove(_currentHourglass);
 
-            currentHourglass = hourglasses.First();
-            if(currentHourglass == null)
+            if(hourglasses.Count > 0)
+                _currentHourglass = hourglasses.First();
+            else
             {
                 Debug.Log($"This damageable is death: {gameObject.name}");
                 _entity.Kill();
                 return;
             }
 
-            _currentTimeLife = currentHourglass.Time;
+            _currentTimeLife = _currentHourglass.Time;
         }
         else
         {
-            StartCoroutine(KnockbackRoutine());
-            float calculatedKB = CalculateKB(KB);
-            _rb.AddForce(direction * calculatedKB, ForceMode2D.Impulse);
+            if(_isPlayer)
+            {
+                playerManager.LockMovement(0.5f);
+            }
+            else
+            {
+                StartCoroutine(KnockbackRoutine());
+            }
+
+            _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
         }
     }
 
-    private float CalculateKB(float KB)
+    private float CalculateKnockBack(float knockBack)
     {
-        KBResistance = (KBResistance / 100);
-        KB = KB * (1 - KBResistance);
-        return KB;
+        return knockBack * (1 - KnockBackResistance / 100);
     }
 
     private IEnumerator KnockbackRoutine()
@@ -79,25 +100,29 @@ public class Damageable : MonoBehaviour
         if (_behaviorTree != null)
             _behaviorTree.enabled = false;
 
+        _rigidBody.bodyType = RigidbodyType2D.Dynamic;
+
         yield return new WaitForSeconds(0.5f);
 
         if (_agent != null)
             _agent.enabled = true;
         if (_behaviorTree != null)
             _behaviorTree.enabled = true;
+
+        _rigidBody.bodyType = RigidbodyType2D.Static;
     }
 
     public void Heal(float amount)
     {
-        if (_currentTimeLife + amount >= currentHourglass.Time)
+        if (_currentTimeLife + amount >= _currentHourglass.Time)
         {
-            _currentTimeLife = currentHourglass.Time;
+            _currentTimeLife = _currentHourglass.Time;
             Debug.Log($"This damageable has full TIME life: {gameObject.name}");
             return;
         }
 
         _currentTimeLife += amount;
-        Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{currentHourglass.Time}");
+        Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{_currentHourglass.Time}");
 
     }
 

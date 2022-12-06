@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641119347234921518}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3138579559502232213}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1770608083448179933
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1770608083448179934}
   - component: {fileID: 1770608083448179935}
+  - component: {fileID: 677875792980305352}
   m_Layer: 6
   m_Name: Physics
   m_TagString: Untagged
@@ -55,14 +56,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770608083448179933}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3138579559502232213}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!61 &1770608083448179935
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89,6 +90,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &677875792980305352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770608083448179933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f26c9c23afa8446af4aea729857374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagerArea: {fileID: 8474878009925126730}
+  _damageAmount: 3
+  _damageableMask:
+    serializedVersion: 2
+    m_Bits: 128
+  radius: 0.5
+  knockBack: 20
+  hitBox: {x: 2, y: 2}
 --- !u!1 &3138579559502232215
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +164,8 @@ MonoBehaviour:
   maxNumberPositions: 10
   timeDeltaSavePosition: 0.1
   timeLoseDustInHourglass: 1
-  amountLoseDust: 1
+  amountLoseDust: 0
+  CurrentDirection: 1
 --- !u!114 &3138579559502232296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,12 +181,6 @@ MonoBehaviour:
   maxSpeed: 6.5
   acceleration: 25
   deceleration: 35
-  attackPoint: {fileID: 8474878009925126730}
-  knockback: 20
-  _damageAmount: 3
-  _damageableMask:
-    serializedVersion: 2
-    m_Bits: 128
   Direction: {x: 0, y: 0}
   lastDirection: {x: 0, y: 0}
 --- !u!50 &9166515653511605295
@@ -204,7 +220,7 @@ MonoBehaviour:
   - Time: 5000000
   - Time: 50
   - Time: 50
-  KBResistance: 0
+  KnockBackResistance: 20
 --- !u!114 &4272628589318761874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,14 +257,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7720948515912989646}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.56, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.28405, y: 0.28405, z: 0.28405}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3138579559502232213}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &8054535114841621725
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCController : AI
+public class NPCController : AI, IAliveEntity
 {
     [Header("Path")]
     [SerializeField] PatrolPath patrolPath;
+
+    public bool IsAlive { get; set; }
+    public string Name { get; set; }
 
 
     private void Start()
@@ -14,9 +17,17 @@ public class NPCController : AI
         BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
     }
 
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+
+
+
 #if UNITY_EDITOR
     [Header("Gizmo Settings")]
     [SerializeField] Color lineColor;
+
     private void OnDrawGizmos()
     {
         if (patrolPath == null) return;
@@ -26,5 +37,6 @@ public class NPCController : AI
         Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
 
     }
-#endif 
+
+#endif
 }

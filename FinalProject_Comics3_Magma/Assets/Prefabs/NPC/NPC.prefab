@@ -106,8 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aff4173a896b78459b046312e3b312d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BehaviorTree: {fileID: 0}
-  Agent: {fileID: 0}
+  BehaviorTree: {fileID: 2491726064026274007}
+  Agent: {fileID: 2491726064026274005}
+  CurrentDirection: 1
   patrolPath: {fileID: 0}
   lineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!195 &2491726064026274005
