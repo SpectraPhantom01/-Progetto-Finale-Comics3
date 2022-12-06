@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum AttackDirection { Up, Down, Left, Right };
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,7 +18,7 @@ public class PlayerController : MonoBehaviour
     //Nota: damageAmount e damageableMask aggiunte per test
     [Header("Attacking Settings")]
     [SerializeField] Transform attackPoint;
-    [SerializeField] float knockback = 20f;
+    [SerializeField] float knockback;
     [SerializeField] float _damageAmount; 
     [SerializeField] LayerMask _damageableMask;
 
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
     //InputSystem inputSystem;
 
     [HideInInspector] public Vector2 lastDirection;
+    [HideInInspector] public AttackDirection attackDirection = AttackDirection.Right;
     float value;
     //Vector2 normalizedDirection;
     Rigidbody2D rb;
@@ -53,7 +57,27 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        //ChangeAttackDirection();
     }
+
+    //private void ChangeAttackDirection() //Molto brutto ;-;
+    //{
+    //    switch (attackDirection)
+    //    {
+    //        case AttackDirection.Up:
+    //            attackPoint.position = new Vector2(0, 1.1f);
+    //            break;
+    //        case AttackDirection.Down:
+    //            attackPoint.position = new Vector2(0, -1.1f);
+    //            break;
+    //        case AttackDirection.Left:
+    //            attackPoint.position = new Vector2(-1.1f, 0);
+    //            break;
+    //        case AttackDirection.Right:
+    //            attackPoint.position = new Vector2(1.1f, 0);
+    //            break;
+    //    }
+    //}
 
     private void Movement()
     {
@@ -98,7 +122,6 @@ public class PlayerController : MonoBehaviour
         if (Direction.magnitude < 0.01f)
         {
             value = Mathf.MoveTowards(value, 0, deceleration * Time.fixedDeltaTime);
-
             rb.velocity = lastDirection * value;
         }
         else
@@ -106,6 +129,7 @@ public class PlayerController : MonoBehaviour
             //lastDirection = normalizedDirection;
 
             value += acceleration * Time.fixedDeltaTime;
+
             value = Mathf.Clamp(value, -maxSpeed, maxSpeed);
 
             rb.velocity = Direction.normalized * value;

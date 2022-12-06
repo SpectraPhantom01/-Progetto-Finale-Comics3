@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e960259e4d90d434992e7657637e281c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 0
+  hourglasses: []
   KBResistance: 0
 --- !u!1 &534319576
 GameObject:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e960259e4d90d434992e7657637e281c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 0
+  hourglasses: []
   KBResistance: 0
 --- !u!212 &534319578
 SpriteRenderer:
