@@ -51,7 +51,7 @@ public class EnemyController : AI, IAliveEntity
 
     public void SetFieldOfView()
     {
-        BehaviorTree.SetVariableValue("FieldOfView", fieldOfViewDistance);
+        BehaviorTree.SetVariableValue("FieldOfView", FieldOfViewDistance);
     }
 
     public void SetFieldOfViewAngle(float newValue)
