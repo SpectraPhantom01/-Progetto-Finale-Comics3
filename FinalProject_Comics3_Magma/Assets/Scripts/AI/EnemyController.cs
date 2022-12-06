@@ -17,6 +17,7 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] PatrolPath patrolPath;
 
     public GameObject DamagerArea => damagerArea;
+    public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name { get ; set ; }
 
