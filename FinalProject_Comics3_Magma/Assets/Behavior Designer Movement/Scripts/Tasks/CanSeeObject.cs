@@ -169,7 +169,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
 
             if (returnedObject.Value != null) {
                 // Return success if an object was found
-                _enemyController.SetFieldOfViewAngle(360);
+                _enemyController.SetFieldOfViewAngle(_enemyController.FieldOfViewAngleAfterSee);
                 return TaskStatus.Success;
             }
             // An object is not within sight so return failure
