@@ -13,6 +13,7 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] EEnemyType enemyType;
     [SerializeField] public float FieldOfViewAngle;
     [SerializeField] public float FieldOfViewAngleAfterSee;
+    [SerializeField] public float FieldOfViewDistance;
 
     [Header("References")]
     [SerializeField] PatrolPath patrolPath;
@@ -48,9 +49,9 @@ public class EnemyController : AI, IAliveEntity
         }
     }
 
-    public void SetFieldOfView(float newValue)
+    public void SetFieldOfView()
     {
-        BehaviorTree.SetVariableValue("FieldOfView", newValue);
+        BehaviorTree.SetVariableValue("FieldOfView", fieldOfViewDistance);
     }
 
     public void SetFieldOfViewAngle(float newValue)

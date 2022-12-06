@@ -5,8 +5,6 @@ using UnityEngine;
 public class RoomTrigger : MonoBehaviour
 {
     [SerializeField] List<EnemyController> _enemyControllers;
-    [SerializeField] float _lavaEnemyfieldOfView;
-    [SerializeField] float _golemEnemyfieldOfView;
 
     private void Start()
     {
@@ -26,10 +24,10 @@ public class RoomTrigger : MonoBehaviour
                 switch (enemy.EnemyType)
                 {
                     case EEnemyType.LavaSlime:
-                        enemy.SetFieldOfView(_lavaEnemyfieldOfView);
+                        enemy.SetFieldOfView();
                         break;
                     case EEnemyType.DefensiveGolem:
-                        enemy.SetFieldOfView(_golemEnemyfieldOfView);
+                        enemy.SetFieldOfView();
                         break;
                 }
             }
@@ -43,7 +41,7 @@ public class RoomTrigger : MonoBehaviour
         {
             foreach (var enemy in _enemyControllers)
             {
-                enemy.SetFieldOfView(0);
+                enemy.SetFieldOfView();
             }
         }
     }
