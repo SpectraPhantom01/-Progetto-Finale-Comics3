@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum AttackDirection { Up, Down, Left, Right };
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,11 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float deceleration = 35;
 
     //Nota: damageAmount e damageableMask aggiunte per test
-    [Header("Attacking Settings")]
-    [SerializeField] Transform attackPoint;
-    [SerializeField] float knockback;
-    [SerializeField] float _damageAmount; 
-    [SerializeField] LayerMask _damageableMask;
+    //[Header("Attacking Settings")]
+    //[SerializeField] Transform attackPoint;
+    //[SerializeField] float knockback = 20f;             // TODO: spostati i valori nel DAMAGER
+    //[SerializeField] float _damageAmount; 
+    //[SerializeField] LayerMask _damageableMask;
 
     [HideInInspector] public Vector2 Direction;
     //[HideInInspector] public GenericStateMachine<EPlayerState> StateMachine;
@@ -28,19 +25,21 @@ public class PlayerController : MonoBehaviour
     //InputSystem inputSystem;
 
     [HideInInspector] public Vector2 lastDirection;
-    [HideInInspector] public AttackDirection attackDirection = AttackDirection.Right;
     float value;
     //Vector2 normalizedDirection;
     Rigidbody2D rb;
-
+    public Rigidbody2D Rigidbody => rb;
     bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
     bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
+    private Damager _damager;
+    public bool CanMove { get; set; } = true;
 
     private void Awake()
     {
         //inputSystem = new InputSystem();
         rb = GetComponentInChildren<Rigidbody2D>();
-
+        _damager = gameObject.SearchComponent<Damager>();
+        CanMove = true;
         //StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
@@ -56,28 +55,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
-        //ChangeAttackDirection();
+        if(CanMove)
+            Movement();
     }
-
-    //private void ChangeAttackDirection() //Molto brutto ;-;
-    //{
-    //    switch (attackDirection)
-    //    {
-    //        case AttackDirection.Up:
-    //            attackPoint.position = new Vector2(0, 1.1f);
-    //            break;
-    //        case AttackDirection.Down:
-    //            attackPoint.position = new Vector2(0, -1.1f);
-    //            break;
-    //        case AttackDirection.Left:
-    //            attackPoint.position = new Vector2(-1.1f, 0);
-    //            break;
-    //        case AttackDirection.Right:
-    //            attackPoint.position = new Vector2(1.1f, 0);
-    //            break;
-    //    }
-    //}
 
     private void Movement()
     {
@@ -122,6 +102,7 @@ public class PlayerController : MonoBehaviour
         if (Direction.magnitude < 0.01f)
         {
             value = Mathf.MoveTowards(value, 0, deceleration * Time.fixedDeltaTime);
+
             rb.velocity = lastDirection * value;
         }
         else
@@ -129,7 +110,6 @@ public class PlayerController : MonoBehaviour
             //lastDirection = normalizedDirection;
 
             value += acceleration * Time.fixedDeltaTime;
-
             value = Mathf.Clamp(value, -maxSpeed, maxSpeed);
 
             rb.velocity = Direction.normalized * value;
@@ -138,21 +118,24 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.position, 0.5f, _damageableMask);
-        foreach (Collider2D db in hit)
-        {
-            Vector2 direction = -(transform.position - db.transform.position).normalized;
+        //Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.position, 0.5f, _damageableMask);
+        //foreach (Collider2D db in hit)
+        //{
+        //    Vector2 direction = -(transform.position - db.transform.position).normalized;
 
-            Damageable damageable = db.gameObject.SearchComponent<Damageable>();
-            damageable.Damage(_damageAmount, knockback, direction);
-        }
+        //    Damageable damageable = db.gameObject.SearchComponent<Damageable>();
+        //    if(damageable != null)
+        //        damageable.Damage(_damageAmount, knockback, direction);
+        //}
+
+        _damager.Attack();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
+    //}
 
     //private void OnEnable()
     //{

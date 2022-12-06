@@ -13,12 +13,14 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] float amountLoseDust;
     public Queue<Vector3> SavedPositions { get; private set; }
 
+    public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
     public string Name { get ; set ; }
     public Damageable Damageable => _damageable;
     private float savePositionTimePassed;
     private float hourglassTimePassed;
     private Damageable _damageable;
+    private PlayerController _playerController;
     public void Kill()
     {
         Destroy(gameObject);
@@ -36,12 +38,17 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
         _damageable = gameObject.SearchComponent<Damageable>();
         savePositionTimePassed = 0;
+
+        _playerController = gameObject.SearchComponent<PlayerController>();
     }
 
     private void Update()
     {
         HandleSavePosition();
         HandleHourglass();
+
+        if(_playerController.Rigidbody.velocity.magnitude > 0.01f)
+            CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
     }
 
     private void HandleHourglass()
@@ -70,6 +77,19 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         SavedPositions.Enqueue(newPosition);
     }
 
+    public void LockMovement(float time)
+    {
+        if(_playerController.CanMove)
+            StartCoroutine(LockCoroutine(time));
+    }
+
+    private IEnumerator LockCoroutine(float time)
+    {
+        _playerController.CanMove = false;
+        yield return new WaitForSeconds(time);
+        _playerController.CanMove = true;
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
@@ -88,5 +108,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             }
         }
     }
+
 #endif
 }

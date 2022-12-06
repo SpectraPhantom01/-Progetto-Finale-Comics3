@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PatrolPath : MonoBehaviour
 {
-    [SerializeField] float gizmoSphereRadius = 0.5f;
 
     [HideInInspector] public List<GameObject> Path;
 
@@ -17,16 +16,20 @@ public class PatrolPath : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    [Header("Gizmo Settings")]
+    [SerializeField] float gizmoSphereRadius = 0.5f;
+    [SerializeField] Color lineColor;
+    [SerializeField] Color sphereColor;
     private void OnDrawGizmos()
     {
 
-        Gizmos.color = Color.white;
+        Gizmos.color = lineColor;
         for (int i = 0; i < transform.childCount - 1; i++)
         {
             Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild(i + 1).position);
         }
 
-        Gizmos.color = Color.red;
+        Gizmos.color = sphereColor;
         for (int i = 0; i < transform.childCount; i++)
         {
             Gizmos.DrawSphere(transform.GetChild(i).position, gizmoSphereRadius);

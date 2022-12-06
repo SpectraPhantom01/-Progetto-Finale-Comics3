@@ -4,55 +4,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IAliveEntity
+public class EnemyController : AI, IAliveEntity
 {
     public delegate void OnKillEnemy();
     public OnKillEnemy onKillEnemy;
 
-    [SerializeField] GameObject damagerArea;
+    [Header("Settings")]
+    [SerializeField] EEnemyType enemyType;
 
-    BehaviorTree behaviorTree;
+    [Header("References")]
+    [SerializeField] PatrolPath patrolPath;
 
+    public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name { get ; set ; }
 
-    private void Awake()
-    {
-        behaviorTree = GetComponent<BehaviorTree>();
-        SetDamagerArea();
-    }
-
-    private void SetDamagerArea()
-    {
-        behaviorTree.SetVariableValue("DamagerArea", damagerArea);
-    }
+    private Damager _damager;
 
     private void Start()
     {
-        if(GameManager.Instance.Player != null)
+        _damager = gameObject.SearchComponent<Damager>();
+
+        if (GameManager.Instance.Player != null)
             Initialize("Target", GameManager.Instance.Player.gameObject);
+
     }
 
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         IsAlive = true;
         Name = "Enemy_" + Guid.NewGuid().ToString();
-        behaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
+        BehaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
+        BehaviorTree.SetVariableValue("Damager", _damager.gameObject);
+        switch (enemyType)
+        {
+            case EEnemyType.LavaSlime:
+                break;
+            case EEnemyType.DefensiveGolem:
+                BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
+                break;
+        }
     }
 
     public void SetFieldOfView(float newValue)
     {
-        behaviorTree.SetVariableValue("FieldOfView", newValue);
+        BehaviorTree.SetVariableValue("FieldOfView", newValue);
     }
 
     public void SetFieldOfViewAngle(float newValue)
     {
-        behaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
+        BehaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
     }
 
-    public void SetActiveDamagerArea(bool active)
+    public void Attack()
     {
-        damagerArea.SetActive(active);
+        _damager.Attack();
     }
 
     public void Kill()
@@ -61,4 +67,19 @@ public class EnemyController : MonoBehaviour, IAliveEntity
 
         Destroy(gameObject);
     }
+
+
+#if UNITY_EDITOR
+    [Header("Gizmo Settings")]
+    [SerializeField] Color lineColor;
+    private void OnDrawGizmos()
+    {
+        if (patrolPath == null) return;
+        if (patrolPath.transform.GetChild(0) == null) return;
+
+        Gizmos.color = lineColor;
+        Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
+
+    }
+#endif 
 }

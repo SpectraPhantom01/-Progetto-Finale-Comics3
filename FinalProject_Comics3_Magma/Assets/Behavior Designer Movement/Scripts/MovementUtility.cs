@@ -109,7 +109,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
                 direction.z = 0;
             } else {
                 angle = Vector3.Angle(direction, transform.forward);
-                direction.y = 0;
+                //direction.y = 0;
             }
             if (direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f) {
                 // The hit agent needs to be within view of the current agent

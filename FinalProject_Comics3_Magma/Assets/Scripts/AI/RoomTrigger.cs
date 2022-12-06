@@ -5,7 +5,8 @@ using UnityEngine;
 public class RoomTrigger : MonoBehaviour
 {
     [SerializeField] List<EnemyController> _enemyControllers;
-    [SerializeField] float _fieldOfView;
+    [SerializeField] float _lavaEnemyfieldOfView;
+    [SerializeField] float _golemEnemyfieldOfView;
 
     private void Start()
     {
@@ -22,7 +23,15 @@ public class RoomTrigger : MonoBehaviour
         {
             foreach (var enemy in _enemyControllers)
             {
-                enemy.SetFieldOfView(_fieldOfView);
+                switch (enemy.EnemyType)
+                {
+                    case EEnemyType.LavaSlime:
+                        enemy.SetFieldOfView(_lavaEnemyfieldOfView);
+                        break;
+                    case EEnemyType.DefensiveGolem:
+                        enemy.SetFieldOfView(_golemEnemyfieldOfView);
+                        break;
+                }
             }
         }
     }

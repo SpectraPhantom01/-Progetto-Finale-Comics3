@@ -3,22 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCController : MonoBehaviour
+public class NPCController : AI, IAliveEntity
 {
     [Header("Path")]
     [SerializeField] PatrolPath patrolPath;
 
-    BehaviorTree _behaviorTree;
+    public bool IsAlive { get; set; }
+    public string Name { get; set; }
 
-    private void Awake()
-    {
-        _behaviorTree = gameObject.SearchComponent<BehaviorTree>();
-    }
 
     private void Start()
     {
-        _behaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
+        BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
     }
 
 
+
+#if UNITY_EDITOR
+    [Header("Gizmo Settings")]
+    [SerializeField] Color lineColor;
+
+    private void OnDrawGizmos()
+    {
+        if (patrolPath == null) return;
+        if (patrolPath.transform.GetChild(0) == null) return;
+
+        Gizmos.color = lineColor;
+        Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
+
+    }
+
+#endif
 }

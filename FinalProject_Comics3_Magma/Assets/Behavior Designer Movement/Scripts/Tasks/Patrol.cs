@@ -16,7 +16,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         public SharedGameObjectList waypoints;
 
         // The current index that we are heading towards within the waypoints array
-        private int waypointIndex;
+        private int waypointIndex = -1;
         private float waypointReachedTime;
 
         public override void OnStart()
@@ -24,14 +24,17 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
             base.OnStart();
 
             // initially move towards the closest waypoint
-            float distance = Mathf.Infinity;
-            float localDistance;
-            for (int i = 0; i < waypoints.Value.Count; ++i) {
-                if ((localDistance = Vector3.Magnitude(transform.position - waypoints.Value[i].transform.position)) < distance) {
-                    distance = localDistance;
-                    waypointIndex = i;
-                }
-            }
+            //float distance = Mathf.Infinity;
+            //float localDistance;
+            //for (int i = 0; i < waypoints.Value.Count; ++i) {
+            //    if ((localDistance = Vector3.Magnitude(transform.position - waypoints.Value[i].transform.position)) < distance) {
+            //        distance = localDistance;
+            //        waypointIndex = i;
+            //    }
+            //}
+            if(waypointIndex == -1)
+                waypointIndex = 0;
+
             waypointReachedTime = -1;
             SetDestination(Target());
         }
