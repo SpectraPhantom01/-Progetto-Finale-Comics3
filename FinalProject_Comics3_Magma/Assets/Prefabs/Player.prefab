@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagerArea: {fileID: 8474878009925126730}
-  _damageAmount: 3
+  DamageAmount: 10
   _damageableMask:
     serializedVersion: 2
     m_Bits: 128
@@ -220,6 +220,8 @@ MonoBehaviour:
   - Time: 5000000
   - Time: 50
   - Time: 50
+  PlayerLockTime: 0.1
+  EnemyLockTime: 0.5
   KnockBackResistance: 20
 --- !u!114 &4272628589318761874
 MonoBehaviour:

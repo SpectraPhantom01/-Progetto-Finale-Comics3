@@ -45,13 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e43ff781354f743be92c15589a1e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyControllers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _lavaEnemyfieldOfView: 5
-  _golemEnemyfieldOfView: 2
+  EnemyControllers: []
 --- !u!60 &1779960557415724533
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -77,7 +71,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -8.748499, y: 9.051604}
-      - {x: -8.680585, y: -10.733035}
-      - {x: 10.866232, y: -10.96932}
-      - {x: 11.052289, y: 8.815318}
+    - - {x: 1, y: -1}
+      - {x: -1, y: -1}
+      - {x: -1, y: 1}
+      - {x: 1, y: 1}

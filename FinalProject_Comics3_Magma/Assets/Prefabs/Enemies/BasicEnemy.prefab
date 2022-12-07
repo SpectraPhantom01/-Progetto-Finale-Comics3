@@ -188,12 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagerArea: {fileID: 143761696}
-  _damageAmount: 10
   _damageableMask:
     serializedVersion: 2
     m_Bits: 64
-  radius: 0.5
-  knockBack: 5
   hitBox: {x: 2, y: 2}
 --- !u!114 &4048094597640452992
 MonoBehaviour:
@@ -209,6 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hourglasses:
   - Time: 10
+  PlayerLockTime: 0.1
+  EnemyLockTime: 0.5
   KnockBackResistance: 0
 --- !u!1 &1885439899952289870
 GameObject:
@@ -266,6 +265,12 @@ MonoBehaviour:
   Agent: {fileID: 1885439899952289865}
   CurrentDirection: 1
   enemyType: 0
+  FieldOfViewAngle: 160
+  FieldOfViewAngleAfterSee: 360
+  FieldOfViewDistance: 5
+  attackScriptableObjects:
+  - {fileID: 11400000, guid: ef20bb827c81afc4382a4a9144e1b9ab, type: 2}
+  - {fileID: 11400000, guid: 131b92803c2c9b34eb5cbeecd523e9df, type: 2}
   patrolPath: {fileID: 0}
   lineColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &1885439899952289865

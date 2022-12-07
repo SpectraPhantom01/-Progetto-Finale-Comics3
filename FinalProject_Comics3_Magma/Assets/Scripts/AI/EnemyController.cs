@@ -14,13 +14,29 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] public float FieldOfViewAngle;
     [SerializeField] public float FieldOfViewAngleAfterSee;
     [SerializeField] public float FieldOfViewDistance;
+    [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
 
     [Header("References")]
     [SerializeField] PatrolPath patrolPath;
 
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
-    public string Name { get ; set ; }
+    public string Name => GetName();
+
+    public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
+
+    private string GetName()
+    {
+        switch (enemyType)
+        {
+            case EEnemyType.LavaSlime:
+                return "Lava Slime";
+            case EEnemyType.DefensiveGolem:
+                return "Defensive Golem";
+            default:
+                return Guid.NewGuid().ToString();
+        }
+    }
 
     private Damager _damager;
 
@@ -36,7 +52,6 @@ public class EnemyController : AI, IAliveEntity
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         IsAlive = true;
-        Name = "Enemy_" + Guid.NewGuid().ToString();
         BehaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
         BehaviorTree.SetVariableValue("Damager", _damager.gameObject);
         switch (enemyType)
@@ -54,19 +69,20 @@ public class EnemyController : AI, IAliveEntity
         BehaviorTree.SetVariableValue("FieldOfView", FieldOfViewDistance);
     }
 
+    public void ResetFieldOfView()
+    {
+        BehaviorTree.SetVariableValue("FieldOfView", 0);
+    }
+
     public void SetFieldOfViewAngle(float newValue)
     {
         BehaviorTree.SetVariableValue("FieldOfViewAngle", newValue);
     }
 
-    public void Attack()
-    {
-        _damager.Attack();
-    }
 
     public void Kill()
     {
-        onKillEnemy.Invoke();
+        onKillEnemy?.Invoke();
 
         Destroy(gameObject);
     }

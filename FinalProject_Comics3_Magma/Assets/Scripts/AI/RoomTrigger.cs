@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class RoomTrigger : MonoBehaviour
 {
-    [SerializeField] List<EnemyController> _enemyControllers;
+    [SerializeField ] public List<EnemyController> EnemyControllers;
 
     private void Start()
     {
-        foreach(EnemyController enemy in _enemyControllers)
+        foreach(EnemyController enemy in EnemyControllers)
         {
-            enemy.onKillEnemy += () => _enemyControllers.Remove(enemy);
+            enemy.onKillEnemy += () => EnemyControllers.Remove(enemy);
         }
     }
 
@@ -19,7 +19,7 @@ public class RoomTrigger : MonoBehaviour
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if(playerManager != null)
         {
-            foreach (var enemy in _enemyControllers)
+            foreach (var enemy in EnemyControllers)
             {
                 switch (enemy.EnemyType)
                 {
@@ -39,9 +39,9 @@ public class RoomTrigger : MonoBehaviour
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if (playerManager != null)
         {
-            foreach (var enemy in _enemyControllers)
+            foreach (var enemy in EnemyControllers)
             {
-                enemy.SetFieldOfView();
+                enemy.ResetFieldOfView();
             }
         }
     }

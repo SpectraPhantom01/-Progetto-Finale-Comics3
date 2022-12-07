@@ -11,12 +11,17 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [Header("Hourglass Settings")]
     [SerializeField] float timeLoseDustInHourglass;
     [SerializeField] float amountLoseDust;
+    [Header("Attack Settings")]
+    [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
     public Queue<Vector3> SavedPositions { get; private set; }
 
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
-    public string Name { get ; set ; }
+    public string Name => "Knight of Time";
     public Damageable Damageable => _damageable;
+
+    public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
+
     private float savePositionTimePassed;
     private float hourglassTimePassed;
     private Damageable _damageable;
@@ -29,7 +34,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private void Awake()
     {
         IsAlive = true;
-        Name = "Knight of Time";
 
         SavedPositions = new Queue<Vector3>();
         for (int i = 0; i < maxNumberPositions; i++)

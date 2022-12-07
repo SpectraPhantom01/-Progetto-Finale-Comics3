@@ -9,7 +9,8 @@ using UnityEngine.AI;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] List<Hourglass> hourglasses;
-    [SerializeField] float playerLockTime = 0.1f;
+    [HideInInspector] public float PlayerLockTime = 0.1f;
+    [HideInInspector] public float EnemyLockTime = 0.5f;
     public float CurrentTimeLife => _currentTimeLife;
     public int Hourglasses => hourglasses.Count;
 
@@ -66,7 +67,7 @@ public class Damageable : MonoBehaviour
                 _currentHourglass = hourglasses.First();
             else
             {
-                Debug.Log($"This damageable is death: {gameObject.name}");
+                Debug.Log($"{_entity.Name} is death");
                 _entity.Kill();
                 return;
             }
@@ -77,11 +78,12 @@ public class Damageable : MonoBehaviour
         {
             if(_isPlayer)
             {
-                playerManager.LockMovement(playerLockTime);
+                playerManager.LockMovement(PlayerLockTime);
             }
             else
             {
-                StartCoroutine(KnockbackRoutine());
+                if(KnockBackResistance != 100)
+                    StartCoroutine(KnockbackRoutine());
             }
 
             _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
@@ -102,7 +104,7 @@ public class Damageable : MonoBehaviour
 
         _rigidBody.bodyType = RigidbodyType2D.Dynamic;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(EnemyLockTime);
 
         if (_agent != null)
             _agent.enabled = true;
