@@ -128,7 +128,8 @@ public class PlayerController : MonoBehaviour
         //        damageable.Damage(_damageAmount, knockback, direction);
         //}
 
-        _damager.Attack();
+        _damager.AttackMelee();
+        //_damager.AttackShoot();
     }
 
     //private void OnDrawGizmos()

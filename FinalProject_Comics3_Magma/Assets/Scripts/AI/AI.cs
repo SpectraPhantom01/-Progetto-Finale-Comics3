@@ -8,9 +8,8 @@ public class AI : MonoBehaviour
 {
     [HideInInspector] public BehaviorTree BehaviorTree;
     [HideInInspector] public NavMeshAgent Agent;
-    [Space(20)]
+    [HideInInspector] public EDirection CurrentDirection = EDirection.Down;
 
-    public EDirection CurrentDirection = EDirection.Down;
 
     private void Awake()
     {

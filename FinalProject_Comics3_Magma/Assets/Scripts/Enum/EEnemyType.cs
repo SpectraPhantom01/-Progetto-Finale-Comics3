@@ -1,5 +1,6 @@
 public enum EEnemyType
 {
     LavaSlime,
-    DefensiveGolem
+    DefensiveGolem,
+    BasicShootingEnemy
 }

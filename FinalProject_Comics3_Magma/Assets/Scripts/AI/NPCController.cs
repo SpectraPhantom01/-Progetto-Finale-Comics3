@@ -10,6 +10,7 @@ public class NPCController : AI, IAliveEntity
 
     public bool IsAlive { get; set; }
     public string Name { get; set; }
+    public List<AttackScriptableObject> AttackList { get; }
 
 
     private void Start()
