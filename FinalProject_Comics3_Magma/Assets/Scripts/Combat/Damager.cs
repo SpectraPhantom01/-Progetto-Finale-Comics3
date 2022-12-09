@@ -30,10 +30,12 @@ public class Damager : MonoBehaviour
         _attackList = gameObject.SearchComponent<IAliveEntity>().AttackList;
         for (int i = 0; i < _attackList.Count; i++)
         {
-            for (int j = i + 1; j < _attackList.Count - 1; j++)
+            for (int j = i + 1; j < _attackList.Count; j++)
             {
                 if (_attackList[i].AttackType == _attackList[j].AttackType)
-                    throw new Exception($"ERRORE: nel gameObject {gameObject.name} ci sono attacchi doppi: {_attackList[i].AttackType} negli indici {i} e {j}. Questo non può accadere, Damager annullato!!!");
+                {
+                    throw new Exception($"ERRORE: nel gameObject \"{gameObject.SearchComponent<IAliveEntity>().Name}\" ci sono tipi di attacco \"{_attackList[i].AttackType}\" doppi negli indici {i} e {j}. Questo non può accadere, Damager annullato!!!");
+                }
             }
         }
     }
@@ -76,8 +78,20 @@ public class Damager : MonoBehaviour
         var attack = _attackList.Find(x => x.AttackType == EAttackType.Shoot);
         if (attack != null)
         {
-            SpellBullet spellBullet = Instantiate(attack.SpellPrefab, damagerArea.position, Quaternion.identity);
-            spellBullet.Initialize(_damageableMask, attack, _isPlayer ? _playerManager.CurrentDirection : _ai.CurrentDirection, gameObject.layer);
+            var collidersHit = Physics2D.OverlapCircleAll(transform.position, attack.shootAttackRangeOfView, _damageableMask).ToList();
+            if (collidersHit.Count > 0)
+            {
+                var damageableList = collidersHit
+                    .Where(x => _damageableMask.Contains(x.gameObject.layer))
+                    .Select(x => x.gameObject.SearchComponent<Damageable>())
+                    .Where(x => x != null).ToList();
+
+                if (damageableList.Count > 0)
+                {
+                    SpellBullet spellBullet = Instantiate(attack.SpellPrefab, damagerArea.position, Quaternion.identity);
+                    spellBullet.Initialize(_damageableMask, attack, _isPlayer ? _playerManager.CurrentDirection : _ai.CurrentDirection, gameObject.layer, (damageableList.Min(x => x.transform.position) - transform.position).normalized);
+                }
+            }
         }
     }
 

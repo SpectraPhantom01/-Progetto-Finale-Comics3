@@ -16,3 +16,6 @@ MonoBehaviour:
   DamageAmount: 15
   KnockBack: 15
   SpellPrefab: {fileID: 6666794590657639054, guid: 4ef96444e2ba645479b4e9c813bc5260, type: 3}
+  shootAttackRangeOfView: 10
+  bulletFixedSpeed: 100
+  bulletLifeTime: 3

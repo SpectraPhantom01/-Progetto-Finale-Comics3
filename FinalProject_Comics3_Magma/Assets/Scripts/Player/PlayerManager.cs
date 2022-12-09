@@ -111,6 +111,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 Gizmos.DrawLine(positions[i], positions[i + 1]);
             }
         }
+
+        var attackShoot = attackScriptableObjects.Find(x => x.AttackType == EAttackType.Shoot);
+        if (attackShoot != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, attackShoot.shootAttackRangeOfView);
+        }
     }
 
 #endif

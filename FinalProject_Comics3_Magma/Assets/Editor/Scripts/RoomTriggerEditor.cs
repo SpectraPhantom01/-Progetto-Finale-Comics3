@@ -43,5 +43,12 @@ public class RoomTriggerEditor : Editor
 
             EditorUtility.SetDirty(room);
         }
+
+        style.hover.textColor = Color.red;
+
+        if (GUILayout.Button("Clear List", style))
+        {
+            room.EnemyControllers.Clear();
+        }
     }
 }

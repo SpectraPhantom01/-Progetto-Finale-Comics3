@@ -14,6 +14,8 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] public float FieldOfViewAngle;
     [SerializeField] public float FieldOfViewAngleAfterSee;
     [SerializeField] public float FieldOfViewDistance;
+
+    [Header("Attack types must be unique in this list")]
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
 
     [Header("References")]
@@ -33,6 +35,8 @@ public class EnemyController : AI, IAliveEntity
                 return "Lava Slime";
             case EEnemyType.DefensiveGolem:
                 return "Defensive Golem";
+            case EEnemyType.BasicShootingEnemy:
+                return "Shooting Enemy";
             default:
                 return Guid.NewGuid().ToString();
         }
@@ -91,14 +95,21 @@ public class EnemyController : AI, IAliveEntity
 #if UNITY_EDITOR
     [Header("Gizmo Settings")]
     [SerializeField] Color lineColor;
+    [SerializeField] Color shootAttackRangeOfViewColor;
     private void OnDrawGizmos()
     {
-        if (patrolPath == null) return;
-        if (patrolPath.transform.GetChild(0) == null) return;
+        if (patrolPath != null && patrolPath.transform.GetChild(0) != null)
+        {
+            Gizmos.color = lineColor;
+            Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
+        }
 
-        Gizmos.color = lineColor;
-        Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
-
+        var attackShoot = attackScriptableObjects.Find(x => x.AttackType == EAttackType.Shoot);
+        if (attackShoot != null)
+        {
+            Gizmos.color = shootAttackRangeOfViewColor;
+            Gizmos.DrawWireSphere(transform.position, attackShoot.shootAttackRangeOfView);
+        }
     }
 #endif 
 }

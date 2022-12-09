@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class SpellBullet : MonoBehaviour
 {
-    [SerializeField] bool isFixedSpeed;
-    [SerializeField] float speed;
-    [SerializeField] float decelerator;
-    [SerializeField] float timeIsAlive;
+    float _speed;
+    float _lifeTime;
 
     Rigidbody2D _rigidBody;
     AttackScriptableObject _attack;
@@ -16,47 +14,27 @@ public class SpellBullet : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(LayerMask target, AttackScriptableObject attack, EDirection rotation, int objectLayer)
+    public void Initialize(LayerMask target, AttackScriptableObject attack, EDirection rotation, int objectLayer, Vector3 direction)
     {
         _attack = attack;
+        _lifeTime = attack.bulletLifeTime;
+        _speed = attack.bulletFixedSpeed;
         _damageableMask = target;
         gameObject.layer = objectLayer;
-        switch (rotation)
-        {
-            case EDirection.Up:
-                transform.LookAt(transform.position + Vector3.forward, Vector3.up);
-                break;
-            case EDirection.Down:
-                transform.LookAt(transform.position + Vector3.forward, Vector3.down);
-                break;
-            case EDirection.Left:
-                transform.LookAt(transform.position + Vector3.forward, Vector3.left);
-                break;
-            case EDirection.Right:
-                transform.LookAt(transform.position + Vector3.forward, Vector3.right);
-                break;
-        }
-  
+
+        transform.LookAt(transform.position + Vector3.forward, direction);
     }
 
     private void Update()
     {
         timePassed += Time.deltaTime;
-        if (timePassed >= timeIsAlive)
+        if (timePassed >= _lifeTime)
             Destroy(gameObject);
     }
 
     private void FixedUpdate()
     {
-        if(isFixedSpeed)
-        {
-            _rigidBody.velocity = speed * Time.deltaTime * transform.up;
-        }
-        else
-        {
-            _rigidBody.velocity = speed * Time.deltaTime * transform.up;
-            speed -= decelerator;
-        }
+        _rigidBody.velocity = _speed * Time.deltaTime * transform.up;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

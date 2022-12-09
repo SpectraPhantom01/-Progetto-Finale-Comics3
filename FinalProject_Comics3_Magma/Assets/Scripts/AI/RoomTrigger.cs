@@ -19,18 +19,7 @@ public class RoomTrigger : MonoBehaviour
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if(playerManager != null)
         {
-            foreach (var enemy in EnemyControllers)
-            {
-                switch (enemy.EnemyType)
-                {
-                    case EEnemyType.LavaSlime:
-                        enemy.SetFieldOfView();
-                        break;
-                    case EEnemyType.DefensiveGolem:
-                        enemy.SetFieldOfView();
-                        break;
-                }
-            }
+            EnemyControllers.ForEach(x => x.SetFieldOfView());
         }
     }
 
@@ -39,10 +28,7 @@ public class RoomTrigger : MonoBehaviour
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if (playerManager != null)
         {
-            foreach (var enemy in EnemyControllers)
-            {
-                enemy.ResetFieldOfView();
-            }
+            EnemyControllers.ForEach(x => x.ResetFieldOfView());
         }
     }
 }

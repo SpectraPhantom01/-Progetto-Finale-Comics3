@@ -103,12 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagerArea: {fileID: 8474878009925126730}
-  DamageAmount: 10
   _damageableMask:
     serializedVersion: 2
     m_Bits: 128
-  radius: 0.5
-  knockBack: 20
   hitBox: {x: 2, y: 2}
 --- !u!1 &3138579559502232215
 GameObject:
@@ -165,6 +162,8 @@ MonoBehaviour:
   timeDeltaSavePosition: 0.1
   timeLoseDustInHourglass: 1
   amountLoseDust: 0
+  attackScriptableObjects:
+  - {fileID: 11400000, guid: 6eb0e907bc6c8ac41bcec2cb5b4fba12, type: 2}
   CurrentDirection: 1
 --- !u!114 &3138579559502232296
 MonoBehaviour:
