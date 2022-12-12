@@ -8,6 +8,7 @@ using UnityEngine.AI;
 
 public class Damageable : MonoBehaviour
 {
+    [Header("Hourglasses Settings")]
     [SerializeField] List<Hourglass> hourglasses;
     [HideInInspector] public float PlayerLockTime = 0.1f;
     [HideInInspector] public float EnemyLockTime = 0.5f;
@@ -25,8 +26,17 @@ public class Damageable : MonoBehaviour
     private PlayerManager playerManager;
     private bool _isPlayer;
 
+    [Space(10)]
+
+    [Header("Damageable Reductions")]
     [Range(0, 100)]
     [SerializeField] float KnockBackResistance;
+
+    [Range(0, 100)]
+    [SerializeField] float DamageReductionPerc;
+
+    [SerializeField] float DamageReduction; //Da spostare in un eventuale SO e chiamarla Defence?
+    
 
     private void Awake()
     {
@@ -57,7 +67,7 @@ public class Damageable : MonoBehaviour
 
     public void Damage(float amount, float knockBack, Vector2 direction)
     {
-        _currentTimeLife -= amount;
+        CalculateDamage(amount);
 
         if (_currentTimeLife <= 0)
         {
@@ -88,6 +98,14 @@ public class Damageable : MonoBehaviour
 
             _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
         }
+    }
+
+    private void CalculateDamage(float amount)
+    {
+        float damage = Mathf.Clamp(amount - DamageReduction, 0, 999);
+        float actualDamage = damage * (1 - DamageReductionPerc / 100);
+
+        _currentTimeLife -= actualDamage;
     }
 
     private float CalculateKnockBack(float knockBack)
@@ -137,4 +155,11 @@ public class Damageable : MonoBehaviour
     {
         _currentTimeLife = amount;
     }
+
+
+    private void OnValidate()
+    {
+        DamageReduction = Mathf.Clamp(DamageReduction, 0, float.MaxValue);
+    }
+
 }
