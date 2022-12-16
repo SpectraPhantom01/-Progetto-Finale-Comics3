@@ -626,6 +626,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 1142256215}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
 --- !u!1001 &754390080
@@ -803,6 +807,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6766907098983593940, guid: 5032987327dd30a42bc0b66cbb37ce5f, type: 3}
   m_PrefabInstance: {fileID: 197499477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1142256215 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 960920955020320483, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+  m_PrefabInstance: {fileID: 731842893}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258420971
 PrefabInstance:

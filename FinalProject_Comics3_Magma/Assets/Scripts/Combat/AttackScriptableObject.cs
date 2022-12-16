@@ -15,3 +15,20 @@ public class AttackScriptableObject : ScriptableObject
     public float bulletFixedSpeed;
     public float bulletLifeTime;
 }
+
+public enum EMeleeAttackType
+{
+    Sword,
+    Punch
+}
+
+public enum EContactAttackType
+{
+    HotLava
+}
+
+public enum EShootingAttackType
+{
+    Spell,
+    Arrow
+}
