@@ -15,6 +15,10 @@ MonoBehaviour:
   AttackType: 2
   DamageAmount: 15
   KnockBack: 15
+  hitBoxRangeView: {x: 1, y: 1}
+  hitBoxRangeDamage: {x: 2, y: 2}
+  MeleeAttackType: 0
+  ShootingAttackType: 0
   SpellPrefab: {fileID: 6666794590657639054, guid: 4ef96444e2ba645479b4e9c813bc5260, type: 3}
   shootAttackRangeOfView: 10
   bulletFixedSpeed: 100

@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf8fd61faa30afe4cb66e85ecb379e13, type: 3}
-  m_Name: AttackMelee
+  m_Name: AttackMeleeSword
   m_EditorClassIdentifier: 
   AttackType: 1
   DamageAmount: 20
   KnockBack: 20
+  hitBoxRangeView: {x: 1, y: 1}
+  hitBoxRangeDamage: {x: 3, y: 3}
+  MeleeAttackType: 1
+  ShootingAttackType: 0
   SpellPrefab: {fileID: 0}
+  shootAttackRangeOfView: 0
+  bulletFixedSpeed: 0
+  bulletLifeTime: 0

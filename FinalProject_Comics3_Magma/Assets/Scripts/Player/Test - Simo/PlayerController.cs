@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movemens Settings")]
-    [Tooltip("Velocità massima del player")]
+    [Tooltip("Velocitï¿½ massima del player")]
     [SerializeField] float maxSpeed = 6.5f;
     [Tooltip("Accelerazione del player")]
     [SerializeField] float acceleration = 25;
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     //    {
     //        movement.x = Mathf.MoveTowards(movement.x, 0, deceleration * Time.fixedDeltaTime);
     //    }
-    //    else // Applicazione accelerazione su asse x e clamp sulla massima velocità impostata
+    //    else // Applicazione accelerazione su asse x e clamp sulla massima velocitï¿½ impostata
     //    {
     //        movement.x += Direction.x * acceleration * Time.fixedDeltaTime;
     //        movement.x = Mathf.Clamp(movement.x, -maxSpeed, maxSpeed);
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     //    {
     //        movement.y = Mathf.MoveTowards(movement.y, 0, deceleration * Time.fixedDeltaTime);
     //    }
-    //    else // Applicazione accelerazione su asse y e clamp sulla massima velocità impostata
+    //    else // Applicazione accelerazione su asse y e clamp sulla massima velocitï¿½ impostata
     //    {
     //        movement.y += Direction.y * acceleration * Time.fixedDeltaTime;
     //        movement.y = Mathf.Clamp(movement.y, -maxSpeed, maxSpeed);
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         //        damageable.Damage(_damageAmount, knockback, direction);
         //}
 
-        _damager.AttackMelee();
+        _damager.Attack();
         //_damager.AttackShoot();
     }
 
@@ -170,6 +170,9 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         CanDash = true;
+    public void EquipAttack(EAttackType eAttackType)
+    {
+        _damager.EquipAttack(eAttackType);
     }
 
     //private void OnDrawGizmos()

@@ -13,7 +13,9 @@ public class Damager : MonoBehaviour
     List<AttackScriptableObject> _attackList;
     PlayerManager _playerManager;
     AI _ai;
+    AttackScriptableObject _equippedAttack;
 
+    public AttackScriptableObject EquippedAttack => _equippedAttack;
     private void Awake()
     {
         _playerManager = gameObject.SearchComponent<PlayerManager>();
@@ -28,22 +30,13 @@ public class Damager : MonoBehaviour
         }
 
         _attackList = gameObject.SearchComponent<IAliveEntity>().AttackList;
-        for (int i = 0; i < _attackList.Count; i++)
-        {
-            for (int j = i + 1; j < _attackList.Count; j++)
-            {
-                if (_attackList[i].AttackType == _attackList[j].AttackType)
-                {
-                    throw new Exception($"ERRORE: nel gameObject \"{gameObject.SearchComponent<IAliveEntity>().Name}\" ci sono tipi di attacco \"{_attackList[i].AttackType}\" doppi negli indici {i} e {j}. Questo non può accadere, Damager annullato!!!");
-                }
-            }
-        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var attack = _attackList.Find(x => x.AttackType == EAttackType.Contact);
-        if(attack != null)
+        if (attack != null)
         {
             if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
             {
@@ -54,11 +47,11 @@ public class Damager : MonoBehaviour
         }
     }
 
-    public void AttackMelee()
+    private void AttackMelee()
     {
-        var attack = _attackList.Find(x => x.AttackType == EAttackType.Melee);
-        if(attack != null)
+        if(_equippedAttack != null)
         {
+            SizeUpHitBox();
             var collidersHit = Physics2D.OverlapBoxAll(damagerArea.position, hitBox, 0, _damageableMask).ToList();
             if (collidersHit.Count > 0)
             {
@@ -67,18 +60,29 @@ public class Damager : MonoBehaviour
                     .Select(x => x.gameObject.SearchComponent<Damageable>())
                     .Where(x => x != null).ToList();
 
-                damageableList.ForEach(damageable => GiveDamage(damageable, attack, transform));
+                damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform));
             }
+
+            SizeDownHitBox();
         }
         
     }
 
-    public void AttackShoot()
+    public void SizeUpHitBox()
     {
-        var attack = _attackList.Find(x => x.AttackType == EAttackType.Shoot);
-        if (attack != null)
+        hitBox = _equippedAttack.hitBoxRangeDamage;
+    }
+    
+    public void SizeDownHitBox()
+    {
+        hitBox = _equippedAttack.hitBoxRangeView;
+    }
+
+    private void AttackShoot()
+    {
+        if (_equippedAttack != null)
         {
-            var collidersHit = Physics2D.OverlapCircleAll(transform.position, attack.shootAttackRangeOfView, _damageableMask).ToList();
+            var collidersHit = Physics2D.OverlapCircleAll(transform.position, _equippedAttack.shootAttackRangeOfView, _damageableMask).ToList();
             if (collidersHit.Count > 0)
             {
                 var damageableList = collidersHit
@@ -88,10 +92,64 @@ public class Damager : MonoBehaviour
 
                 if (damageableList.Count > 0)
                 {
-                    SpellBullet spellBullet = Instantiate(attack.SpellPrefab, damagerArea.position, Quaternion.identity);
-                    spellBullet.Initialize(_damageableMask, attack, _isPlayer ? _playerManager.CurrentDirection : _ai.CurrentDirection, gameObject.layer, (damageableList.Min(x => x.transform.position) - transform.position).normalized);
+                    SpellBullet spellBullet = Instantiate(_equippedAttack.SpellPrefab, damagerArea.position, Quaternion.identity);
+                    spellBullet.Initialize(_damageableMask, _equippedAttack, _isPlayer ? _playerManager.CurrentDirection : _ai.CurrentDirection, gameObject.layer, (damageableList.Min(x => x.transform.position) - transform.position).normalized);
                 }
             }
+        }
+    }
+
+    public void Attack()
+    {
+        switch (_equippedAttack.AttackType)
+        {
+            case EAttackType.Melee:
+                AttackMelee();
+                break;
+            case EAttackType.Shoot:
+                AttackShoot();
+                break;
+        }
+    }
+
+    public void EquipAttack(EAttackType eAttackType)
+    {
+        switch (eAttackType)
+        {
+            case EAttackType.Melee:
+                _equippedAttack = _attackList.Find(x => x.AttackType == EAttackType.Melee);
+                break;
+            case EAttackType.Shoot:
+                _equippedAttack = _attackList.Find(x => x.AttackType == EAttackType.Shoot);
+                break;
+        }
+
+        SizeDownHitBox();
+    }
+
+    public void EquipAttackMeleeSubCategory(EMeleeAttackType eMeleeAttackType)
+    {
+        switch (eMeleeAttackType)
+        {
+            case EMeleeAttackType.Sword:
+                _equippedAttack = _attackList.Find(x => x.MeleeAttackType == EMeleeAttackType.Sword);
+                break;
+            case EMeleeAttackType.Punch:
+                _equippedAttack = _attackList.Find(x => x.MeleeAttackType == EMeleeAttackType.Punch);
+                break;
+        }
+    }
+
+    public void EquipAttackShootSubCategory(EShootingAttackType eShootingAttackType)
+    {
+        switch (eShootingAttackType)
+        {
+            case EShootingAttackType.Spell:
+                _equippedAttack = _attackList.Find(x => x.ShootingAttackType == EShootingAttackType.Spell);
+                break;
+            case EShootingAttackType.Arrow:
+                _equippedAttack = _attackList.Find(x => x.ShootingAttackType == EShootingAttackType.Arrow);
+                break;
         }
     }
 
