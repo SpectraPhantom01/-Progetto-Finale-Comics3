@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
         //StateMachine.SetState(EPlayerState.Idle);
     }
 
+    private void Start()
+    {
+        EquipAttack(EAttackType.Melee);
+    }
+
     //private void Update()
     //{
     //    StateMachine.OnUpdate();
@@ -170,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         CanDash = true;
+    }
     public void EquipAttack(EAttackType eAttackType)
     {
         _damager.EquipAttack(eAttackType);
