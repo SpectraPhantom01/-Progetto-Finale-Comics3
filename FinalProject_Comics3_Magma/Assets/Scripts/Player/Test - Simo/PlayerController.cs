@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Decelerazione del player")]
     [SerializeField] float deceleration = 35;
 
+    [SerializeField] Transform attackPoint;
+
     //Nota: damageAmount e damageableMask aggiunte per test
     //[Header("Attacking Settings")]
     //[SerializeField] Transform attackPoint;
@@ -29,8 +31,10 @@ public class PlayerController : MonoBehaviour
     //Vector2 normalizedDirection;
     Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
-    bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
-    bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
+
+    //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
+    //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
+
     private Damager _damager;
     public bool CanMove { get; set; } = true;
 
@@ -55,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(CanMove)
+        if (CanMove)
             Movement();
     }
 
@@ -114,6 +118,14 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = Direction.normalized * value;
         }
+
+        AttackPointRotation();
+    }
+
+    private void AttackPointRotation()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection); 
+        attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
     }
 
     public void Attack()
