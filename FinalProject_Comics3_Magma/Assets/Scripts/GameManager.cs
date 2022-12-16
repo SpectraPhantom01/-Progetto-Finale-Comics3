@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Movement.performed += Movement_started;
         inputSystem.Player.Movement.canceled += Movement_canceled;
         inputSystem.Player.Attack.performed += Attack_performed;
+        inputSystem.Player.Roll.performed += Roll_performed;
 
         // END INPUT SYSTEM
 
@@ -77,6 +78,11 @@ public class GameManager : MonoBehaviour, ISubscriber
 
         Publisher.Subscribe(this, typeof(SaveMessage));
         Publisher.Subscribe(this, typeof(LoadMessage));
+    }
+
+    private void Roll_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerController.Roll();
     }
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)

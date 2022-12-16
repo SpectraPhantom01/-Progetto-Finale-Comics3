@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,14 +37,22 @@ public class PlayerController : MonoBehaviour
     //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
 
     private Damager _damager;
+
+    //public bool IsMoving { get; private set; } = false;
     public bool CanMove { get; set; } = true;
+    public bool IsDashing { get; set; } = false;
+    public bool CanDash { get; set; } = true;
 
     private void Awake()
     {
         //inputSystem = new InputSystem();
         rb = GetComponentInChildren<Rigidbody2D>();
         _damager = gameObject.SearchComponent<Damager>();
+
         CanMove = true;
+        IsDashing = false;
+        CanDash = true;
+
         //StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
@@ -59,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (CanMove)
+        if (CanMove && !IsDashing)
             Movement();
     }
 
@@ -142,6 +151,25 @@ public class PlayerController : MonoBehaviour
 
         _damager.AttackMelee();
         //_damager.AttackShoot();
+    }
+
+    public void Roll()
+    {
+        if(CanDash)
+            StartCoroutine(RollRoutine());
+    }
+
+    private IEnumerator RollRoutine()
+    {
+        CanDash = false;
+        IsDashing = true;
+        rb.velocity = Direction.normalized * 20f;
+
+        yield return new WaitForSeconds(1f);
+        IsDashing = false;
+
+        yield return new WaitForSeconds(3f);
+        CanDash = true;
     }
 
     //private void OnDrawGizmos()

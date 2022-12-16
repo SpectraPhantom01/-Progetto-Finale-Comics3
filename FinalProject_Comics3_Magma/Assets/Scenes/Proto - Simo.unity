@@ -969,10 +969,6 @@ PrefabInstance:
       value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: attackPoint
-      value: 
-      objectReference: {fileID: 1270013911}
-    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: testAttackPoint
       value: 
       objectReference: {fileID: 1270013911}
