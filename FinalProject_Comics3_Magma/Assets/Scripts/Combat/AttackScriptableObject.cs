@@ -8,8 +8,14 @@ public class AttackScriptableObject : ScriptableObject
     public EAttackType AttackType;
     public float DamageAmount;
     public float KnockBack;
+    public Vector2 hitBoxRangeView;
+    public Vector2 hitBoxRangeDamage;
     [Space(20)]
-    [Header("BULLETS ONLY!!!")]
+    [Header("MELEE ONLY!!!")]
+    public EMeleeAttackType MeleeAttackType = EMeleeAttackType.none;
+    [Space(20)]
+    [Header("SHOOTING ONLY!!!")]
+    public EShootingAttackType ShootingAttackType = EShootingAttackType.none;
     public SpellBullet SpellPrefab;
     public float shootAttackRangeOfView;
     public float bulletFixedSpeed;
@@ -18,17 +24,14 @@ public class AttackScriptableObject : ScriptableObject
 
 public enum EMeleeAttackType
 {
+    none,
     Sword,
     Punch
 }
 
-public enum EContactAttackType
-{
-    HotLava
-}
-
 public enum EShootingAttackType
 {
+    none,
     Spell,
     Arrow
 }

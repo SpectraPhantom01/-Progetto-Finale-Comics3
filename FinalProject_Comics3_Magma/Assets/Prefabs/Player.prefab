@@ -180,7 +180,7 @@ MonoBehaviour:
   maxSpeed: 6.5
   acceleration: 25
   deceleration: 35
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 960920955020320483}
   Direction: {x: 0, y: 0}
   lastDirection: {x: 0, y: 0}
 --- !u!50 &9166515653511605295

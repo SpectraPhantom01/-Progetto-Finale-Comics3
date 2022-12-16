@@ -15,4 +15,11 @@ MonoBehaviour:
   AttackType: 0
   DamageAmount: 10
   KnockBack: 10
+  hitBoxRangeView: {x: 1, y: 1}
+  hitBoxRangeDamage: {x: 2, y: 2}
+  MeleeAttackType: 0
+  ShootingAttackType: 0
   SpellPrefab: {fileID: 0}
+  shootAttackRangeOfView: 0
+  bulletFixedSpeed: 0
+  bulletLifeTime: 0
