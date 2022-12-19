@@ -180,9 +180,12 @@ MonoBehaviour:
   maxSpeed: 6.5
   acceleration: 25
   deceleration: 35
+  dashingPower: 15
+  dashingTime: 0.2
+  dashingCooldown: 0.5
   attackPoint: {fileID: 960920955020320483}
   Direction: {x: 0, y: 0}
-  lastDirection: {x: 0, y: 0}
+  lastDirection: {x: 0, y: -1}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
   serializedVersion: 4
