@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Decelerazione del player")]
     [SerializeField] float deceleration = 35;
 
+    [Header("Dashing Settings")]
+    [SerializeField] float dashingPower;
+    [SerializeField] float dashingTime;
+    [SerializeField] float dashingCooldown;
+
+    [Space(10)]
+
     [SerializeField] Transform attackPoint;
 
     //Nota: damageAmount e damageableMask aggiunte per test
@@ -158,24 +165,33 @@ public class PlayerController : MonoBehaviour
         //_damager.AttackShoot();
     }
 
-    public void Roll()
+    public void Dash()
     {
-        if(CanDash)
-            StartCoroutine(RollRoutine());
+        if (CanDash && Direction.magnitude > 0)
+            StartCoroutine(DashRoutine());
     }
 
-    private IEnumerator RollRoutine()
+    private IEnumerator DashRoutine()
     {
         CanDash = false;
         IsDashing = true;
-        rb.velocity = Direction.normalized * 20f;
+        rb.velocity = Direction.normalized * dashingPower;
 
-        yield return new WaitForSeconds(1f);
+        //Debug.Log("Dash effettuato");
+
+        yield return new WaitForSeconds(dashingTime);
         IsDashing = false;
 
-        yield return new WaitForSeconds(3f);
+        //Debug.Log("Cooldown Dash");
+
+        yield return new WaitForSeconds(dashingCooldown);
         CanDash = true;
+
+
+        //Debug.Log("Dash carico");
+
     }
+
     public void EquipAttack(EAttackType eAttackType)
     {
         _damager.EquipAttack(eAttackType);
