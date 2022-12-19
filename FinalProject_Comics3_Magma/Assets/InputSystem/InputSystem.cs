@@ -313,7 +313,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Power1 => m_Wrapper.m_Player_Power1;
         public InputAction @Power2 => m_Wrapper.m_Player_Power2;
-        public InputAction @Roll => m_Wrapper.m_Player_Roll;
+        public InputAction Dash => m_Wrapper.m_Player_Roll;
         public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -337,9 +337,9 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Power2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPower2;
                 @Power2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPower2;
                 @Power2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPower2;
-                @Roll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
-                @Roll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
-                @Roll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
+                Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
+                Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
+                Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
                 @Absorb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
                 @Absorb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
                 @Absorb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
@@ -362,9 +362,9 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Power2.started += instance.OnPower2;
                 @Power2.performed += instance.OnPower2;
                 @Power2.canceled += instance.OnPower2;
-                @Roll.started += instance.OnRoll;
-                @Roll.performed += instance.OnRoll;
-                @Roll.canceled += instance.OnRoll;
+                Dash.started += instance.OnRoll;
+                Dash.performed += instance.OnRoll;
+                Dash.canceled += instance.OnRoll;
                 @Absorb.started += instance.OnAbsorb;
                 @Absorb.performed += instance.OnAbsorb;
                 @Absorb.canceled += instance.OnAbsorb;

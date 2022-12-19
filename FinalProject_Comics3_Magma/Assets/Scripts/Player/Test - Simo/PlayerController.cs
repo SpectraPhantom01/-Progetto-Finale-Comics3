@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movemens Settings")]
-    [Tooltip("Velocità massima del player")]
+    [Tooltip("Velocitï¿½ massima del player")]
     [SerializeField] float maxSpeed = 6.5f;
     [Tooltip("Accelerazione del player")]
     [SerializeField] float acceleration = 25;
     [Tooltip("Decelerazione del player")]
     [SerializeField] float deceleration = 35;
+
+    [Header("Dashing Settings")]
+    [SerializeField] float dashingPower;
+    [SerializeField] float dashingTime;
+    [SerializeField] float dashingCooldown;
+
+    [Space(10)]
+
+    [SerializeField] Transform attackPoint;
 
     //Nota: damageAmount e damageableMask aggiunte per test
     //[Header("Attacking Settings")]
@@ -29,23 +39,38 @@ public class PlayerController : MonoBehaviour
     //Vector2 normalizedDirection;
     Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
-    bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
-    bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
+
+    //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
+    //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
+
     private Damager _damager;
+
+    //public bool IsMoving { get; private set; } = false;
     public bool CanMove { get; set; } = true;
+    public bool IsDashing { get; set; } = false;
+    public bool CanDash { get; set; } = true;
 
     private void Awake()
     {
         //inputSystem = new InputSystem();
         rb = GetComponentInChildren<Rigidbody2D>();
         _damager = gameObject.SearchComponent<Damager>();
+
         CanMove = true;
+        IsDashing = false;
+        CanDash = true;
+
         //StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
         //StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
 
         //StateMachine.SetState(EPlayerState.Idle);
+    }
+
+    private void Start()
+    {
+        EquipAttack(EAttackType.Melee);
     }
 
     //private void Update()
@@ -55,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(CanMove)
+        if (CanMove && !IsDashing)
             Movement();
     }
 
@@ -80,7 +105,7 @@ public class PlayerController : MonoBehaviour
     //    {
     //        movement.x = Mathf.MoveTowards(movement.x, 0, deceleration * Time.fixedDeltaTime);
     //    }
-    //    else // Applicazione accelerazione su asse x e clamp sulla massima velocità impostata
+    //    else // Applicazione accelerazione su asse x e clamp sulla massima velocitï¿½ impostata
     //    {
     //        movement.x += Direction.x * acceleration * Time.fixedDeltaTime;
     //        movement.x = Mathf.Clamp(movement.x, -maxSpeed, maxSpeed);
@@ -90,7 +115,7 @@ public class PlayerController : MonoBehaviour
     //    {
     //        movement.y = Mathf.MoveTowards(movement.y, 0, deceleration * Time.fixedDeltaTime);
     //    }
-    //    else // Applicazione accelerazione su asse y e clamp sulla massima velocità impostata
+    //    else // Applicazione accelerazione su asse y e clamp sulla massima velocitï¿½ impostata
     //    {
     //        movement.y += Direction.y * acceleration * Time.fixedDeltaTime;
     //        movement.y = Mathf.Clamp(movement.y, -maxSpeed, maxSpeed);
@@ -114,6 +139,14 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = Direction.normalized * value;
         }
+
+        AttackPointRotation();
+    }
+
+    private void AttackPointRotation()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection); 
+        attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
     }
 
     public void Attack()
@@ -128,8 +161,40 @@ public class PlayerController : MonoBehaviour
         //        damageable.Damage(_damageAmount, knockback, direction);
         //}
 
-        _damager.AttackMelee();
+        _damager.Attack();
         //_damager.AttackShoot();
+    }
+
+    public void Dash()
+    {
+        if (CanDash && Direction.magnitude > 0)
+            StartCoroutine(DashRoutine());
+    }
+
+    private IEnumerator DashRoutine()
+    {
+        CanDash = false;
+        IsDashing = true;
+        rb.velocity = Direction.normalized * dashingPower;
+
+        //Debug.Log("Dash effettuato");
+
+        yield return new WaitForSeconds(dashingTime);
+        IsDashing = false;
+
+        //Debug.Log("Cooldown Dash");
+
+        yield return new WaitForSeconds(dashingCooldown);
+        CanDash = true;
+
+
+        //Debug.Log("Dash carico");
+
+    }
+
+    public void EquipAttack(EAttackType eAttackType)
+    {
+        _damager.EquipAttack(eAttackType);
     }
 
     //private void OnDrawGizmos()

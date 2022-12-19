@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf8fd61faa30afe4cb66e85ecb379e13, type: 3}
-  m_Name: AttackShoot
+  m_Name: AttackMeleePunch
   m_EditorClassIdentifier: 
-  AttackType: 2
-  DamageAmount: 15
-  KnockBack: 15
+  AttackType: 1
+  DamageAmount: 10
+  KnockBack: 5
   hitBoxRangeView: {x: 1, y: 1}
   hitBoxRangeDamage: {x: 2, y: 2}
-  MeleeAttackType: 0
-  ShootingAttackType: 1
-  SpellPrefab: {fileID: 6666794590657639054, guid: 7d0f8a041e834bd428931992b9bba8d1, type: 3}
-  shootAttackRangeOfView: 20
-  bulletFixedSpeed: 400
-  bulletLifeTime: 3
+  MeleeAttackType: 2
+  ShootingAttackType: 0
+  SpellPrefab: {fileID: 0}
+  shootAttackRangeOfView: 0
+  bulletFixedSpeed: 0
+  bulletLifeTime: 0
