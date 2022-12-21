@@ -1653,10 +1653,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1770608084497594559, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: amountLoseDust
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3138579559502232213, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1704,42 +1700,6 @@ PrefabInstance:
     - target: {fileID: 3138579559502232215, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: acceleration
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: dashingPower
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: deceleration
-      value: 350
-      objectReference: {fileID: 0}
-    - target: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: dashingCooldown
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: DamageReduction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: DamageReductionPerc
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: KnockBackResistance
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: hourglasses.Array.data[0].Time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: hourglasses.Array.data[2].Time
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
