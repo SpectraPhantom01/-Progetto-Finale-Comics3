@@ -51,7 +51,6 @@ public class Damager : MonoBehaviour
     {
         if(_equippedAttack != null)
         {
-            SizeUpHitBox();
             var collidersHit = Physics2D.OverlapBoxAll(damagerArea.position, hitBox, 0, _damageableMask).ToList();
             if (collidersHit.Count > 0)
             {
@@ -63,7 +62,6 @@ public class Damager : MonoBehaviour
                 damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform));
             }
 
-            SizeDownHitBox();
         }
         
     }
