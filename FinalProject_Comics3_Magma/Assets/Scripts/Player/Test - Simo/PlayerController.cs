@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(DashRoutine());
     }
 
-    private IEnumerator DashRoutine()
+    public IEnumerator DashRoutine()
     {
         CanDash = false;
         IsDashing = true;
@@ -186,7 +186,6 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(dashingCooldown);
         CanDash = true;
-
 
         //Debug.Log("Dash carico");
 

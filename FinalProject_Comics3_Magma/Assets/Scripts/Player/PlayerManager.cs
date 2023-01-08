@@ -85,6 +85,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     {
         if(_playerController.CanMove)
             StartCoroutine(LockCoroutine(time));
+            
     }
 
     private IEnumerator LockCoroutine(float time)
