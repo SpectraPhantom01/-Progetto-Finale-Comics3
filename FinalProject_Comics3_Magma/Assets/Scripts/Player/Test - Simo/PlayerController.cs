@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Decelerazione del player")]
     [SerializeField] float deceleration = 35;
 
-    [Header("Dashing Settings")]
-    [SerializeField] float dashingPower;
-    [SerializeField] float dashingTime;
-    [SerializeField] float dashingCooldown;
+    [Header("Dashing Settings")] //Cambiate in public
+    public float dashingPower;
+    public float dashingTime;
+    public float dashingCooldown;
 
     [Space(10)]
 
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] LayerMask _damageableMask;
 
     [HideInInspector] public Vector2 Direction;
-    //[HideInInspector] public GenericStateMachine<EPlayerState> StateMachine;
+    [HideInInspector] public GenericStateMachine<EPlayerState> StateMachine = new GenericStateMachine<EPlayerState>();
 
     //InputSystem inputSystem;
 
@@ -60,12 +60,13 @@ public class PlayerController : MonoBehaviour
         IsDashing = false;
         CanDash = true;
 
-        //StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
-        //StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
-        //StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
-        //StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Dashing, new DashingCharacterState(this));
 
-        //StateMachine.SetState(EPlayerState.Idle);
+        StateMachine.SetState(EPlayerState.Idle);
     }
 
     private void Start()
@@ -73,15 +74,17 @@ public class PlayerController : MonoBehaviour
         EquipAttack(EAttackType.Melee);
     }
 
-    //private void Update()
-    //{
-    //    StateMachine.OnUpdate();
-    //}
+    private void Update()
+    {
+        StateMachine.OnUpdate();
+    }
 
     private void FixedUpdate()
     {
         if (CanMove && !IsDashing)
-            Movement();
+            MoveDirection();
+            //Movement();
+
     }
 
     private void Movement()
@@ -95,7 +98,7 @@ public class PlayerController : MonoBehaviour
         
         //rb.velocity += new Vector2(normalizedDirection.x + value * Time.fixedDeltaTime, normalizedDirection.y + value * Time.fixedDeltaTime);
         //Debug.Log(rb.velocity);
-    }
+    } //Attualmente obsoleto
 
     //private void MoveDirection() // NOTA: aggiunto controllo sul cambio di direzione,
     //                        // per evitare un movimento "scivoloso" quando avviene un cambio di direzione opposto
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
             value = Mathf.MoveTowards(value, 0, deceleration * Time.fixedDeltaTime);
 
             rb.velocity = lastDirection * value;
+
         }
         else
         {
@@ -137,7 +141,7 @@ public class PlayerController : MonoBehaviour
             value += acceleration * Time.fixedDeltaTime;
             value = Mathf.Clamp(value, -maxSpeed, maxSpeed);
 
-            rb.velocity = Direction.normalized * value;
+            rb.velocity = Direction.normalized * value; // Già normalizzata nel GM, da togliere "Direction.normalized"
         }
 
         AttackPointRotation();
@@ -149,7 +153,7 @@ public class PlayerController : MonoBehaviour
         attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
     }
 
-    public void Attack()
+    public void Attack() //Da spostare?
     {
         //Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.position, 0.5f, _damageableMask);
         //foreach (Collider2D db in hit)
@@ -160,7 +164,7 @@ public class PlayerController : MonoBehaviour
         //    if(damageable != null)
         //        damageable.Damage(_damageAmount, knockback, direction);
         //}
-
+        
         _damager.Attack();
         //_damager.AttackShoot();
     }
@@ -168,7 +172,10 @@ public class PlayerController : MonoBehaviour
     public void Dash()
     {
         if (CanDash && Direction.magnitude > 0)
-            StartCoroutine(DashRoutine());
+        {
+            StateMachine.SetState(EPlayerState.Dashing);
+            //StartCoroutine(DashRoutine());
+        }
     }
 
     public IEnumerator DashRoutine()
@@ -180,6 +187,12 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Dash effettuato");
 
         yield return new WaitForSeconds(dashingTime);
+        
+        StartCoroutine(DashCooldownRoutine());
+    }
+
+    public IEnumerator DashCooldownRoutine()
+    {
         IsDashing = false;
 
         //Debug.Log("Cooldown Dash");
@@ -188,7 +201,6 @@ public class PlayerController : MonoBehaviour
         CanDash = true;
 
         //Debug.Log("Dash carico");
-
     }
 
     public void EquipAttack(EAttackType eAttackType)
