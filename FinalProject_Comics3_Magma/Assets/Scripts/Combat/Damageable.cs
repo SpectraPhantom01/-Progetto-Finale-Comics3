@@ -91,12 +91,13 @@ public class Damageable : MonoBehaviour
             if(_isPlayer)
             {
                 playerManager.LockMovement(PlayerLockTime);
+                playerController.StateMachine.SetState(EPlayerState.Idle); //Introdurre uno stato di danneggiamento?
 
-                //TEMPORANEO
-                //-----------------------------------------------------------------
-                playerController.StopCoroutine(playerController.DashRoutine());
-                StartCoroutine(playerController.DashCooldownRoutine());
-                //-----------------------------------------------------------------
+                ////TEMPORANEO
+                ////-----------------------------------------------------------------
+                //playerController.StopCoroutine(playerController.DashRoutine());
+                //StartCoroutine(playerController.DashCooldownRoutine());
+                ////-----------------------------------------------------------------
             }
             else
             {

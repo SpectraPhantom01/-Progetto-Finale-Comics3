@@ -8,7 +8,9 @@ public class DashingCharacterState : State
 
     private float _dashingPower;
     private float _dashingTime;
-    private float _dashingCooldown;
+    private float _dashingCooldown; //Non utilizzato, coroutine in PlayerController
+
+    private float _timeElapsed;
 
     public DashingCharacterState(PlayerController owner)
     {
@@ -18,6 +20,8 @@ public class DashingCharacterState : State
     public override void OnStart()
     {
         Debug.Log("Sono in dashing");
+
+        _timeElapsed = 0;
 
         _dashingPower = m_Owner.dashingPower;
         _dashingTime = m_Owner.dashingTime;
@@ -29,17 +33,29 @@ public class DashingCharacterState : State
 
     public override void OnEnd()
     {
-        m_Owner.CanDash = true;
+        //m_Owner.CanDash = true;
         m_Owner.IsDashing = false;
+        m_Owner.StartCoroutine(m_Owner.DashCooldownRoutine());
     }
 
-    public override void OnFixedUpdate() //Introdurre timer, non si possono usare le coroutine
+    public override void OnFixedUpdate() 
+    {
+        
+    }
+
+    public override void OnUpdate() //Spostato da Fixed temporaneamente
     {
         m_Owner.Rigidbody.velocity = m_Owner.Direction.normalized * _dashingPower;
+        DashingTimer();
     }
 
-    public override void OnUpdate()
+    private void DashingTimer()
     {
-        throw new System.NotImplementedException();
+        _timeElapsed += Time.deltaTime;
+
+        if (_timeElapsed > _dashingTime)
+        {
+            m_Owner.StateMachine.SetState(EPlayerState.Idle);
+        }
     }
 }

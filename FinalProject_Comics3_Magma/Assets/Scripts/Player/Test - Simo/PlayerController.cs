@@ -178,18 +178,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public IEnumerator DashRoutine()
-    {
-        CanDash = false;
-        IsDashing = true;
-        rb.velocity = Direction.normalized * dashingPower;
+    //public IEnumerator DashRoutine()
+    //{
+    //    CanDash = false;
+    //    IsDashing = true;
+    //    rb.velocity = Direction.normalized * dashingPower;
 
-        //Debug.Log("Dash effettuato");
+    //    //Debug.Log("Dash effettuato");
 
-        yield return new WaitForSeconds(dashingTime);
+    //    yield return new WaitForSeconds(dashingTime);
         
-        StartCoroutine(DashCooldownRoutine());
-    }
+    //    StartCoroutine(DashCooldownRoutine());
+    //}
 
     public IEnumerator DashCooldownRoutine()
     {
