@@ -1,5 +1,5 @@
-
 using UnityEngine;
+
 // stato di walk. prende la direzione dall'owner (cioè dall'input)
 public class WalkingCharacterState : State
 {
@@ -12,26 +12,69 @@ public class WalkingCharacterState : State
 
     public override void OnStart()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Sono in walking");
     }
 
     public override void OnUpdate()
     {
-        throw new System.NotImplementedException();
+        if (m_Owner.Direction.magnitude == 0)
+        {
+            m_Owner.StateMachine.SetState(EPlayerState.Idle);
+        }
     }
 
     public override void OnFixedUpdate()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void OnEnd()
     {
-        throw new System.NotImplementedException();
+        
     }
 
+
+    //Da spostare qui maybe?
+    //private void MoveDirection()
+    //{
+    //    if (Direction.magnitude < 0.01f)
+    //    {
+    //        value = Mathf.MoveTowards(value, 0, deceleration * Time.fixedDeltaTime);
+
+    //        rb.velocity = lastDirection * value;
+
+    //        _stateMachine.SetState(PlayerStates.Idle);
+    //    }
+    //    else
+    //    {
+    //        //lastDirection = normalizedDirection;
+
+    //        value += acceleration * Time.fixedDeltaTime;
+    //        value = Mathf.Clamp(value, -maxSpeed, maxSpeed);
+
+    //        rb.velocity = Direction.normalized * value;
+    //    }
+
+    //    AttackPointRotation();
+    //}
+
+    //private void AttackPointRotation()
+    //{
+    //    Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection);
+    //    attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
+    //}
+
+
+
+
+
+
+
+
+
+
     // OLD CODE FROM FINAL PROJECT 2
-    
+
     //public override void MyOnCollisionEnter2D(Collision2D collision)
     //{
 

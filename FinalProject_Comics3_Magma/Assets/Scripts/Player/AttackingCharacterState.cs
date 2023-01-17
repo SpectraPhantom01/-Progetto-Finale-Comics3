@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 
 // classe totalmente nuova, specifica per questo progetto
@@ -14,21 +15,27 @@ public class AttackingCharacterState : State
     {
         m_Owner = owner;
     }
+
     public override void OnEnd()
     {
-        throw new NotImplementedException();
+        
     }
+
     public override void OnFixedUpdate()
     {
-        throw new NotImplementedException();
+        
     }
+
     public override void OnStart()
     {
-        throw new NotImplementedException();
+        Debug.Log("Sono in attacking");
     }
+
     public override void OnUpdate()
     {
-        throw new NotImplementedException();
+        //Introdurre cooldown per attacco?
+
+        //_damager.Attack();
     }
 }
 

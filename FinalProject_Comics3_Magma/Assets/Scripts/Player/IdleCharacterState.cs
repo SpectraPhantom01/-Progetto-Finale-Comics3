@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 
 // stato idle
@@ -16,22 +17,22 @@ public class IdleCharacterState : State
     }
     public override void OnEnd()
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void OnFixedUpdate()
     {
-        throw new NotImplementedException();
+        
     }
 
     public override void OnStart()
     {
-        throw new NotImplementedException();
+        Debug.Log("Sono in idle");
     }
 
     public override void OnUpdate()
     {
-        throw new NotImplementedException();
+        //Cambio di stato? ==> Gestito alla fine dal GameManager (tecnicamente)
     }
 }
 

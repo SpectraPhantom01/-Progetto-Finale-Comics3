@@ -13,6 +13,7 @@ public enum EPlayerState
     Falling,
     Landing,
     Attacking,
-    Interacting
+    Interacting,
+    Dashing
 }
 

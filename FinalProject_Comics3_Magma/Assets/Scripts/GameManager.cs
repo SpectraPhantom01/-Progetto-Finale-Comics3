@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     private void Dash_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         playerController.Dash();
+        //playerController.StateMachine.SetState(EPlayerState.Dashing);
     }
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -90,8 +91,10 @@ public class GameManager : MonoBehaviour, ISubscriber
         playerController.Direction = obj.ReadValue<Vector2>();
     }
 
-    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj) //Conrollo del dash? Può cancellarlo?
     {
+        playerController.StateMachine.SetState(EPlayerState.Walking);
+
         Vector2 readedDirection = obj.ReadValue<Vector2>();
 
         playerController.Direction = readedDirection.normalized;
@@ -100,6 +103,8 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        playerController.StateMachine.SetState(EPlayerState.Attacking);
+
         playerController.Attack();
     }
 

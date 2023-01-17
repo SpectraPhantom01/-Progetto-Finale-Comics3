@@ -24,6 +24,7 @@ public class Damageable : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private AI ai;
     private PlayerManager playerManager;
+    private PlayerController playerController; //TEMPORANEO
     private bool _isPlayer;
 
     [Space(10)]
@@ -43,6 +44,7 @@ public class Damageable : MonoBehaviour
         ai = gameObject.SearchComponent<AI>();
         _rigidBody = gameObject.SearchComponent<Rigidbody2D>();
         playerManager = gameObject.SearchComponent<PlayerManager>();
+        playerController= gameObject.SearchComponent<PlayerController>();
         if(ai != null)
         {
             _behaviorTree = ai.BehaviorTree;
@@ -89,6 +91,13 @@ public class Damageable : MonoBehaviour
             if(_isPlayer)
             {
                 playerManager.LockMovement(PlayerLockTime);
+                playerController.StateMachine.SetState(EPlayerState.Idle); //Introdurre uno stato di danneggiamento?
+
+                ////TEMPORANEO
+                ////-----------------------------------------------------------------
+                //playerController.StopCoroutine(playerController.DashRoutine());
+                //StartCoroutine(playerController.DashCooldownRoutine());
+                ////-----------------------------------------------------------------
             }
             else
             {
