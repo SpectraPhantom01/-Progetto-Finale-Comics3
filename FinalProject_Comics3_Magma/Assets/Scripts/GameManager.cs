@@ -91,14 +91,17 @@ public class GameManager : MonoBehaviour, ISubscriber
         playerController.Direction = obj.ReadValue<Vector2>();
     }
 
-    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj) //Conrollo del dash? Può cancellarlo?
+    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj) 
     {
-        playerController.StateMachine.SetState(EPlayerState.Walking);
+        if (!playerController.IsDashing)
+        {
+            playerController.StateMachine.SetState(EPlayerState.Walking);
 
-        Vector2 readedDirection = obj.ReadValue<Vector2>();
+            Vector2 readedDirection = obj.ReadValue<Vector2>();
 
-        playerController.Direction = readedDirection.normalized;
-        playerController.lastDirection = readedDirection.normalized;
+            playerController.Direction = readedDirection.normalized;
+            playerController.lastDirection = readedDirection.normalized;
+        }
     }
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
