@@ -26,9 +26,20 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private float hourglassTimePassed;
     private Damageable _damageable;
     private PlayerController _playerController;
-    public void Kill()
+
+    public void Kill(Vector3 respawnPosition)
     {
-        Destroy(gameObject);
+
+        Debug.Log("animazione SEI MORTO!");
+        StartCoroutine(KillCoroutine(respawnPosition));
+    }
+
+    private IEnumerator KillCoroutine(Vector3 respawnPosition)
+    {
+        yield return new WaitForSeconds(1);
+
+        transform.position = respawnPosition;
+        Damageable.Heal(50);
     }
 
     private void Awake()
@@ -95,6 +106,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _playerController.CanMove = true;
     }
 
+    public GameObject GetGameObject() => gameObject;
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

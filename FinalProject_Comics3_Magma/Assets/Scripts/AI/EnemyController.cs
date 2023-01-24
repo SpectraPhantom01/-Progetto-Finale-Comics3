@@ -84,13 +84,14 @@ public class EnemyController : AI, IAliveEntity
     }
 
 
-    public void Kill()
+    public void Kill(Vector3 respawnPoint)
     {
         onKillEnemy?.Invoke();
 
         Destroy(gameObject);
     }
 
+    public GameObject GetGameObject() => gameObject;
 
 #if UNITY_EDITOR
     [Header("Gizmo Settings")]

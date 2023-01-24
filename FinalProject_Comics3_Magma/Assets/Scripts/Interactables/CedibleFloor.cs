@@ -11,6 +11,7 @@ public class CedibleFloor : MonoBehaviour
     [SerializeField] float knockBackAmount;
     [SerializeField] Vector2 knockBackDirection;
     [SerializeField] ParticleSystem cedibleFloorVFX;
+    [SerializeField] Transform respawnPoint;
     bool swapped;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +28,7 @@ public class CedibleFloor : MonoBehaviour
             }
             else if(gameObject.layer == killZoneLayer)
             {
-                player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection);
+                player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection, respawnPoint);
             }
 
         }
@@ -35,26 +36,25 @@ public class CedibleFloor : MonoBehaviour
 
     private IEnumerator SwapFloorCoroutine(float timeBeforeSwapFloor)
     {
+        var collider = GetComponent<BoxCollider2D>();
+        collider.enabled = false;
         yield return new WaitForSeconds(timeBeforeSwapFloor);
         normalFloor.SetActive(false);
         lavaFloor.SetActive(true);
         gameObject.layer = killZoneLayer;
-        var collider = GetComponent<BoxCollider2D>();
-        collider.enabled = false;
-        yield return new WaitForEndOfFrame();
         collider.enabled = true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (gameObject.layer == killZoneLayer)
-        {
-            var player = collision.gameObject.SearchComponent<PlayerManager>();
-            if (player != null)
-            {
-                player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection);
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (gameObject.layer == killZoneLayer)
+    //    {
+    //        var player = collision.gameObject.SearchComponent<PlayerManager>();
+    //        if (player != null)
+    //        {
+    //            player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection, respawnPoint);
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 }
