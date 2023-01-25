@@ -8,5 +8,7 @@ public interface IAliveEntity
     public bool IsAlive { get; set; }
     public string Name { get; }
 
-    public void Kill();
+    public void Kill(Vector3 respawnPosition);
+
+    public GameObject GetGameObject();
 }
