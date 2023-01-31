@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DashCooldownRoutine()
     {
-        IsDashing = false;
+        //IsDashing = false; //Già settato a falso
 
         //Debug.Log("Cooldown Dash");
 
