@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     public Damageable Damageable => _damageable;
 
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
-
+    public PlayerController PlayerController => _playerController;
     private float savePositionTimePassed;
     private float hourglassTimePassed;
     private Damageable _damageable;
@@ -32,6 +32,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
         Debug.Log("animazione SEI MORTO!");
         StartCoroutine(KillCoroutine(respawnPosition));
+    }
+
+    public void Respawn(Vector3 position)
+    {
+        transform.position = position;
     }
 
     private IEnumerator KillCoroutine(Vector3 respawnPosition)

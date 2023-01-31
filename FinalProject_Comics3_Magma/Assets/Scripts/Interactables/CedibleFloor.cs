@@ -26,9 +26,10 @@ public class CedibleFloor : MonoBehaviour
                 StartCoroutine(SwapFloorCoroutine(timeBeforeSwapFloor));
                 swapped = true;
             }
-            else if(gameObject.layer == killZoneLayer)
+             else if(gameObject.layer == killZoneLayer && !player.PlayerController.IsDashing)
             {
-                player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection, respawnPoint);
+                player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection);
+                player.Respawn(respawnPoint.position);
             }
 
         }
@@ -50,10 +51,11 @@ public class CedibleFloor : MonoBehaviour
     //    if (gameObject.layer == killZoneLayer)
     //    {
     //        var player = collision.gameObject.SearchComponent<PlayerManager>();
-    //        if (player != null)
+    //        if (player != null && !player.PlayerController.IsDashing)
     //        {
-    //            player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection, respawnPoint);
+    //            player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection);
 
+    //            player.Respawn(respawnPoint.position);
     //        }
     //    }
     //}

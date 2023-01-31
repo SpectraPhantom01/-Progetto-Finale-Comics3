@@ -109,9 +109,9 @@ MonoBehaviour:
   normalFloor: {fileID: 7706211054265899618}
   lavaFloor: {fileID: 7706211054604623685}
   timeBeforeSwapFloor: 3
-  damageAmount: 1000
-  knockBackAmount: 20
-  knockBackDirection: {x: 1, y: 1}
+  damageAmount: 1
+  knockBackAmount: 0
+  knockBackDirection: {x: 0, y: 0}
   cedibleFloorVFX: {fileID: 5018874063188205542, guid: 55c2a4f2b7df07540aa5c09d5601b6f6, type: 3}
   respawnPoint: {fileID: 4670908350459373727}
 --- !u!1 &7706211054265899618
@@ -186,8 +186,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b8f2fc429e14f434e9caa6fadd904fdc, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: debde6be58f14a7428b1ecfe710eddf4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -271,8 +271,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.060810566, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a270fda19d6db664bb36a78936dbe5e3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
