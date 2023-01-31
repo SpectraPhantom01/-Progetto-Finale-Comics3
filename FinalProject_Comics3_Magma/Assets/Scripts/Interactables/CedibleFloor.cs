@@ -5,6 +5,7 @@ public class CedibleFloor : MonoBehaviour
 {
     [SerializeField] int killZoneLayer;
     [SerializeField] GameObject normalFloor;
+    [SerializeField] GameObject damagedFloor;
     [SerializeField] GameObject lavaFloor;
     [SerializeField] float timeBeforeSwapFloor;
     [SerializeField] float damageAmount;
@@ -13,6 +14,13 @@ public class CedibleFloor : MonoBehaviour
     [SerializeField] ParticleSystem cedibleFloorVFX;
     [SerializeField] Transform respawnPoint;
     bool swapped;
+
+    private void Awake()
+    {
+        var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
+        if (cedibleArea != null)
+            respawnPoint = cedibleArea.RespawnPoint;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,10 +45,12 @@ public class CedibleFloor : MonoBehaviour
 
     private IEnumerator SwapFloorCoroutine(float timeBeforeSwapFloor)
     {
+        damagedFloor.SetActive(true);
+        normalFloor.SetActive(false);
         var collider = GetComponent<BoxCollider2D>();
         collider.enabled = false;
         yield return new WaitForSeconds(timeBeforeSwapFloor);
-        normalFloor.SetActive(false);
+        damagedFloor.SetActive(false);
         lavaFloor.SetActive(true);
         gameObject.layer = killZoneLayer;
         collider.enabled = true;
@@ -59,4 +69,22 @@ public class CedibleFloor : MonoBehaviour
     //        }
     //    }
     //}
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        var respawnPoint = this.respawnPoint;
+        var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
+        if (cedibleArea != null)
+            respawnPoint = cedibleArea.RespawnPoint;
+        if (respawnPoint != null)
+        {
+            Gizmos.color = Color.white;
+
+            Gizmos.DrawLine(transform.position, respawnPoint.position);
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(respawnPoint.position, 0.1f);
+        }
+    }
+#endif
 }
