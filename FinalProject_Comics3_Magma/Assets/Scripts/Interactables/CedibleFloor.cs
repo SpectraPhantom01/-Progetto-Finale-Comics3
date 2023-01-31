@@ -26,7 +26,7 @@ public class CedibleFloor : MonoBehaviour
                 StartCoroutine(SwapFloorCoroutine(timeBeforeSwapFloor));
                 swapped = true;
             }
-            else if(gameObject.layer == killZoneLayer)
+            else if(gameObject.layer == killZoneLayer && !player.PlayerController.IsDashing)
             {
                 player.Damageable.Damage(damageAmount, knockBackAmount, knockBackDirection, respawnPoint);
             }
