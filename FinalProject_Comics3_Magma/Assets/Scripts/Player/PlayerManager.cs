@@ -34,6 +34,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         StartCoroutine(KillCoroutine(respawnPosition));
     }
 
+    public void Respawn(Vector3 position)
+    {
+        transform.position = position;
+    }
+
     private IEnumerator KillCoroutine(Vector3 respawnPosition)
     {
         yield return new WaitForSeconds(1);

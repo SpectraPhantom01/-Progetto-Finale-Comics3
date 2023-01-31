@@ -83,8 +83,9 @@ public class PlayerController : MonoBehaviour
     {
         if (CanMove && !IsDashing)
             MoveDirection();
-            //Movement();
+        //Movement();
 
+        StateMachine.OnFixedUpdate();
     }
 
     private void Movement()
