@@ -11,7 +11,8 @@ public class DashingCharacterState : State
     private float _dashingCooldown; //Non utilizzato, coroutine in PlayerController
 
     private float _timeElapsed;
-    Vector2 direction;
+    Vector2 _direction;
+
     public DashingCharacterState(PlayerController owner)
     {
         m_Owner = owner;
@@ -27,13 +28,13 @@ public class DashingCharacterState : State
         _dashingTime = m_Owner.dashingTime;
         _dashingCooldown = m_Owner.dashingCooldown;
 
-        direction = m_Owner.Direction.normalized;
+        _direction = m_Owner.Direction.normalized;
 
         m_Owner.CanDash = false;
         m_Owner.IsDashing = true;
     }
 
-    public override void OnEnd() //Da interrompere il dash quando va conrto un muro
+    public override void OnEnd() //Da interrompere il dash quando va contro un muro
     {
         //m_Owner.CanDash = true;
         m_Owner.IsDashing = false;
@@ -42,12 +43,11 @@ public class DashingCharacterState : State
 
     public override void OnFixedUpdate() 
     {
-        m_Owner.Rigidbody.velocity = direction * _dashingPower;
+        m_Owner.Rigidbody.velocity = _direction * _dashingPower;
     }
 
-    public override void OnUpdate() //Spostato da Fixed temporaneamente
-    {
-        
+    public override void OnUpdate() 
+    {       
         DashingTimer();
     }
 
