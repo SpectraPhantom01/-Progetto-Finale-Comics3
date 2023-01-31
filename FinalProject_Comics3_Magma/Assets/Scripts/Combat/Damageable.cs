@@ -82,7 +82,10 @@ public class Damageable : MonoBehaviour
             else
             {
                 Debug.Log($"{_entity.Name} is death");
-                _entity.Kill(respawnPosition.position);
+                if (respawnPosition != null)
+                    _entity.Kill(respawnPosition.position);
+                else
+                    _entity.Kill(Vector3.zero);
                 _currentTimeLife = 0;
                 _currentHourglass = null;
                 return;
