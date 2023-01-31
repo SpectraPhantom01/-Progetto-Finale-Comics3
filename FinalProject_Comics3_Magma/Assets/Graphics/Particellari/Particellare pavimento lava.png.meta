@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -127,7 +127,1351 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Particellare pavimento lava_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 236
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 020946f371a82eb4582f4201abafa327
+      internalID: 916752972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 238
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b664cf340e0a1d04dbf7cabc404d74bf
+      internalID: -1963519262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 210
+        width: 51
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0142c23941a8aa44abb8ac3789a4ab82
+      internalID: -1780999058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_3
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 200
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ab51259abf3814ebbd0d956b9259ea
+      internalID: -1994836694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 225
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 010cebd6bd833134485f41473dc6dad8
+      internalID: -462821540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_5
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 225
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f16778bdd250b4c9d54d72e122dbc1
+      internalID: -1705787968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_6
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 211
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b553258eba64314c80a3c2200e517c7
+      internalID: -1388439293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_7
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 221
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16b36abdccf95e45809d8e94fdff9c5
+      internalID: 576824723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_8
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 224
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b431a420b4ba3214eb6451852beffc95
+      internalID: 943532208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_9
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 225
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f468c12989ab3e54ab378783e6191b04
+      internalID: -1355084337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_10
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 206
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a039e03b1106bad45a4a64db795dd2aa
+      internalID: 436659645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 214
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 021a5367c5dbeed44aa9c125252c8e43
+      internalID: 1846087194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_12
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 213
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01cb23e6413eae84786a4dd4ff59610b
+      internalID: -31310936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_13
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 190
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644dbfdae54f9ea40be3be159d0808c1
+      internalID: 922556793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_14
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 187
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499416683c1cd834bb4c81ff31aa8fee
+      internalID: 1033766707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_15
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 99
+        width: 100
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56212825ee0bf8841a92ee7c5219daa2
+      internalID: -39321441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_16
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 202
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36b743320789db14abb9bde347c7e1dc
+      internalID: -1514202615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_17
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 180
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4331f8f747e9d494697046b29c54edcf
+      internalID: -1081275257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_18
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 176
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2dd0792c19c389478b461ba12005673
+      internalID: 1263076748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_19
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 119
+        width: 74
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f55ffae6d653940ac1442c12101c02
+      internalID: 891702610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_20
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 179
+        width: 13
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42da1cbef0a9acb4cbe6225783f7920d
+      internalID: 1098676863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_21
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 184
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb904a998b925e43b72e6c05c1b2166
+      internalID: -254874022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_22
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 175
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe553bdf54f64e48baccafb8faee015
+      internalID: 1357664005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_23
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 174
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd0520d9e5fe776479cbd7d088199cb2
+      internalID: 1967257006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_24
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 150
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b61b32a1666381d45bfa0599f3524a80
+      internalID: -1343581697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_25
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 157
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab19f6bda2320044fa2729ce28986615
+      internalID: 130830569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_26
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 128
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18efa32148f1ec4bb88b9ea8e50d530
+      internalID: -36037903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_27
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 137
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9798d67f8690b154285f0ecb19345bb1
+      internalID: -1613966466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_28
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 130
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39768b1a8ed4004aaaca6dcf75539f2
+      internalID: -218085764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_29
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 107
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccc4664286e83a42b5208f5e782e122
+      internalID: 2003403079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_30
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 124
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 669368856320b4b47a0480715d5836b8
+      internalID: 814400838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_31
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 116
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215f321e4c3101040a37ba75b14903bc
+      internalID: 330139237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_32
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 115
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06199f13dbe5ff45a1162335c84894e
+      internalID: -789883084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_33
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 82
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbfc0de38e78964b9cad058f8dc0e02
+      internalID: 1597874422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_34
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 42
+        width: 64
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 316b8446e54a64048ac8845c36123b1d
+      internalID: 1113105914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_35
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 101
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91760d3cc27c5cc449bc4aeb99254e70
+      internalID: 461456852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_36
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 98
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 559506c94fa4da548a1fe5ec23309842
+      internalID: 7647879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_37
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 91
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bbf1871617d6c4fbc4e700f6a85a31
+      internalID: -1181385946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_38
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 33
+        width: 74
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38d01e379057bd64fb863807a42bb999
+      internalID: 536397599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_39
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 93
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6198861dd0d6d499c22f7914e489ee
+      internalID: -1569991538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_40
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 95
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b3c27946e06d84f98df24a879b5ab2
+      internalID: 346346214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_41
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 89
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffdc3b45ec9f08243b6a6540929ec5da
+      internalID: -1281775989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_42
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 82
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 104c6f88572d31f49b4679ea6a7cb9cb
+      internalID: -113180277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_43
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 86
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ddb3a0cc7f3574990ee50f91009748
+      internalID: 1916820984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_44
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 85
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d635f6c1fe6f94c8e9a2abcb401103
+      internalID: 1968910435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_45
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 72
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3adb7b4700dc7754ebb5a23ac3ff90cc
+      internalID: 1112882013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_46
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 76
+        width: 11
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0211fbad9859de544beae0705266ded4
+      internalID: 728253704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_47
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 76
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b029a5036fe37d3458ee6648e1e1d31c
+      internalID: 1766203198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_48
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 57
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429e75748abe5dc49be9bb03c1b003f5
+      internalID: 498243565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_49
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 62
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae70ef7c605423449587110dc0d12c7
+      internalID: -1878428368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_50
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 68
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71f3bbadc53d6ae44a240bf5312e6474
+      internalID: -1279669392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_51
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 63
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53662f9b71ac6c64b8c7ba418a3a19c4
+      internalID: 266321673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_52
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 13
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6a9aac7caf74a42a9bacf04a164b1d
+      internalID: -1324795663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_53
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 10
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31b9e415632c5ae43bff3c07a7427a52
+      internalID: 969052188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_54
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 49
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e300556a371260b4d89e60f84ecdea1a
+      internalID: 492023624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_55
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 43
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4878ee264f4ffb34bba7081ab5d447b9
+      internalID: -1995265948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_56
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 18
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ffac763d2c8f9e429b040821d3119d4
+      internalID: 1574219332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_57
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 35
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421387e6d9a489f4fa0ed32fa4660e66
+      internalID: 981491608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_58
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 27
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2feb17a417c72c4dae497da7943e78e
+      internalID: 1111522166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_59
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 27
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4894a84be8aee498d6837a78aee258
+      internalID: 241911641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_60
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 21
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 445891424b99b5f4da5c668787571ec7
+      internalID: -1783259279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_61
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 13
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31f54734ac997b45bda8f5a352219e4
+      internalID: -1850051638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_62
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 11
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487459e432455374abf07612a725c2e8
+      internalID: -1287895897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particellare pavimento lava_63
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 8
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43e3e83b53b97f4469830752a4442131
+      internalID: -1261087483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +1482,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Particellare pavimento lava_24: -1343581697
+      Particellare pavimento lava_28: -218085764
+      Particellare pavimento lava_12: -31310936
+      Particellare pavimento lava_22: 1357664005
+      Particellare pavimento lava_38: 536397599
+      Particellare pavimento lava_55: -1995265948
+      Particellare pavimento lava_19: 891702610
+      Particellare pavimento lava_63: -1261087483
+      Particellare pavimento lava_34: 1113105914
+      Particellare pavimento lava_40: 346346214
+      Particellare pavimento lava_21: -254874022
+      Particellare pavimento lava_60: -1783259279
+      Particellare pavimento lava_11: 1846087194
+      Particellare pavimento lava_17: -1081275257
+      Particellare pavimento lava_25: 130830569
+      Particellare pavimento lava_33: 1597874422
+      Particellare pavimento lava_41: -1281775989
+      Particellare pavimento lava_59: 241911641
+      Particellare pavimento lava_48: 498243565
+      Particellare pavimento lava_2: -1780999058
+      Particellare pavimento lava_5: -1705787968
+      Particellare pavimento lava_15: -39321441
+      Particellare pavimento lava_0: 916752972
+      Particellare pavimento lava_58: 1111522166
+      Particellare pavimento lava_8: 943532208
+      Particellare pavimento lava_6: -1388439293
+      Particellare pavimento lava_52: -1324795663
+      Particellare pavimento lava_35: 461456852
+      Particellare pavimento lava_9: -1355084337
+      Particellare pavimento lava_16: -1514202615
+      Particellare pavimento lava_31: 330139237
+      Particellare pavimento lava_51: 266321673
+      Particellare pavimento lava_20: 1098676863
+      Particellare pavimento lava_42: -113180277
+      Particellare pavimento lava_37: -1181385946
+      Particellare pavimento lava_57: 981491608
+      Particellare pavimento lava_45: 1112882013
+      Particellare pavimento lava_10: 436659645
+      Particellare pavimento lava_53: 969052188
+      Particellare pavimento lava_56: 1574219332
+      Particellare pavimento lava_50: -1279669392
+      Particellare pavimento lava_29: 2003403079
+      Particellare pavimento lava_49: -1878428368
+      Particellare pavimento lava_13: 922556793
+      Particellare pavimento lava_62: -1287895897
+      Particellare pavimento lava_18: 1263076748
+      Particellare pavimento lava_36: 7647879
+      Particellare pavimento lava_46: 728253704
+      Particellare pavimento lava_30: 814400838
+      Particellare pavimento lava_47: 1766203198
+      Particellare pavimento lava_7: 576824723
+      Particellare pavimento lava_3: -1994836694
+      Particellare pavimento lava_23: 1967257006
+      Particellare pavimento lava_43: 1916820984
+      Particellare pavimento lava_26: -36037903
+      Particellare pavimento lava_44: 1968910435
+      Particellare pavimento lava_54: 492023624
+      Particellare pavimento lava_14: 1033766707
+      Particellare pavimento lava_4: -462821540
+      Particellare pavimento lava_39: -1569991538
+      Particellare pavimento lava_32: -789883084
+      Particellare pavimento lava_61: -1850051638
+      Particellare pavimento lava_1: -1963519262
+      Particellare pavimento lava_27: -1613966466
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
