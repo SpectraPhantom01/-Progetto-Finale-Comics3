@@ -14,6 +14,7 @@ public enum EPlayerState
     Landing,
     Attacking,
     Interacting,
-    Dashing
+    Dashing,
+    Rewind
 }
 

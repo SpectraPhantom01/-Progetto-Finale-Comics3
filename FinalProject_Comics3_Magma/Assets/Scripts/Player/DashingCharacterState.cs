@@ -36,7 +36,6 @@ public class DashingCharacterState : State
 
     public override void OnEnd() //Da interrompere il dash quando va contro un muro
     {
-        //m_Owner.CanDash = true;
         m_Owner.IsDashing = false;
         m_Owner.StartCoroutine(m_Owner.DashCooldownRoutine());
     }

@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Roll",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "a4e57bcc-da34-4a5b-9733-1600d2386b9d",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Absorb",
+                    "name": "Rewind",
                     "type": "Button",
                     "id": "a7568a94-888e-4fb3-b1bd-2fd184fad138",
                     "expectedControlType": "Button",
@@ -165,7 +165,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -176,7 +176,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Absorb",
+                    "action": "Rewind",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
