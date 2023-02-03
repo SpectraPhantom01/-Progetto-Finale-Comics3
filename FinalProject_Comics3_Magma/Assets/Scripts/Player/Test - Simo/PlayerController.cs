@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float dashingTime;
     public float dashingCooldown;
 
-    [Header("Dashing Settings")]
+    [Header("Ghost Settings")]
     [SerializeField] GameObject ghostPrefab;
     public float ghostLifeTime;
     public float rewindCooldown;
