@@ -286,6 +286,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7706211054119229822}
     m_Modifications:
+    - target: {fileID: 133328903062087105, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 091cafa318aebf140bb3b2c72aefa2f6, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava
