@@ -8,12 +8,15 @@ public class CedibleFloor : MonoBehaviour
     [SerializeField] DamagerFloor lavaFloor;
     [SerializeField] float timeBeforeSwapFloor;
     [SerializeField] ParticleSystem cedibleFloorVFX;
-
+    Collider2D lavaCollider;
     private void Awake()
     {
         var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
         if (cedibleArea != null)
+        {
             lavaFloor.SetRespawnpoint(cedibleArea.RespawnPoint);
+            lavaCollider = lavaFloor.gameObject.SearchComponent<Collider2D>();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +37,7 @@ public class CedibleFloor : MonoBehaviour
         Destroy(GetComponent<BoxCollider2D>());
         yield return new WaitForSeconds(timeBeforeSwapFloor);
         damagedFloor.SetActive(false);
-        lavaFloor.gameObject.SetActive(true);
+        lavaCollider.enabled = true;
     }
 
 
