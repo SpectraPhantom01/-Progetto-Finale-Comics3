@@ -13,10 +13,15 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Decelerazione del player")]
     [SerializeField] float deceleration = 35;
 
-    [Header("Dashing Settings")] //Cambiate in public
+    [Header("Dashing Settings")]
     public float dashingPower;
     public float dashingTime;
     public float dashingCooldown;
+
+    [Header("Ghost Settings")]
+    [SerializeField] GameObject ghostPrefab;
+    public float ghostLifeTime;
+    public float rewindCooldown;
 
     [Space(10)]
 
@@ -40,6 +45,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
 
+    GameObject instantiatedGhost;
+    IEnumerator ghostRoutine;
+
     //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
     //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
 
@@ -49,6 +57,8 @@ public class PlayerController : MonoBehaviour
     public bool CanMove { get; set; } = true;
     public bool IsDashing { get; set; } = false;
     public bool CanDash { get; set; } = true;
+    public bool GhostActive { get; set; } = false;
+    public bool CanRewind { get; set; } = true;    
 
     private void Awake()
     {
@@ -59,12 +69,17 @@ public class PlayerController : MonoBehaviour
         CanMove = true;
         IsDashing = false;
         CanDash = true;
+        GhostActive = false;
+        CanRewind = true;
+
+        //ghostRoutine = GhostRoutine();
 
         StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Attacking, new AttackingCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Dashing, new DashingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Rewind, new RewindCharacterState(this));
 
         StateMachine.SetState(EPlayerState.Idle);
     }
@@ -88,6 +103,9 @@ public class PlayerController : MonoBehaviour
         StateMachine.OnFixedUpdate();
     }
 
+
+    
+    //Gestione Movimento:
     private void Movement()
     {
         //Direction = inputSystem.Player.Movement.ReadValue<Vector2>(); // Direction salva i valori di movimento presi da input
@@ -148,31 +166,12 @@ public class PlayerController : MonoBehaviour
         AttackPointRotation();
     }
 
-    private void AttackPointRotation()
-    {
-        Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection); 
-        attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
-    }
 
-    public void Attack() //Da spostare?
-    {
-        //Collider2D[] hit = Physics2D.OverlapCircleAll(attackPoint.position, 0.5f, _damageableMask);
-        //foreach (Collider2D db in hit)
-        //{
-        //    Vector2 direction = -(transform.position - db.transform.position).normalized;
 
-        //    Damageable damageable = db.gameObject.SearchComponent<Damageable>();
-        //    if(damageable != null)
-        //        damageable.Damage(_damageAmount, knockback, direction);
-        //}
-        
-        _damager.Attack();
-        //_damager.AttackShoot();
-    }
-
+    //Gestione Dash:
     public void Dash()
     {
-        if (CanDash && Direction.magnitude > 0)
+        if (CanDash && Direction.magnitude > 0) //Controllabile volendo anche da GM
         {
             StateMachine.SetState(EPlayerState.Dashing);
             //StartCoroutine(DashRoutine());
@@ -194,14 +193,63 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DashCooldownRoutine()
     {
-        IsDashing = false;
-
-        //Debug.Log("Cooldown Dash");
-
         yield return new WaitForSeconds(dashingCooldown);
         CanDash = true;
+    }
 
-        //Debug.Log("Dash carico");
+
+
+    //Gestione Rewind:
+    public void CreateGhost()
+    {
+        GhostActive = true;
+        instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.identity);
+
+        ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
+        StartCoroutine(ghostRoutine);
+    }
+  
+    public void Rewind()
+    {
+        StopCoroutine(ghostRoutine);
+        transform.position = instantiatedGhost.transform.position; 
+        DestroyGhost();
+    }
+
+    private IEnumerator GhostRoutine()
+    {
+        yield return new WaitForSeconds(ghostLifeTime);
+        DestroyGhost();
+    }
+
+    private void DestroyGhost()
+    {
+        GhostActive = false;
+        Destroy(instantiatedGhost);
+
+        CanRewind = false;
+        StartCoroutine(RewindCooldownRoutine());
+    }
+
+    public IEnumerator RewindCooldownRoutine()
+    {
+        yield return new WaitForSeconds(rewindCooldown);
+        CanRewind = true;
+    }
+
+
+
+    //Gestione Attacco:
+    private void AttackPointRotation()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection);
+        attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
+    }
+
+    public void Attack() //Da spostare?
+    {
+        _damager.Attack();
+        //_damager.AttackShoot();
     }
 
     public void EquipAttack(EAttackType eAttackType)

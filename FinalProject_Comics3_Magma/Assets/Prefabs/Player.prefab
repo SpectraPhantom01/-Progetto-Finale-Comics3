@@ -309,6 +309,9 @@ MonoBehaviour:
   dashingPower: 15
   dashingTime: 0.1
   dashingCooldown: 0.25
+  ghostPrefab: {fileID: 1877984911373530205, guid: 017efc38900c5da468971b784f8fb7a7, type: 3}
+  ghostLifeTime: 2.5
+  rewindCooldown: 1
   attackPoint: {fileID: 960920955020320483}
   Direction: {x: 0, y: 0}
   lastDirection: {x: 0, y: -1}

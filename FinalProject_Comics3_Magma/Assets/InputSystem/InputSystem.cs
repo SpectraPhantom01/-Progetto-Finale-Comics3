@@ -64,7 +64,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Roll"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""a4e57bcc-da34-4a5b-9733-1600d2386b9d"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Absorb"",
+                    ""name"": ""Rewind"",
                     ""type"": ""Button"",
                     ""id"": ""a7568a94-888e-4fb3-b1bd-2fd184fad138"",
                     ""expectedControlType"": ""Button"",
@@ -187,7 +187,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Roll"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -198,7 +198,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Absorb"",
+                    ""action"": ""Rewind"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -236,8 +236,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Power1 = m_Player.FindAction("Power 1", throwIfNotFound: true);
         m_Player_Power2 = m_Player.FindAction("Power 2", throwIfNotFound: true);
-        m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
-        m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Rewind = m_Player.FindAction("Rewind", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
     }
 
@@ -302,8 +302,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Power1;
     private readonly InputAction m_Player_Power2;
-    private readonly InputAction m_Player_Roll;
-    private readonly InputAction m_Player_Absorb;
+    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Rewind;
     private readonly InputAction m_Player_Interaction;
     public struct PlayerActions
     {
@@ -313,8 +313,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Power1 => m_Wrapper.m_Player_Power1;
         public InputAction @Power2 => m_Wrapper.m_Player_Power2;
-        public InputAction Dash => m_Wrapper.m_Player_Roll;
-        public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Rewind => m_Wrapper.m_Player_Rewind;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -337,12 +337,12 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Power2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPower2;
                 @Power2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPower2;
                 @Power2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPower2;
-                Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
-                Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
-                Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
-                @Absorb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
-                @Absorb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
-                @Absorb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Rewind.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
+                @Rewind.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
+                @Rewind.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
                 @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
@@ -362,12 +362,12 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Power2.started += instance.OnPower2;
                 @Power2.performed += instance.OnPower2;
                 @Power2.canceled += instance.OnPower2;
-                Dash.started += instance.OnRoll;
-                Dash.performed += instance.OnRoll;
-                Dash.canceled += instance.OnRoll;
-                @Absorb.started += instance.OnAbsorb;
-                @Absorb.performed += instance.OnAbsorb;
-                @Absorb.canceled += instance.OnAbsorb;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @Rewind.started += instance.OnRewind;
+                @Rewind.performed += instance.OnRewind;
+                @Rewind.canceled += instance.OnRewind;
                 @Interaction.started += instance.OnInteraction;
                 @Interaction.performed += instance.OnInteraction;
                 @Interaction.canceled += instance.OnInteraction;
@@ -390,8 +390,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnPower1(InputAction.CallbackContext context);
         void OnPower2(InputAction.CallbackContext context);
-        void OnRoll(InputAction.CallbackContext context);
-        void OnAbsorb(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnRewind(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
     }
 }

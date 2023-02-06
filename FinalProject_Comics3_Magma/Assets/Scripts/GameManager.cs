@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Movement.canceled += Movement_canceled;
         inputSystem.Player.Attack.performed += Attack_performed;
         inputSystem.Player.Dash.performed += Dash_performed;
+        inputSystem.Player.Rewind.performed += Rewind_performed;
 
         // END INPUT SYSTEM
 
@@ -78,6 +79,12 @@ public class GameManager : MonoBehaviour, ISubscriber
 
         Publisher.Subscribe(this, typeof(SaveMessage));
         Publisher.Subscribe(this, typeof(LoadMessage));
+    }
+
+    private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if(playerController.CanRewind)
+            playerController.StateMachine.SetState(EPlayerState.Rewind);
     }
 
     private void Dash_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

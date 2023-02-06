@@ -58,12 +58,6 @@ public class WalkingCharacterState : State
     //    AttackPointRotation();
     //}
 
-    //private void AttackPointRotation()
-    //{
-    //    Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection);
-    //    attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
-    //}
-
 
 
 
