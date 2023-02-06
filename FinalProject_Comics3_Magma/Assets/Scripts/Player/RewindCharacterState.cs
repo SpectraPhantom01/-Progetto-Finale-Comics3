@@ -32,7 +32,7 @@ public class RewindCharacterState : State
             m_Owner.CreateGhost();
         }
         else
-        {
+        {            
             m_Owner.Rewind();
         }          
     }

@@ -307,7 +307,7 @@ MonoBehaviour:
   acceleration: 250
   deceleration: 350
   dashingPower: 15
-  dashingTime: 0.1
+  dashingTime: 0.3
   dashingCooldown: 0.25
   ghostPrefab: {fileID: 1877984911373530205, guid: 017efc38900c5da468971b784f8fb7a7, type: 3}
   ghostLifeTime: 2.5

@@ -224,10 +224,12 @@ public class PlayerController : MonoBehaviour
 
     private void DestroyGhost()
     {
-        GhostActive = false;
-        Destroy(instantiatedGhost);
-
         CanRewind = false;
+        GhostActive = false;
+
+        Destroy(instantiatedGhost);
+        instantiatedGhost = null;
+
         StartCoroutine(RewindCooldownRoutine());
     }
 
