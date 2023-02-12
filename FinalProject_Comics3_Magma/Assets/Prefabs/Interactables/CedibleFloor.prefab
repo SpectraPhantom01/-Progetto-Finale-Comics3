@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7706211054119229822}
   - component: {fileID: 7706211054119229821}
   - component: {fileID: 7706211054119229820}
+  - component: {fileID: 9105735640255679664}
   m_Layer: 8
   m_Name: CedibleFloor
   m_TagString: Untagged
@@ -109,8 +110,21 @@ MonoBehaviour:
   normalFloor: {fileID: 7706211054265899618}
   damagedFloor: {fileID: 7856684747021978422}
   lavaFloor: {fileID: 6401807356697015613}
-  timeBeforeSwapFloor: 3
+  timeBeforeSwapFloor: 2
   cedibleFloorVFX: {fileID: 5018874063188205542, guid: 55c2a4f2b7df07540aa5c09d5601b6f6, type: 3}
+--- !u!114 &9105735640255679664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706211054119229795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1848722f7f21684cb949e34e1b1c027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: {x: 0.5, y: 0.5, z: 0}
 --- !u!1 &7706211054265899618
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +197,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: debde6be58f14a7428b1ecfe710eddf4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -286,10 +300,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7706211054119229822}
     m_Modifications:
-    - target: {fileID: 133328903062087105, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 9100000, guid: 091cafa318aebf140bb3b2c72aefa2f6, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava
@@ -312,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756822, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.008813679
       objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756822, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_LocalPosition.z
