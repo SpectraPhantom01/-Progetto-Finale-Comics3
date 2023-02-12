@@ -9,7 +9,7 @@ public class GhostManager : MonoBehaviour
 {
     //Dictionary<InputType, UnityEngine.InputSystem.InputAction.CallbackContext> ghostDictionary;
     Queue<InputType> inputTypes = new Queue<InputType>();
-    Queue<UnityEngine.InputSystem.InputAction.CallbackContext> callbackContexts = new Queue<UnityEngine.InputSystem.InputAction.CallbackContext>();
+    Queue<Vector2> callbackContexts = new Queue<Vector2>();
     List<float> timeDistance = new List<float>();
 
     bool readTime = false;
@@ -18,23 +18,22 @@ public class GhostManager : MonoBehaviour
     float timeElapsed = 0;
     float currentTimeElapsed = 0;
 
-    [SerializeField] PlayerController ghost;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ghostDictionary = new Dictionary<InputType, UnityEngine.InputSystem.InputAction.CallbackContext>();
-    }
-
-    // Update is called once per frame
+    PlayerController ghost;
+    PlayerController player;
     void Update()
     {
         if(readInput)
         {
             currentTimeElapsed += Time.deltaTime;
 
-            if(currentTimeElapsed >= timeDistance[0] ) 
+            if(currentTimeElapsed >= timeDistance[0]) 
             { 
+                if(ghost == null) // nel caso in cui il Ghost venga ucciso mentre si sta muovendo... Non si sa mai
+                {
+                    ResetValues();
+                    return;
+                }
+
                 timeDistance.RemoveAt(0);
                 EseguiInputGhost();
             }
@@ -42,13 +41,24 @@ public class GhostManager : MonoBehaviour
         else if (readTime)
         {
             timeElapsed += Time.deltaTime;
+            
+            if (ghost == null) // nel caso in cui il Ghost venga ucciso mentre si sta muovendo... Non si sa mai
+            {
+                ResetValues();
+                return;
+            }
         }
+    }
+
+    public void Initialize(PlayerController player)
+    {
+        this.player = player;
     }
 
     private void EseguiInputGhost()
     {
         var input = inputTypes.Dequeue();
-        var callback = callbackContexts.Dequeue();
+        var callbackValue = callbackContexts.Dequeue();
 
         switch (input)
         {
@@ -56,7 +66,7 @@ public class GhostManager : MonoBehaviour
                 ghost.Dash();
                 break;
             case InputType.Ghost:
-                ResetGhost();
+                player.DestroyGhost();
 
                 break;
             case InputType.MovementStart:
@@ -64,14 +74,14 @@ public class GhostManager : MonoBehaviour
                 {
                     ghost.StateMachine.SetState(EPlayerState.Walking);
 
-                    Vector2 readedDirection = callback.ReadValue<Vector2>();
+                    Vector2 readedDirection = callbackValue;
 
                     ghost.Direction = readedDirection.normalized;
                     ghost.lastDirection = readedDirection.normalized;
                 }
                 break;
             case InputType.MovementEnd:
-                ghost.Direction = callback.ReadValue<Vector2>();
+                ghost.Direction = callbackValue;
                 break;
             case InputType.Attack:
                 ghost.Attack();
@@ -85,8 +95,12 @@ public class GhostManager : MonoBehaviour
 
     public void ResetGhost()
     {
-        readInput = false;
         Destroy(ghost.gameObject);
+        ResetValues();
+    }
+    public void ResetValues()
+    {
+        readInput = false;
 
         inputTypes.Clear();
         callbackContexts.Clear();
@@ -96,10 +110,10 @@ public class GhostManager : MonoBehaviour
         currentTimeElapsed = 0;
     }
 
-    public void RegistraInput(UnityEngine.InputSystem.InputAction.CallbackContext obj, InputType inputType)
+    public void RegistraInput(Vector2 callBackValue, InputType inputType)
     {
         inputTypes.Enqueue(inputType);
-        callbackContexts.Enqueue(obj);
+        callbackContexts.Enqueue(callBackValue);
         timeDistance.Add(timeElapsed);
     }
 

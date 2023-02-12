@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
         DestroyGhost();
     }
 
-    private void DestroyGhost()
+    public void DestroyGhost()
     {
         CanRewind = false;
         GhostActive = false;

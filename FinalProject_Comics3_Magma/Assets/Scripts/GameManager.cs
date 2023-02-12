@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         
         playerController = FindObjectOfType<PlayerController>();
         ghostManager = GetComponent<GhostManager>();
-
+        ghostManager.Initialize(playerController);
         //if (playerMovement == null)
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
@@ -87,10 +87,10 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (playerController.CanRewind)
+        if (playerController.CanRewind && playerController.Direction.magnitude == 0)
         {
             if (playerController.GhostActive)
-                GhostManager.RegistraInput(obj, InputType.Ghost);
+                GhostManager.RegistraInput(Vector2.zero, InputType.Ghost);
 
             playerController.StateMachine.SetState(EPlayerState.Rewind);         
         }
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     {
         if (playerController.GhostActive)
         {
-            GhostManager.RegistraInput(obj, InputType.Dash);
+            GhostManager.RegistraInput(Vector2.zero, InputType.Dash);
         }
 
         playerController.Dash();
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     {
         if (playerController.GhostActive)
         {
-            GhostManager.RegistraInput(obj, InputType.MovementEnd);
+            GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementEnd);
         }
 
         playerController.Direction = obj.ReadValue<Vector2>();
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         {
             if (playerController.GhostActive)
             {
-                GhostManager.RegistraInput(obj, InputType.MovementStart);
+                GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementStart);
             }
 
             playerController.StateMachine.SetState(EPlayerState.Walking);
@@ -140,10 +140,8 @@ public class GameManager : MonoBehaviour, ISubscriber
     {
         if (playerController.GhostActive)
         {
-            GhostManager.RegistraInput(obj, InputType.Attack);
+            GhostManager.RegistraInput(Vector2.zero, InputType.Attack);
         }
-
-        
 
         playerController.Attack();
     }

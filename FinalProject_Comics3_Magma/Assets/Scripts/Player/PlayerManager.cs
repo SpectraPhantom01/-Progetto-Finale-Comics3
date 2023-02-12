@@ -5,15 +5,11 @@ using UnityEngine;
 using System.Linq;
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
-    [Header("Time Machine Settings")]
-    [SerializeField] int maxNumberPositions;
-    [SerializeField] float timeDeltaSavePosition;
     [Header("Hourglass Settings")]
     [SerializeField] float timeLoseDustInHourglass;
     [SerializeField] float amountLoseDust;
     [Header("Attack Settings")]
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
-    public Queue<Vector3> SavedPositions { get; private set; }
 
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
@@ -22,7 +18,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
     public PlayerController PlayerController => _playerController;
-    private float savePositionTimePassed;
     private float hourglassTimePassed;
     private Damageable _damageable;
     private PlayerController _playerController;
@@ -51,20 +46,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     {
         IsAlive = true;
 
-        SavedPositions = new Queue<Vector3>();
-        for (int i = 0; i < maxNumberPositions; i++)
-        {
-            SavedPositions.Enqueue(transform.position);
-        }
         _damageable = gameObject.SearchComponent<Damageable>();
-        savePositionTimePassed = 0;
 
         _playerController = gameObject.SearchComponent<PlayerController>();
     }
 
     private void Update()
     {
-        HandleSavePosition();
         HandleHourglass();
 
         if(_playerController.Rigidbody.velocity.magnitude > 0.01f)
@@ -81,21 +69,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
     }
 
-    private void HandleSavePosition()
-    {
-        savePositionTimePassed += Time.deltaTime;
-        if(savePositionTimePassed >= timeDeltaSavePosition)
-        {
-            savePositionTimePassed = 0;
-            SavePosition(transform.position);
-        }
-    }
 
-    private void SavePosition(Vector3 newPosition)
-    {
-        SavedPositions.Dequeue();
-        SavedPositions.Enqueue(newPosition);
-    }
 
     public void LockMovement(float time)
     {
@@ -115,20 +89,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if(SavedPositions != null)
-        {
-            Gizmos.color = Color.yellow;
-            foreach (var savedPos in SavedPositions)
-            {
-                Gizmos.DrawSphere(savedPos, 0.5f);
-            }
-            Gizmos.color = Color.white;
-            var positions = SavedPositions.ToArray();
-            for (int i = 0; i < positions.Length - 1; i++)
-            {
-                Gizmos.DrawLine(positions[i], positions[i + 1]);
-            }
-        }
 
         var attackShoot = attackScriptableObjects.Find(x => x.AttackType == EAttackType.Shoot);
         if (attackShoot != null)
