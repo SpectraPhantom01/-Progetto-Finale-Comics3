@@ -284,8 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae3c0778cf93d040b6a4e44e0d4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumberPositions: 10
-  timeDeltaSavePosition: 0.1
   timeLoseDustInHourglass: 1
   amountLoseDust: 1
   attackScriptableObjects:
@@ -309,7 +307,7 @@ MonoBehaviour:
   dashingPower: 15
   dashingTime: 0.3
   dashingCooldown: 0.25
-  ghostPrefab: {fileID: 1877984911373530205, guid: 017efc38900c5da468971b784f8fb7a7, type: 3}
+  ghostPrefab: {fileID: 3138579559502232296}
   ghostLifeTime: 2.5
   rewindCooldown: 1
   attackPoint: {fileID: 960920955020320483}
