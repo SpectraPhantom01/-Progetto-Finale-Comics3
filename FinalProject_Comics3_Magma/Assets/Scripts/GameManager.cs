@@ -40,10 +40,13 @@ public class GameManager : MonoBehaviour, ISubscriber
     // Corrected Variables
     private InputSystem inputSystem;
     private PlayerController playerController;
+    private GhostManager ghostManager;
     private LanguageManager languageManager;
 
     // Properties
     public PlayerController Player => playerController;
+
+    public GhostManager GhostManager => ghostManager;
 
     private void Awake()
     {
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour, ISubscriber
 
         
         playerController = FindObjectOfType<PlayerController>();
+        ghostManager = GetComponent<GhostManager>();
 
         //if (playerMovement == null)
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
@@ -83,18 +87,34 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if(playerController.CanRewind)
-            playerController.StateMachine.SetState(EPlayerState.Rewind);
+        if (playerController.CanRewind)
+        {
+            if (playerController.GhostActive)
+                GhostManager.RegistraInput(obj, InputType.Ghost);
+
+            playerController.StateMachine.SetState(EPlayerState.Rewind);         
+        }
+            
     }
 
     private void Dash_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (playerController.GhostActive)
+        {
+            GhostManager.RegistraInput(obj, InputType.Dash);
+        }
+
         playerController.Dash();
         //playerController.StateMachine.SetState(EPlayerState.Dashing);
     }
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (playerController.GhostActive)
+        {
+            GhostManager.RegistraInput(obj, InputType.MovementEnd);
+        }
+
         playerController.Direction = obj.ReadValue<Vector2>();
     }
 
@@ -102,6 +122,11 @@ public class GameManager : MonoBehaviour, ISubscriber
     {
         if (!playerController.IsDashing)
         {
+            if (playerController.GhostActive)
+            {
+                GhostManager.RegistraInput(obj, InputType.MovementStart);
+            }
+
             playerController.StateMachine.SetState(EPlayerState.Walking);
 
             Vector2 readedDirection = obj.ReadValue<Vector2>();
@@ -113,7 +138,12 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        playerController.StateMachine.SetState(EPlayerState.Attacking);
+        if (playerController.GhostActive)
+        {
+            GhostManager.RegistraInput(obj, InputType.Attack);
+        }
+
+        
 
         playerController.Attack();
     }

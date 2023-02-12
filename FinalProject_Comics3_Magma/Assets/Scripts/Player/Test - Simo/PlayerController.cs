@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public float dashingCooldown;
 
     [Header("Ghost Settings")]
-    [SerializeField] GameObject ghostPrefab;
+    [SerializeField] PlayerController ghostPrefab;
     public float ghostLifeTime;
     public float rewindCooldown;
 
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
 
-    GameObject instantiatedGhost;
+    PlayerController instantiatedGhost;
     IEnumerator ghostRoutine;
 
     //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
@@ -203,17 +203,20 @@ public class PlayerController : MonoBehaviour
     public void CreateGhost()
     {
         GhostActive = true;
-        instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.identity);
+        instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
 
         ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
         StartCoroutine(ghostRoutine);
+
+        GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
     }
   
     public void Rewind()
     {
         StopCoroutine(ghostRoutine);
-        transform.position = instantiatedGhost.transform.position; 
-        DestroyGhost();
+        transform.position = instantiatedGhost.transform.position;
+        //DestroyGhost();
+        GhostActivation();
     }
 
     private IEnumerator GhostRoutine()
@@ -227,10 +230,20 @@ public class PlayerController : MonoBehaviour
         CanRewind = false;
         GhostActive = false;
 
-        Destroy(instantiatedGhost);
-        instantiatedGhost = null;
+        //Destroy(instantiatedGhost);
+        //instantiatedGhost = null;
+
+        GameManager.Instance.GhostManager.ResetGhost();
 
         StartCoroutine(RewindCooldownRoutine());
+    }
+
+    private void GhostActivation()
+    {
+        CanRewind = false;
+        GhostActive = false;  
+        
+        GameManager.Instance.GhostManager.StartExecuteInputs();
     }
 
     public IEnumerator RewindCooldownRoutine()
@@ -250,6 +263,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack() //Da spostare?
     {
+        StateMachine.SetState(EPlayerState.Attacking);
         _damager.Attack();
         //_damager.AttackShoot();
     }

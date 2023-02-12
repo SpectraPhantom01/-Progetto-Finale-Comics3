@@ -34,7 +34,9 @@ public class RewindCharacterState : State
         else
         {            
             m_Owner.Rewind();
-        }          
+        }
+
+        m_Owner.StateMachine.SetState(EPlayerState.Idle); //Una volta creato/distrutto il player torna in Idle
     }
 
     public override void OnUpdate()
