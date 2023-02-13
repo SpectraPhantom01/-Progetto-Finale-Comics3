@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
         // INPUT SYSTEM
-
+        
         inputSystem = new InputSystem();
         inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += Movement_started;

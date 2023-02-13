@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
+using UnityEngine;
 
 namespace BehaviorDesigner.Runtime.Tasks
 {
@@ -15,6 +16,10 @@ namespace BehaviorDesigner.Runtime.Tasks
         [Tooltip("The maximum wait time if random wait is enabled")]
         public SharedFloat randomWaitMax = 1;
 
+        [Tooltip("Only for lava slime")]
+        public SharedBool spawnTransform = false;
+        public SharedFloat jumpDistance = 1;
+        public SharedFloat transformLife = 4;
         // The time to wait
         private float waitDuration;
         // The time that the task started to wait.
@@ -53,7 +58,20 @@ namespace BehaviorDesigner.Runtime.Tasks
                 startTime += (Time.time - pauseTime);
             }
         }
+        public override void OnEnd()
+        {
+            base.OnEnd();
+            if(spawnTransform.Value)
+            {
 
+                GameObject gameObject = new GameObject();
+                gameObject.transform.position = transform.position + transform.forward * jumpDistance.Value;
+                BehaviorTree behaviorTree = GetComponent<BehaviorTree>();
+                behaviorTree.SetVariableValue("TargetJump", gameObject);
+                UnityEngine.Object.Destroy(gameObject, transformLife.Value);
+            }
+
+        }
         public override void OnReset()
         {
             // Reset the public properties back to their original values
