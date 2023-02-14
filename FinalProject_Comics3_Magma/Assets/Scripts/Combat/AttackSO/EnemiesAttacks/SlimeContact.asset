@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: SlimeContact
   m_EditorClassIdentifier: 
   AttackType: 0
-  DamageAmount: 0
-  KnockBack: 0
-  hitBoxRangeView: {x: 0, y: 0}
-  hitBoxRangeDamage: {x: 0, y: 0}
+  DamageAmount: 5
+  KnockBack: 20
+  hitBoxRangeView: {x: 1, y: 1}
+  hitBoxRangeDamage: {x: 2, y: 2}
   MeleeAttackType: 0
   ShootingAttackType: 0
   SpellPrefab: {fileID: 0}
