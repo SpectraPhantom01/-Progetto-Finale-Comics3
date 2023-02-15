@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class Damager : MonoBehaviour
     [SerializeField] Transform damagerArea;
     [SerializeField] LayerMask _damageableMask;
     [SerializeField] Vector2 hitBox = Vector2.one;
+    [Tooltip("Only for TRIGGER Damagers such as Slime Trail")]
+    [SerializeField] float triggerDamage;
     bool _isPlayer;
     List<AttackScriptableObject> _attackList;
     PlayerManager _playerManager;
@@ -25,17 +28,18 @@ public class Damager : MonoBehaviour
         if (!_isPlayer)
         {
             _ai = gameObject.SearchComponent<AI>();
-            if (_ai == null)
-                throw new Exception("ERRORE: non è stato possibile trovare il componente Player Manager o AI");
+            //if (_ai == null)
+            //    throw new Exception("ERRORE: non è stato possibile trovare il componente Player Manager o AI");
         }
 
-        _attackList = gameObject.SearchComponent<IAliveEntity>().AttackList;
+        if(_isPlayer || _ai != null)
+            _attackList = gameObject.SearchComponent<IAliveEntity>().AttackList;
         
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var attack = _attackList.Find(x => x.AttackType == EAttackType.Contact);
+        var attack = _attackList?.Find(x => x.AttackType == EAttackType.Contact);
         if (attack != null)
         {
             if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
@@ -44,6 +48,16 @@ public class Damager : MonoBehaviour
                 if (damageable != null)
                     GiveDamage(damageable, attack, transform);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
+        {
+            Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
+            if (damageable != null)
+                damageable.Damage(triggerDamage, 20, -(transform.position - damageable.transform.position).normalized);
         }
     }
 

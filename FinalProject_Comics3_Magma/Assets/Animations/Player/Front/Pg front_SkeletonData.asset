@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pg front_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 68b3cffb843e72f4da4629b328c4f464, type: 2}
+  - {fileID: 11400000, guid: 498009488f29636499e07cdd51bb6c01, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: ba2be077052d51c49aab460d7fee772f, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: a80c501b04dc5704ea944180f8551cd5, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 1
@@ -23,7 +23,7 @@ MonoBehaviour:
     additiveMaterials: []
     multiplyMaterials:
     - pageName: Pg front.png
-      material: {fileID: 2100000, guid: 8b87c191d89ad254e9abae4a268a12b9, type: 2}
+      material: {fileID: 2100000, guid: 89063b04de044c74a8711b866524b534, type: 2}
     screenMaterials: []
   skeletonDataModifiers: []
   fromAnimation: []

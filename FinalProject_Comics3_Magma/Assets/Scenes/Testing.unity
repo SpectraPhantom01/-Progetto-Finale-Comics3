@@ -1477,9 +1477,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 21121566970217140, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: _animationName
+      value: PG_Idle_front
+      objectReference: {fileID: 0}
+    - target: {fileID: 21121566970217140, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: initialSkinName
+      value: Pg_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 21121566970217140, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: edf3cd7bf34476845bed10961e81f335, type: 2}
     - target: {fileID: 33119639172938845, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727369765906901464, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: m_Name
+      value: FrontSpine
       objectReference: {fileID: 0}
     - target: {fileID: 3138579559502232213, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_RootOrder
@@ -1543,8 +1559,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3682835986779401836, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: hourglasses.Array.data[0].Time
-      value: 1e+9
+      value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8641136521392591556, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641136521392591556, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c06d50b8918fdb4d9d95aae198e11da, type: 2}
+    - target: {fileID: 8641136521392591556, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 89063b04de044c74a8711b866524b534, type: 2}
+    - target: {fileID: 8641136521392591556, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c06d50b8918fdb4d9d95aae198e11da, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
 --- !u!1001 &743392903
@@ -2045,6 +2077,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 629798521}
     m_Modifications:
+    - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000023841858
+      objectReference: {fileID: 0}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (3)
@@ -4815,6 +4851,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204470445364533329, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: deltaTimeSpawnTrail
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204470445364533329, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: timeSingleTrailLife
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7327500715194216675, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
       propertyPath: m_Name
       value: LavaSlime

@@ -1,0 +1,64 @@
+pg back.png
+size:1712,283
+filter:Linear,Linear
+pma:true
+avambraccio
+bounds:763,2,40,57
+braccio
+bounds:805,3,56,99
+rotate:90
+cintura
+bounds:1231,7,101,85
+rotate:90
+clessidra
+bounds:1318,25,83,121
+rotate:90
+gamba dx
+bounds:763,61,106,220
+gamba dx corsa
+bounds:481,3,51,278
+gamba sx
+bounds:587,8,60,273
+gamba sx corsa
+bounds:534,3,51,278
+gonna
+bounds:1441,5,121,131
+rotate:90
+gonna dietro
+bounds:1574,7,119,133
+rotate:90
+luce
+bounds:2,3,278,477
+rotate:90
+mano
+bounds:871,62,37,50
+rotate:90
+mantello
+bounds:1328,128,153,291
+rotate:90
+ombra
+bounds:871,101,180,132
+rotate:90
+ombra corsa
+bounds:923,5,159,94
+piede dx
+bounds:1671,251,30,39
+rotate:90
+piede dx corsa
+bounds:1621,251,30,48
+rotate:90
+piede sx
+bounds:1671,204,45,32
+rotate:90
+piede sx corso
+bounds:1621,219,30,48
+rotate:90
+spada dietro
+bounds:1005,110,171,321
+rotate:90
+spada in mano
+bounds:649,32,249,112
+rotate:90
+torace
+bounds:1084,2,106,145
+rotate:90

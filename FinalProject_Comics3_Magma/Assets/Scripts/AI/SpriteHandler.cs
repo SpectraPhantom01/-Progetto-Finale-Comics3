@@ -22,7 +22,7 @@ public class SpriteHandler : MonoBehaviour
 
     private void Update()
     {
-        _graphics.transform.rotation = Quaternion.Euler(0, 0, 0);
+        _graphics.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
         if (IsPlayer)
         {
