@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
+
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
     [Header("Hourglass Settings")]
@@ -10,7 +12,9 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] float amountLoseDust;
     [Header("Attack Settings")]
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
-
+    [Header("Inventory Settings")]
+    [SerializeField] int MaxObjectCapacity;
+    
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
     public string Name => "Knight of Time";
@@ -21,6 +25,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private float hourglassTimePassed;
     private Damageable _damageable;
     private PlayerController _playerController;
+
+    [HideInInspector] public List<PickableScriptableObject> InventoryList;
 
     public void Kill(Vector3 respawnPosition)
     {
@@ -45,6 +51,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private void Awake()
     {
         IsAlive = true;
+
+        InventoryList = new List<PickableScriptableObject>();
 
         _damageable = gameObject.SearchComponent<Damageable>();
 
@@ -83,6 +91,41 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _playerController.CanMove = false;
         yield return new WaitForSeconds(time);
         _playerController.CanMove = true;
+    }
+
+    public void PickUpObject(PickableScriptableObject newObject, GameObject gameObject)
+    {
+        if(InventoryList.Count < MaxObjectCapacity)
+        {
+            InventoryList.Add(newObject);
+            Destroy(gameObject);
+        }
+    }
+
+    public void UseObject(PickableScriptableObject pickableObject)
+    {
+        if(InventoryList.Contains(pickableObject))
+        {
+            switch (pickableObject.PickableEffectType)
+            {
+                case EPickableEffectType.AddAttackForce:
+                    break;
+                case EPickableEffectType.HealTime:
+                    Damageable.Heal(pickableObject.EffectInPercentage);
+                    break;
+                case EPickableEffectType.HealHourglass:
+                    Damageable.HealHourglass(pickableObject.EffectInPercentage);
+                    break;
+            }
+
+            RemoveObject(pickableObject);
+        }
+    }
+
+    public void RemoveObject(PickableScriptableObject pickableScriptableObject)
+    {
+        if(InventoryList.Contains(pickableScriptableObject))
+            InventoryList.Remove(pickableScriptableObject);
     }
 
     public GameObject GetGameObject() => gameObject;

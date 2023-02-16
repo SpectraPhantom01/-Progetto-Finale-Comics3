@@ -70,18 +70,19 @@ public class Damageable : MonoBehaviour
     public void Damage(float amount, float knockBack, Vector2 direction, Transform respawnPosition = null)
     {
         CalculateDamage(amount);
+        if(!_currentHourglass.Damage(25))
+        {
+            _currentTimeLife = -1;
+        }
 
         if (_currentTimeLife <= 0)
         {
             hourglasses.Remove(_currentHourglass);
 
-
-
             if(hourglasses.Count > 0)
                 _currentHourglass = hourglasses.First();
             else
             {
-                Debug.Log($"{_entity.Name} is death");
                 if (respawnPosition != null)
                     _entity.Kill(respawnPosition.position);
                 else
@@ -172,6 +173,11 @@ public class Damageable : MonoBehaviour
         _currentTimeLife += amount;
         Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{_currentHourglass.Time}");
 
+    }
+
+    public void HealHourglass(float percentage)
+    {
+        _currentHourglass.Heal(percentage);
     }
 
     public void SetHourglasses(List<Hourglass> newHourglasses)

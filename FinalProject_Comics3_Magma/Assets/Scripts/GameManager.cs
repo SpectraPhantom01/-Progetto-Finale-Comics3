@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Attack.performed += Attack_performed;
         inputSystem.Player.Dash.performed += Dash_performed;
         inputSystem.Player.Rewind.performed += Rewind_performed;
-
+        inputSystem.Player.Pause.performed += Pause_performed;
         // END INPUT SYSTEM
 
 
@@ -83,6 +83,11 @@ public class GameManager : MonoBehaviour, ISubscriber
 
         Publisher.Subscribe(this, typeof(SaveMessage));
         Publisher.Subscribe(this, typeof(LoadMessage));
+    }
+
+    private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        UIManager.Instance.Pause();
     }
 
     private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

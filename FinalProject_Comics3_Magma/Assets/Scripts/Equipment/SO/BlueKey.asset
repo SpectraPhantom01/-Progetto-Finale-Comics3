@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f826363b425b8414f83afe6a51bb9bcf, type: 3}
+  m_Name: BlueKey
+  m_EditorClassIdentifier: 
+  ObjectName: Chiave Blu
+  ObjectDescription: "Descrizione: La Chiave che permette di aprire i Cancelli dell\u2019Accademia
+    di Pavv, fino a qualche tempo fa era considerata solo un oggetto di scena, in
+    quanto i cancelli erano sempre aperti a tutti."
+  ObjectInventorySprite: {fileID: 1869455321, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  IsConsumable: 0
+  IsKeyObject: 1
+  QuantityOnPick: 1
+  PickableEffectType: 0
+  EffectInPercentage: 0

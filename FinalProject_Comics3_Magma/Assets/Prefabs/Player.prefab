@@ -233,6 +233,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   hitBox: {x: 2, y: 2}
+  triggerDamage: 0
 --- !u!1 &3138579559502232215
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +289,9 @@ MonoBehaviour:
   amountLoseDust: 1
   attackScriptableObjects:
   - {fileID: 11400000, guid: 6eb0e907bc6c8ac41bcec2cb5b4fba12, type: 2}
+  MaxObjectCapacity: 30
   CurrentDirection: 1
+  InventoryList: []
 --- !u!114 &3138579559502232296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hourglasses:
   - Time: 50
+    HourglassLife: 0
   - Time: 50
+    HourglassLife: 0
   - Time: 50
+    HourglassLife: 0
   PlayerLockTime: 0.1
   EnemyLockTime: 0.5
   KnockBackResistance: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -58,14 +59,14 @@ public class PlayerController : MonoBehaviour
     public bool IsDashing { get; set; } = false;
     public bool CanDash { get; set; } = true;
     public bool GhostActive { get; set; } = false;
-    public bool CanRewind { get; set; } = true;    
-
+    public bool CanRewind { get; set; } = true;
+    private PlayerManager _playerManager;
     private void Awake()
     {
         //inputSystem = new InputSystem();
         rb = GetComponentInChildren<Rigidbody2D>();
         _damager = gameObject.SearchComponent<Damager>();
-
+        _playerManager = GetComponent<PlayerManager>();
         CanMove = true;
         IsDashing = false;
         CanDash = true;
@@ -264,8 +265,11 @@ public class PlayerController : MonoBehaviour
     public void Attack() //Da spostare?
     {
         StateMachine.SetState(EPlayerState.Attacking);
-        _damager.Attack();
-        //_damager.AttackShoot();
+
+        //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
+
+        _damager.Attack(); // <<---
+        TryPickUp();       // <<---
     }
 
     public void EquipAttack(EAttackType eAttackType)
@@ -273,19 +277,19 @@ public class PlayerController : MonoBehaviour
         _damager.EquipAttack(eAttackType);
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
-    //}
-
-    //private void OnEnable()
-    //{
-    //    inputSystem.Player.Enable();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    inputSystem.Player.Disable();
-    //}
+    public void TryPickUp()
+    {
+        var collidersHit = Physics2D.OverlapCircleAll(transform.position, 1).ToList();
+        if (collidersHit.Count > 0)
+        {
+            foreach (var hit in collidersHit)
+            {
+                if(hit.TryGetComponent<PickableObject>(out var pickable))
+                {
+                    _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable.gameObject);
+                    return;
+                }
+            }
+        }
+    }
 }
