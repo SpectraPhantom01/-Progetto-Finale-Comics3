@@ -27,30 +27,16 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
 
     [SerializeField] Transform attackPoint;
-
-    //Nota: damageAmount e damageableMask aggiunte per test
-    //[Header("Attacking Settings")]
-    //[SerializeField] Transform attackPoint;
-    //[SerializeField] float knockback = 20f;             // TODO: spostati i valori nel DAMAGER
-    //[SerializeField] float _damageAmount; 
-    //[SerializeField] LayerMask _damageableMask;
-
     [HideInInspector] public Vector2 Direction;
     [HideInInspector] public GenericStateMachine<EPlayerState> StateMachine = new GenericStateMachine<EPlayerState>();
 
-    //InputSystem inputSystem;
-
     [HideInInspector] public Vector2 lastDirection;
     float value;
-    //Vector2 normalizedDirection;
     Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
 
     PlayerController instantiatedGhost;
     IEnumerator ghostRoutine;
-
-    //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
-    //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
 
     [HideInInspector] public Damager Damager;
 
@@ -299,4 +285,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 }

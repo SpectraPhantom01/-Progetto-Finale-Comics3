@@ -1432,10 +1432,6 @@ PrefabInstance:
       propertyPath: initialSkinName
       value: Pg_Idle
       objectReference: {fileID: 0}
-    - target: {fileID: 21121566970217140, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: skeletonDataAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: edf3cd7bf34476845bed10961e81f335, type: 2}
     - target: {fileID: 33119639172938845, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1443,18 +1439,6 @@ PrefabInstance:
     - target: {fileID: 1727369765906901464, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_Name
       value: FrontSpine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1770608084497594559, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: Inventory.EquipmentSlots.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1770608084497594559, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: Inventory.InventoryObjects.Array.size
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1770608084497594559, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: Inventory.ActiveObjectSlots.Array.size
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3138579559502232213, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_RootOrder
