@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
-  m_Name: pg back_Atlas
+  m_Name: Pg sx_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: bc563782f766b2c418106b13bc34b0b2, type: 3}
+  atlasFile: {fileID: 4900000, guid: bdda5af094d73b443b3aeb7bb7b42887, type: 3}
   materials:
-  - {fileID: 2100000, guid: 03ba9704c01bf65468d85386a1de9397, type: 2}
+  - {fileID: 2100000, guid: ff780b6bb68888b4aadde7f5bde6972d, type: 2}

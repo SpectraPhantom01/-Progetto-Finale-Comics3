@@ -1,0 +1,50 @@
+Pg dx.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+Livello 1
+bounds:2,2,505,505
+aurea
+bounds:509,5,278,502
+braccio dx
+bounds:1641,457,50,177
+rotate:90
+cappuccio davanti
+bounds:1956,422,75,85
+cintura
+bounds:1074,27,95,105
+clessidra
+bounds:1401,378,50,82
+rotate:90
+gamba dx corsa
+bounds:931,134,136,194
+rotate:90
+gamba sx idle
+bounds:931,134,136,194
+rotate:90
+gamba dx idle
+bounds:1401,430,77,238
+rotate:90
+gonna
+bounds:1820,402,105,134
+rotate:90
+mantella davanti
+bounds:1155,393,114,244
+rotate:90
+mantella dietro
+bounds:1155,280,111,233
+rotate:90
+maschera
+bounds:1485,398,30,61
+rotate:90
+ombra
+bounds:887,8,185,124
+orologi
+bounds:887,137,46,39
+rotate:90
+spada
+bounds:931,272,222,235
+spada dietro
+bounds:789,185,140,322
+torso
+bounds:789,6,96,177

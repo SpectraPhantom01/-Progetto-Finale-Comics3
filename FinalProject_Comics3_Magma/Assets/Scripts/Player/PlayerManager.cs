@@ -14,6 +14,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
     [Header("Inventory Settings")]
     public Inventory Inventory;
+    [Header("Skeleton Settings")]
+    [SerializeField] GameObject upSkeleton;
+    [SerializeField] GameObject downSkeleton;
+    [SerializeField] GameObject rightSkeleton;
+    [SerializeField] GameObject leftSkeleton;
 
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
@@ -63,6 +68,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
         if(_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
+
+        HandleSkeletonRotation();
     }
 
     private void HandleHourglass()
@@ -186,6 +193,49 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         return true;
     }
 
+    public void HandleSkeletonRotation()
+    {
+        switch (CurrentDirection)
+        {
+            case EDirection.Up:
+                if (upSkeleton.activeSelf) return;
+
+                upSkeleton.SetActive(true);
+                downSkeleton.SetActive(false);
+                rightSkeleton.SetActive(false);
+                leftSkeleton.SetActive(false);
+                break;
+            case EDirection.Down:
+                if (downSkeleton.activeSelf) return;
+
+                upSkeleton.SetActive(false);
+                downSkeleton.SetActive(true);
+                rightSkeleton.SetActive(false);
+                leftSkeleton.SetActive(false);
+                break;
+            case EDirection.Left:
+                if (leftSkeleton.activeSelf) return;
+
+                upSkeleton.SetActive(false);
+                downSkeleton.SetActive(false);
+                rightSkeleton.SetActive(false);
+                leftSkeleton.SetActive(true);
+                break;
+            case EDirection.Right:
+                if (rightSkeleton.activeSelf) return;
+
+                upSkeleton.SetActive(false);
+                downSkeleton.SetActive(false);
+                rightSkeleton.SetActive(true);
+                leftSkeleton.SetActive(false);
+                break;
+        }
+    }
+
+    public void HandleSkeletonAnimation()
+    {
+
+    }
     public GameObject GetGameObject() => gameObject;
 #if UNITY_EDITOR
     private void OnDrawGizmos()
