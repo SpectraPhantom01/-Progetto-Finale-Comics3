@@ -14,6 +14,7 @@ public class UIButtonAction : MonoBehaviour
     [SerializeField] Sprite defaultSprite;
     [HideInInspector] public Pickable ObjectInfos;
     Button thisButton;
+    UIKeyObjectsInventory UIKeyObjectsInventory;
     private void Awake()
     {
         thisButton = GetComponent<Button>();
@@ -23,6 +24,15 @@ public class UIButtonAction : MonoBehaviour
     {
         ObjectInfos = scriptableObject;
         pauseMenu = uIPauseMenu;
+        SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
+        ActionType = EButtonActionType.InventoryObject;
+
+        thisButton.interactable = true;
+    }
+    public void Initialize(Pickable scriptableObject, UIKeyObjectsInventory uiKeyObjectsInventory)
+    {
+        ObjectInfos = scriptableObject;
+        UIKeyObjectsInventory = uiKeyObjectsInventory;
         SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
         ActionType = EButtonActionType.InventoryObject;
 
@@ -51,6 +61,9 @@ public class UIButtonAction : MonoBehaviour
     {
         if(pauseMenu != null)
             pauseMenu.SetSelectedObject(ObjectInfos, this);
+        else if(UIKeyObjectsInventory != null)
+            UIKeyObjectsInventory.SetSelectedObject(ObjectInfos);
+
     }
 
 }

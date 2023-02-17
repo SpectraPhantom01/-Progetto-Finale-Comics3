@@ -4,7 +4,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class UIPauseMenu : MonoBehaviour
 {
     [SerializeField] UIButtonAction buttonActionPrefab;
@@ -18,6 +17,10 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] Button removeButton;
     [SerializeField] Button useButton;
 
+    [SerializeField] GameObject InventoryBackground;
+    [SerializeField] GameObject KeyObjectInventoryBackground;
+    [SerializeField] GameObject OptionsMenu;
+    [SerializeField] Sprite defaultSpriteImage;
     PlayerManager _playerManager;
     List<UIButtonAction> _buttonActions;
     UIButtonAction _currentSelected;
@@ -29,7 +32,11 @@ public class UIPauseMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_buttonActions.Count > 0)
+        InventoryBackground.SetActive(true);
+        KeyObjectInventoryBackground.SetActive(false);
+        OptionsMenu.SetActive(false);
+
+        if (_buttonActions.Count > 0)
         {
             int count = _buttonActions.Count;
             for (int i = 0; i < count; i++)
@@ -39,12 +46,13 @@ public class UIPauseMenu : MonoBehaviour
             _buttonActions.Clear();
         }
 
-        foreach (var inventoryObject in _playerManager.InventoryArray.Where(x => x.PickableSO != null))
+        foreach (var inventoryObject in _playerManager.InventoryArray.Where(x => x != null && x.PickableSO != null && !x.PickableSO.IsKeyObject))
         {
             var newButton = Instantiate(buttonActionPrefab, gridEquippablePanel.transform);
             newButton.Initialize(inventoryObject, this);
             _buttonActions.Add(newButton);
         }
+
     }
 
     public void SetSelectedObject(Pickable pickable, UIButtonAction buttonAction)
@@ -132,8 +140,39 @@ public class UIPauseMenu : MonoBehaviour
                 Destroy(buttonToRemove.gameObject);
 
                 RemoveSelectedEquipment();
+                ClearInfos();
                 useButton.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void GoToMenu(int index)
+    {
+        switch(index)
+        {
+            case 0:
+                InventoryBackground.SetActive(true);
+                KeyObjectInventoryBackground.SetActive(false);
+                OptionsMenu.SetActive(false);
+                break;
+            case 1:
+                InventoryBackground.SetActive(false);
+                KeyObjectInventoryBackground.SetActive(true);
+                OptionsMenu.SetActive(false);
+                break;
+            case 2:
+                InventoryBackground.SetActive(false);
+                KeyObjectInventoryBackground.SetActive(false);
+                OptionsMenu.SetActive(true);
+                break;
+        }
+    }
+
+    public void ClearInfos()
+    {
+        objectTitle.text = "";
+        objectType.text = "";
+        objectDescription.text = "";
+        selectedObjectImage.sprite = defaultSpriteImage;
     }
 }

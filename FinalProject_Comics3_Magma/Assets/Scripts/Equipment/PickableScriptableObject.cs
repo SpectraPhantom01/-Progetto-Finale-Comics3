@@ -8,6 +8,8 @@ public class PickableScriptableObject : ScriptableObject
     [Header("Meta Settings")]
     public string ObjectName;
     [TextArea] public string ObjectDescription;
+
+    [Header("Sprite Settings")]
     public Sprite ObjectInventorySprite;
     public Sprite OnGameSprite;
 
