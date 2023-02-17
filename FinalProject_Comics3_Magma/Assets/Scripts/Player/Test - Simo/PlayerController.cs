@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
     //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
 
-    private Damager _damager;
+    [HideInInspector] public Damager Damager;
 
     //public bool IsMoving { get; private set; } = false;
     public bool CanMove { get; set; } = true;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         //inputSystem = new InputSystem();
         rb = GetComponentInChildren<Rigidbody2D>();
-        _damager = gameObject.SearchComponent<Damager>();
+        Damager = gameObject.SearchComponent<Damager>();
         _playerManager = GetComponent<PlayerManager>();
         CanMove = true;
         IsDashing = false;
@@ -268,13 +268,20 @@ public class PlayerController : MonoBehaviour
 
         //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
 
-        _damager.Attack(); // <<---
+        var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0].PickableSO;
+        var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1].PickableSO;
+        float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
+        float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
+
+        Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
+
+        Damager.Attack(); // <<---
         TryPickUp();       // <<---
     }
 
     public void EquipAttack(EAttackType eAttackType)
     {
-        _damager.EquipAttack(eAttackType);
+        Damager.EquipAttack(eAttackType);
     }
 
     public void TryPickUp()

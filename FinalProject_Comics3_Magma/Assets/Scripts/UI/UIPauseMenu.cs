@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,9 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI objectTitle;
     [SerializeField] TextMeshProUGUI objectType;
     [SerializeField] TextMeshProUGUI objectDescription;
+
+    [SerializeField] Button removeButton;
+    [SerializeField] Button useButton;
 
     PlayerManager _playerManager;
     List<UIButtonAction> _buttonActions;
@@ -35,7 +39,7 @@ public class UIPauseMenu : MonoBehaviour
             _buttonActions.Clear();
         }
 
-        foreach (var inventoryObject in _playerManager.InventoryList)
+        foreach (var inventoryObject in _playerManager.InventoryArray.Where(x => x.PickableSO != null))
         {
             var newButton = Instantiate(buttonActionPrefab, gridEquippablePanel.transform);
             newButton.Initialize(inventoryObject, this);
@@ -43,23 +47,92 @@ public class UIPauseMenu : MonoBehaviour
         }
     }
 
-    public void SetSelectedObject(PickableScriptableObject pickableScriptable, UIButtonAction buttonAction)
+    public void SetSelectedObject(Pickable pickable, UIButtonAction buttonAction)
     {
-        if(pickableScriptable != null)
+        if(pickable != null && pickable.PickableSO != null)
         {
-            objectTitle.text = pickableScriptable.ObjectName;
-            objectType.text = pickableScriptable.IsKeyObject ? "Key Object" : pickableScriptable.IsConsumable ? "Consumable Object" : "Equipment";
-            objectDescription.text = pickableScriptable.ObjectDescription;
-            selectedObjectImage.sprite = pickableScriptable.ObjectInventorySprite;
+            objectTitle.text = pickable.PickableSO.ObjectName;
+            objectType.text = pickable.PickableSO.IsKeyObject ? "Key Object" : pickable.PickableSO.IsConsumable ? "Consumable Object" : "Equipment";
+            objectDescription.text = pickable.PickableSO.ObjectDescription;
+            selectedObjectImage.sprite = pickable.PickableSO.ObjectInventorySprite;
         }
 
-        if(_currentSelected == null)
-            _currentSelected = buttonAction;
-        else
+        if (_currentSelected == null || buttonAction.ActionType == EButtonActionType.InventoryObject)
+            SelectButton(buttonAction);
+        else if (_currentSelected.ActionType == EButtonActionType.InventoryObject && buttonAction.ActionType != EButtonActionType.InventoryObject && !_currentSelected.ObjectInfos.PickableSO.IsKeyObject)
         {
-            if(_currentSelected.ActionType == EButtonActionType.InventoryObject)
+            if (_currentSelected.ObjectInfos.PickableSO.IsConsumable && buttonAction.ActionType == EButtonActionType.ActiveObject)
             {
-                buttonAction.Initialize(pickableScriptable, this);
+                TryEquipSlot(buttonAction);
+            }
+            else if (!_currentSelected.ObjectInfos.PickableSO.IsConsumable && buttonAction.ActionType == EButtonActionType.EquipmentObject)
+            {
+                TryEquipSlot(buttonAction);
+            }
+
+            SelectButton(buttonAction);
+        }
+        else if (buttonAction.ActionType != EButtonActionType.InventoryObject && buttonAction.ObjectInfos != null && buttonAction.ObjectInfos.PickableSO != null)
+        {
+            SelectButton(buttonAction);
+        }
+        else
+            _currentSelected = null;
+    }
+
+    private void SelectButton(UIButtonAction buttonAction)
+    {
+        switch (buttonAction.ActionType)
+        {
+            case EButtonActionType.InventoryObject:
+                removeButton.gameObject.SetActive(false);
+                useButton.gameObject.SetActive(false);
+                break;
+            case EButtonActionType.EquipmentObject:
+                removeButton.gameObject.SetActive(true);
+                useButton.gameObject.SetActive(false);
+                break;
+            case EButtonActionType.ActiveObject:
+                removeButton.gameObject.SetActive(false);
+                useButton.gameObject.SetActive(true);
+                break;
+        }
+
+        _currentSelected = buttonAction;
+    }
+
+    private void TryEquipSlot(UIButtonAction buttonAction)
+    {
+        if (_playerManager.TryEquip(_currentSelected.ObjectInfos, buttonAction.ActionType, buttonAction.SlotIndex))
+        {
+            buttonAction.OverWrite(_currentSelected.ObjectInfos, this);
+        }
+        _currentSelected = null;
+    }
+
+    public void RemoveSelectedEquipment()
+    {
+        if(_currentSelected != null && _currentSelected.ObjectInfos != null && _currentSelected.ObjectInfos.PickableSO != null)
+        {
+            _playerManager.UnEquip(_currentSelected.ObjectInfos, _currentSelected.ActionType, _currentSelected.SlotIndex);
+            _currentSelected.Clear();
+            _currentSelected = null;
+            removeButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void UseSelectedActionObject()
+    {
+        if (_currentSelected != null && _currentSelected.ObjectInfos != null && _currentSelected.ObjectInfos.PickableSO != null)
+        {
+            if(_playerManager.TryUseObject(_currentSelected.ObjectInfos, _currentSelected.SlotIndex))
+            {
+                var buttonToRemove = _buttonActions.Find(x => x.ObjectInfos.ID == _currentSelected.ObjectInfos.ID);
+                _buttonActions.Remove(buttonToRemove);
+                Destroy(buttonToRemove.gameObject);
+
+                RemoveSelectedEquipment();
+                useButton.gameObject.SetActive(false);
             }
         }
     }

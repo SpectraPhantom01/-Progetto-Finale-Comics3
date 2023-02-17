@@ -18,6 +18,7 @@ MonoBehaviour:
     per non Svanire.\nConsumo: Ripara del 25% le condizioni della Clessidra attualmente
     in uso."
   ObjectInventorySprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  OnGameSprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
   IsConsumable: 1
   IsKeyObject: 0
   QuantityOnPick: 1

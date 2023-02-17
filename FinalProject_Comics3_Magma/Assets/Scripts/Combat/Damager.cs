@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Damager : MonoBehaviour
@@ -17,7 +18,7 @@ public class Damager : MonoBehaviour
     PlayerManager _playerManager;
     AI _ai;
     AttackScriptableObject _equippedAttack;
-
+    float _bonusAttackPercentage;
     public AttackScriptableObject EquippedAttack => _equippedAttack;
     private void Awake()
     {
@@ -46,7 +47,7 @@ public class Damager : MonoBehaviour
             {
                 Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
                 if (damageable != null)
-                    GiveDamage(damageable, attack, transform);
+                    GiveDamage(damageable, attack, transform, _bonusAttackPercentage);
             }
         }
     }
@@ -73,7 +74,7 @@ public class Damager : MonoBehaviour
                     .Select(x => x.gameObject.SearchComponent<Damageable>())
                     .Where(x => x != null).ToList();
 
-                damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform));
+                damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform, _bonusAttackPercentage));
             }
 
         }
@@ -165,9 +166,15 @@ public class Damager : MonoBehaviour
         }
     }
 
-    public static void GiveDamage(Damageable damageable, AttackScriptableObject attack, Transform transform)
+    public void SetBonusAttack(float bonus1, float bonus2)
     {
-        damageable.Damage(attack.DamageAmount, attack.KnockBack, -(transform.position - damageable.transform.position).normalized);
+        _bonusAttackPercentage = bonus1 + bonus2;
+    }
+
+    public static void GiveDamage(Damageable damageable, AttackScriptableObject attack, Transform transform, float bonus)
+    {
+        var damage = attack.DamageAmount + (attack.DamageAmount * bonus / 100);
+        damageable.Damage(damage, attack.KnockBack, -(transform.position - damageable.transform.position).normalized);
     }
 
 #if UNITY_EDITOR

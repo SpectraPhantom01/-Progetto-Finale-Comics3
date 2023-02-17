@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f826363b425b8414f83afe6a51bb9bcf, type: 3}
-  m_Name: Ring of Attack
+  m_Name: Ring of Attack 1
   m_EditorClassIdentifier: 
   ObjectName: "Anello dell\u2019Attacco"
   ObjectDescription: "Descrizione: Un semplice anello infuso di energia magica base;
     un semplice esercizio per ogni incanta-fabbro alle prime armi.\nEffetto: Aumenta
     l\u2019Attacco di Etim del 10%.\r"
-  ObjectInventorySprite: {fileID: -286483645, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
-  OnGameSprite: {fileID: -286483645, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  ObjectInventorySprite: {fileID: 242521226, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  OnGameSprite: {fileID: 242521226, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
   IsConsumable: 0
   IsKeyObject: 0
   QuantityOnPick: 1

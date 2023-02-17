@@ -8,23 +8,38 @@ using UnityEngine.UI;
 public class UIButtonAction : MonoBehaviour
 {
     public EButtonActionType ActionType;
+    [SerializeField] Image equipImage;
+    [SerializeField] UIPauseMenu pauseMenu;
+    public int SlotIndex;
+    [SerializeField] Sprite defaultSprite;
+    [HideInInspector] public Pickable ObjectInfos;
     Button thisButton;
-    Image equipImage;
-    PickableScriptableObject objectInfos;
-    UIPauseMenu pauseMenu;
-
     private void Awake()
     {
         thisButton = GetComponent<Button>();
-        equipImage = GetComponentInChildren<Image>();
     }
 
-    public void Initialize(PickableScriptableObject scriptableObject, UIPauseMenu uIPauseMenu)
+    public void Initialize(Pickable scriptableObject, UIPauseMenu uIPauseMenu)
     {
-        objectInfos = scriptableObject;
+        ObjectInfos = scriptableObject;
         pauseMenu = uIPauseMenu;
-        SetSprite(scriptableObject.ObjectInventorySprite);
+        SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
         ActionType = EButtonActionType.InventoryObject;
+
+        thisButton.interactable = true;
+    }
+    public void OverWrite(Pickable scriptableObject, UIPauseMenu uIPauseMenu)
+    {
+        ObjectInfos = scriptableObject;
+        SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
+
+        thisButton.interactable = true;
+    }
+
+    public void Clear()
+    {
+        ObjectInfos = null;
+        SetSprite(defaultSprite);
     }
 
     public void SetSprite(Sprite equipmentSprite)
@@ -35,13 +50,9 @@ public class UIButtonAction : MonoBehaviour
     public void Action()
     {
         if(pauseMenu != null)
-            pauseMenu.SetSelectedObject(objectInfos, this);
+            pauseMenu.SetSelectedObject(ObjectInfos, this);
     }
 
-    private void OnEnable()
-    {
-        thisButton.interactable = objectInfos != null;
-    }
 }
 
 public enum EButtonActionType

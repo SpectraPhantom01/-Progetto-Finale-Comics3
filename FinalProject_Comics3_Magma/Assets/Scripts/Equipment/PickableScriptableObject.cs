@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PickableScriptableObject : ScriptableObject
     public string ObjectName;
     [TextArea] public string ObjectDescription;
     public Sprite ObjectInventorySprite;
+    public Sprite OnGameSprite;
 
     [Header("Effect Settings")]
     public bool IsConsumable;
@@ -15,18 +17,6 @@ public class PickableScriptableObject : ScriptableObject
     public int QuantityOnPick = 1;
     public EPickableEffectType PickableEffectType;
     public float EffectInPercentage;
-
-    public PickableScriptableObject(PickableScriptableObject pickableScriptableObject)
-    {
-        ObjectName = pickableScriptableObject.ObjectName;
-        ObjectDescription = pickableScriptableObject.ObjectDescription;
-        ObjectInventorySprite = pickableScriptableObject.ObjectInventorySprite;
-        IsConsumable = pickableScriptableObject.IsConsumable;
-        IsKeyObject = pickableScriptableObject.IsKeyObject;
-        QuantityOnPick = pickableScriptableObject.QuantityOnPick;
-        PickableEffectType = pickableScriptableObject.PickableEffectType;
-        EffectInPercentage = pickableScriptableObject.EffectInPercentage;
-    }
 }
 
 public enum EPickableEffectType

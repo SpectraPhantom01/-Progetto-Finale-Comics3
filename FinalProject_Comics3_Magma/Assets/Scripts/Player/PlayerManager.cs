@@ -13,8 +13,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [Header("Attack Settings")]
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
     [Header("Inventory Settings")]
-    [SerializeField] int MaxObjectCapacity;
-    
+    public Inventory Inventory;
+
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
     public string Name => "Knight of Time";
@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private Damageable _damageable;
     private PlayerController _playerController;
 
-    [HideInInspector] public List<PickableScriptableObject> InventoryList;
+    [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
 
     public void Kill(Vector3 respawnPosition)
     {
@@ -51,8 +51,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private void Awake()
     {
         IsAlive = true;
-
-        InventoryList = new List<PickableScriptableObject>();
 
         _damageable = gameObject.SearchComponent<Damageable>();
 
@@ -93,39 +91,99 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _playerController.CanMove = true;
     }
 
-    public void PickUpObject(PickableScriptableObject newObject, GameObject gameObject)
+    public void PickUpObject(PickableScriptableObject newObject, GameObject pickableGameObject)
     {
-        if(InventoryList.Count < MaxObjectCapacity)
+        if (!InventoryArray.Any(x => x.PickableSO == null)) return;
+
+        for (int i = 0; i < InventoryArray.Length; i++)
         {
-            InventoryList.Add(newObject);
-            Destroy(gameObject);
+            if (InventoryArray[i].PickableSO == null)
+            {
+                Pickable pickableObject = new()
+                {
+                    PickableSO = newObject
+                };
+                InventoryArray[i] = pickableObject;
+                Destroy(pickableGameObject);
+                return;
+            }
         }
     }
 
-    public void UseObject(PickableScriptableObject pickableObject)
+    public bool TryUseObject(Pickable pickableObject, int slotIndex)
     {
-        if(InventoryList.Contains(pickableObject))
+        if(Inventory.ActiveObjectSlots.Any(x => x == pickableObject))
         {
-            switch (pickableObject.PickableEffectType)
+            var objectToUse = Inventory.ActiveObjectSlots[slotIndex];
+
+            switch (objectToUse.PickableSO.PickableEffectType)
             {
-                case EPickableEffectType.AddAttackForce:
-                    break;
                 case EPickableEffectType.HealTime:
-                    Damageable.Heal(pickableObject.EffectInPercentage);
+                    Damageable.Heal(objectToUse.PickableSO.EffectInPercentage);
                     break;
                 case EPickableEffectType.HealHourglass:
-                    Damageable.HealHourglass(pickableObject.EffectInPercentage);
+                    Damageable.HealHourglass(objectToUse.PickableSO.EffectInPercentage);
                     break;
             }
 
             RemoveObject(pickableObject);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void RemoveObject(Pickable pickableScriptableObject)
+    {
+        for (int i = 0; i < InventoryArray.Length; i++)
+        {
+            if (InventoryArray[i] == pickableScriptableObject)
+            {
+                InventoryArray[i] = null;
+                return;
+            }    
         }
     }
 
-    public void RemoveObject(PickableScriptableObject pickableScriptableObject)
+    public bool TryEquip(Pickable objectInfos, EButtonActionType actionType, int slotIndex)
     {
-        if(InventoryList.Contains(pickableScriptableObject))
-            InventoryList.Remove(pickableScriptableObject);
+        switch (actionType)
+        {
+            case EButtonActionType.EquipmentObject:
+                if (Inventory.EquipmentSlots.Where(x => x != null).Any(x => x.ID == objectInfos.ID))
+                    return false;
+
+                Inventory.EquipmentSlots[slotIndex] = objectInfos;
+                break;
+            case EButtonActionType.ActiveObject:
+                if (Inventory.ActiveObjectSlots.Where(x => x != null).Any(x => x.ID == objectInfos.ID))
+                    return false;
+
+                Inventory.ActiveObjectSlots[slotIndex] = objectInfos;
+                break;
+        }
+        return true;
+    }
+
+    public bool UnEquip(Pickable objectInfos, EButtonActionType actionType, int slotIndex)
+    {
+        switch (actionType)
+        {
+            case EButtonActionType.EquipmentObject:
+                if (!Inventory.EquipmentSlots.Where(x => x != null).Any(x => x.ID == objectInfos.ID))
+                    return false;
+
+                Inventory.EquipmentSlots[slotIndex] = null;
+                break;
+            case EButtonActionType.ActiveObject:
+                if (!Inventory.ActiveObjectSlots.Where(x => x != null).Any(x => x.ID == objectInfos.ID))
+                    return false;
+
+                Inventory.ActiveObjectSlots[slotIndex] = null;
+                break;
+        }
+        return true;
     }
 
     public GameObject GetGameObject() => gameObject;
@@ -142,4 +200,18 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     }
 
 #endif
+}
+
+[Serializable]
+public class Inventory
+{
+    public Pickable[] InventoryObjects;
+    public Pickable[] EquipmentSlots;
+    public Pickable[] ActiveObjectSlots;
+}
+[Serializable]
+public class Pickable
+{
+    public PickableScriptableObject PickableSO;
+    public Guid ID = Guid.NewGuid();
 }
