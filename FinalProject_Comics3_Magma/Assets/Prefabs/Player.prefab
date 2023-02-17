@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: f1ffde9ad0f9e8c41af1ddcfd00dc0fd, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: edf3cd7bf34476845bed10961e81f335, type: 2}
   initialSkinName: Pg_corsa
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -289,9 +289,47 @@ MonoBehaviour:
   amountLoseDust: 1
   attackScriptableObjects:
   - {fileID: 11400000, guid: 6eb0e907bc6c8ac41bcec2cb5b4fba12, type: 2}
-  MaxObjectCapacity: 30
+  Inventory:
+    InventoryObjects:
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    EquipmentSlots:
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    ActiveObjectSlots:
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
+    - PickableSO: {fileID: 0}
   CurrentDirection: 1
-  InventoryList: []
 --- !u!114 &3138579559502232296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +354,7 @@ MonoBehaviour:
   attackPoint: {fileID: 960920955020320483}
   Direction: {x: 0, y: 0}
   lastDirection: {x: 0, y: -1}
+  Damager: {fileID: 0}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
   serializedVersion: 4
