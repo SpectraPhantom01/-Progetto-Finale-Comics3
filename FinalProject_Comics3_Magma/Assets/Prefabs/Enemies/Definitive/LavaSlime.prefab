@@ -161,7 +161,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   hitBox: {x: 2, y: 2}
-  triggerDamage: 0
+  triggerDamage: 5
+  contactKnockback: 20
+  triggerHourglassPercentageDamage: 5
+  disableTriggerAfterFirstEnter: 0
 --- !u!114 &5167693776278917933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hourglasses:
   - Time: 6
+    HourglassLife: 0
+    BaseTimeLoseSand: 0
+    MaxSpeedLoseSand: 0
+    DEBUGLossXsec: 0
   PlayerLockTime: 0.1
   EnemyLockTime: 0.5
   KnockBackResistance: 100
@@ -372,8 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b86e8764b3872d46956b9d0a7f12b88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeSingleTrailLife: 2
-  deltaTimeSpawnTrail: 1
+  timeSingleTrailLife: 5
+  deltaTimeSpawnTrail: 0.2
   trailPrefab: {fileID: 3242634060581458754, guid: fe8c78bd021c6fd469a3781e9725687c, type: 3}
 --- !u!1 &9194923868219951538
 GameObject:

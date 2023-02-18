@@ -13,6 +13,7 @@ public class Damager : MonoBehaviour
     [SerializeField] Vector2 hitBox = Vector2.one;
     [Tooltip("Only for TRIGGER Damagers such as Slime Trail")]
     [SerializeField] float triggerDamage;
+    [SerializeField] float contactKnockback = 20;
     [Tooltip("QUESTO DEVE ESSERE SEMPRE ESPRESSO IN PERCENTUALE")]
     [SerializeField] float triggerHourglassPercentageDamage;
     [SerializeField] bool disableTriggerAfterFirstEnter;
@@ -61,7 +62,7 @@ public class Damager : MonoBehaviour
         {
             Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
             if (damageable != null)
-                damageable.Damage(triggerDamage, 20, -(transform.position - damageable.transform.position).normalized, triggerHourglassPercentageDamage);
+                damageable.Damage(triggerDamage, contactKnockback, -(transform.position - damageable.transform.position).normalized, triggerHourglassPercentageDamage);
 
             if (disableTriggerAfterFirstEnter)
                 gameObject.SearchComponent<Collider2D>().enabled = false;
