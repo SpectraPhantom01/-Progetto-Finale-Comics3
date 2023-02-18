@@ -7,6 +7,7 @@ public class Hourglass : IPickable
     public float BaseTimeLoseSand;
     public float RealTimeLoseSand => HourglassLife == 100 ? BaseTimeLoseSand : BaseTimeLoseSand - (MathF.Abs(HourglassLife -100) * (BaseTimeLoseSand - MaxSpeedLoseSand) / 100);
     public float MaxSpeedLoseSand;
+    public float DEBUGLossXsec = 1;
     public Hourglass(float time)
     {
         Time = time;
@@ -25,5 +26,10 @@ public class Hourglass : IPickable
         HourglassLife += percentage;
         if (HourglassLife > 100)
             HourglassLife = 100;
+    }
+
+    public void Calculate_TimeLossXsecond()
+    {
+        DEBUGLossXsec = 1/RealTimeLoseSand;
     }
 }

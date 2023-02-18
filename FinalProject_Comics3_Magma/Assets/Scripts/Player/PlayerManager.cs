@@ -65,6 +65,12 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     private void Update()
     {
+        try
+        {
+            Damageable.CurrentHourglass.Calculate_TimeLossXsecond();
+        }
+        catch { }
+        
         HandleHourglass();
 
         if(_playerController.Rigidbody.velocity.magnitude > 0.01f)
