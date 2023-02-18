@@ -7,6 +7,7 @@ public class AttackScriptableObject : ScriptableObject
 {
     public EAttackType AttackType;
     public float DamageAmount;
+    public float HourglassPercentageDamageAmount;
     public float KnockBack;
     public Vector2 hitBoxRangeView;
     public Vector2 hitBoxRangeDamage;

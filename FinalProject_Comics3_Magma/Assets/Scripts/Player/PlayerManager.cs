@@ -8,8 +8,8 @@ using Unity.VisualScripting;
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
     [Header("Hourglass Settings")]
-    [SerializeField] float timeLoseDustInHourglass;
-    [SerializeField] float amountLoseDust;
+    public float TimeLoseSandInHourglass = 1;
+    [SerializeField] float amountLoseSand = 1;
     [Header("Attack Settings")]
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
     [Header("Inventory Settings")]
@@ -19,7 +19,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] GameObject downSkeleton;
     [SerializeField] GameObject rightSkeleton;
     [SerializeField] GameObject leftSkeleton;
-
+    [Header("VFX")]
+    [SerializeField] ParticleSystem hourglassVFX;
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
     public string Name => "Knight of Time";
@@ -75,10 +76,12 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private void HandleHourglass()
     {
         hourglassTimePassed += Time.deltaTime;
-        if(hourglassTimePassed >= timeLoseDustInHourglass)
+        if(hourglassTimePassed >= Damageable.CurrentHourglass.RealTimeLoseSand)
         {
             hourglassTimePassed = 0;
-            //_damageable.Damage(amountLoseDust);
+            _damageable.Damage(amountLoseSand, 0, Vector2.zero, 0);
+            var emission = hourglassVFX.emission;
+            emission.rateOverTime = 5 + Mathf.Abs(Damageable.CurrentHourglass.HourglassLife - 100);
         }
     }
 

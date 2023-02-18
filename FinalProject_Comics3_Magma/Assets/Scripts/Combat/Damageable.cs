@@ -37,7 +37,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] float DamageReductionPerc;
 
     [SerializeField] float DamageReduction; //Da spostare in un eventuale SO e chiamarla Defence?
-    
+    public Hourglass CurrentHourglass => _currentHourglass;
 
     private void Awake()
     {
@@ -67,13 +67,10 @@ public class Damageable : MonoBehaviour
 
     }
 
-    public void Damage(float amount, float knockBack, Vector2 direction, Transform respawnPosition = null)
+    public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage, Transform respawnPosition = null)
     {
         CalculateDamage(amount);
-        if(!_currentHourglass.Damage(25))
-        {
-            _currentTimeLife = -1;
-        }
+        _currentHourglass.Damage(hourglassPercentageDamage);
 
         if (_currentTimeLife <= 0)
         {
@@ -116,7 +113,8 @@ public class Damageable : MonoBehaviour
                     StartCoroutine(KnockbackRoutine());
             }
 
-            _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
+            if(direction != Vector2.zero)
+                _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
         }
     }
 

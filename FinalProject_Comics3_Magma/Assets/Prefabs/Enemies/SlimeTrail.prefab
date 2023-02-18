@@ -130,3 +130,5 @@ MonoBehaviour:
     m_Bits: 64
   hitBox: {x: 1, y: 1}
   triggerDamage: 2
+  triggerHourglassPercentageDamage: 10
+  disableTriggerAfterFirstEnter: 1
