@@ -18,9 +18,9 @@ TagManager:
   - PlayerIgnore
   - NPC
   - KillZone
-  - 
-  - 
-  - 
+  - PlayerFeet
+  - Ghost
+  - Interactable
   - 
   - 
   - 

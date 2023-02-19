@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5443820213945022568}
   - component: {fileID: 2274898124291510406}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8474878009925126730}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 33119639172938845}
   - component: {fileID: 8641136521392591556}
   - component: {fileID: 21121566970217140}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Spine GameObject (Pg front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 1770608083448179934}
   - component: {fileID: 1770608083448179935}
   - component: {fileID: 677875792980305352}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0043127537, y: -0.049598306}
@@ -305,8 +305,8 @@ GameObject:
   - component: {fileID: 9166515653511605295}
   - component: {fileID: 3682835986779401836}
   - component: {fileID: 4272628589318761874}
-  m_Layer: 6
-  m_Name: Player
+  m_Layer: 14
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,7 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 960920955020320483}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: AttackPointParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
