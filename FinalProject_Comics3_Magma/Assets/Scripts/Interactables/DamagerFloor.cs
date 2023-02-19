@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamagerFloor : MonoBehaviour
 {
     [SerializeField] float damageAmount;
+    [SerializeField] float hourglassPercentageDamageAmount;
     [SerializeField] Transform respawnPoint;
     public Transform RespawnPoint => respawnPoint;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,7 +15,7 @@ public class DamagerFloor : MonoBehaviour
         { 
             if (!player.PlayerController.IsDashing)
             {
-                player.Damageable.Damage(damageAmount, 0, Vector2.zero);
+                player.Damageable.Damage(damageAmount, 0, Vector2.zero, hourglassPercentageDamageAmount);
                 player.Respawn(respawnPoint.position);
             }
 
@@ -33,7 +34,7 @@ public class DamagerFloor : MonoBehaviour
         var player = collision.gameObject.SearchComponent<PlayerManager>();
         if (player != null && !player.PlayerController.IsDashing)
         {
-            player.Damageable.Damage(damageAmount, 0, Vector2.zero);
+            player.Damageable.Damage(damageAmount, 0, Vector2.zero, hourglassPercentageDamageAmount);
 
             player.Respawn(respawnPoint.position);
         }

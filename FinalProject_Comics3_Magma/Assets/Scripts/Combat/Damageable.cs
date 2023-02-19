@@ -37,7 +37,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] float DamageReductionPerc;
 
     [SerializeField] float DamageReduction; //Da spostare in un eventuale SO e chiamarla Defence?
-    
+    public Hourglass CurrentHourglass => _currentHourglass;
 
     private void Awake()
     {
@@ -67,21 +67,19 @@ public class Damageable : MonoBehaviour
 
     }
 
-    public void Damage(float amount, float knockBack, Vector2 direction, Transform respawnPosition = null)
+    public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage, Transform respawnPosition = null)
     {
         CalculateDamage(amount);
+        _currentHourglass.Damage(hourglassPercentageDamage);
 
         if (_currentTimeLife <= 0)
         {
             hourglasses.Remove(_currentHourglass);
 
-
-
             if(hourglasses.Count > 0)
                 _currentHourglass = hourglasses.First();
             else
             {
-                Debug.Log($"{_entity.Name} is death");
                 if (respawnPosition != null)
                     _entity.Kill(respawnPosition.position);
                 else
@@ -115,7 +113,8 @@ public class Damageable : MonoBehaviour
                     StartCoroutine(KnockbackRoutine());
             }
 
-            _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
+            if(direction != Vector2.zero)
+                _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
         }
     }
 
@@ -172,6 +171,11 @@ public class Damageable : MonoBehaviour
         _currentTimeLife += amount;
         Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{_currentHourglass.Time}");
 
+    }
+
+    public void HealHourglass(float percentage)
+    {
+        _currentHourglass.Heal(percentage);
     }
 
     public void SetHourglasses(List<Hourglass> newHourglasses)

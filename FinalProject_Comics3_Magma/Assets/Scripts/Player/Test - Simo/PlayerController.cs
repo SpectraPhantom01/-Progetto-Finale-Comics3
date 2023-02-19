@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,46 +27,35 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
 
     [SerializeField] Transform attackPoint;
-
-    //Nota: damageAmount e damageableMask aggiunte per test
-    //[Header("Attacking Settings")]
-    //[SerializeField] Transform attackPoint;
-    //[SerializeField] float knockback = 20f;             // TODO: spostati i valori nel DAMAGER
-    //[SerializeField] float _damageAmount; 
-    //[SerializeField] LayerMask _damageableMask;
-
     [HideInInspector] public Vector2 Direction;
     [HideInInspector] public GenericStateMachine<EPlayerState> StateMachine = new GenericStateMachine<EPlayerState>();
 
-    //InputSystem inputSystem;
-
     [HideInInspector] public Vector2 lastDirection;
     float value;
-    //Vector2 normalizedDirection;
     Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
 
     PlayerController instantiatedGhost;
     IEnumerator ghostRoutine;
 
-    //bool changingDirectionX => (rb.velocity.x > 0f && Direction.x < 0f) || (rb.velocity.x < 0f && Direction.x > 0f);
-    //bool changingDirectionY => (rb.velocity.y > 0f && Direction.y < 0f) || (rb.velocity.y < 0f && Direction.y > 0f);
-
-    private Damager _damager;
+    [HideInInspector] public Damager Damager;
 
     //public bool IsMoving { get; private set; } = false;
     public bool CanMove { get; set; } = true;
     public bool IsDashing { get; set; } = false;
     public bool CanDash { get; set; } = true;
     public bool GhostActive { get; set; } = false;
-    public bool CanRewind { get; set; } = true;    
-
+    public bool CanRewind { get; set; } = true;
+    public bool IsAttacking { get; set; } = false;
+    public bool IsMoving => value != 0;
+    private PlayerManager _playerManager;
+    public PlayerManager PlayerManager => _playerManager;
     private void Awake()
     {
         //inputSystem = new InputSystem();
         rb = GetComponentInChildren<Rigidbody2D>();
-        _damager = gameObject.SearchComponent<Damager>();
-
+        Damager = gameObject.SearchComponent<Damager>();
+        _playerManager = GetComponent<PlayerManager>();
         CanMove = true;
         IsDashing = false;
         CanDash = true;
@@ -264,28 +254,39 @@ public class PlayerController : MonoBehaviour
     public void Attack() //Da spostare?
     {
         StateMachine.SetState(EPlayerState.Attacking);
-        _damager.Attack();
-        //_damager.AttackShoot();
+
+        //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
+
+        var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0].PickableSO;
+        var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1].PickableSO;
+        float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
+        float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
+
+        Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
+
+        Damager.Attack(); // <<---
+        TryPickUp();       // <<---
     }
 
     public void EquipAttack(EAttackType eAttackType)
     {
-        _damager.EquipAttack(eAttackType);
+        Damager.EquipAttack(eAttackType);
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.green;
-    //    Gizmos.DrawWireSphere(attackPoint.position, 0.5f);
-    //}
+    public void TryPickUp()
+    {
+        var collidersHit = Physics2D.OverlapCircleAll(transform.position, 1).ToList();
+        if (collidersHit.Count > 0)
+        {
+            foreach (var hit in collidersHit)
+            {
+                if(hit.TryGetComponent<PickableObject>(out var pickable))
+                {
+                    _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable.gameObject);
+                    return;
+                }
+            }
+        }
+    }
 
-    //private void OnEnable()
-    //{
-    //    inputSystem.Player.Enable();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    inputSystem.Player.Disable();
-    //}
 }

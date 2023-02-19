@@ -43,7 +43,7 @@ public class SpellBullet : MonoBehaviour
         {
             Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
             if(damageable != null)
-                Damager.GiveDamage(damageable, _attack, transform);
+                Damager.GiveDamage(damageable, _attack, transform, 0);
         }
 
         Destroy(gameObject);

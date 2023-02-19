@@ -1,0 +1,42 @@
+Pg sx.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+aurea
+bounds:2,2,278,502
+braccio dx
+bounds:770,239,73,148
+rotate:90
+cappuccio davanti
+bounds:478,45,75,85
+rotate:90
+cintura
+bounds:478,122,101,112
+gamba dx idle
+bounds:770,314,77,238
+rotate:90
+gamba sx idle
+bounds:282,44,136,194
+rotate:90
+gonna
+bounds:768,132,105,134
+rotate:90
+mantella dietro
+bounds:770,393,111,233
+rotate:90
+mantello
+bounds:424,236,155,268
+maschera
+bounds:282,12,30,61
+rotate:90
+ombra
+bounds:581,170,185,124
+orologi
+bounds:424,184,39,50
+spada
+bounds:581,296,187,208
+spada dietro
+bounds:282,182,140,322
+torso
+bounds:581,72,96,177
+rotate:90

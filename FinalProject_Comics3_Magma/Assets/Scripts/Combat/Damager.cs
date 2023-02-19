@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Damager : MonoBehaviour
@@ -10,12 +12,18 @@ public class Damager : MonoBehaviour
     [SerializeField] LayerMask _damageableMask;
     [SerializeField] LayerMask _interactableMask; //Prova
     [SerializeField] Vector2 hitBox = Vector2.one;
+    [Tooltip("Only for TRIGGER Damagers such as Slime Trail")]
+    [SerializeField] float triggerDamage;
+    [SerializeField] float contactKnockback = 20;
+    [Tooltip("QUESTO DEVE ESSERE SEMPRE ESPRESSO IN PERCENTUALE")]
+    [SerializeField] float triggerHourglassPercentageDamage;
+    [SerializeField] bool disableTriggerAfterFirstEnter;
     bool _isPlayer;
     List<AttackScriptableObject> _attackList;
     PlayerManager _playerManager;
     AI _ai;
     AttackScriptableObject _equippedAttack;
-
+    float _bonusAttackPercentage;
     public AttackScriptableObject EquippedAttack => _equippedAttack;
     private void Awake()
     {
@@ -26,25 +34,39 @@ public class Damager : MonoBehaviour
         if (!_isPlayer)
         {
             _ai = gameObject.SearchComponent<AI>();
-            if (_ai == null)
-                throw new Exception("ERRORE: non è stato possibile trovare il componente Player Manager o AI");
+            //if (_ai == null)
+            //    throw new Exception("ERRORE: non è stato possibile trovare il componente Player Manager o AI");
         }
 
-        _attackList = gameObject.SearchComponent<IAliveEntity>().AttackList;
+        if(_isPlayer || _ai != null)
+            _attackList = gameObject.SearchComponent<IAliveEntity>().AttackList;
         
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var attack = _attackList.Find(x => x.AttackType == EAttackType.Contact);
+        var attack = _attackList?.Find(x => x.AttackType == EAttackType.Contact);
         if (attack != null)
         {
             if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
             {
                 Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
                 if (damageable != null)
-                    GiveDamage(damageable, attack, transform);
+                    GiveDamage(damageable, attack, transform, _bonusAttackPercentage);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
+        {
+            Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
+            if (damageable != null)
+                damageable.Damage(triggerDamage, contactKnockback, -(transform.position - damageable.transform.position).normalized, triggerHourglassPercentageDamage);
+
+            if (disableTriggerAfterFirstEnter)
+                gameObject.SearchComponent<Collider2D>().enabled = false;
         }
     }
 
@@ -60,7 +82,7 @@ public class Damager : MonoBehaviour
                     .Select(x => x.gameObject.SearchComponent<Damageable>())
                     .Where(x => x != null).ToList();
 
-                damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform));
+                damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform, _bonusAttackPercentage));
             }
 
             SearchInteractable(); 
@@ -171,9 +193,15 @@ public class Damager : MonoBehaviour
         }
     }
 
-    public static void GiveDamage(Damageable damageable, AttackScriptableObject attack, Transform transform)
+    public void SetBonusAttack(float bonus1, float bonus2)
     {
-        damageable.Damage(attack.DamageAmount, attack.KnockBack, -(transform.position - damageable.transform.position).normalized);
+        _bonusAttackPercentage = bonus1 + bonus2;
+    }
+
+    public static void GiveDamage(Damageable damageable, AttackScriptableObject attack, Transform transform, float bonus)
+    {
+        var damage = attack.DamageAmount + (attack.DamageAmount * bonus / 100);
+        damageable.Damage(damage, attack.KnockBack, -(transform.position - damageable.transform.position).normalized, attack.HourglassPercentageDamageAmount);
     }
 
 #if UNITY_EDITOR

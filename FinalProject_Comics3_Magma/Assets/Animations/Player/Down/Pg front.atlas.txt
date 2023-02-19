@@ -1,0 +1,59 @@
+Pg front.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+Livello 33
+bounds:397,28,40,57
+Livello 34
+bounds:455,101,46,89
+rotate:90
+Livello 35
+bounds:1925,383,38,54
+rotate:90
+aurea
+bounds:2,4,278,502
+avambraccio
+bounds:949,294,40,57
+braccio
+bounds:397,87,56,99
+cintura
+bounds:588,164,85,94
+clessidra
+bounds:1925,423,83,121
+rotate:90
+faccia
+bounds:546,93,43,54
+gamba dx Idle
+bounds:696,281,70,251
+rotate:90
+gamba dx corsa
+bounds:1366,457,49,255
+rotate:90
+gamba sx Idle
+bounds:983,370,136,194
+rotate:90
+gamba sx corsa
+bounds:1366,406,49,255
+rotate:90
+gonnella corsa
+bounds:1795,392,114,128
+rotate:90
+gonnella idle
+bounds:461,149,109,125
+rotate:90
+mano
+bounds:1981,389,32,53
+rotate:90
+mantello
+bounds:696,353,153,285
+rotate:90
+ombra corsa
+bounds:1623,399,170,107
+ombra idle
+bounds:1179,382,185,124
+petto
+bounds:282,2,113,184
+spada
+bounds:461,260,233,246
+spada dietro
+bounds:282,188,177,318

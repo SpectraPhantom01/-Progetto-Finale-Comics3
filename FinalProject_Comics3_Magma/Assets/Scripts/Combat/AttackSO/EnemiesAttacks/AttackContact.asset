@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackType: 0
   DamageAmount: 10
+  HourglassPercentageDamageAmount: 10
   KnockBack: 10
   hitBoxRangeView: {x: 1, y: 1}
   hitBoxRangeDamage: {x: 2, y: 2}

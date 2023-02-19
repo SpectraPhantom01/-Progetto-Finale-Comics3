@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
+  hourglassPercentageDamageAmount: 10
   respawnPoint: {fileID: 8677822199934465911}
 --- !u!114 &7728304275885359844
 MonoBehaviour:
