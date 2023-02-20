@@ -67,7 +67,6 @@ public class GhostManager : MonoBehaviour
                 break;
             case InputType.Ghost:
                 player.DestroyGhost();
-
                 break;
             case InputType.MovementStart:
                 if (!ghost.IsDashing)
@@ -98,6 +97,7 @@ public class GhostManager : MonoBehaviour
         Destroy(ghost.gameObject);
         ResetValues();
     }
+
     public void ResetValues()
     {
         readInput = false;

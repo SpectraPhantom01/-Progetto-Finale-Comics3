@@ -10,6 +10,7 @@ public class Damager : MonoBehaviour
 
     [SerializeField] Transform damagerArea;
     [SerializeField] LayerMask _damageableMask;
+    [SerializeField] LayerMask _interactableMask; //Prova
     [SerializeField] Vector2 hitBox = Vector2.one;
     [Tooltip("Only for TRIGGER Damagers such as Slime Trail")]
     [SerializeField] float triggerDamage;
@@ -84,8 +85,27 @@ public class Damager : MonoBehaviour
                 damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform, _bonusAttackPercentage));
             }
 
+            SearchInteractable(); 
         }
         
+    }
+
+    private void SearchInteractable()
+    {
+        var collidersHit = Physics2D.OverlapBoxAll(damagerArea.position, hitBox, 0, _interactableMask).ToList();
+        if(collidersHit.Count > 0)
+        {
+            SearchPillars(collidersHit);
+        }
+    }
+
+    private void SearchPillars(List<Collider2D> collidersHit)
+    {
+        var interactableList = collidersHit
+                          .Where(x => _interactableMask.Contains(x.gameObject.layer))
+                          .Select(x => x.gameObject.SearchComponent<Pillar>())
+                          .Where(x => x != null).ToList();
+        interactableList.ForEach(interactable => interactable.PillarDestruction());
     }
 
     public void SizeUpHitBox()
