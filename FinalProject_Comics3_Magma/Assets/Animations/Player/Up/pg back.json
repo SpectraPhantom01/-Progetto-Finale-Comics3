@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "Kdk3zqDuVCw",
+	"hash": "J2yiCq7lWEM",
 	"spine": "4.1.19",
 	"x": -185.7,
 	"y": -60.7,
@@ -178,7 +178,6 @@
 	{ "name": "target gamba dx", "parent": "root", "x": 65.49, "y": 79.83, "skin": true, "color": "ff3f00ff" }
 ],
 "slots": [
-	{ "name": "Sfondo", "bone": "root" },
 	{ "name": "luce", "bone": "root", "attachment": "luce" },
 	{ "name": "ombra", "bone": "root", "attachment": "ombra" },
 	{ "name": "ombra corsa", "bone": "root", "attachment": "ombra corsa" },
@@ -379,9 +378,6 @@
 					"height": 48
 				}
 			},
-			"Sfondo": {
-				"Sfondo": { "x": -14.24, "y": 213.06, "width": 257, "height": 512 }
-			},
 			"spada dietro": {
 				"spada dietro": {
 					"type": "mesh",
@@ -507,7 +503,7 @@
 	}
 ],
 "animations": {
-	"PG_attacco_back": {
+	"attacco": {
 		"bones": {
 			"centro": {
 				"translate": [
@@ -940,7 +936,7 @@
 			}
 		}
 	},
-	"PG_corsa_back": {
+	"corsa": {
 		"bones": {
 			"coscia dx corsa": {
 				"rotate": [
@@ -1495,7 +1491,7 @@
 			}
 		}
 	},
-	"PG_corsa_back_spada_dietro": {
+	"corsa_noSpada": {
 		"slots": {
 			"spada dietro": {
 				"attachment": [
@@ -2094,7 +2090,7 @@
 			}
 		}
 	},
-	"PG_idle_back": {
+	"idle": {
 		"bones": {
 			"testa": {
 				"rotate": [
@@ -2376,7 +2372,7 @@
 			]
 		}
 	},
-	"PG_idle_back_spada_dietro": {
+	"idle_noSpada": {
 		"slots": {
 			"spada dietro": {
 				"attachment": [
@@ -2677,7 +2673,7 @@
 			]
 		}
 	},
-	"PG_scatto_back": {
+	"scatto": {
 		"bones": {
 			"centro": {
 				"translate": [
@@ -3028,7 +3024,7 @@
 			}
 		}
 	},
-	"PG_scatto_spadaDietro_back": {
+	"scatto_noSpada": {
 		"slots": {
 			"spada dietro": {
 				"attachment": [

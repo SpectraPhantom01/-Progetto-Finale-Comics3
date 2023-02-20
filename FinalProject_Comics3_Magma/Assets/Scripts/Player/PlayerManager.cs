@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Unity.VisualScripting;
+using Spine.Unity;
+using Spine;
 
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
@@ -15,15 +17,24 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [Header("Inventory Settings")]
     public Inventory Inventory;
     [Header("Skeleton Settings")]
-    [SerializeField] GameObject upSkeleton;
-    [SerializeField] GameObject downSkeleton;
-    [SerializeField] GameObject rightSkeleton;
-    [SerializeField] GameObject leftSkeleton;
+    [SerializeField] SkeletonAnimation upSkeleton;
+    [SerializeField] SkeletonAnimation downSkeleton;
+    [SerializeField] SkeletonAnimation rightSkeleton;
+    [SerializeField] SkeletonAnimation leftSkeleton;
+    [SerializeField] SkeletonAnimation upSkeletonRun;
+    [SerializeField] SkeletonAnimation downSkeletonRun;
+    [SerializeField] string idle;
+    [SerializeField] string run;
+    [SerializeField] string attack;
+    [SerializeField] string dash;
+    [SerializeField] string idleSword;
+    [SerializeField] string runSword;
+    [SerializeField] string dashSword;
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get ; set ; }
-    public string Name => "Knight of Time";
+    public string Name => "Etim";
     public Damageable Damageable => _damageable;
 
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
@@ -31,7 +42,9 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private float hourglassTimePassed;
     private Damageable _damageable;
     private PlayerController _playerController;
-
+    SkeletonAnimation _currentSkeleton;
+    public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
+    TrackEntry _trackEntry;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
 
     public void Kill(Vector3 respawnPosition)
@@ -61,22 +74,21 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _damageable = gameObject.SearchComponent<Damageable>();
 
         _playerController = gameObject.SearchComponent<PlayerController>();
+
+        _currentSkeleton = downSkeleton;
+        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
     }
 
     private void Update()
     {
-        try
-        {
-            Damageable.CurrentHourglass.Calculate_TimeLossXsecond();
-        }
-        catch { }
-        
+
         HandleHourglass();
 
         if(_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
 
         HandleSkeletonRotation();
+        HandleSkeletonAnimation();
     }
 
     private void HandleHourglass()
@@ -88,6 +100,12 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             _damageable.Damage(amountLoseSand, 0, Vector2.zero, 0);
             var emission = hourglassVFX.emission;
             emission.rateOverTime = 5 + Mathf.Abs(Damageable.CurrentHourglass.HourglassLife - 100);
+
+#if UNITY_EDITOR
+
+            Damageable.CurrentHourglass.Calculate_TimeLossXsecond();
+#endif
+
         }
     }
 
@@ -207,44 +225,95 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         switch (CurrentDirection)
         {
             case EDirection.Up:
-                if (upSkeleton.activeSelf) return;
+                if (_playerController.Rigidbody.velocity.magnitude != 0)
+                {
+                    if (upSkeletonRun.gameObject.gameObject.activeSelf) return;
+                    upSkeletonRun.gameObject.SetActive(true);
+                    upSkeleton.gameObject.gameObject.SetActive(false);
 
-                upSkeleton.SetActive(true);
-                downSkeleton.SetActive(false);
-                rightSkeleton.SetActive(false);
-                leftSkeleton.SetActive(false);
+                    _currentSkeleton = upSkeletonRun;
+                }
+                else
+                {
+                    if (upSkeleton.gameObject.gameObject.activeSelf) return;
+                    upSkeleton.gameObject.gameObject.SetActive(true);
+                    upSkeletonRun.gameObject.SetActive(false);
+
+                    _currentSkeleton = upSkeleton;
+                }
+
+                downSkeleton.gameObject.SetActive(false);
+                rightSkeleton.gameObject.SetActive(false);
+                leftSkeleton.gameObject.SetActive(false);
+                downSkeletonRun.gameObject.gameObject.SetActive(false);
                 break;
             case EDirection.Down:
-                if (downSkeleton.activeSelf) return;
+                if (_playerController.Rigidbody.velocity.magnitude != 0)
+                {
+                    if (downSkeletonRun.gameObject.gameObject.activeSelf) return;
+                    downSkeletonRun.gameObject.gameObject.SetActive(true);
+                    downSkeleton.gameObject.SetActive(false);
 
-                upSkeleton.SetActive(false);
-                downSkeleton.SetActive(true);
-                rightSkeleton.SetActive(false);
-                leftSkeleton.SetActive(false);
+                    _currentSkeleton = downSkeletonRun;
+                }
+                else
+                {
+                    if (downSkeleton.gameObject.activeSelf) return;
+                    downSkeleton.gameObject.SetActive(true);
+                    downSkeletonRun.gameObject.SetActive(false);
+
+                    _currentSkeleton = downSkeleton;
+                }
+
+                upSkeleton.gameObject.SetActive(false);
+                rightSkeleton.gameObject.SetActive(false);
+                leftSkeleton.gameObject.SetActive(false);
+                upSkeletonRun.gameObject.SetActive(false);
                 break;
             case EDirection.Left:
-                if (leftSkeleton.activeSelf) return;
+                if (leftSkeleton.gameObject.activeSelf) return;
 
-                upSkeleton.SetActive(false);
-                downSkeleton.SetActive(false);
-                rightSkeleton.SetActive(false);
-                leftSkeleton.SetActive(true);
+                upSkeleton.gameObject.SetActive(false);
+                downSkeleton.gameObject.SetActive(false);
+                rightSkeleton.gameObject.SetActive(false);
+                leftSkeleton.gameObject.SetActive(true);
+                upSkeletonRun.gameObject.SetActive(false);
+                downSkeletonRun.gameObject.SetActive(false);
+
+                _currentSkeleton = leftSkeleton;
                 break;
             case EDirection.Right:
-                if (rightSkeleton.activeSelf) return;
+                if (rightSkeleton.gameObject.activeSelf) return;
 
-                upSkeleton.SetActive(false);
-                downSkeleton.SetActive(false);
-                rightSkeleton.SetActive(true);
-                leftSkeleton.SetActive(false);
+                upSkeleton.gameObject.SetActive(false);
+                downSkeleton.gameObject.SetActive(false);
+                rightSkeleton.gameObject.SetActive(true);
+                leftSkeleton.gameObject.SetActive(false);
+                upSkeletonRun.gameObject.SetActive(false);
+                downSkeletonRun.gameObject.SetActive(false);
+
+                _currentSkeleton = rightSkeleton;
                 break;
         }
     }
 
     public void HandleSkeletonAnimation()
     {
-
+        if(_currentSkeleton != null)
+        {
+            if(_playerController.IsMoving)
+            {
+                if(_trackEntry.Animation.Name != run)
+                    _trackEntry = _currentSkeleton.state.SetAnimation(0, run, true);
+            }
+            else
+            {
+                if (_trackEntry.Animation.Name != idle)
+                    _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
+            }
+        }
     }
+
     public GameObject GetGameObject() => gameObject;
 #if UNITY_EDITOR
     private void OnDrawGizmos()

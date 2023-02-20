@@ -18,7 +18,7 @@ public class AttackingCharacterState : State
 
     public override void OnEnd()
     {
-        
+        m_Owner.IsAttacking = false;
     }
 
     public override void OnFixedUpdate()
@@ -29,6 +29,7 @@ public class AttackingCharacterState : State
     public override void OnStart()
     {
         Debug.Log("Sono in attacking");
+        m_Owner.IsAttacking = true;
     }
 
     public override void OnUpdate()

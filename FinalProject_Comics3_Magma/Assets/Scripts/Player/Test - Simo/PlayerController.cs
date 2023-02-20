@@ -46,7 +46,10 @@ public class PlayerController : MonoBehaviour
     public bool CanDash { get; set; } = true;
     public bool GhostActive { get; set; } = false;
     public bool CanRewind { get; set; } = true;
+    public bool IsAttacking { get; set; } = false;
+    public bool IsMoving => value != 0;
     private PlayerManager _playerManager;
+    public PlayerManager PlayerManager => _playerManager;
     private void Awake()
     {
         //inputSystem = new InputSystem();
