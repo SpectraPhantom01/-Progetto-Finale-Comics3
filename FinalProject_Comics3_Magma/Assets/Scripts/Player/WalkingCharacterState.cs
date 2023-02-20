@@ -12,7 +12,7 @@ public class WalkingCharacterState : State
 
     public override void OnStart()
     {
-        Debug.Log("Sono in walking");
+        //Debug.Log("Sono in walking");
     }
 
     public override void OnUpdate()

@@ -28,7 +28,7 @@ public class AttackingCharacterState : State
 
     public override void OnStart()
     {
-        Debug.Log("Sono in attacking");
+        //Debug.Log("Sono in attacking");
         m_Owner.IsAttacking = true;
     }
 

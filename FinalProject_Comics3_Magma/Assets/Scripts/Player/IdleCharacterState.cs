@@ -27,7 +27,7 @@ public class IdleCharacterState : State
 
     public override void OnStart()
     {
-        Debug.Log("Sono in idle");
+        //Debug.Log("Sono in idle");
     }
 
     public override void OnUpdate()
