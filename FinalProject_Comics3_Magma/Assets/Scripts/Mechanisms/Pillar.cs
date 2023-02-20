@@ -1,17 +1,21 @@
 using BehaviorDesigner.Runtime.Tasks;
 using Spine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum EPillarState { Active, Destroyed, Reactivation, Inactive }
+public enum EPillarState { Active, Destroyed, Reactivation, Inactive } //Enum necessario?
 
 public class Pillar : MonoBehaviour
 {
     [SerializeField] PillarHandler pillarHandler;
+    [SerializeField] float pillarDestroyedTime;
     /*[HideInInspector]*/ public EPillarState pillarState = EPillarState.Active;
+
+    public IEnumerator pillarRoutine;
 
     private void Awake()
     {
@@ -34,12 +38,25 @@ public class Pillar : MonoBehaviour
     {
         if (pillarHandler != null && pillarState == EPillarState.Active)
         {
-            pillarHandler.RemovePillar(this);
+            //Debug.Log("Pilastro distrutto");
 
-            Debug.Log("Pilastro distrutto");
+            pillarState = EPillarState.Destroyed;
 
-            pillarHandler.CheckPillars();
+            if (pillarHandler.CheckPillars())
+                ActiveRoutine();
         }
+    }
+
+    private void ActiveRoutine()
+    {
+        pillarRoutine = PillarRoutine();
+        StartCoroutine(pillarRoutine);
+    }
+
+    private IEnumerator PillarRoutine()
+    {
+        yield return new WaitForSeconds(pillarDestroyedTime);
+        pillarState = EPillarState.Active;
     }
 
     private void OnDrawGizmos()
