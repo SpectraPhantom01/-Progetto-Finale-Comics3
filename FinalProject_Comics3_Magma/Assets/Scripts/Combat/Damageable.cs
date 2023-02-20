@@ -76,8 +76,8 @@ public class Damageable : MonoBehaviour
         {
             hourglasses.Remove(_currentHourglass);
 
-            if(hourglasses.Count > 0)
-                _currentHourglass = hourglasses.First();
+            if (hourglasses.Count > 0)
+                UseNext();
             else
             {
                 if (respawnPosition != null)
@@ -115,6 +115,15 @@ public class Damageable : MonoBehaviour
 
             if(direction != Vector2.zero)
                 _rigidBody.AddForce(direction * CalculateKnockBack(knockBack), ForceMode2D.Impulse);
+        }
+    }
+
+    private void UseNext()
+    {
+        _currentHourglass = hourglasses.First();
+        if(_isPlayer)
+        {
+            Publisher.Publish(new UseNextHourglassMessage());
         }
     }
 
@@ -158,6 +167,7 @@ public class Damageable : MonoBehaviour
             hourglasses.Add(new Hourglass(amount));
             _currentHourglass = hourglasses[0];
             _currentTimeLife = amount;
+            Publisher.Publish(new AddNewHourglass());
             return;
         }
 

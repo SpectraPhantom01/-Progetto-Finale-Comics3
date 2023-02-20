@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject pauseMenu;
-
+    public UIPlayArea UIPlayArea;
     bool pause = false;
     public void Pause()
     {

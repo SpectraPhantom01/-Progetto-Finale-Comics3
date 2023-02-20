@@ -256,9 +256,8 @@ public class PlayerController : MonoBehaviour
         StateMachine.SetState(EPlayerState.Attacking);
 
         //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
-
-        var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0].PickableSO;
-        var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1].PickableSO;
+        var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
+        var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
         float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
         float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
 

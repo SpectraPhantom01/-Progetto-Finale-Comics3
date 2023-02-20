@@ -1,11 +1,10 @@
+using Spine;
+using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using Unity.VisualScripting;
-using Spine.Unity;
-using Spine;
+using UnityEngine;
 
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
@@ -33,7 +32,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
     public EDirection CurrentDirection = EDirection.Down;
-    public bool IsAlive { get ; set ; }
+    public bool IsAlive { get; set; }
     public string Name => "Etim";
     public Damageable Damageable => _damageable;
 
@@ -46,7 +45,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
     TrackEntry _trackEntry;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
-
+    UIPlayArea _uiPlayArea;
     public void Kill(Vector3 respawnPosition)
     {
 
@@ -61,10 +60,17 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     private IEnumerator KillCoroutine(Vector3 respawnPosition)
     {
+        GameManager.Instance.EnablePlayerInputs(false);
+        _playerController.Rigidbody.velocity = Vector2.zero;
+        _playerController.Direction = Vector2.zero;
+        var collider = gameObject.SearchComponent<Collider2D>();
+        collider.enabled = false;
         yield return new WaitForSeconds(1);
 
         transform.position = respawnPosition;
         Damageable.Heal(50);
+        GameManager.Instance.EnablePlayerInputs(true);
+        collider.enabled = true;
     }
 
     private void Awake()
@@ -78,13 +84,21 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _currentSkeleton = downSkeleton;
         _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
     }
+    private void Start()
+    {
+        _uiPlayArea = UIManager.Instance.UIPlayArea;
 
+        for (int i = 1; i < Damageable.Hourglasses; i++)
+        {
+            _uiPlayArea.AddNewHourglass();
+        }
+    }
     private void Update()
     {
 
         HandleHourglass();
 
-        if(_playerController.Rigidbody.velocity.magnitude > 0.01f)
+        if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
 
         HandleSkeletonRotation();
@@ -94,12 +108,24 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private void HandleHourglass()
     {
         hourglassTimePassed += Time.deltaTime;
-        if(hourglassTimePassed >= Damageable.CurrentHourglass.RealTimeLoseSand)
+        if (hourglassTimePassed >= Damageable.CurrentHourglass.RealTimeLoseSand)
         {
             hourglassTimePassed = 0;
             _damageable.Damage(amountLoseSand, 0, Vector2.zero, 0);
             var emission = hourglassVFX.emission;
             emission.rateOverTime = 5 + Mathf.Abs(Damageable.CurrentHourglass.HourglassLife - 100);
+
+            if (Damageable.CurrentTimeLife < Damageable.CurrentHourglass.Time * 0.30f)
+            {
+                if (!_uiPlayArea.IsLowSprite)
+                    _uiPlayArea.SetSandLevel(ESandLevel.Low);
+            }
+            else if (Damageable.CurrentTimeLife < Damageable.CurrentHourglass.Time * 0.60f)
+            {
+                if (!_uiPlayArea.IsMediumSprite)
+                    _uiPlayArea.SetSandLevel(ESandLevel.Medium);
+            }
+            
 
 #if UNITY_EDITOR
 
@@ -113,9 +139,9 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void LockMovement(float time)
     {
-        if(_playerController.CanMove)
+        if (_playerController.CanMove)
             StartCoroutine(LockCoroutine(time));
-            
+
     }
 
     private IEnumerator LockCoroutine(float time)
@@ -127,7 +153,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void PickUpObject(PickableScriptableObject newObject, GameObject pickableGameObject)
     {
-        if (!InventoryArray.Any(x => x.PickableSO == null)) return;
+        if (!InventoryArray.Any(x => x != null && x.PickableSO == null)) return;
 
         for (int i = 0; i < InventoryArray.Length; i++)
         {
@@ -135,7 +161,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             {
                 Pickable pickableObject = new()
                 {
-                    PickableSO = newObject
+                    PickableSO = newObject,
+                    Quantity = newObject.QuantityOnPick
                 };
                 InventoryArray[i] = pickableObject;
                 Destroy(pickableGameObject);
@@ -146,7 +173,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public bool TryUseObject(Pickable pickableObject, int slotIndex)
     {
-        if(Inventory.ActiveObjectSlots.Any(x => x == pickableObject))
+        if (Inventory.ActiveObjectSlots.Any(x => x == pickableObject))
         {
             var objectToUse = Inventory.ActiveObjectSlots[slotIndex];
 
@@ -160,7 +187,14 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     break;
             }
 
-            RemoveObject(pickableObject);
+            objectToUse.Quantity--;
+            if(objectToUse.Quantity <= 0)
+            {
+                RemoveObject(pickableObject);
+                _uiPlayArea.ResetActiveObject(slotIndex);
+            }
+            else
+                _uiPlayArea.SetActiveObject(slotIndex, objectToUse.PickableSO.ObjectInventorySprite, objectToUse.Quantity);
 
             return true;
         }
@@ -176,7 +210,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             {
                 InventoryArray[i] = null;
                 return;
-            }    
+            }
         }
     }
 
@@ -195,6 +229,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     return false;
 
                 Inventory.ActiveObjectSlots[slotIndex] = objectInfos;
+                _uiPlayArea.SetActiveObject(slotIndex, objectInfos.PickableSO.ObjectInventorySprite, objectInfos.Quantity);
                 break;
         }
         return true;
@@ -299,11 +334,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void HandleSkeletonAnimation()
     {
-        if(_currentSkeleton != null)
+        if (_currentSkeleton != null)
         {
-            if(_playerController.IsMoving)
+            if (_playerController.IsMoving)
             {
-                if(_trackEntry.Animation.Name != run)
+                if (_trackEntry.Animation.Name != run)
                     _trackEntry = _currentSkeleton.state.SetAnimation(0, run, true);
             }
             else
@@ -341,5 +376,6 @@ public class Inventory
 public class Pickable
 {
     public PickableScriptableObject PickableSO;
+    public int Quantity;
     public Guid ID = Guid.NewGuid();
 }

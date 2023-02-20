@@ -21,6 +21,6 @@ MonoBehaviour:
   OnGameSprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
   IsConsumable: 1
   IsKeyObject: 0
-  QuantityOnPick: 1
+  QuantityOnPick: 5
   PickableEffectType: 2
   EffectInPercentage: 25
