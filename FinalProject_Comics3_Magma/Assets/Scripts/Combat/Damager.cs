@@ -85,7 +85,8 @@ public class Damager : MonoBehaviour
                 damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform, _bonusAttackPercentage));
             }
 
-            SearchInteractable(); 
+            if(_isPlayer) // Da spostare o modificare?
+                SearchInteractable(); 
         }
         
     }

@@ -11,39 +11,53 @@ public class PillarHandler : MonoBehaviour
     [Space(5)]
     public UnityEvent Event;
 
-    [HideInInspector] public List<Pillar> pillarsList;
+    List<Pillar> pillarsList = new List<Pillar>();
+
+    private void Start()
+    {
+        if (pillarsList.Count == 0)
+            Destroy(gameObject);
+    }
 
     //private void Update()
     //{
     //    
     //}
 
-    public bool CheckPillars()
+    public void CheckPillars()
     {
-        if (pillarsList.All(p => p.pillarState == EPillarState.Destroyed))
+        if (pillarsList.All(p => p.GetPillarState() == EPillarState.Destroyed))
         {
-            //Event.Invoke();
+            Event?.Invoke();
             Debug.Log("=== Attivazione evento ===");
 
-            foreach (Pillar pillar in pillarsList)
-            {
-                pillar.pillarState = EPillarState.Inactive;
-                pillar.StopCoroutine(pillar.pillarRoutine);
-            }
-            return false;
+            Deactivation();
         }
-        return true;
     }
 
-    //public void RemovePillar(Pillar pillar)
-    //{
-    //    //pillarsList.Remove(pillar);
-    //}
+    private void Deactivation()
+    {
+        foreach (Pillar pillar in pillarsList)
+        {
+            pillar.SetPillarState(EPillarState.Inactive);
+            pillar.StopCoroutine(pillar.pillarRoutine);
+        }
+    }
+
+    public void AddPillar(Pillar pillar)
+    {
+        pillarsList.Add(pillar);
+    }
+
+    public void RemovePillar(Pillar pillar)
+    {
+        pillarsList.Remove(pillar);
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(gameObject.transform.position, 0.1f);
+        Gizmos.DrawSphere(transform.position, 0.3f);
     }
 
 
