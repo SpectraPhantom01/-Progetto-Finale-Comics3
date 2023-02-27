@@ -290,7 +290,14 @@ MonoBehaviour:
   _damageableMask:
     serializedVersion: 2
     m_Bits: 128
+  _interactableMask:
+    serializedVersion: 2
+    m_Bits: 32768
   hitBox: {x: 2, y: 2}
+  triggerDamage: 0
+  contactKnockback: 20
+  triggerHourglassPercentageDamage: 0
+  disableTriggerAfterFirstEnter: 0
 --- !u!1 &3138579559502232215
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,10 +350,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae3c0778cf93d040b6a4e44e0d4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLoseDustInHourglass: 1
-  amountLoseDust: 1
+  TimeLoseSandInHourglass: 1
+  amountLoseSand: 1
   attackScriptableObjects:
   - {fileID: 11400000, guid: 6eb0e907bc6c8ac41bcec2cb5b4fba12, type: 2}
+  Inventory:
+    InventoryObjects: []
+    EquipmentSlots: []
+    ActiveObjectSlots: []
+  upSkeleton: {fileID: 0}
+  downSkeleton: {fileID: 0}
+  rightSkeleton: {fileID: 0}
+  leftSkeleton: {fileID: 0}
+  upSkeletonRun: {fileID: 0}
+  downSkeletonRun: {fileID: 0}
+  idle: 
+  run: 
+  attack: 
+  dash: 
+  idleSword: 
+  runSword: 
+  dashSword: 
+  hourglassVFX: {fileID: 0}
   CurrentDirection: 1
 --- !u!114 &3138579559502232296
 MonoBehaviour:
@@ -360,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af99d10640d9f9489e6a1ce1d99666d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 6.5
+  maxSpeed: 5
   acceleration: 250
   deceleration: 350
   dashingPower: 15
@@ -372,6 +397,7 @@ MonoBehaviour:
   attackPoint: {fileID: 960920955020320483}
   Direction: {x: 0, y: 0}
   lastDirection: {x: 0, y: -1}
+  Damager: {fileID: 0}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
   serializedVersion: 4
@@ -407,8 +433,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hourglasses:
   - Time: 50
+    HourglassLife: 0
+    BaseTimeLoseSand: 0
+    MaxSpeedLoseSand: 0
+    DEBUGLossXsec: 0
   - Time: 50
+    HourglassLife: 0
+    BaseTimeLoseSand: 0
+    MaxSpeedLoseSand: 0
+    DEBUGLossXsec: 0
   - Time: 50
+    HourglassLife: 0
+    BaseTimeLoseSand: 0
+    MaxSpeedLoseSand: 0
+    DEBUGLossXsec: 0
   PlayerLockTime: 0.1
   EnemyLockTime: 0.5
   KnockBackResistance: 0
