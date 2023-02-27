@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 3682835986779401836}
   - component: {fileID: 4272628589318761874}
   m_Layer: 14
-  m_Name: Ghost2
+  m_Name: Ghost_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
