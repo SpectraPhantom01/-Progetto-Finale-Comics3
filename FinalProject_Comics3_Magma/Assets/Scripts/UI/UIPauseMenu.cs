@@ -49,7 +49,7 @@ public class UIPauseMenu : MonoBehaviour
         foreach (var inventoryObject in _playerManager.InventoryArray.Where(x => x != null && x.PickableSO != null && !x.PickableSO.IsKeyObject))
         {
             var newButton = Instantiate(buttonActionPrefab, gridEquippablePanel.transform);
-            newButton.Initialize(inventoryObject, this);
+            newButton.Initialize(inventoryObject, this, _playerManager.Inventory.EquipmentSlots.Where(x => x != null).ToArray(), _playerManager.Inventory.ActiveObjectSlots.Where(x => x != null).ToArray());
             _buttonActions.Add(newButton);
         }
 
@@ -113,8 +113,15 @@ public class UIPauseMenu : MonoBehaviour
     {
         if (_playerManager.TryEquip(_currentSelected.ObjectInfos, buttonAction.ActionType, buttonAction.SlotIndex))
         {
-            buttonAction.OverWrite(_currentSelected.ObjectInfos, this);
+            if(buttonAction.ObjectInfos != null)
+            {
+                var buttonToRestore = _buttonActions.Find(x => x.ObjectInfos.ID == buttonAction.ObjectInfos.ID);
+                if (buttonToRestore != null)
+                    buttonToRestore.SetQuantity(buttonAction.ObjectInfos.Quantity.ToString());
+            }
+            buttonAction.OverWrite(_currentSelected.ObjectInfos);
         }
+        _currentSelected.SetQuantity("E");
         _currentSelected = null;
     }
 
@@ -123,6 +130,9 @@ public class UIPauseMenu : MonoBehaviour
         if(_currentSelected != null && _currentSelected.ObjectInfos != null && _currentSelected.ObjectInfos.PickableSO != null)
         {
             _playerManager.UnEquip(_currentSelected.ObjectInfos, _currentSelected.ActionType, _currentSelected.SlotIndex);
+            var buttonToRestore = _buttonActions.Find(x => x.ObjectInfos.ID == _currentSelected.ObjectInfos.ID);
+            if(buttonToRestore != null)
+                buttonToRestore.SetQuantity(_currentSelected.ObjectInfos.Quantity.ToString());
             _currentSelected.Clear();
             _currentSelected = null;
             removeButton.gameObject.SetActive(false);
@@ -135,13 +145,20 @@ public class UIPauseMenu : MonoBehaviour
         {
             if(_playerManager.TryUseObject(_currentSelected.ObjectInfos, _currentSelected.SlotIndex))
             {
-                var buttonToRemove = _buttonActions.Find(x => x.ObjectInfos.ID == _currentSelected.ObjectInfos.ID);
-                _buttonActions.Remove(buttonToRemove);
-                Destroy(buttonToRemove.gameObject);
+                if(_currentSelected.ObjectInfos.Quantity <= 0)
+                {
+                    var buttonToRemove = _buttonActions.Find(x => x.ObjectInfos.ID == _currentSelected.ObjectInfos.ID);
+                    _buttonActions.Remove(buttonToRemove);
+                    Destroy(buttonToRemove.gameObject);
 
-                RemoveSelectedEquipment();
-                ClearInfos();
-                useButton.gameObject.SetActive(false);
+                    RemoveSelectedEquipment();
+                    ClearInfos();
+                    useButton.gameObject.SetActive(false);
+                }
+                else
+                {
+                    _currentSelected.SetQuantity(_currentSelected.ObjectInfos.Quantity.ToString());
+                }
             }
         }
     }

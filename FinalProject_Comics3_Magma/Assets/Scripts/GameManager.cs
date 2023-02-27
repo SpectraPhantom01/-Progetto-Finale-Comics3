@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        
+
         playerController = FindObjectOfType<PlayerController>();
         ghostManager = GetComponent<GhostManager>();
         ghostManager.Initialize(playerController);
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
         // INPUT SYSTEM
-        
+
         inputSystem = new InputSystem();
         inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += Movement_started;
@@ -97,9 +97,9 @@ public class GameManager : MonoBehaviour, ISubscriber
             if (playerController.GhostActive)
                 GhostManager.RegistraInput(Vector2.zero, InputType.Ghost);
 
-            playerController.StateMachine.SetState(EPlayerState.Rewind);         
+            playerController.StateMachine.SetState(EPlayerState.Rewind);
         }
-            
+
     }
 
     private void Dash_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         playerController.Direction = obj.ReadValue<Vector2>();
     }
 
-    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj) 
+    private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         if (!playerController.IsDashing)
         {
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour, ISubscriber
         yield return new WaitUntil(() => FileSystem.LoadJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", out savableEntities));
         foreach (var savableInfo in savableEntities.SavableInfos)
         {
-            if(savableInfo.IsPlayer)
+            if (savableInfo.IsPlayer)
             {
                 Debug.Log("Spawn player");
                 var player = Instantiate(PlayerPrefab, new Vector3(savableInfo.xPos, savableInfo.yPos, savableInfo.zPos), Quaternion.identity);
@@ -221,5 +221,13 @@ public class GameManager : MonoBehaviour, ISubscriber
         }
         //_gameObject.transform.position = new Vector3(savableEntities.SavableInfos[0].xPos, savableEntities.SavableInfos[0].yPos, savableEntities.SavableInfos[0].zPos);
         //_gameObject2.transform.position = new Vector3(savableEntities.SavableInfos[1].xPos, savableEntities.SavableInfos[1].yPos, savableEntities.SavableInfos[1].zPos);
+    }
+
+    public void EnablePlayerInputs(bool enable)
+    {
+        if (enable)
+            inputSystem.Player.Enable();
+        else
+            inputSystem.Player.Disable();
     }
 }

@@ -267,7 +267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.63156253, y: 0.078}
   m_AnchorMax: {x: 0.9436041, y: 0.437}
-  m_AnchoredPosition: {x: 0, y: 0.019989014}
+  m_AnchoredPosition: {x: 0, y: 0.019897461}
   m_SizeDelta: {x: 0, y: -0.040039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2857529760619321932
@@ -631,7 +631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7864881, y: 0.27829918}
   m_AnchorMax: {x: 0.91814053, y: 0.7632992}
-  m_AnchoredPosition: {x: 0.1000061, y: -0.000009536743}
+  m_AnchoredPosition: {x: 0.10003662, y: -0.000011444092}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7356656926230902789
@@ -1480,7 +1480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08948806, y: 0.27829918}
   m_AnchorMax: {x: 0.22119114, y: 0.7632992}
-  m_AnchoredPosition: {x: -0.000015258789, y: -0.000009536743}
+  m_AnchoredPosition: {x: 0, y: -0.000011444092}
   m_SizeDelta: {x: -0.000015259, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5218917190143420287
@@ -1690,7 +1690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.43300003, y: 0.27829918}
   m_AnchorMax: {x: 0.56727296, y: 0.7632992}
-  m_AnchoredPosition: {x: 0.02999878, y: -0.000009536743}
+  m_AnchoredPosition: {x: 0.02999878, y: -0.000011444092}
   m_SizeDelta: {x: -1.0000153, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7225739973064137699
@@ -2193,7 +2193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05145832, y: 0.083703704}
   m_AnchorMax: {x: 0.141, y: 0.18737036}
-  m_AnchoredPosition: {x: -0.00012207031, y: -0.5}
+  m_AnchoredPosition: {x: 0.5859375, y: 0}
   m_SizeDelta: {x: 0.000091553, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1707107596886169053
@@ -2821,6 +2821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 5234018147030928425}
+  UIPlayArea: {fileID: 0}
 --- !u!1 &5234018146959221092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2915,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.7
+  m_fontSize: 23.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4197,7 +4198,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.7
+  m_fontSize: 23.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5838,7 +5839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1256022385582560830, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.30000305
+      value: 0.2999878
       objectReference: {fileID: 0}
     - target: {fileID: 1256022385582560830, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
       propertyPath: m_AnchoredPosition.y

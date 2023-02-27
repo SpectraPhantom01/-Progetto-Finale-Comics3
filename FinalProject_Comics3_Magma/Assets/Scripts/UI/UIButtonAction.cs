@@ -1,14 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIButtonAction : MonoBehaviour
 {
     public EButtonActionType ActionType;
     [SerializeField] Image equipImage;
+    [SerializeField] TextMeshProUGUI quantityText;
     [SerializeField] UIPauseMenu pauseMenu;
     public int SlotIndex;
     [SerializeField] Sprite defaultSprite;
@@ -20,12 +19,17 @@ public class UIButtonAction : MonoBehaviour
         thisButton = GetComponent<Button>();
     }
 
-    public void Initialize(Pickable scriptableObject, UIPauseMenu uIPauseMenu)
+    public void Initialize(Pickable scriptableObject, UIPauseMenu uIPauseMenu, Pickable[] equipmentSlots, Pickable[] activeObjectsSlot)
     {
         ObjectInfos = scriptableObject;
         pauseMenu = uIPauseMenu;
         SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
         ActionType = EButtonActionType.InventoryObject;
+
+        if (activeObjectsSlot.Any(x => x.ID == ObjectInfos.ID) || equipmentSlots.Any(x => x.ID == ObjectInfos.ID))
+            SetQuantity("E");
+        else
+            SetQuantity(ObjectInfos.Quantity.ToString());
 
         thisButton.interactable = true;
     }
@@ -35,14 +39,15 @@ public class UIButtonAction : MonoBehaviour
         UIKeyObjectsInventory = uiKeyObjectsInventory;
         SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
         ActionType = EButtonActionType.InventoryObject;
+        SetQuantity(ObjectInfos.Quantity.ToString());
 
         thisButton.interactable = true;
     }
-    public void OverWrite(Pickable scriptableObject, UIPauseMenu uIPauseMenu)
+    public void OverWrite(Pickable scriptableObject)
     {
         ObjectInfos = scriptableObject;
         SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
-
+        SetQuantity(ObjectInfos.Quantity.ToString());
         thisButton.interactable = true;
     }
 
@@ -50,6 +55,12 @@ public class UIButtonAction : MonoBehaviour
     {
         ObjectInfos = null;
         SetSprite(defaultSprite);
+        SetQuantity("0");
+    }
+
+    public void SetQuantity(string text)
+    {
+        quantityText.text = text;
     }
 
     public void SetSprite(Sprite equipmentSprite)
@@ -59,9 +70,9 @@ public class UIButtonAction : MonoBehaviour
 
     public void Action()
     {
-        if(pauseMenu != null)
+        if (pauseMenu != null)
             pauseMenu.SetSelectedObject(ObjectInfos, this);
-        else if(UIKeyObjectsInventory != null)
+        else if (UIKeyObjectsInventory != null)
             UIKeyObjectsInventory.SetSelectedObject(ObjectInfos);
 
     }
