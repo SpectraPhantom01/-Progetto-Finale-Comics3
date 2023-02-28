@@ -19,7 +19,7 @@ public class DamagerFloor : MonoBehaviour
                 if (respawnPoint != null)
                     player.Respawn(respawnPoint.position);
                 else
-                    player.Respawn();
+                    player.RespawnToCheckpoint();
             }
 
         }
@@ -42,7 +42,7 @@ public class DamagerFloor : MonoBehaviour
             if (respawnPoint != null)
                 player.Respawn(respawnPoint.position);
             else
-                player.Respawn();
+                player.RespawnToCheckpoint();
         }
         else
         {

@@ -69,10 +69,10 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         collider.enabled = false;
         yield return new WaitForSeconds(1);
 
+        Respawn(Vector3.zero);
         Damageable.Heal(50);
         GameManager.Instance.EnablePlayerInputs(true);
         collider.enabled = true;
-        Respawn();
     }
 
     private void Awake()
@@ -358,7 +358,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _currentCheckPoint = checkPoint;
     }
 
-    public void Respawn()
+    public void RespawnToCheckpoint()
     {
         Respawn(_currentCheckPoint.transform.position);
     }
