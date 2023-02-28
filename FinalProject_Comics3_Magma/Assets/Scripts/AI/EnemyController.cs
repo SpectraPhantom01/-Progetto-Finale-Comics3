@@ -84,7 +84,7 @@ public class EnemyController : AI, IAliveEntity
     }
 
 
-    public void Kill(Vector3 respawnPoint)
+    public void Kill()
     {
         onKillEnemy?.Invoke();
 

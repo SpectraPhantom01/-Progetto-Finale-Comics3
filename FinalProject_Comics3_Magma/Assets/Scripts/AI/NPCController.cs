@@ -18,7 +18,7 @@ public class NPCController : AI, IAliveEntity
         BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
     }
 
-    public void Kill(Vector3 vector3)
+    public void Kill()
     {
         Destroy(gameObject);
     }

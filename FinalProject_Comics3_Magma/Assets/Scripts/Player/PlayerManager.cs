@@ -31,6 +31,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] string dashSword;
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
+
+    public CheckPoint _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get; set; }
     public string Name => "Etim";
@@ -46,11 +48,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     TrackEntry _trackEntry;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
     UIPlayArea _uiPlayArea;
-    public void Kill(Vector3 respawnPosition)
+    public void Kill()
     {
 
         Debug.Log("animazione SEI MORTO!");
-        StartCoroutine(KillCoroutine(respawnPosition));
+        StartCoroutine(KillCoroutine());
     }
 
     public void Respawn(Vector3 position)
@@ -58,7 +60,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         transform.position = position;
     }
 
-    private IEnumerator KillCoroutine(Vector3 respawnPosition)
+    private IEnumerator KillCoroutine()
     {
         GameManager.Instance.EnablePlayerInputs(false);
         _playerController.Rigidbody.velocity = Vector2.zero;
@@ -67,10 +69,10 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         collider.enabled = false;
         yield return new WaitForSeconds(1);
 
-        transform.position = respawnPosition;
         Damageable.Heal(50);
         GameManager.Instance.EnablePlayerInputs(true);
         collider.enabled = true;
+        Respawn();
     }
 
     private void Awake()
@@ -350,6 +352,16 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     }
 
     public GameObject GetGameObject() => gameObject;
+
+    public void SetCheckPoint(CheckPoint checkPoint)
+    {
+        _currentCheckPoint = checkPoint;
+    }
+
+    public void Respawn()
+    {
+        Respawn(_currentCheckPoint.transform.position);
+    }
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
