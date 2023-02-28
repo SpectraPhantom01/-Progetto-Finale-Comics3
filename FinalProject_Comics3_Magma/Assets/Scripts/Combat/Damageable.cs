@@ -206,4 +206,28 @@ public class Damageable : MonoBehaviour
         DamageReduction = Mathf.Clamp(DamageReduction, 0, float.MaxValue);
     }
 
+    public void Damage(float amount)
+    {
+        if(_isPlayer)
+        {
+            CalculateDamage(amount);
+
+            if (_currentTimeLife <= 0)
+            {
+                hourglasses.Remove(_currentHourglass);
+
+                if (hourglasses.Count > 0)
+                    UseNext();
+                else
+                {
+                    _entity.Kill(Vector3.zero);
+                    _currentTimeLife = 0;
+                    _currentHourglass = null;
+                    return;
+                }
+
+                _currentTimeLife = _currentHourglass.Time;
+            }
+        }
+    }
 }
