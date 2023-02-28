@@ -99,7 +99,9 @@ public class Damageable : MonoBehaviour
             if(_isPlayer)
             {
                 playerManager.LockMovement(PlayerLockTime);
-                playerController.StateMachine.SetState(EPlayerState.Idle); //Introdurre uno stato di danneggiamento?
+                playerController.StateMachine.SetState(EPlayerState.Idle); 
+                               
+                //Introdurre uno stato di danneggiamento?
 
                 ////TEMPORANEO
                 ////-----------------------------------------------------------------

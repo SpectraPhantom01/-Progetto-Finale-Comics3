@@ -30,7 +30,7 @@ public class WalkingCharacterState : State
 
     public override void OnEnd()
     {
-        
+        //Debug.Log(m_Owner.StateMachine.CurrentState);
     }
 
 
