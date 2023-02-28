@@ -119,7 +119,6 @@ public class Damageable : MonoBehaviour
         _currentHourglass = hourglasses.First();
         if(_isPlayer)
         {
-            _entity.Kill();
             Publisher.Publish(new UseNextHourglassMessage());
         }
     }
