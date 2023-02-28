@@ -26,12 +26,15 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
     public bool IsMaxSprite;
     public bool IsMediumSprite;
     public bool IsLowSprite;
+    private void Awake()
+    {
 
+        SandImages = new List<Image>();
+    }
     private void Start()
     {
         Publisher.Subscribe(this, typeof(AddNewHourglass));
         Publisher.Subscribe(this, typeof(UseNextHourglassMessage));
-        SandImages = new List<Image>();
 
         SetSandLevel(ESandLevel.Max);
     }

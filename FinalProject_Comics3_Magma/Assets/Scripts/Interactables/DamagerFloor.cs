@@ -16,7 +16,10 @@ public class DamagerFloor : MonoBehaviour
             if (!player.PlayerController.IsDashing)
             {
                 player.Damageable.Damage(damageAmount, 0, Vector2.zero, hourglassPercentageDamageAmount);
-                player.Respawn(respawnPoint.position);
+                if (respawnPoint != null)
+                    player.Respawn(respawnPoint.position);
+                else
+                    player.Respawn();
             }
 
         }
@@ -25,7 +28,7 @@ public class DamagerFloor : MonoBehaviour
             var enemy = collision.gameObject.SearchComponent<EnemyController>();
             if (enemy != null)
             {
-                enemy.Kill(Vector3.zero);
+                enemy.Kill();
             }
         }
     }
@@ -36,14 +39,17 @@ public class DamagerFloor : MonoBehaviour
         {
             player.Damageable.Damage(damageAmount, 0, Vector2.zero, hourglassPercentageDamageAmount);
 
-            player.Respawn(respawnPoint.position);
+            if (respawnPoint != null)
+                player.Respawn(respawnPoint.position);
+            else
+                player.Respawn();
         }
         else
         {
             var enemy = collision.gameObject.SearchComponent<EnemyController>();
             if (enemy != null)
             {
-                enemy.Kill(Vector3.zero);
+                enemy.Kill();
             }
         }
     }
