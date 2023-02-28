@@ -17,6 +17,7 @@ public class Pillar : MonoBehaviour
     //bool destroyed = false;
 
     public IEnumerator pillarRoutine;
+    [HideInInspector] public SpriteRenderer sprite;
 
     private void Awake()
     {
@@ -28,14 +29,17 @@ public class Pillar : MonoBehaviour
         else
         {
             pillarHandler.AddPillar(this);
+            sprite = GetComponent<SpriteRenderer>();
         }           
     }
 
     public void PillarDestruction()
     {
-        if (pillarHandler != null && pillarState == EPillarState.Active) // Da sistemare if
+        if (pillarHandler != null && pillarState == EPillarState.Active) 
         {
             Debug.Log("Pilastro distrutto");
+
+            sprite.color = Color.red;
 
             pillarState = EPillarState.Destroyed;
             ActiveRoutine();
@@ -55,6 +59,7 @@ public class Pillar : MonoBehaviour
         yield return new WaitForSeconds(pillarDestroyedTime);
         Debug.Log("Pilastro riattivato");
         pillarState = EPillarState.Active;
+        sprite.color = Color.blue;
     }
 
     public EPillarState GetPillarState()

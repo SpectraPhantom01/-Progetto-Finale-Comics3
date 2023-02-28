@@ -41,6 +41,8 @@ public class PillarHandler : MonoBehaviour
         {
             pillar.SetPillarState(EPillarState.Inactive);
             pillar.StopCoroutine(pillar.pillarRoutine);
+
+            pillar.sprite.color = Color.black;
         }
     }
 
