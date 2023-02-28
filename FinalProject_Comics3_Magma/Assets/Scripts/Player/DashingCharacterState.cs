@@ -64,7 +64,7 @@ public class DashingCharacterState : State
     {
         _timeElapsed += Time.deltaTime;
 
-        if (_timeElapsed > _dashingTime)
+        if (_timeElapsed >= _dashingTime)
         {
             m_Owner.StateMachine.SetState(EPlayerState.Idle);
         }
