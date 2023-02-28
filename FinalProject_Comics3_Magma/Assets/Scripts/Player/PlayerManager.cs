@@ -111,7 +111,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if (hourglassTimePassed >= Damageable.CurrentHourglass.RealTimeLoseSand)
         {
             hourglassTimePassed = 0;
-            _damageable.Damage(amountLoseSand, 0, Vector2.zero, 0);
+            _damageable.Damage(amountLoseSand);
             var emission = hourglassVFX.emission;
             emission.rateOverTime = 5 + Mathf.Abs(Damageable.CurrentHourglass.HourglassLife - 100);
 
