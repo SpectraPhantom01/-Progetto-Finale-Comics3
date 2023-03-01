@@ -71,7 +71,7 @@ public class Pillar : MonoBehaviour
     {
         pillarState = state;
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -79,4 +79,5 @@ public class Pillar : MonoBehaviour
         if(pillarHandler != null)
             Gizmos.DrawLine(transform.position, pillarHandler.transform.position);
     }
+#endif
 }

@@ -27,6 +27,9 @@ public class Damageable : MonoBehaviour
     private PlayerController playerController; //TEMPORANEO
     private bool _isPlayer;
 
+    public delegate void OnGetDamage();
+    public OnGetDamage onGetDamage;
+
     [Space(10)]
 
     [Header("Damageable Reductions")]
@@ -71,6 +74,8 @@ public class Damageable : MonoBehaviour
     {
         CalculateDamage(amount);
         _currentHourglass.Damage(hourglassPercentageDamage);
+
+        onGetDamage?.Invoke();
 
         if (_currentTimeLife <= 0)
         {
@@ -170,12 +175,10 @@ public class Damageable : MonoBehaviour
         if (_currentTimeLife + amount >= _currentHourglass.Time)
         {
             _currentTimeLife = _currentHourglass.Time;
-            Debug.Log($"This damageable has full TIME life: {gameObject.name}");
             return;
         }
 
         _currentTimeLife += amount;
-        Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{_currentHourglass.Time}");
 
     }
 

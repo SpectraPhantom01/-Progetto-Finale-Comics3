@@ -77,28 +77,33 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     private void Awake()
     {
-        IsAlive = true;
-
-        _damageable = gameObject.SearchComponent<Damageable>();
-
         _playerController = gameObject.SearchComponent<PlayerController>();
 
-        _currentSkeleton = downSkeleton;
-        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
+        if(!_playerController.ImGhost)
+        {
+            IsAlive = true;
+            _damageable = gameObject.SearchComponent<Damageable>();
+        }
     }
     private void Start()
     {
-        _uiPlayArea = UIManager.Instance.UIPlayArea;
+        _currentSkeleton = downSkeleton;
+        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
 
-        for (int i = 1; i < Damageable.Hourglasses; i++)
+        if (!_playerController.ImGhost)
         {
-            _uiPlayArea.AddNewHourglass();
+            _uiPlayArea = UIManager.Instance.UIPlayArea;
+
+            for (int i = 1; i < Damageable.Hourglasses; i++)
+            {
+                _uiPlayArea.AddNewHourglass();
+            }
         }
     }
     private void Update()
     {
-
-        HandleHourglass();
+        if(!_playerController.ImGhost)
+            HandleHourglass();
 
         if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
@@ -355,12 +360,14 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void SetCheckPoint(CheckPoint checkPoint)
     {
-        _currentCheckPoint = checkPoint;
+        if(!_playerController.ImGhost)
+            _currentCheckPoint = checkPoint;
     }
 
     public void RespawnToCheckpoint()
     {
-        Respawn(_currentCheckPoint.transform.position);
+        if (!_playerController.ImGhost)
+            Respawn(_currentCheckPoint.transform.position);
     }
 #if UNITY_EDITOR
     private void OnDrawGizmos()

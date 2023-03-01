@@ -552,43 +552,79 @@ MonoBehaviour:
   Inventory:
     InventoryObjects:
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     EquipmentSlots:
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     ActiveObjectSlots:
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
     - PickableSO: {fileID: 0}
+      Quantity: 0
   upSkeleton: {fileID: 320636664393706386}
   downSkeleton: {fileID: 21121566970217140}
   rightSkeleton: {fileID: 7777422146697839349}
@@ -603,6 +639,7 @@ MonoBehaviour:
   runSword: corsa
   dashSword: scatto
   hourglassVFX: {fileID: 0}
+  _currentCheckPoint: {fileID: 0}
   CurrentDirection: 1
 --- !u!114 &3138579559502232296
 MonoBehaviour:
@@ -622,13 +659,13 @@ MonoBehaviour:
   dashingPower: 15
   dashingTime: 0.3
   dashingCooldown: 0.25
-  ghostPrefab: {fileID: 3138579559502232296}
+  ghostPrefab: {fileID: 3138579559502232296, guid: 25e674b5b378e164bab528df2f2b9ded, type: 3}
   ghostLifeTime: 4
   rewindCooldown: 1
   attackPoint: {fileID: 960920955020320483}
   Direction: {x: 0, y: 0}
-  lastDirection: {x: 0, y: -1}
   Damager: {fileID: 0}
+  lastDirection: {x: 0, y: -1}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
   serializedVersion: 4

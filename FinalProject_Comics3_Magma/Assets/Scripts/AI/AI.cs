@@ -9,21 +9,25 @@ public class AI : MonoBehaviour
     [HideInInspector] public BehaviorTree BehaviorTree;
     [HideInInspector] public NavMeshAgent Agent;
     [HideInInspector] public EDirection CurrentDirection = EDirection.Down;
-
+    public bool Stupid;
 
     private void Awake()
     {
-        BehaviorTree = gameObject.SearchComponent<BehaviorTree>();
-        Agent = gameObject.SearchComponent<NavMeshAgent>();
-        if(BehaviorTree != null && Agent != null)
+        if(!Stupid)
         {
-            BehaviorTree.SetVariableValue("StoppingDistance", Agent.stoppingDistance);
+            BehaviorTree = gameObject.SearchComponent<BehaviorTree>();
+            Agent = gameObject.SearchComponent<NavMeshAgent>();
+            if (BehaviorTree != null && Agent != null)
+            {
+                BehaviorTree.SetVariableValue("StoppingDistance", Agent.stoppingDistance);
+            }
+
         }
        
     }
     private void Update()
     {
-        if (Agent.velocity.magnitude > 0.01f)
+        if (!Stupid && Agent.velocity.magnitude > 0.01f)
             CurrentDirection = Agent.velocity.CalculateDirection();
     }
 }
