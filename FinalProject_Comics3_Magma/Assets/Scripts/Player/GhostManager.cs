@@ -86,6 +86,7 @@ public class GhostManager : MonoBehaviour
                 ghost.Attack();
                 break;
             case InputType.Interaction:
+                ghost.Attack();
                 break;
         }
 

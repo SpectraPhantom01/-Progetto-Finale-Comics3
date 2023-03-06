@@ -27,6 +27,9 @@ public class Damageable : MonoBehaviour
     private PlayerController playerController; //TEMPORANEO
     private bool _isPlayer;
 
+    public delegate void OnGetDamage();
+    public OnGetDamage onGetDamage;
+
     [Space(10)]
 
     [Header("Damageable Reductions")]
@@ -67,10 +70,12 @@ public class Damageable : MonoBehaviour
 
     }
 
-    public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage, Transform respawnPosition = null)
+    public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage)
     {
         CalculateDamage(amount);
         _currentHourglass.Damage(hourglassPercentageDamage);
+
+        onGetDamage?.Invoke();
 
         if (_currentTimeLife <= 0)
         {
@@ -80,17 +85,11 @@ public class Damageable : MonoBehaviour
                 UseNext();
             else
             {
-                if (respawnPosition != null)
-                    _entity.Kill(respawnPosition.position);
-                else
-                    _entity.Kill(Vector3.zero);
+                _entity.Kill();
                 _currentTimeLife = 0;
                 _currentHourglass = null;
                 return;
             }
-
-            if (respawnPosition != null)
-                _entity.GetGameObject().transform.position = respawnPosition.position;
 
             _currentTimeLife = _currentHourglass.Time;
         }
@@ -176,12 +175,10 @@ public class Damageable : MonoBehaviour
         if (_currentTimeLife + amount >= _currentHourglass.Time)
         {
             _currentTimeLife = _currentHourglass.Time;
-            Debug.Log($"This damageable has full TIME life: {gameObject.name}");
             return;
         }
 
         _currentTimeLife += amount;
-        Debug.Log($"Got heal!!! TIME LIFE: {_currentTimeLife}/{_currentHourglass.Time}");
 
     }
 
@@ -220,7 +217,7 @@ public class Damageable : MonoBehaviour
                     UseNext();
                 else
                 {
-                    _entity.Kill(Vector3.zero);
+                    _entity.Kill();
                     _currentTimeLife = 0;
                     _currentHourglass = null;
                     return;

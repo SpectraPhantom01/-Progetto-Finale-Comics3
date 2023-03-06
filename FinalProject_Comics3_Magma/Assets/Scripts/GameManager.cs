@@ -92,12 +92,20 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (playerController.CanRewind && playerController.Direction.magnitude == 0)
+        if (playerController.CanRewind)
         {
             if (playerController.GhostActive)
+            {
+                // finish ghost, destroy object
                 GhostManager.RegistraInput(Vector2.zero, InputType.Ghost);
+            }
 
             playerController.StateMachine.SetState(EPlayerState.Rewind);
+            if (playerController.Direction.magnitude != 0)
+            {
+                // if he is already moving, register a state
+                GhostManager.RegistraInput(playerController.Direction, InputType.MovementStart);
+            }
         }
 
     }

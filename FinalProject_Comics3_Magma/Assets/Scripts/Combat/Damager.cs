@@ -85,13 +85,11 @@ public class Damager : MonoBehaviour
                 damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform, _bonusAttackPercentage));
             }
 
-            if(_isPlayer) // Da spostare o modificare?
-                SearchInteractable(); 
         }
         
     }
 
-    private void SearchInteractable()
+    public void SearchInteractable()
     {
         var collidersHit = Physics2D.OverlapBoxAll(damagerArea.position, hitBox, 0, _interactableMask).ToList();
         if(collidersHit.Count > 0)

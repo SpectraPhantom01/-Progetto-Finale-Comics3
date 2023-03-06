@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movemens Settings")]
-    [Tooltip("Velocit� massima del player")]
+    [Tooltip("Velocita massima del player")]
     [SerializeField] float maxSpeed = 6.5f;
     [Tooltip("Accelerazione del player")]
     [SerializeField] float acceleration = 25;
@@ -25,22 +25,22 @@ public class PlayerController : MonoBehaviour
     public float rewindCooldown;
 
     [Space(10)]
-
     [SerializeField] Transform attackPoint;
+
+
     [HideInInspector] public Vector2 Direction;
     [HideInInspector] public GenericStateMachine<EPlayerState> StateMachine = new GenericStateMachine<EPlayerState>();
-
+    [HideInInspector] public Damager Damager;
     [HideInInspector] public Vector2 lastDirection;
+
     float value;
     Rigidbody2D rb;
-    public Rigidbody2D Rigidbody => rb;
-
     PlayerController instantiatedGhost;
-    IEnumerator ghostRoutine;
+    Coroutine ghostRoutine;
 
-    [HideInInspector] public Damager Damager;
 
     //public bool IsMoving { get; private set; } = false;
+    public Rigidbody2D Rigidbody => rb;
     public bool CanMove { get; set; } = true;
     public bool IsDashing { get; set; } = false;
     public bool CanDash { get; set; } = true;
@@ -50,19 +50,18 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving => value != 0;
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager => _playerManager;
+    public bool ImGhost { get; set; } = false;
     private void Awake()
     {
-        //inputSystem = new InputSystem();
-        rb = GetComponentInChildren<Rigidbody2D>();
         Damager = gameObject.SearchComponent<Damager>();
+        
+        rb = GetComponent<Rigidbody2D>();
         _playerManager = GetComponent<PlayerManager>();
         CanMove = true;
         IsDashing = false;
         CanDash = true;
         GhostActive = false;
         CanRewind = true;
-
-        //ghostRoutine = GhostRoutine();
 
         StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
@@ -77,6 +76,18 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         EquipAttack(EAttackType.Melee);
+        if (!ImGhost)
+        {
+            _playerManager.Damageable.onGetDamage += TryDestroyGhost;
+        }
+    }
+
+    private void TryDestroyGhost()
+    {
+        if(GhostActive)
+        {
+            InterruptGhost();
+        }
     }
 
     private void Update()
@@ -93,6 +104,10 @@ public class PlayerController : MonoBehaviour
         StateMachine.OnFixedUpdate();
     }
 
+    public void Initialize(bool isGhost)
+    {
+        ImGhost = isGhost;
+    }
 
     
     //Gestione Movimento:
@@ -194,9 +209,10 @@ public class PlayerController : MonoBehaviour
     {
         GhostActive = true;
         instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
-
-        ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
-        StartCoroutine(ghostRoutine);
+        instantiatedGhost.Initialize(true);
+        //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
+        //StartCoroutine(ghostRoutine);
+        ghostRoutine = StartCoroutine(GhostRoutine()); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
 
         GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
     }
@@ -228,6 +244,12 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(RewindCooldownRoutine());
     }
 
+    public void InterruptGhost()
+    {
+        StopCoroutine(ghostRoutine);
+        DestroyGhost();
+    }
+
     private void GhostActivation()
     {
         CanRewind = false;
@@ -253,18 +275,28 @@ public class PlayerController : MonoBehaviour
 
     public void Attack() //Da spostare?
     {
-        StateMachine.SetState(EPlayerState.Attacking);
+        if(!ImGhost)
+        {
+            StateMachine.SetState(EPlayerState.Attacking);
 
-        //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
-        var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
-        var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
-        float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
-        float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
+            //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
+            var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
+            var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
+            float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
+            float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
 
-        Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
+            Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
 
-        Damager.Attack(); // <<---
-        TryPickUp();       // <<---
+            Damager.Attack(); // <<---
+            Damager.SearchInteractable();
+            TryPickUp();       // <<---
+        }
+        else
+        {
+            StateMachine.SetState(EPlayerState.Attacking);
+            Damager.Attack();
+            Damager.SearchInteractable();
+        }
     }
 
     public void EquipAttack(EAttackType eAttackType)

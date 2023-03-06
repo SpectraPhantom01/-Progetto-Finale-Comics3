@@ -31,6 +31,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] string dashSword;
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
+
+    public CheckPoint _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
     public bool IsAlive { get; set; }
     public string Name => "Etim";
@@ -46,11 +48,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     TrackEntry _trackEntry;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
     UIPlayArea _uiPlayArea;
-    public void Kill(Vector3 respawnPosition)
+    public void Kill()
     {
 
         Debug.Log("animazione SEI MORTO!");
-        StartCoroutine(KillCoroutine(respawnPosition));
+        StartCoroutine(KillCoroutine());
     }
 
     public void Respawn(Vector3 position)
@@ -58,7 +60,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         transform.position = position;
     }
 
-    private IEnumerator KillCoroutine(Vector3 respawnPosition)
+    private IEnumerator KillCoroutine()
     {
         GameManager.Instance.EnablePlayerInputs(false);
         _playerController.Rigidbody.velocity = Vector2.zero;
@@ -67,7 +69,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         collider.enabled = false;
         yield return new WaitForSeconds(1);
 
-        transform.position = respawnPosition;
+        Respawn(Vector3.zero);
         Damageable.Heal(50);
         GameManager.Instance.EnablePlayerInputs(true);
         collider.enabled = true;
@@ -75,28 +77,33 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     private void Awake()
     {
-        IsAlive = true;
-
-        _damageable = gameObject.SearchComponent<Damageable>();
-
         _playerController = gameObject.SearchComponent<PlayerController>();
 
-        _currentSkeleton = downSkeleton;
-        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
+        if(!_playerController.ImGhost)
+        {
+            IsAlive = true;
+            _damageable = gameObject.SearchComponent<Damageable>();
+        }
     }
     private void Start()
     {
-        _uiPlayArea = UIManager.Instance.UIPlayArea;
+        _currentSkeleton = downSkeleton;
+        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
 
-        for (int i = 1; i < Damageable.Hourglasses; i++)
+        if (!_playerController.ImGhost)
         {
-            _uiPlayArea.AddNewHourglass();
+            _uiPlayArea = UIManager.Instance.UIPlayArea;
+
+            for (int i = 1; i < Damageable.Hourglasses; i++)
+            {
+                _uiPlayArea.AddNewHourglass();
+            }
         }
     }
     private void Update()
     {
-
-        HandleHourglass();
+        if(!_playerController.ImGhost)
+            HandleHourglass();
 
         if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
@@ -350,6 +357,18 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     }
 
     public GameObject GetGameObject() => gameObject;
+
+    public void SetCheckPoint(CheckPoint checkPoint)
+    {
+        if(!_playerController.ImGhost)
+            _currentCheckPoint = checkPoint;
+    }
+
+    public void RespawnToCheckpoint()
+    {
+        if (!_playerController.ImGhost)
+            Respawn(_currentCheckPoint.transform.position);
+    }
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
