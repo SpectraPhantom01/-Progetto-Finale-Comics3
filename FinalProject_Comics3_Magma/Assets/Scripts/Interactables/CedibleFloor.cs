@@ -25,7 +25,7 @@ public class CedibleFloor : MonoBehaviour
         if (player != null)
         {
             var particle = Instantiate(cedibleFloorVFX, transform.position, Quaternion.identity);
-            Destroy(particle, 1f);
+            Destroy(particle.gameObject, 1f);
             StartCoroutine(SwapFloorCoroutine(timeBeforeSwapFloor));
         }
     }

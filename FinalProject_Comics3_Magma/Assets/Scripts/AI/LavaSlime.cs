@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class LavaSlime : MonoBehaviour
 {
-    [SerializeField] float timeSingleTrailLife;
-    [SerializeField] float deltaTimeSpawnTrail;
     [SerializeField] GameObject trailPrefab;
-
-    float timePassed = 0;
-
-    private void Update()
+    TrailRenderer trailRenderer;
+    private void Start()
     {
-        timePassed += Time.deltaTime * 1;
-        if(timePassed >= deltaTimeSpawnTrail)
-        {
-            var trail = Instantiate(trailPrefab, transform.position, Quaternion.identity);
-            Destroy(trail, timeSingleTrailLife);
-            timePassed = 0;
-        }
+        SpawnTrail();
+    }
+    public void SpawnTrail()
+    {
+        trailRenderer = Instantiate(trailPrefab, transform).GetComponent<TrailRenderer>();
+    }
+    public void BreakTrail()
+    {
+        trailRenderer.transform.SetParent(null);
+        trailRenderer.autodestruct = true;
     }
 }
