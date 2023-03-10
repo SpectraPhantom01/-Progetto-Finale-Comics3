@@ -33,6 +33,9 @@ public class IdleCharacterState : State
     public override void OnUpdate()
     {
         //Cambio di stato? ==> Gestito alla fine dal GameManager (tecnicamente)
+
+        if (m_Owner.Direction.magnitude != 0)
+            m_Owner.StateMachine.SetState(EPlayerState.Walking);
     }
 }
 

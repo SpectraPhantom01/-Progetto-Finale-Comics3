@@ -345,13 +345,28 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             if (_playerController.IsMoving)
             {
-                if (_trackEntry.Animation.Name != run)
-                    _trackEntry = _currentSkeleton.state.SetAnimation(0, run, true);
+                if(_playerController.StateMachine.GetState(EPlayerState.Walking) == _playerController.StateMachine.CurrentState)
+                {
+                    if (_trackEntry.Animation.Name != run)
+                        _trackEntry = _currentSkeleton.state.SetAnimation(0, run, true);
+                        
+                }else if (_playerController.IsDashing)
+                {
+                    if (_trackEntry.Animation.Name != dashSword)
+                        _trackEntry = _currentSkeleton.state.SetAnimation(0, dashSword, false);
+                }                
             }
             else
             {
-                if (_trackEntry.Animation.Name != idle)
-                    _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
+                if(_playerController.StateMachine.GetState(EPlayerState.Idle) == _playerController.StateMachine.CurrentState)
+                {
+                    if (_trackEntry.Animation.Name != idle)
+                        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
+                }else if (_playerController.IsAttacking)
+                {
+                    if (_trackEntry.Animation.Name != attack)
+                        _trackEntry = _currentSkeleton.state.SetAnimation(0, attack, false);
+                }           
             }
         }
     }

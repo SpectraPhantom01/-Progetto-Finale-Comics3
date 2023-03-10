@@ -11,6 +11,8 @@ public class AttackingCharacterState : State
 {
     private PlayerController m_Owner;
 
+    private float _timeElapsed; //Timer temporaneo
+
     public AttackingCharacterState(PlayerController owner)
     {
         m_Owner = owner;
@@ -30,13 +32,19 @@ public class AttackingCharacterState : State
     {
         //Debug.Log("Sono in attacking");
         m_Owner.IsAttacking = true;
+        _timeElapsed = 0;
+
+        //m_Owner.PlayerManager._trackEntry = m_Owner.PlayerManager.CurrentSkeleton.state.SetAnimation(0, "attacco", false); //TEST            
     }
 
     public override void OnUpdate()
     {
-        //Introdurre cooldown per attacco?
+        _timeElapsed += Time.deltaTime;
 
-        //_damager.Attack();
+        if (_timeElapsed >= 0.8)
+        {
+            m_Owner.StateMachine.SetState(EPlayerState.Idle);
+        }
     }
 }
 
