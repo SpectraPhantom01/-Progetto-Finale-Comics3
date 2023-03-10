@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager => _playerManager;
     public bool ImGhost { get; set; } = false;
+
     private void Awake()
     {
         Damager = gameObject.SearchComponent<Damager>();

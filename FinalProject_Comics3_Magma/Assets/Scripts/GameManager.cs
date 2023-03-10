@@ -117,7 +117,9 @@ public class GameManager : MonoBehaviour, ISubscriber
             GhostManager.RegistraInput(Vector2.zero, InputType.Dash);
         }
 
+        
         playerController.Dash();
+
         //playerController.StateMachine.SetState(EPlayerState.Dashing);
     }
 
@@ -156,7 +158,8 @@ public class GameManager : MonoBehaviour, ISubscriber
             GhostManager.RegistraInput(Vector2.zero, InputType.Attack);
         }
 
-        playerController.Attack();
+        if(!playerController.IsAttacking && playerController.Direction.magnitude == 0) 
+            playerController.Attack();
     }
 
     private void Start()
