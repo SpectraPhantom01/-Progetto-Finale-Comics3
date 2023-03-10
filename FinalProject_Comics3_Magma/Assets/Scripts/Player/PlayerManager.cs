@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private PlayerController _playerController;
     SkeletonAnimation _currentSkeleton;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
-    [HideInInspector] public TrackEntry _trackEntry;
+    TrackEntry _trackEntry;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
     UIPlayArea _uiPlayArea;
     public void Kill()
