@@ -365,7 +365,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 }else if (_playerController.IsAttacking)
                 {
                     if (_trackEntry.Animation.Name != attack)
-                        _trackEntry = _currentSkeleton.state.SetAnimation(0, attack, false);
+                         _trackEntry = _currentSkeleton.state.SetAnimation(0, attack, false);
+
                 }           
             }
         }
