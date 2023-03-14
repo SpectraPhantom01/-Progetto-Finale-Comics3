@@ -126,6 +126,7 @@ MonoBehaviour:
   lavaFloor: {fileID: 6401807356697015613}
   timeBeforeSwapFloor: 2
   cedibleFloorVFX: {fileID: 5018874063188205542, guid: 55c2a4f2b7df07540aa5c09d5601b6f6, type: 3}
+  lavaCollider: {fileID: 2303332800233603869}
 --- !u!114 &9105735640255679664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +381,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+--- !u!61 &2303332800233603869 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5930749408481756821, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+  m_PrefabInstance: {fileID: 5600601964745835912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2303332800233603870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5930749408481756822, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
