@@ -164,7 +164,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
         for (int i = 0; i < InventoryArray.Length; i++)
         {
-            if (InventoryArray[i].PickableSO == null)
+            if (InventoryArray[i] == null || InventoryArray[i].PickableSO == null)
             {
                 Pickable pickableObject = new()
                 {
@@ -178,7 +178,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
     }
 
-    public bool TryUseObject(Pickable pickableObject, int slotIndex)
+    public bool TryUseObject(Pickable pickableObject, int slotIndex, bool forceUpdate = false)
     {
         if (Inventory.ActiveObjectSlots.Any(x => x == pickableObject))
         {
@@ -203,10 +203,23 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             else
                 _uiPlayArea.SetActiveObject(slotIndex, objectToUse.PickableSO.ObjectInventorySprite, objectToUse.Quantity);
 
+            if(forceUpdate)
+                UIManager.Instance.PauseMenu.UpdateButton(slotIndex, objectToUse.Quantity);
+
+
             return true;
         }
 
         return false;
+    }
+
+    public bool TryUseObject(int inventoryIndex)
+    {
+        var po = Inventory.ActiveObjectSlots[inventoryIndex];
+        if (po == null || po.PickableSO == null)
+            return false;
+
+        return TryUseObject(po, inventoryIndex, true);
     }
 
     public void RemoveObject(Pickable pickableScriptableObject)
@@ -385,6 +398,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if (!_playerController.ImGhost)
             Respawn(_currentCheckPoint.transform.position);
     }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

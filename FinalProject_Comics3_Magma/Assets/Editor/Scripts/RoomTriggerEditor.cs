@@ -35,10 +35,14 @@ public class RoomTriggerEditor : Editor
             EditorGUILayout.LabelField($"Inside Enemies: {insideEnemies.Count}");
             foreach (var enemyController in insideEnemies)
             {
-                GUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField($"{enemyController.Name}", GUILayout.MinWidth(40), GUILayout.MaxWidth(130));
-                EditorGUILayout.ObjectField(enemyController.gameObject, typeof(EnemyController), true, GUILayout.MinWidth(40));
-                GUILayout.EndHorizontal();
+                if(enemyController != null)
+                {
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField($"{enemyController.Name}", GUILayout.MinWidth(40), GUILayout.MaxWidth(130));
+                    EditorGUILayout.ObjectField(enemyController.gameObject, typeof(EnemyController), true, GUILayout.MinWidth(40));
+                    GUILayout.EndHorizontal();
+
+                }
             }
 
             EditorUtility.SetDirty(room);

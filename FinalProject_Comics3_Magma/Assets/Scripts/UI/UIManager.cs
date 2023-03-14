@@ -32,8 +32,13 @@ public class UIManager : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject pauseMenu;
+    public UIPauseMenu PauseMenu;
     public UIPlayArea UIPlayArea;
     bool pause = false;
+    private void Awake()
+    {
+        PauseMenu = pauseMenu.GetComponent<UIPauseMenu>();
+    }
     public void Pause()
     {
         pause = !pause;

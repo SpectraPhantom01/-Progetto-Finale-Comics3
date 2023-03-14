@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] GameObject KeyObjectInventoryBackground;
     [SerializeField] GameObject OptionsMenu;
     [SerializeField] Sprite defaultSpriteImage;
+    [SerializeField] UIButtonAction[] actionButtons;
     PlayerManager _playerManager;
     List<UIButtonAction> _buttonActions;
     UIButtonAction _currentSelected;
@@ -147,20 +149,30 @@ public class UIPauseMenu : MonoBehaviour
             {
                 if(_currentSelected.ObjectInfos.Quantity <= 0)
                 {
-                    var buttonToRemove = _buttonActions.Find(x => x.ObjectInfos.ID == _currentSelected.ObjectInfos.ID);
-                    _buttonActions.Remove(buttonToRemove);
-                    Destroy(buttonToRemove.gameObject);
-
-                    RemoveSelectedEquipment();
-                    ClearInfos();
-                    useButton.gameObject.SetActive(false);
+                    DestroyButton(_currentSelected);
                 }
                 else
                 {
-                    _currentSelected.SetQuantity(_currentSelected.ObjectInfos.Quantity.ToString());
+                    DecreaseQuantity(_currentSelected);
                 }
             }
         }
+    }
+
+    private void DecreaseQuantity(UIButtonAction button)
+    {
+        button.SetQuantity(button.ObjectInfos.Quantity.ToString());
+    }
+
+    private void DestroyButton(UIButtonAction button)
+    {
+        var buttonToRemove = _buttonActions.Find(x => x.ObjectInfos.ID == button.ObjectInfos.ID);
+        _buttonActions.Remove(buttonToRemove);
+        Destroy(buttonToRemove.gameObject);
+
+        RemoveSelectedEquipment();
+        ClearInfos();
+        useButton.gameObject.SetActive(false);
     }
 
     public void GoToMenu(int index)
@@ -191,5 +203,17 @@ public class UIPauseMenu : MonoBehaviour
         objectType.text = "";
         objectDescription.text = "";
         selectedObjectImage.sprite = defaultSpriteImage;
+    }
+
+    internal void UpdateButton(int slotIndex, int quantityLeft)
+    {
+        var button = actionButtons[slotIndex];
+        if(button != null)
+        {
+            if (quantityLeft > 0)
+                DecreaseQuantity(button);
+            else
+                DestroyButton(button);
+        }
     }
 }
