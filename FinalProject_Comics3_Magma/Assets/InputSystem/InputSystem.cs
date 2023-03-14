@@ -98,6 +98,42 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActiveObjectOne"",
+                    ""type"": ""Button"",
+                    ""id"": ""242509c3-96ab-4e2e-a1d1-6e8cc1f85010"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActiveObjectTwo"",
+                    ""type"": ""Button"",
+                    ""id"": ""616b2cc6-c010-4621-b499-e712a1adc4a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActiveObjectThree"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf383ffd-bcab-46d3-9b59-8fd484a66b35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActiveObjectFour"",
+                    ""type"": ""Button"",
+                    ""id"": ""5acc57da-18a5-403c-8430-3d99c5525178"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +268,50 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37d75f8d-f2f1-4ecc-8e39-67e44e5b51a8"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveObjectOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a135981-acd2-470b-a580-8e7dfd3cce49"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveObjectTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6d552d0-361b-4ebd-bc8b-564cdeb72a36"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveObjectThree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2009579d-3e1b-4f60-9874-1389723b04f3"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActiveObjectFour"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -260,6 +340,10 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         m_Player_Rewind = m_Player.FindAction("Rewind", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ActiveObjectOne = m_Player.FindAction("ActiveObjectOne", throwIfNotFound: true);
+        m_Player_ActiveObjectTwo = m_Player.FindAction("ActiveObjectTwo", throwIfNotFound: true);
+        m_Player_ActiveObjectThree = m_Player.FindAction("ActiveObjectThree", throwIfNotFound: true);
+        m_Player_ActiveObjectFour = m_Player.FindAction("ActiveObjectFour", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -327,6 +411,10 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Rewind;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ActiveObjectOne;
+    private readonly InputAction m_Player_ActiveObjectTwo;
+    private readonly InputAction m_Player_ActiveObjectThree;
+    private readonly InputAction m_Player_ActiveObjectFour;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -339,6 +427,10 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         public InputAction @Rewind => m_Wrapper.m_Player_Rewind;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ActiveObjectOne => m_Wrapper.m_Player_ActiveObjectOne;
+        public InputAction @ActiveObjectTwo => m_Wrapper.m_Player_ActiveObjectTwo;
+        public InputAction @ActiveObjectThree => m_Wrapper.m_Player_ActiveObjectThree;
+        public InputAction @ActiveObjectFour => m_Wrapper.m_Player_ActiveObjectFour;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -372,6 +464,18 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @ActiveObjectOne.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectOne;
+                @ActiveObjectOne.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectOne;
+                @ActiveObjectOne.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectOne;
+                @ActiveObjectTwo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectTwo;
+                @ActiveObjectTwo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectTwo;
+                @ActiveObjectTwo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectTwo;
+                @ActiveObjectThree.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectThree;
+                @ActiveObjectThree.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectThree;
+                @ActiveObjectThree.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectThree;
+                @ActiveObjectFour.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectFour;
+                @ActiveObjectFour.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectFour;
+                @ActiveObjectFour.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActiveObjectFour;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -400,6 +504,18 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ActiveObjectOne.started += instance.OnActiveObjectOne;
+                @ActiveObjectOne.performed += instance.OnActiveObjectOne;
+                @ActiveObjectOne.canceled += instance.OnActiveObjectOne;
+                @ActiveObjectTwo.started += instance.OnActiveObjectTwo;
+                @ActiveObjectTwo.performed += instance.OnActiveObjectTwo;
+                @ActiveObjectTwo.canceled += instance.OnActiveObjectTwo;
+                @ActiveObjectThree.started += instance.OnActiveObjectThree;
+                @ActiveObjectThree.performed += instance.OnActiveObjectThree;
+                @ActiveObjectThree.canceled += instance.OnActiveObjectThree;
+                @ActiveObjectFour.started += instance.OnActiveObjectFour;
+                @ActiveObjectFour.performed += instance.OnActiveObjectFour;
+                @ActiveObjectFour.canceled += instance.OnActiveObjectFour;
             }
         }
     }
@@ -423,5 +539,9 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         void OnRewind(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnActiveObjectOne(InputAction.CallbackContext context);
+        void OnActiveObjectTwo(InputAction.CallbackContext context);
+        void OnActiveObjectThree(InputAction.CallbackContext context);
+        void OnActiveObjectFour(InputAction.CallbackContext context);
     }
 }

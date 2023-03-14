@@ -70,6 +70,10 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Dash.performed += Dash_performed;
         inputSystem.Player.Rewind.performed += Rewind_performed;
         inputSystem.Player.Pause.performed += Pause_performed;
+        inputSystem.Player.ActiveObjectOne.performed += ActiveObjectOnePerformed;
+        inputSystem.Player.ActiveObjectTwo.performed += ActiveObjectTwoPerformed;
+        inputSystem.Player.ActiveObjectThree.performed += ActiveObjectThreePerformed;
+        inputSystem.Player.ActiveObjectFour.performed += ActiveObjectFourPerformed;
         // END INPUT SYSTEM
 
 
@@ -83,6 +87,23 @@ public class GameManager : MonoBehaviour, ISubscriber
 
         Publisher.Subscribe(this, typeof(SaveMessage));
         Publisher.Subscribe(this, typeof(LoadMessage));
+    }
+
+    private void ActiveObjectOnePerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerController.PlayerManager.TryUseObject(0);
+    }
+    private void ActiveObjectTwoPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerController.PlayerManager.TryUseObject(1);
+    }
+    private void ActiveObjectThreePerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerController.PlayerManager.TryUseObject(2);
+    }
+    private void ActiveObjectFourPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        playerController.PlayerManager.TryUseObject(3);
     }
 
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

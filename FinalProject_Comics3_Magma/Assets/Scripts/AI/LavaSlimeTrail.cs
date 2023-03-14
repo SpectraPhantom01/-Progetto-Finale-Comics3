@@ -34,7 +34,8 @@ public class LavaSlimeTrail : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(edgeCollider.gameObject);
+        if(edgeCollider != null)
+            Destroy(edgeCollider.gameObject);
     }
 
 }
