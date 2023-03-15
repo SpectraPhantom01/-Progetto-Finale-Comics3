@@ -274,23 +274,28 @@ public class PlayerController : MonoBehaviour
         attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
     }
 
-    public void Attack() //Da spostare?
+    public void Attack() 
     {
         if(!ImGhost)
         {
-            StateMachine.SetState(EPlayerState.Attacking);
+            
+            // <<---
 
-            //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
-            var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
-            var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
-            float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
-            float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
+            if (!TryPickUp())
+            {
+                StateMachine.SetState(EPlayerState.Attacking);
 
-            Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
+                //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
+                var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
+                var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
+                float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
+                float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
 
-            Damager.Attack(); // <<---
-            Damager.SearchInteractable();
-            TryPickUp();       // <<---
+                Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
+
+                Damager.Attack(); // <<---
+                Damager.SearchInteractable();
+            }
         }
         else
         {
@@ -305,7 +310,7 @@ public class PlayerController : MonoBehaviour
         Damager.EquipAttack(eAttackType);
     }
 
-    public void TryPickUp()
+    public bool TryPickUp()
     {
         var collidersHit = Physics2D.OverlapCircleAll(transform.position, 1).ToList();
         if (collidersHit.Count > 0)
@@ -315,10 +320,11 @@ public class PlayerController : MonoBehaviour
                 if(hit.TryGetComponent<PickableObject>(out var pickable))
                 {
                     _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable.gameObject);
-                    return;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
 }
