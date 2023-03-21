@@ -43,10 +43,12 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private float hourglassTimePassed;
     private Damageable _damageable;
     private PlayerController _playerController;
+    private Coroutine stopHourglassCoroutine;
     SkeletonAnimation _currentSkeleton;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
     UIPlayArea _uiPlayArea;
+    bool stoppedHourglass = false;
     public void Kill()
     {
 
@@ -101,7 +103,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     }
     private void Update()
     {
-        if(!_playerController.ImGhost)
+        if(!_playerController.ImGhost && !stoppedHourglass)
             HandleHourglass();
 
         if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
@@ -141,7 +143,25 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
     }
 
+    public void StopHourglass(float time)
+    {
+        if(stopHourglassCoroutine == null)
+        {
+            stopHourglassCoroutine = StartCoroutine(StopHourglassCoroutine(time));
+        }
+        else
+        {
+            StopCoroutine(stopHourglassCoroutine);
+            stopHourglassCoroutine = StartCoroutine(StopHourglassCoroutine(time));
+        }
+    }
 
+    private IEnumerator StopHourglassCoroutine(float time)
+    {
+        stoppedHourglass = true;
+        yield return new WaitForSeconds(time);
+        stoppedHourglass = false;
+    }
 
     public void LockMovement(float time)
     {
@@ -183,18 +203,10 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             var objectToUse = Inventory.ActiveObjectSlots[slotIndex];
 
-            switch (objectToUse.PickableSO.PickableEffectType)
-            {
-                case EPickableEffectType.HealTime:
-                    Damageable.Heal(objectToUse.PickableSO.EffectInPercentage);
-                    break;
-                case EPickableEffectType.HealHourglass:
-                    Damageable.HealHourglass(objectToUse.PickableSO.EffectInPercentage);
-                    break;
-            }
+            PickableScriptableObject.UseActiveObject(objectToUse, Damageable, _playerController.AttackPosition, this);
 
             objectToUse.Quantity--;
-            if(objectToUse.Quantity <= 0)
+            if (objectToUse.Quantity <= 0)
             {
                 RemoveObject(pickableObject);
                 _uiPlayArea.ResetActiveObject(slotIndex);
@@ -202,7 +214,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             else
                 _uiPlayArea.SetActiveObject(slotIndex, objectToUse.PickableSO.ObjectInventorySprite, objectToUse.Quantity);
 
-            if(forceUpdate)
+            if (forceUpdate)
                 UIManager.Instance.PauseMenu.UpdateButton(slotIndex, objectToUse.Quantity);
 
 
@@ -211,6 +223,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
         return false;
     }
+
 
     public bool TryUseObject(int inventoryIndex)
     {

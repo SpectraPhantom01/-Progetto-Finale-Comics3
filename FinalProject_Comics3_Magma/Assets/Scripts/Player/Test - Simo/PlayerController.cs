@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [Space(10)]
     [SerializeField] Transform attackPoint;
+    public Transform AttackPosition;
 
 
     [HideInInspector] public Vector2 Direction;

@@ -9,7 +9,6 @@ public class SpriteHandler : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     GameObject _graphics;
-
     private void Awake()
     {
         spriteRenderer = gameObject.SearchComponent<SpriteRenderer>();
@@ -19,9 +18,18 @@ public class SpriteHandler : MonoBehaviour
 
     private void Update()
     {
-        _graphics.transform.LookAt(transform.forward, Vector3.forward);
-
+        _graphics.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
 
 
+}
+
+public enum VectorEnum
+{
+    Up,
+    Down,
+    Right,
+    Left,
+    Forward,
+    Back
 }
