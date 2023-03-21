@@ -59,7 +59,8 @@ public class Damager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
+        var player = collision.gameObject.SearchComponent<PlayerManager>();
+        if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer) && !player.PlayerController.IsDashing)
         {
             Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
             if (damageable != null)
