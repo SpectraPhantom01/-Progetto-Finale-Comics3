@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public CheckPoint _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
+    public Vector3 CurrentVectorDirection => CurrentDirection switch { EDirection.Up => Vector3.up, EDirection.Down => Vector3.down, EDirection.Left => Vector3.left, EDirection.Right => Vector3.right, _ => Vector3.down };
     public bool IsAlive { get; set; }
     public string Name => "Etim";
     public Damageable Damageable => _damageable;

@@ -23,6 +23,8 @@ public class PickableScriptableObject : ScriptableObject
     [Tooltip("Only effects in Time")]
     public float EffectInTime;
 
+    [Header("Spawn Bomb")]
+    public Bomb Bomb;
     public static void UseActiveObject(Pickable objectToUse, Damageable damageable, Transform attackPosition, PlayerManager playerManager)
     {
         switch (objectToUse.PickableSO.PickableEffectType)
@@ -31,7 +33,8 @@ public class PickableScriptableObject : ScriptableObject
                 damageable.HealHourglass(objectToUse.PickableSO.EffectInPercentage);
                 break;
             case EPickableEffectType.ThrowBomb:
-                // spawn bomb to attack position
+                var newBomb = Instantiate(objectToUse.PickableSO.Bomb, attackPosition.position, Quaternion.identity);
+                newBomb.Initialize(playerManager.CurrentVectorDirection);
                 break;
             case EPickableEffectType.StopHourglass:
                 playerManager.StopHourglass(objectToUse.PickableSO.EffectInTime);
@@ -42,10 +45,6 @@ public class PickableScriptableObject : ScriptableObject
         }
     }
 
-    public static void UseEquipment()
-    {
-
-    }
 }
 
 public enum EPickableEffectType
