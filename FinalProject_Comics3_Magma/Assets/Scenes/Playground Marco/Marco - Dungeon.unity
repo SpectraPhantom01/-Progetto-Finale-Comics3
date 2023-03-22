@@ -49198,6 +49198,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028875103}
     m_Modifications:
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7327500715194216675, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
       propertyPath: m_Name
       value: LavaSlime (1)
@@ -72982,7 +72986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -76700,7 +76704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756822, guid: a8fa6eb8dd5278e40ad0e5512128a7fc, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756822, guid: a8fa6eb8dd5278e40ad0e5512128a7fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -84244,6 +84248,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028875103}
     m_Modifications:
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: Vector.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: Vector.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: VecLook.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: VecWorld.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2204470445364533329, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
       propertyPath: deltaTimeSpawnTrail
       value: 0.2
@@ -84995,7 +85019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90509,7 +90533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756822, guid: a8fa6eb8dd5278e40ad0e5512128a7fc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5930749408481756822, guid: a8fa6eb8dd5278e40ad0e5512128a7fc, type: 3}
       propertyPath: m_LocalPosition.x

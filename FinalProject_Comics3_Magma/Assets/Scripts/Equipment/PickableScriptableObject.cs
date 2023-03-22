@@ -18,12 +18,42 @@ public class PickableScriptableObject : ScriptableObject
     public bool IsKeyObject;
     public int QuantityOnPick = 1;
     public EPickableEffectType PickableEffectType;
-    public float EffectInPercentage;
+    [Tooltip("Only effects in Percentage")]
+    [Range(0, 100)] public float EffectInPercentage;
+    [Tooltip("Only effects in Time")]
+    public float EffectInTime;
+
+    [Header("Spawn Bomb")]
+    public Bomb Bomb;
+    public static void UseActiveObject(Pickable objectToUse, Damageable damageable, Transform attackPosition, PlayerManager playerManager)
+    {
+        switch (objectToUse.PickableSO.PickableEffectType)
+        {
+            case EPickableEffectType.HealHourglass:
+                damageable.HealHourglass(objectToUse.PickableSO.EffectInPercentage);
+                break;
+            case EPickableEffectType.ThrowBomb:
+                var newBomb = Instantiate(objectToUse.PickableSO.Bomb, attackPosition.position, Quaternion.identity);
+                newBomb.Initialize(playerManager.CurrentVectorDirection);
+                break;
+            case EPickableEffectType.StopHourglass:
+                playerManager.StopHourglass(objectToUse.PickableSO.EffectInTime);
+                break;
+            case EPickableEffectType.ReduceDamageAndKnockback:
+                damageable.StartNewResistance(objectToUse.PickableSO.EffectInPercentage, objectToUse.PickableSO.EffectInTime);
+                break;
+        }
+    }
+
 }
 
 public enum EPickableEffectType
 {
     AddAttackForce,
-    HealTime,
-    HealHourglass
+    AddGhostTime,
+    AddMovementSpeed,
+    HealHourglass,
+    ThrowBomb,
+    StopHourglass,
+    ReduceDamageAndKnockback
 }

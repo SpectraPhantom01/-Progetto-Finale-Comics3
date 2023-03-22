@@ -8,31 +8,28 @@ public class SpriteHandler : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
-    bool IsPlayer;
-
     GameObject _graphics;
-
     private void Awake()
     {
         spriteRenderer = gameObject.SearchComponent<SpriteRenderer>();
-        IsPlayer = gameObject.SearchComponent<PlayerManager>() != null;
 
         _graphics = spriteRenderer.gameObject;
     }
 
     private void Update()
     {
-        _graphics.transform.localRotation = Quaternion.Euler(90, 0, 0);
-
-        if (IsPlayer)
-        {
-
-        }
-        else
-        {
-
-        }
+        _graphics.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
 
 
+}
+
+public enum VectorEnum
+{
+    Up,
+    Down,
+    Right,
+    Left,
+    Forward,
+    Back
 }

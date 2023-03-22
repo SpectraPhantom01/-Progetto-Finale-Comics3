@@ -42,6 +42,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] float DamageReduction; //Da spostare in un eventuale SO e chiamarla Defence?
     public Hourglass CurrentHourglass => _currentHourglass;
 
+    private Coroutine resistanceCoroutine;
     private void Awake()
     {
         ai = gameObject.SearchComponent<AI>();
@@ -226,5 +227,35 @@ public class Damageable : MonoBehaviour
                 _currentTimeLife = _currentHourglass.Time;
             }
         }
+    }
+
+    internal void StartNewResistance(float effectInPercentage, float effectInTime)
+    {
+        if(resistanceCoroutine == null)
+        {
+            resistanceCoroutine = StartCoroutine(ResistanceCoroutine(effectInPercentage, effectInTime));
+        }
+        else
+        {
+            StopCoroutine(resistanceCoroutine);
+            resistanceCoroutine = StartCoroutine(ResistanceCoroutine(effectInPercentage, effectInTime));
+        }
+    }
+
+    private IEnumerator ResistanceCoroutine(float effectInPercentage, float effectInTime)
+    {
+        float castKnockBack = KnockBackResistance;
+        float castDamageReductionPerc = DamageReductionPerc;
+        float castDamageReduction = DamageReduction;
+
+        KnockBackResistance += castKnockBack * (effectInPercentage / 100);
+        DamageReductionPerc += castDamageReductionPerc * (effectInPercentage / 100);
+        DamageReduction += castDamageReduction * (effectInPercentage / 100);
+
+
+        yield return new WaitForSeconds(effectInTime);
+        KnockBackResistance = castKnockBack;
+        DamageReductionPerc = castDamageReductionPerc;
+        DamageReduction = castDamageReduction;
     }
 }

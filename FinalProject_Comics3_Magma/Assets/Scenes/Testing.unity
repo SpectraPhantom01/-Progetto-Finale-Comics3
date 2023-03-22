@@ -5637,10 +5637,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2755012010746324901, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
-      propertyPath: m_Parameters.textureMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7327500715194216675, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
       propertyPath: m_Name
       value: LavaSlime

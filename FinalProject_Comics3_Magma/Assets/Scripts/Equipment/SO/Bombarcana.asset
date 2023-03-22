@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f826363b425b8414f83afe6a51bb9bcf, type: 3}
+  m_Name: Bombarcana
+  m_EditorClassIdentifier: 
+  ObjectName: Bombarcana
+  ObjectDescription: BOMBA
+  ObjectInventorySprite: {fileID: 21300000, guid: a0be646539817344ab94d30febabb602, type: 3}
+  OnGameSprite: {fileID: 21300000, guid: a0be646539817344ab94d30febabb602, type: 3}
+  IsConsumable: 1
+  IsKeyObject: 0
+  QuantityOnPick: 100
+  PickableEffectType: 4
+  EffectInPercentage: 0
+  EffectInTime: 0
+  Bomb: {fileID: 823488385171496030, guid: 029cbea011be4d9448de7c1c9420a073, type: 3}

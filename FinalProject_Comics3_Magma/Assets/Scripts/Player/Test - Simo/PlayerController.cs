@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     [Space(10)]
     [SerializeField] Transform attackPoint;
+    public Transform AttackPosition;
 
 
     [HideInInspector] public Vector2 Direction;
@@ -100,7 +101,6 @@ public class PlayerController : MonoBehaviour
     {
         if (CanMove && !IsDashing)
             MoveDirection();
-        //Movement();
 
         StateMachine.OnFixedUpdate();
     }
@@ -109,46 +109,6 @@ public class PlayerController : MonoBehaviour
     {
         ImGhost = isGhost;
     }
-
-    
-    //Gestione Movimento:
-    private void Movement()
-    {
-        //Direction = inputSystem.Player.Movement.ReadValue<Vector2>(); // Direction salva i valori di movimento presi da input
-        /*MoveDirection();*/ // Calcolo del movement applicando accelerazione e decelerazione su assi x e y
-
-        //normalizedDirection = Direction.normalized;
-        //rb.velocity = new Vector2(movement.x, movement.y); // Movimento effettivo
-        MoveDirection();
-        
-        //rb.velocity += new Vector2(normalizedDirection.x + value * Time.fixedDeltaTime, normalizedDirection.y + value * Time.fixedDeltaTime);
-        //Debug.Log(rb.velocity);
-    } //Attualmente obsoleto
-
-    //private void MoveDirection() // NOTA: aggiunto controllo sul cambio di direzione,
-    //                        // per evitare un movimento "scivoloso" quando avviene un cambio di direzione opposto
-    //{
-
-    //    if (Mathf.Abs(Direction.x) < 0.01f || changingDirectionX) // Applicazione decelerazione su asse x
-    //    {
-    //        movement.x = Mathf.MoveTowards(movement.x, 0, deceleration * Time.fixedDeltaTime);
-    //    }
-    //    else // Applicazione accelerazione su asse x e clamp sulla massima velocit� impostata
-    //    {
-    //        movement.x += Direction.x * acceleration * Time.fixedDeltaTime;
-    //        movement.x = Mathf.Clamp(movement.x, -maxSpeed, maxSpeed);
-    //    }
-
-    //    if (Mathf.Abs(Direction.y) < 0.01f || changingDirectionY) // Applicazione decelerazione su asse y
-    //    {
-    //        movement.y = Mathf.MoveTowards(movement.y, 0, deceleration * Time.fixedDeltaTime);
-    //    }
-    //    else // Applicazione accelerazione su asse y e clamp sulla massima velocit� impostata
-    //    {
-    //        movement.y += Direction.y * acceleration * Time.fixedDeltaTime;
-    //        movement.y = Mathf.Clamp(movement.y, -maxSpeed, maxSpeed);
-    //    }
-    //}
 
     private void MoveDirection()
     {
@@ -164,7 +124,15 @@ public class PlayerController : MonoBehaviour
             //lastDirection = normalizedDirection;
 
             value += acceleration * Time.fixedDeltaTime;
-            value = Mathf.Clamp(value, -maxSpeed, maxSpeed);
+
+            var equipments = GetCurrentEquipment();
+
+            var bonusSpeed1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddMovementSpeed ? equipments[0].EffectInTime : 0 : 0;
+            var bonusSpeed2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddMovementSpeed ? equipments[1].EffectInTime : 0 : 0;
+
+            var speed = maxSpeed + bonusSpeed1 + bonusSpeed2;
+
+            value = Mathf.Clamp(value, -speed, speed);
 
             rb.velocity = Direction.normalized * value; // Già normalizzata nel GM, da togliere "Direction.normalized"
         }
@@ -209,11 +177,18 @@ public class PlayerController : MonoBehaviour
     public void CreateGhost()
     {
         GhostActive = true;
+
+        var equipments = GetCurrentEquipment();
+        var bonusGhostTime1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[0].EffectInTime : 0 : 0;
+        var bonusGhostTime2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[1].EffectInTime : 0 : 0;
+
+        var ghostTime = ghostLifeTime + bonusGhostTime1 + bonusGhostTime2;
+
         instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true);
         //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
         //StartCoroutine(ghostRoutine);
-        ghostRoutine = StartCoroutine(GhostRoutine()); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
+        ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
 
         GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
     }
@@ -226,9 +201,9 @@ public class PlayerController : MonoBehaviour
         GhostActivation();
     }
 
-    private IEnumerator GhostRoutine()
+    private IEnumerator GhostRoutine(float time)
     {
-        yield return new WaitForSeconds(ghostLifeTime);
+        yield return new WaitForSeconds(time);
         DestroyGhost();
     }
 
@@ -278,18 +253,14 @@ public class PlayerController : MonoBehaviour
     {
         if(!ImGhost)
         {
-            
-            // <<---
-
             if (!TryPickUp())
             {
                 StateMachine.SetState(EPlayerState.Attacking);
 
                 //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
-                var equipmentSlot1 = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
-                var equipmentSlot2 = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
-                float bonusAttack1 = equipmentSlot1 != null ? equipmentSlot1.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot1.EffectInPercentage : 0 : 0;
-                float bonusAttack2 = equipmentSlot2 != null ? equipmentSlot2.PickableEffectType == EPickableEffectType.AddAttackForce ? equipmentSlot2.EffectInPercentage : 0 : 0;
+                var equipments = GetCurrentEquipment();
+                float bonusAttack1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddAttackForce ? equipments[0].EffectInPercentage : 0 : 0;
+                float bonusAttack2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddAttackForce ? equipments[1].EffectInPercentage : 0 : 0;
 
                 Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
 
@@ -303,6 +274,14 @@ public class PlayerController : MonoBehaviour
             Damager.Attack();
             Damager.SearchInteractable();
         }
+    }
+
+    private PickableScriptableObject[] GetCurrentEquipment()
+    {
+        PickableScriptableObject[] pickableScriptableObjects = new PickableScriptableObject[2];
+        pickableScriptableObjects[0] = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
+        pickableScriptableObjects[1] = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
+        return pickableScriptableObjects;
     }
 
     public void EquipAttack(EAttackType eAttackType)
