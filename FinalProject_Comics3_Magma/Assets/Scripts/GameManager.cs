@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour, ISubscriber
             GhostManager.RegistraInput(Vector2.zero, InputType.Attack);
         }
 
-        if(!playerController.IsAttacking && playerController.Direction.magnitude == 0) 
+        if(!playerController.IsAttacking /*&& playerController.Direction.magnitude == 0*/) 
             playerController.Attack();
     }
 
