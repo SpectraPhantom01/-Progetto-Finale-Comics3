@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (!playerController.IsDashing)
+        if (!playerController.IsDashing /*&& !playerController.IsAttacking*/)
         {
             if (playerController.GhostActive)
             {
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour, ISubscriber
             GhostManager.RegistraInput(Vector2.zero, InputType.Attack);
         }
 
-        if(!playerController.IsAttacking /*&& playerController.Direction.magnitude == 0*/) 
+        if(!playerController.IsAttacking) 
             playerController.Attack();
     }
 
