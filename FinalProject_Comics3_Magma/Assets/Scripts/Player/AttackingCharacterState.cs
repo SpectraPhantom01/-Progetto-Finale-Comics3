@@ -21,7 +21,7 @@ public class AttackingCharacterState : State
     public override void OnEnd()
     {
         m_Owner.IsAttacking = false;
-        m_Owner.CanMove = true;
+        //m_Owner.CanMove = true;
     }
 
     public override void OnFixedUpdate()
@@ -33,7 +33,7 @@ public class AttackingCharacterState : State
     {
         //Debug.Log("Sono in attacking");
         m_Owner.IsAttacking = true;
-        m_Owner.CanMove = false;
+        //m_Owner.CanMove = false;
         _timeElapsed = 0;
 
         //m_Owner.PlayerManager._trackEntry = m_Owner.PlayerManager.CurrentSkeleton.state.SetAnimation(0, "attacco", false); //TEST            
