@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     PlayerController instantiatedGhost;
     Coroutine ghostRoutine;
-
+    //List<Vector2> ghostPositions;
 
     //public bool IsMoving { get; private set; } = false;
     public Rigidbody2D Rigidbody => rb;
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     public PlayerManager PlayerManager => _playerManager;
     public PlayerManager Father;
     public bool ImGhost { get; set; } = false;
+    //public List<Vector2> GhostPositions { get => ghostPositions; }
 
     private void Awake()
     {
@@ -65,6 +66,8 @@ public class PlayerController : MonoBehaviour
         CanDash = true;
         GhostActive = false;
         CanRewind = true;
+
+        //ghostPositions.Add(transform.localPosition);
 
         StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
