@@ -186,8 +186,10 @@ public class PlayerController : MonoBehaviour
 
         instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager);
+
         //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
         //StartCoroutine(ghostRoutine);
+
         ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
 
         GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
