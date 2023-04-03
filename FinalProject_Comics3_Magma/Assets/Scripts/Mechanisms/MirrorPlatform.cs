@@ -17,29 +17,29 @@ public class MirrorPlatform : MonoBehaviour
             Destroy(gameObject);
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    var player = collision.gameObject.SearchComponent<PlayerController>();
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var player = collision.gameObject.SearchComponent<PlayerController>();
 
-    //    if(player != null)
-    //    {
-    //        for (int i = 0; i < platforms.Count; i++)
-    //        {
-    //            player.GhostPositions.Add(platforms[i]);
-    //        }
-    //    }
-    //}
+        if (player != null)
+        {
+            for (int i = 0; i < platforms.Count; i++)
+            {
+                player.GhostPositions.Add(platforms[i]);
+            }
+        }
+    }
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    var player = collision.gameObject.SearchComponent<PlayerController>();
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var player = collision.gameObject.SearchComponent<PlayerController>();
 
-    //    if (player != null)
-    //    {
-    //        for (int i = 0; i < platforms.Count; i++)
-    //        {
-    //            player.GhostPositions.Remove(platforms[i]);
-    //        }
-    //    }
-    //}
+        if (player != null)
+        {
+            for (int i = 0; i < platforms.Count; i++)
+            {
+                player.GhostPositions.Remove(platforms[i]);
+            }
+        }
+    }
 }

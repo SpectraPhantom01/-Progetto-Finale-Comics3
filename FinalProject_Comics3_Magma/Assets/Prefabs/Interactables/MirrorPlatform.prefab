@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466929460053245601}
   - component: {fileID: 2466929460053245602}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466929460053245600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.465, y: 1.278, z: 0}
+  m_LocalPosition: {x: -2.455, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: d75f8db78f74b0e46b9e259a8f87a80a, type: 3}
   m_Color: {r: 0.5376233, g: 0, b: 0.8018868, a: 1}
   m_FlipX: 0
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466929460155004479}
   - component: {fileID: 2466929460155004464}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2466929461446311760}
   - component: {fileID: 2466929461446311775}
   - component: {fileID: 2466929461446311774}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: MirrorPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466929461595916277}
   - component: {fileID: 2466929461595916278}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Platform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466929461996816769}
   - component: {fileID: 2466929461996816770}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
