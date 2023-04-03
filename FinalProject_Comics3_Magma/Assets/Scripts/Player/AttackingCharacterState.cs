@@ -20,8 +20,7 @@ public class AttackingCharacterState : State
 
     public override void OnEnd()
     {
-        m_Owner.IsAttacking = false;
-        m_Owner.CanMove = true;
+        m_Owner.IsAttacking = false;      
     }
 
     public override void OnFixedUpdate()
@@ -32,13 +31,12 @@ public class AttackingCharacterState : State
     public override void OnStart()
     {
         //Debug.Log("Sono in attacking");
-        m_Owner.IsAttacking = true;
-
         m_Owner.CanMove = false;
-        m_Owner.Rigidbody.velocity = Vector3.zero;
+        m_Owner.IsAttacking = true;
+        
+        m_Owner.Rigidbody.velocity = Vector3.zero; 
 
         _timeElapsed = 0;
-
         //m_Owner.PlayerManager._trackEntry = m_Owner.PlayerManager.CurrentSkeleton.state.SetAnimation(0, "attacco", false); //TEST            
     }
 
@@ -46,9 +44,10 @@ public class AttackingCharacterState : State
     {
         _timeElapsed += Time.deltaTime;
 
-        if (_timeElapsed >= 0.8)
+        if (_timeElapsed >= 0.7) //Da prendere come riferimento la durata dell'animazione d'attacco(?)
         {
             m_Owner.StateMachine.SetState(EPlayerState.Idle);
+            m_Owner.CanMove = true;
         }
     }
 }

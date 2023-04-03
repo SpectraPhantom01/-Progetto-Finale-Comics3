@@ -34,6 +34,7 @@ public class DashingCharacterState : State
 
         m_Owner.CanDash = false;
         m_Owner.IsDashing = true;
+        m_Owner.CanMove = false;
 
         _position = m_Owner.transform.position;
     }
@@ -42,6 +43,7 @@ public class DashingCharacterState : State
     {
 
         m_Owner.IsDashing = false;
+        m_Owner.CanMove = true;
         m_Owner.StartCoroutine(m_Owner.DashCooldownRoutine());
 
         //Debug.Log(_position);

@@ -121,8 +121,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //lastDirection = normalizedDirection;
-
             value += acceleration * Time.fixedDeltaTime;
 
             var equipments = GetCurrentEquipment();
@@ -134,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
             value = Mathf.Clamp(value, -speed, speed);
 
-            rb.velocity = Direction.normalized * value; // Già normalizzata nel GM, da togliere "Direction.normalized"
+            rb.velocity = Direction * value; 
         }
 
         AttackPointRotation();
