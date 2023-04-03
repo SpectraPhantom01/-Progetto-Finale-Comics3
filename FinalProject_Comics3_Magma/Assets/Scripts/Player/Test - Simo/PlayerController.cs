@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     public bool IsMoving => value != 0;
     private PlayerManager _playerManager;
     public PlayerManager PlayerManager => _playerManager;
+    public PlayerManager Father;
     public bool ImGhost { get; set; } = false;
 
     private void Awake()
@@ -105,9 +106,10 @@ public class PlayerController : MonoBehaviour
         StateMachine.OnFixedUpdate();
     }
 
-    public void Initialize(bool isGhost)
+    public void Initialize(bool isGhost, PlayerManager playerManager)
     {
         ImGhost = isGhost;
+        Father = playerManager;
     }
 
     private void MoveDirection()
@@ -123,7 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             value += acceleration * Time.fixedDeltaTime;
 
-            var equipments = GetCurrentEquipment();
+            var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
 
             var bonusSpeed1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddMovementSpeed ? equipments[0].EffectInTime : 0 : 0;
             var bonusSpeed2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddMovementSpeed ? equipments[1].EffectInTime : 0 : 0;
@@ -176,14 +178,14 @@ public class PlayerController : MonoBehaviour
     {
         GhostActive = true;
 
-        var equipments = GetCurrentEquipment();
+        var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
         var bonusGhostTime1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[0].EffectInTime : 0 : 0;
         var bonusGhostTime2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[1].EffectInTime : 0 : 0;
 
         var ghostTime = ghostLifeTime + bonusGhostTime1 + bonusGhostTime2;
 
         instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
-        instantiatedGhost.Initialize(true);
+        instantiatedGhost.Initialize(true, PlayerManager);
         //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
         //StartCoroutine(ghostRoutine);
         ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
@@ -256,7 +258,7 @@ public class PlayerController : MonoBehaviour
                 StateMachine.SetState(EPlayerState.Attacking);
 
                 //da fare uno switch per sapere se c'è bisogno di attaccare oppure raccogliere l'oggetto.
-                var equipments = GetCurrentEquipment();
+                var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
                 float bonusAttack1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddAttackForce ? equipments[0].EffectInPercentage : 0 : 0;
                 float bonusAttack2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddAttackForce ? equipments[1].EffectInPercentage : 0 : 0;
 
@@ -274,11 +276,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private PickableScriptableObject[] GetCurrentEquipment()
+    private PickableScriptableObject[] GetCurrentEquipment(Inventory inventory)
     {
         PickableScriptableObject[] pickableScriptableObjects = new PickableScriptableObject[2];
-        pickableScriptableObjects[0] = _playerManager.Inventory.EquipmentSlots[0]?.PickableSO;
-        pickableScriptableObjects[1] = _playerManager.Inventory.EquipmentSlots[1]?.PickableSO;
+        pickableScriptableObjects[0] = inventory?.EquipmentSlots[0]?.PickableSO;
+        pickableScriptableObjects[1] = inventory?.EquipmentSlots[1]?.PickableSO;
         return pickableScriptableObjects;
     }
 
