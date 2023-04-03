@@ -370,7 +370,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         
     }
 
-    public void HandleSkeletonAnimation()
+    public void HandleSkeletonAnimation() //Da sistemare
     {
         if (_currentSkeleton != null)
         {
@@ -380,7 +380,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 {
                     if (_currentSkeleton.AnimationName != run)
                         _currentSkeleton.state.SetAnimation(0, run, true);
-                        
+                                                
                 }else if (_playerController.IsDashing)
                 {
                     if (_currentSkeleton.AnimationName != dashSword)
@@ -394,11 +394,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     if (_currentSkeleton.AnimationName != idle)
                         _currentSkeleton.state.SetAnimation(0, idle, true);
                 }
-                else if (_playerController.IsAttacking)
-                {
-                    if (_currentSkeleton.AnimationName != attack)
-                         _currentSkeleton.state.SetAnimation(0, attack, false);
-                }           
+                          
+            }
+
+            if (_playerController.IsAttacking)
+            {
+                if (_currentSkeleton.AnimationName != attack)
+                    _currentSkeleton.state.SetAnimation(0, attack, false);
             }
         }
     }

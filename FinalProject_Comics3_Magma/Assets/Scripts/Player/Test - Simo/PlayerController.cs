@@ -123,8 +123,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //lastDirection = normalizedDirection;
-
             value += acceleration * Time.fixedDeltaTime;
 
             var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
@@ -136,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
             value = Mathf.Clamp(value, -speed, speed);
 
-            rb.velocity = Direction.normalized * value; // Già normalizzata nel GM, da togliere "Direction.normalized"
+            rb.velocity = Direction * value; 
         }
 
         AttackPointRotation();
@@ -188,8 +186,10 @@ public class PlayerController : MonoBehaviour
 
         instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager);
+
         //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
         //StartCoroutine(ghostRoutine);
+
         ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
 
         GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
