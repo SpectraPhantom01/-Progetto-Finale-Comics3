@@ -30,4 +30,14 @@ public class AI : MonoBehaviour
         if (!Stupid && Agent.velocity.magnitude > 0.01f)
             CurrentDirection = Agent.velocity.CalculateDirection();
     }
+    public void Stop()
+    {
+        BehaviorTree.enabled = false;
+        Agent.enabled = false;
+    }
+    public void Play()
+    {
+        BehaviorTree.enabled = true;
+        Agent.enabled = true;
+    }
 }

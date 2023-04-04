@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : AI, IAliveEntity
 {
@@ -20,13 +21,11 @@ public class EnemyController : AI, IAliveEntity
 
     [Header("References")]
     [SerializeField] PatrolPath patrolPath;
-
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name => GetName();
-
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
-
+    public bool DestroyOnKill = true;
     private string GetName()
     {
         switch (enemyType)
@@ -88,7 +87,10 @@ public class EnemyController : AI, IAliveEntity
     {
         onKillEnemy?.Invoke();
 
-        Destroy(gameObject);
+        if (DestroyOnKill)
+            Destroy(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 
     public GameObject GetGameObject() => gameObject;
