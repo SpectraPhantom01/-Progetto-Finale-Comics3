@@ -28,17 +28,14 @@ public class EnemyController : AI, IAliveEntity
     public bool DestroyOnKill = true;
     private string GetName()
     {
-        switch (enemyType)
+        return enemyType switch
         {
-            case EEnemyType.LavaSlime:
-                return "Lava Slime";
-            case EEnemyType.DefensiveGolem:
-                return "Defensive Golem";
-            case EEnemyType.BasicShootingEnemy:
-                return "Shooting Enemy";
-            default:
-                return Guid.NewGuid().ToString();
-        }
+            EEnemyType.LavaSlime => "Lava Slime",
+            EEnemyType.DefensiveGolem => "Defensive Golem",
+            EEnemyType.BasicShootingEnemy => "Shooting Enemy",
+            EEnemyType.Alchemic => "Alchemic Enemy",
+            _ => Guid.NewGuid().ToString(),
+        };
     }
 
     private Damager _damager;

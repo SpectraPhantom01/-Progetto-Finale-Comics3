@@ -299,7 +299,7 @@ MonoBehaviour:
   logTaskChanges: 0
   group: 0
   resetValuesOnRestart: 0
-  externalBehavior: {fileID: 0}
+  externalBehavior: {fileID: 11400000, guid: 58ab5997a525dde459b8047aca78135d, type: 2}
   mBehaviorSource:
     behaviorName: LavaSlimeBehavior
     behaviorDescription: 

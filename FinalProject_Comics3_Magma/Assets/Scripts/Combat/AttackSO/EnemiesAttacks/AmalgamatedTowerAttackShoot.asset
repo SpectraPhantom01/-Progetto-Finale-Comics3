@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8fd61faa30afe4cb66e85ecb379e13, type: 3}
+  m_Name: AmalgamatedTowerAttackShoot
+  m_EditorClassIdentifier: 
+  AttackType: 2
+  DamageAmount: 10
+  HourglassPercentageDamageAmount: 10
+  KnockBack: 15
+  hitBoxRangeView: {x: 1, y: 1}
+  hitBoxRangeDamage: {x: 2, y: 2}
+  MeleeAttackType: 0
+  ShootingAttackType: 1
+  SpellPrefab: {fileID: 6666794590657639054, guid: 7d0f8a041e834bd428931992b9bba8d1, type: 3}
+  shootAttackRangeOfView: 20
+  bulletFixedSpeed: 400
+  bulletLifeTime: 3
