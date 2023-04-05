@@ -9,7 +9,7 @@ public class SavableEntity : MonoBehaviour
     {
         SavableInfos savableInfos = new();
         Damageable damageable = gameObject.SearchComponent<Damageable>();
-        savableInfos.SaveInfo(transform.position, damageable.CurrentTimeLife, damageable.Hourglasses, gameObject.SearchComponent<PlayerManager>() != null);
+        savableInfos.SaveInfo(transform.position, damageable.CurrentTimeLife, damageable.HourglassesCount, gameObject.SearchComponent<PlayerManager>() != null);
         return savableInfos;
     }
 }

@@ -9,4 +9,9 @@ public static class LayerMaskExtensionMethods
         int layerbit = 1 << layer;
         return (layerMask & layerbit) != 0;
     }
+
+    public static int ToLayer(this LayerMask layerMask)
+    {
+        return (int)Mathf.Log(layerMask.value, 2);
+    }
 }

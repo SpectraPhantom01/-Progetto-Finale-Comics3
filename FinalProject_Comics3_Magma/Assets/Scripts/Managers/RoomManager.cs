@@ -64,7 +64,7 @@ public class RoomManager : MonoBehaviour
                     spawnedObjects.Add(newObject);
 
                     roomTrigger.EnemyControllers.Add(newObject);
-
+                    newObject.ResetBehavior();
                     newObject.Stop();
                     Invoke(nameof(DelayInvoke), 0.2f);
                 }

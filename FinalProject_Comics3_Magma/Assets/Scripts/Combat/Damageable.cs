@@ -13,10 +13,11 @@ public class Damageable : MonoBehaviour
     [HideInInspector] public float PlayerLockTime = 0.1f;
     [HideInInspector] public float EnemyLockTime = 0.5f;
     public float CurrentTimeLife => _currentTimeLife;
-    public int Hourglasses => hourglasses.Count;
-
+    public int HourglassesCount => hourglasses.Count;
+    public bool Invincible = false;
     private float _currentTimeLife;
     private IAliveEntity _entity;
+    public List<Hourglass> Hourglasses { get { return hourglasses; } }
     private Hourglass _currentHourglass;
 
     private BehaviorTree _behaviorTree;
@@ -55,7 +56,7 @@ public class Damageable : MonoBehaviour
             _agent = ai.Agent;
             _isPlayer = false;
         }
-        else
+        else if(playerManager != null || playerController != null)
             _isPlayer = true;
     }
 
@@ -73,10 +74,13 @@ public class Damageable : MonoBehaviour
 
     public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage)
     {
+        onGetDamage?.Invoke();
+
+        if (Invincible)
+            return;
+
         CalculateDamage(amount);
         _currentHourglass.Damage(hourglassPercentageDamage);
-
-        onGetDamage?.Invoke();
 
         if (_currentTimeLife <= 0)
         {
@@ -190,7 +194,7 @@ public class Damageable : MonoBehaviour
 
     public void SetHourglasses(List<Hourglass> newHourglasses)
     {
-        hourglasses = newHourglasses;
+        hourglasses = newHourglasses.ToList();
     }
 
     public void SetCurrentLife(float amount)

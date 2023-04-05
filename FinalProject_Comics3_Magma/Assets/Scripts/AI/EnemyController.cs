@@ -9,6 +9,8 @@ public class EnemyController : AI, IAliveEntity
 {
     public delegate void OnKillEnemy();
     public OnKillEnemy onKillEnemy;
+    public delegate void OnResetBehavior();
+    public OnResetBehavior onReset;
 
     [Header("Settings")]
     [SerializeField] EEnemyType enemyType;
@@ -26,6 +28,8 @@ public class EnemyController : AI, IAliveEntity
     public string Name => GetName();
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
     public bool DestroyOnKill = true;
+    private Damager _damager;
+    private List<Hourglass> initialHourglasses;
     private string GetName()
     {
         return enemyType switch
@@ -34,19 +38,32 @@ public class EnemyController : AI, IAliveEntity
             EEnemyType.DefensiveGolem => "Defensive Golem",
             EEnemyType.BasicShootingEnemy => "Shooting Enemy",
             EEnemyType.Alchemic => "Alchemic Enemy",
+            EEnemyType.NecroHybrid => "Necro Hybrid",
+            EEnemyType.LoaderPuncher => "Loader Puncher",
+            EEnemyType.MouthOfEmpty => "Mouth of Empty",
+            EEnemyType.Boss => "Boss ???",
             _ => Guid.NewGuid().ToString(),
         };
     }
 
-    private Damager _damager;
 
     private void Start()
     {
         _damager = gameObject.SearchComponent<Damager>();
 
+        initialHourglasses = new List<Hourglass>();
+        foreach (Hourglass hourglass in Damageable.Hourglasses)
+        {
+            initialHourglasses.Add(new Hourglass(hourglass.Time)
+            {
+                HourglassLife = hourglass.HourglassLife,
+                BaseTimeLoseSand = hourglass.BaseTimeLoseSand,
+                MaxSpeedLoseSand = hourglass.MaxSpeedLoseSand,
+            });
+        }
+
         if (GameManager.Instance.Player != null)
             Initialize("Target", GameManager.Instance.Player.gameObject);
-
     }
 
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
@@ -56,8 +73,6 @@ public class EnemyController : AI, IAliveEntity
         BehaviorTree.SetVariableValue("Damager", _damager.gameObject);
         switch (enemyType)
         {
-            case EEnemyType.LavaSlime:
-                break;
             case EEnemyType.DefensiveGolem:
                 BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
                 break;
@@ -92,6 +107,12 @@ public class EnemyController : AI, IAliveEntity
 
     public GameObject GetGameObject() => gameObject;
 
+    public void ResetBehavior()
+    {
+        onReset.Invoke();
+        Damageable.SetHourglasses(initialHourglasses);
+    }
+
 #if UNITY_EDITOR
     [Header("Gizmo Settings")]
     [SerializeField] Color lineColor;
@@ -111,5 +132,6 @@ public class EnemyController : AI, IAliveEntity
             Gizmos.DrawWireSphere(transform.position, attackShoot.shootAttackRangeOfView);
         }
     }
-#endif 
+
+#endif
 }

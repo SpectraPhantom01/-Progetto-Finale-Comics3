@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
-            for (int i = 1; i < Damageable.Hourglasses; i++)
+            for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
                 _uiPlayArea.AddNewHourglass();
             }

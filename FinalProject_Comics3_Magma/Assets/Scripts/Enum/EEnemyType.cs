@@ -3,5 +3,9 @@ public enum EEnemyType
     LavaSlime,
     DefensiveGolem,
     BasicShootingEnemy,
-    Alchemic
+    Alchemic,
+    NecroHybrid,
+    LoaderPuncher,
+    MouthOfEmpty,
+    Boss
 }
