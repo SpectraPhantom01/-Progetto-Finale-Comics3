@@ -479,6 +479,7 @@ GameObject:
   - component: {fileID: 308906137}
   - component: {fileID: 308906139}
   - component: {fileID: 308906138}
+  - component: {fileID: 308906140}
   m_Layer: 8
   m_Name: Terreno
   m_TagString: Untagged
@@ -31010,6 +31011,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &308906140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308906136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!4 &314785968 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5075945338884328225, guid: ab72090aa7083b14b9694187debfa57d, type: 3}
