@@ -156,20 +156,20 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        if (!playerController.IsDashing)
+        Vector2 readedDirection = obj.ReadValue<Vector2>();
+
+        playerController.Direction = readedDirection.normalized;
+        playerController.lastDirection = readedDirection.normalized;
+
+        if (playerController.GhostActive)
         {
-            if (playerController.GhostActive)
-            {
-                GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementStart);
-            }
-
-            playerController.StateMachine.SetState(EPlayerState.Walking);
-
-            Vector2 readedDirection = obj.ReadValue<Vector2>();
-
-            playerController.Direction = readedDirection.normalized;
-            playerController.lastDirection = readedDirection.normalized;
+            GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementStart);
         }
+
+        if (/*!playerController.IsDashing */ playerController.CanMove)
+        {
+            playerController.StateMachine.SetState(EPlayerState.Walking);           
+        }      
     }
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour, ISubscriber
             GhostManager.RegistraInput(Vector2.zero, InputType.Attack);
         }
 
-        if(!playerController.IsAttacking && playerController.Direction.magnitude == 0) 
+        if(!playerController.IsAttacking) 
             playerController.Attack();
     }
 

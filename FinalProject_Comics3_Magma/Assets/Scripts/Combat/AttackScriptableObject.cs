@@ -27,7 +27,9 @@ public enum EMeleeAttackType
 {
     none,
     Sword,
-    Punch
+    Punch,
+    Claw,
+    MultipleClaw
 }
 
 public enum EShootingAttackType

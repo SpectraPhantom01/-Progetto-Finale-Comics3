@@ -16,7 +16,11 @@ public class LavaSlime : MonoBehaviour
     }
     public void BreakTrail()
     {
-        trailRenderer.transform.SetParent(null);
-        trailRenderer.autodestruct = true;
+        if(trailRenderer != null)
+        {
+
+            trailRenderer.transform.SetParent(null);
+            trailRenderer.autodestruct = true;
+        }
     }
 }

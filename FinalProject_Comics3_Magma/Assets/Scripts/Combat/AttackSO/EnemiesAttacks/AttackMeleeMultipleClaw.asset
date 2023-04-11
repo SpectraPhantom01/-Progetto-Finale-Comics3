@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf8fd61faa30afe4cb66e85ecb379e13, type: 3}
-  m_Name: PlayerShootAttack
+  m_Name: AttackMeleeMultipleClaw
   m_EditorClassIdentifier: 
-  AttackType: 2
-  DamageAmount: 15
-  KnockBack: 15
+  AttackType: 1
+  DamageAmount: 5
+  HourglassPercentageDamageAmount: 10
+  KnockBack: 5
   hitBoxRangeView: {x: 1, y: 1}
   hitBoxRangeDamage: {x: 2, y: 2}
-  MeleeAttackType: 0
+  MeleeAttackType: 4
   ShootingAttackType: 0
-  SpellPrefab: {fileID: 6666794590657639054, guid: 4ef96444e2ba645479b4e9c813bc5260, type: 3}
-  shootAttackRangeOfView: 10
-  bulletFixedSpeed: 100
-  bulletLifeTime: 3
+  SpellPrefab: {fileID: 0}
+  shootAttackRangeOfView: 0
+  bulletFixedSpeed: 0
+  bulletLifeTime: 0

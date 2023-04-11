@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f826363b425b8414f83afe6a51bb9bcf, type: 3}
   m_Name: Cronosilice
   m_EditorClassIdentifier: 
-  ObjectName: Cronosilice
-  ObjectDescription: "Descrizione: Silice infusa da energia magica temporale dopo
-    la Catastrofe, permette ad una persona di guadagnare preziosi secondi in pi\xF9
-    per non Svanire.\nConsumo: Ripara del 25% le condizioni della Clessidra attualmente
-    in uso."
+  ObjectName: Chronosilica
+  ObjectDescription: 'Description: Silica infused with temporal magic after the Ruin
+    happened, it lets someone earn precious seconds, lest they Vanish too soon.
+
+    Use:
+    Repairs 25% of the damage dealt to the Hourglass in use.'
   ObjectInventorySprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
   OnGameSprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
   IsConsumable: 1

@@ -13,10 +13,11 @@ public class Damageable : MonoBehaviour
     [HideInInspector] public float PlayerLockTime = 0.1f;
     [HideInInspector] public float EnemyLockTime = 0.5f;
     public float CurrentTimeLife => _currentTimeLife;
-    public int Hourglasses => hourglasses.Count;
-
+    public int HourglassesCount => hourglasses.Count;
+    public bool Invincible = false;
     private float _currentTimeLife;
     private IAliveEntity _entity;
+    public List<Hourglass> Hourglasses { get { return hourglasses; } }
     private Hourglass _currentHourglass;
 
     private BehaviorTree _behaviorTree;
@@ -42,6 +43,7 @@ public class Damageable : MonoBehaviour
     [SerializeField] float DamageReduction; //Da spostare in un eventuale SO e chiamarla Defence?
     public Hourglass CurrentHourglass => _currentHourglass;
 
+    private Coroutine resistanceCoroutine;
     private void Awake()
     {
         ai = gameObject.SearchComponent<AI>();
@@ -54,7 +56,7 @@ public class Damageable : MonoBehaviour
             _agent = ai.Agent;
             _isPlayer = false;
         }
-        else
+        else if(playerManager != null || playerController != null)
             _isPlayer = true;
     }
 
@@ -72,10 +74,13 @@ public class Damageable : MonoBehaviour
 
     public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage)
     {
+        onGetDamage?.Invoke();
+
+        if (Invincible)
+            return;
+
         CalculateDamage(amount);
         _currentHourglass.Damage(hourglassPercentageDamage);
-
-        onGetDamage?.Invoke();
 
         if (_currentTimeLife <= 0)
         {
@@ -189,7 +194,7 @@ public class Damageable : MonoBehaviour
 
     public void SetHourglasses(List<Hourglass> newHourglasses)
     {
-        hourglasses = newHourglasses;
+        hourglasses = newHourglasses.ToList();
     }
 
     public void SetCurrentLife(float amount)
@@ -226,5 +231,35 @@ public class Damageable : MonoBehaviour
                 _currentTimeLife = _currentHourglass.Time;
             }
         }
+    }
+
+    internal void StartNewResistance(float effectInPercentage, float effectInTime)
+    {
+        if(resistanceCoroutine == null)
+        {
+            resistanceCoroutine = StartCoroutine(ResistanceCoroutine(effectInPercentage, effectInTime));
+        }
+        else
+        {
+            StopCoroutine(resistanceCoroutine);
+            resistanceCoroutine = StartCoroutine(ResistanceCoroutine(effectInPercentage, effectInTime));
+        }
+    }
+
+    private IEnumerator ResistanceCoroutine(float effectInPercentage, float effectInTime)
+    {
+        float castKnockBack = KnockBackResistance;
+        float castDamageReductionPerc = DamageReductionPerc;
+        float castDamageReduction = DamageReduction;
+
+        KnockBackResistance += castKnockBack * (effectInPercentage / 100);
+        DamageReductionPerc += castDamageReductionPerc * (effectInPercentage / 100);
+        DamageReduction += castDamageReduction * (effectInPercentage / 100);
+
+
+        yield return new WaitForSeconds(effectInTime);
+        KnockBackResistance = castKnockBack;
+        DamageReductionPerc = castDamageReductionPerc;
+        DamageReduction = castDamageReduction;
     }
 }

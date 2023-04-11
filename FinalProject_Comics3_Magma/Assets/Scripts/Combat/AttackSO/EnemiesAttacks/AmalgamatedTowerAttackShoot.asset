@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf8fd61faa30afe4cb66e85ecb379e13, type: 3}
-  m_Name: AttackShoot
+  m_Name: AmalgamatedTowerAttackShoot
   m_EditorClassIdentifier: 
   AttackType: 2
-  DamageAmount: 15
+  DamageAmount: 10
   HourglassPercentageDamageAmount: 10
   KnockBack: 15
   hitBoxRangeView: {x: 1, y: 1}

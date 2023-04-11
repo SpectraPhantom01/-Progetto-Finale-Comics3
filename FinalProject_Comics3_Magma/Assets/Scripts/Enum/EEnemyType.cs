@@ -2,5 +2,10 @@ public enum EEnemyType
 {
     LavaSlime,
     DefensiveGolem,
-    BasicShootingEnemy
+    BasicShootingEnemy,
+    Alchemic,
+    NecroHybrid,
+    LoaderPuncher,
+    MouthOfEmpty,
+    Boss
 }

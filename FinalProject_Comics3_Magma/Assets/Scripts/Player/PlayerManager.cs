@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public CheckPoint _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
+    public Vector3 CurrentVectorDirection => CurrentDirection switch { EDirection.Up => Vector3.up, EDirection.Down => Vector3.down, EDirection.Left => Vector3.left, EDirection.Right => Vector3.right, _ => Vector3.down };
     public bool IsAlive { get; set; }
     public string Name => "Etim";
     public Damageable Damageable => _damageable;
@@ -43,11 +44,12 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private float hourglassTimePassed;
     private Damageable _damageable;
     private PlayerController _playerController;
+    private Coroutine stopHourglassCoroutine;
     SkeletonAnimation _currentSkeleton;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
-    TrackEntry _trackEntry;
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
     UIPlayArea _uiPlayArea;
+    bool stoppedHourglass = false;
     public void Kill()
     {
 
@@ -88,13 +90,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private void Start()
     {
         _currentSkeleton = downSkeleton;
-        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
+        _currentSkeleton.state.SetAnimation(0, idle, true);
 
         if (!_playerController.ImGhost)
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
-            for (int i = 1; i < Damageable.Hourglasses; i++)
+            for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
                 _uiPlayArea.AddNewHourglass();
             }
@@ -102,7 +104,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     }
     private void Update()
     {
-        if(!_playerController.ImGhost)
+        if(!_playerController.ImGhost && !stoppedHourglass)
             HandleHourglass();
 
         if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
@@ -142,7 +144,25 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
     }
 
+    public void StopHourglass(float time)
+    {
+        if(stopHourglassCoroutine == null)
+        {
+            stopHourglassCoroutine = StartCoroutine(StopHourglassCoroutine(time));
+        }
+        else
+        {
+            StopCoroutine(stopHourglassCoroutine);
+            stopHourglassCoroutine = StartCoroutine(StopHourglassCoroutine(time));
+        }
+    }
 
+    private IEnumerator StopHourglassCoroutine(float time)
+    {
+        stoppedHourglass = true;
+        yield return new WaitForSeconds(time);
+        stoppedHourglass = false;
+    }
 
     public void LockMovement(float time)
     {
@@ -184,18 +204,10 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             var objectToUse = Inventory.ActiveObjectSlots[slotIndex];
 
-            switch (objectToUse.PickableSO.PickableEffectType)
-            {
-                case EPickableEffectType.HealTime:
-                    Damageable.Heal(objectToUse.PickableSO.EffectInPercentage);
-                    break;
-                case EPickableEffectType.HealHourglass:
-                    Damageable.HealHourglass(objectToUse.PickableSO.EffectInPercentage);
-                    break;
-            }
+            PickableScriptableObject.UseActiveObject(objectToUse, Damageable, _playerController.AttackPosition, this);
 
             objectToUse.Quantity--;
-            if(objectToUse.Quantity <= 0)
+            if (objectToUse.Quantity <= 0)
             {
                 RemoveObject(pickableObject);
                 _uiPlayArea.ResetActiveObject(slotIndex);
@@ -203,7 +215,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             else
                 _uiPlayArea.SetActiveObject(slotIndex, objectToUse.PickableSO.ObjectInventorySprite, objectToUse.Quantity);
 
-            if(forceUpdate)
+            if (forceUpdate)
                 UIManager.Instance.PauseMenu.UpdateButton(slotIndex, objectToUse.Quantity);
 
 
@@ -212,6 +224,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
         return false;
     }
+
 
     public bool TryUseObject(int inventoryIndex)
     {
@@ -277,6 +290,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void HandleSkeletonRotation()
     {
+        SkeletonAnimation nextSkeleton = null;
         switch (CurrentDirection)
         {
             case EDirection.Up:
@@ -286,7 +300,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     upSkeletonRun.gameObject.SetActive(true);
                     upSkeleton.gameObject.gameObject.SetActive(false);
 
-                    _currentSkeleton = upSkeletonRun;
+                    nextSkeleton = upSkeletonRun;
                 }
                 else
                 {
@@ -294,7 +308,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     upSkeleton.gameObject.gameObject.SetActive(true);
                     upSkeletonRun.gameObject.SetActive(false);
 
-                    _currentSkeleton = upSkeleton;
+                    nextSkeleton = upSkeleton;
                 }
 
                 downSkeleton.gameObject.SetActive(false);
@@ -309,7 +323,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     downSkeletonRun.gameObject.gameObject.SetActive(true);
                     downSkeleton.gameObject.SetActive(false);
 
-                    _currentSkeleton = downSkeletonRun;
+                    nextSkeleton = downSkeletonRun;
                 }
                 else
                 {
@@ -317,7 +331,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     downSkeleton.gameObject.SetActive(true);
                     downSkeletonRun.gameObject.SetActive(false);
 
-                    _currentSkeleton = downSkeleton;
+                    nextSkeleton = downSkeleton;
                 }
 
                 upSkeleton.gameObject.SetActive(false);
@@ -335,7 +349,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 upSkeletonRun.gameObject.SetActive(false);
                 downSkeletonRun.gameObject.SetActive(false);
 
-                _currentSkeleton = leftSkeleton;
+                nextSkeleton = leftSkeleton;
                 break;
             case EDirection.Right:
                 if (rightSkeleton.gameObject.activeSelf) return;
@@ -347,12 +361,16 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 upSkeletonRun.gameObject.SetActive(false);
                 downSkeletonRun.gameObject.SetActive(false);
 
-                _currentSkeleton = rightSkeleton;
+                nextSkeleton = rightSkeleton;
                 break;
         }
+
+        nextSkeleton.state.SetAnimation(0, _currentSkeleton.AnimationName, _currentSkeleton.loop);
+        _currentSkeleton = nextSkeleton;
+        
     }
 
-    public void HandleSkeletonAnimation()
+    public void HandleSkeletonAnimation() //Da sistemare
     {
         if (_currentSkeleton != null)
         {
@@ -360,26 +378,29 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             {
                 if(_playerController.StateMachine.GetState(EPlayerState.Walking) == _playerController.StateMachine.CurrentState)
                 {
-                    if (_trackEntry.Animation.Name != run)
-                        _trackEntry = _currentSkeleton.state.SetAnimation(0, run, true);
-                        
+                    if (_currentSkeleton.AnimationName != run)
+                        _currentSkeleton.state.SetAnimation(0, run, true);
+                                                
                 }else if (_playerController.IsDashing)
                 {
-                    if (_trackEntry.Animation.Name != dashSword)
-                        _trackEntry = _currentSkeleton.state.SetAnimation(0, dashSword, false);
+                    if (_currentSkeleton.AnimationName != dashSword)
+                        _currentSkeleton.state.SetAnimation(0, dashSword, false);
                 }                
             }
             else
             {
                 if(_playerController.StateMachine.GetState(EPlayerState.Idle) == _playerController.StateMachine.CurrentState)
                 {
-                    if (_trackEntry.Animation.Name != idle)
-                        _trackEntry = _currentSkeleton.state.SetAnimation(0, idle, true);
-                }else if (_playerController.IsAttacking)
-                {
-                    if (_trackEntry.Animation.Name != attack)
-                        _trackEntry = _currentSkeleton.state.SetAnimation(0, attack, false);
-                }           
+                    if (_currentSkeleton.AnimationName != idle)
+                        _currentSkeleton.state.SetAnimation(0, idle, true);
+                }
+                          
+            }
+
+            if (_playerController.IsAttacking)
+            {
+                if (_currentSkeleton.AnimationName != attack)
+                    _currentSkeleton.state.SetAnimation(0, attack, false);
             }
         }
     }

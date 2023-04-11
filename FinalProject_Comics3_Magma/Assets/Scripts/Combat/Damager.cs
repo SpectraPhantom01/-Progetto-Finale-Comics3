@@ -59,7 +59,8 @@ public class Damager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer))
+        //var player = collision.gameObject.SearchComponent<PlayerManager>();
+        if (!_isPlayer && _damageableMask.Contains(collision.gameObject.layer) /*&& !player.PlayerController.IsDashing*/)
         {
             Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
             if (damageable != null)
@@ -153,43 +154,20 @@ public class Damager : MonoBehaviour
 
     public void EquipAttack(EAttackType eAttackType)
     {
-        switch (eAttackType)
-        {
-            case EAttackType.Melee:
-                _equippedAttack = _attackList.Find(x => x.AttackType == EAttackType.Melee);
-                break;
-            case EAttackType.Shoot:
-                _equippedAttack = _attackList.Find(x => x.AttackType == EAttackType.Shoot);
-                break;
-        }
+
+        _equippedAttack = _attackList.Find(x => x.AttackType == eAttackType);
 
         SizeDownHitBox();
     }
 
     public void EquipAttackMeleeSubCategory(EMeleeAttackType eMeleeAttackType)
     {
-        switch (eMeleeAttackType)
-        {
-            case EMeleeAttackType.Sword:
-                _equippedAttack = _attackList.Find(x => x.MeleeAttackType == EMeleeAttackType.Sword);
-                break;
-            case EMeleeAttackType.Punch:
-                _equippedAttack = _attackList.Find(x => x.MeleeAttackType == EMeleeAttackType.Punch);
-                break;
-        }
+        _equippedAttack = _attackList.Find(x => x.MeleeAttackType == eMeleeAttackType);
     }
 
     public void EquipAttackShootSubCategory(EShootingAttackType eShootingAttackType)
     {
-        switch (eShootingAttackType)
-        {
-            case EShootingAttackType.Spell:
-                _equippedAttack = _attackList.Find(x => x.ShootingAttackType == EShootingAttackType.Spell);
-                break;
-            case EShootingAttackType.Arrow:
-                _equippedAttack = _attackList.Find(x => x.ShootingAttackType == EShootingAttackType.Arrow);
-                break;
-        }
+        _equippedAttack = _attackList.Find(x => x.ShootingAttackType == eShootingAttackType);
     }
 
     public void SetBonusAttack(float bonus1, float bonus2)
