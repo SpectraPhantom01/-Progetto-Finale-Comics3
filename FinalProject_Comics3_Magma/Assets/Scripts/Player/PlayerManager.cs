@@ -164,20 +164,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         stoppedHourglass = false;
     }
 
-    public void LockMovement(float time)
-    {
-        if (_playerController.CanMove)
-            StartCoroutine(LockCoroutine(time));
-
-    }
-
-    private IEnumerator LockCoroutine(float time)
-    {
-        _playerController.CanMove = false;
-        yield return new WaitForSeconds(time);
-        _playerController.CanMove = true;
-    }
-
     public void PickUpObject(PickableScriptableObject newObject, GameObject pickableGameObject)
     {
         if (!InventoryArray.Any(x => x != null && x.PickableSO == null)) return;

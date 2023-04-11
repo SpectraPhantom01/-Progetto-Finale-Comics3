@@ -23,7 +23,7 @@ public class DamageableEditor : Editor
         {
             GUILayout.BeginHorizontal();
             GUILayout.Label("Enemy Lock Time");
-            damageable.EnemyLockTime = EditorGUILayout.FloatField(damageable.EnemyLockTime);
+            damageable.LockTime = EditorGUILayout.FloatField(damageable.LockTime);
             GUILayout.EndHorizontal();
         }
        
