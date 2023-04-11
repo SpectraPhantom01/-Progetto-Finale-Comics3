@@ -10,8 +10,8 @@ public class Damageable : MonoBehaviour
 {
     [Header("Hourglasses Settings")]
     [SerializeField] List<Hourglass> hourglasses;
-    [HideInInspector] public float PlayerLockTime = 0.1f;
-    [HideInInspector] public float EnemyLockTime = 0.5f;
+    [HideInInspector] public float PlayerLockTime = 0.3f;
+    [HideInInspector] public float LockTime = 0.5f;
     public float CurrentTimeLife => _currentTimeLife;
     public int HourglassesCount => hourglasses.Count;
     public bool Invincible = false;
@@ -102,7 +102,7 @@ public class Damageable : MonoBehaviour
         {
             if(_isPlayer)
             {
-                playerManager.LockMovement(PlayerLockTime);
+                StartCoroutine(KnockbackRoutine(PlayerLockTime));
                 playerController.StateMachine.SetState(EPlayerState.Idle); 
                                
                 //Introdurre uno stato di danneggiamento?
@@ -116,7 +116,7 @@ public class Damageable : MonoBehaviour
             else
             {
                 if(KnockBackResistance != 100)
-                    StartCoroutine(KnockbackRoutine());
+                    StartCoroutine(KnockbackRoutine(LockTime));
             }
 
             if(direction != Vector2.zero)
@@ -146,23 +146,33 @@ public class Damageable : MonoBehaviour
         return knockBack * (1 - KnockBackResistance / 100);
     }
 
-    private IEnumerator KnockbackRoutine()
+    private IEnumerator KnockbackRoutine(float time)
     {
         if (_agent != null)
             _agent.enabled = false;
         if (_behaviorTree != null)
             _behaviorTree.enabled = false;
 
-        _rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        if(_isPlayer)
+        {
+            playerController.CanMove = false;
+        }
+        else
+            _rigidBody.bodyType = RigidbodyType2D.Dynamic;
 
-        yield return new WaitForSeconds(EnemyLockTime);
+        yield return new WaitForSeconds(time);
 
         if (_agent != null)
             _agent.enabled = true;
         if (_behaviorTree != null)
             _behaviorTree.enabled = true;
 
-        _rigidBody.bodyType = RigidbodyType2D.Static;
+        if (_isPlayer)
+        {
+            playerController.CanMove = true;
+        }
+        else
+            _rigidBody.bodyType = RigidbodyType2D.Static;
     }
 
     public void Heal(float amount)

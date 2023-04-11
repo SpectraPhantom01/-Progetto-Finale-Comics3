@@ -4009,7 +4009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2456757377686681717, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
       propertyPath: EnemyControllers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2456757377686681717, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
       propertyPath: _enemyControllers.Array.size
@@ -4018,11 +4018,11 @@ PrefabInstance:
     - target: {fileID: 2456757377686681717, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
       propertyPath: EnemyControllers.Array.data[0]
       value: 
-      objectReference: {fileID: 397657644311551929}
+      objectReference: {fileID: 3588437020293182713}
     - target: {fileID: 2456757377686681717, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
       propertyPath: EnemyControllers.Array.data[1]
       value: 
-      objectReference: {fileID: 4233297675628028194}
+      objectReference: {fileID: 397657644311551929}
     - target: {fileID: 2456757377686681717, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
       propertyPath: EnemyControllers.Array.data[2]
       value: 
@@ -5130,6 +5130,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4654917890698544185, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
   m_PrefabInstance: {fileID: 8166476781853683914}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3588437020293182713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1673375990249354923, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
+  m_PrefabInstance: {fileID: 8166476781853683914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662d5aa8642f8dd44be06ff88e016707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4026546787311076961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5185,6 +5196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NecroHybridEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7333400390937488207, guid: dd1f80ef93e032b4aa28629f11d2d692, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd1f80ef93e032b4aa28629f11d2d692, type: 3}
 --- !u!1001 &4229048457482727250
@@ -5229,6 +5244,10 @@ PrefabInstance:
     - target: {fileID: 4262378003809684105, guid: 1d15a43b4a168934b9b793d3048de2be, type: 3}
       propertyPath: m_Name
       value: NecroHybridTail
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262378003809684105, guid: 1d15a43b4a168934b9b793d3048de2be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130557438118320472, guid: 1d15a43b4a168934b9b793d3048de2be, type: 3}
       propertyPath: m_RootOrder
@@ -5700,15 +5719,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4654917890698544185, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.33
+      value: 16.25
       objectReference: {fileID: 0}
     - target: {fileID: 4654917890698544185, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.22
+      value: 8.22
       objectReference: {fileID: 0}
     - target: {fileID: 4654917890698544185, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4654917890698544185, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5744,7 +5763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4654917890698544188, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25cc2d4596dfcd94e95a9b2ff958325a, type: 3}
