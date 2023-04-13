@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
-            for (int i = 1; i < Damageable.Hourglasses; i++)
+            for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
                 _uiPlayArea.AddNewHourglass();
             }
@@ -162,20 +162,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         stoppedHourglass = true;
         yield return new WaitForSeconds(time);
         stoppedHourglass = false;
-    }
-
-    public void LockMovement(float time)
-    {
-        if (_playerController.CanMove)
-            StartCoroutine(LockCoroutine(time));
-
-    }
-
-    private IEnumerator LockCoroutine(float time)
-    {
-        _playerController.CanMove = false;
-        yield return new WaitForSeconds(time);
-        _playerController.CanMove = true;
     }
 
     public void PickUpObject(PickableScriptableObject newObject, GameObject pickableGameObject)

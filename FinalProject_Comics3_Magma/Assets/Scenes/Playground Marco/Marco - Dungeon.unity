@@ -3006,12 +3006,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7774569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.49434158
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.347109
+      value: -10.4336
       objectReference: {fileID: 0}
     - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.092686
+      value: 47.861
       objectReference: {fileID: 0}
     - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4144,10 +4152,6 @@ PrefabInstance:
       value: RoomTrigger (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1779960557415724533, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1779960557415724533, guid: 97d508c83b63e824cb47a63e7b4fae3f, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -4843,7 +4847,6 @@ GameObject:
   - component: {fileID: 308906137}
   - component: {fileID: 308906139}
   - component: {fileID: 308906138}
-  - component: {fileID: 308906140}
   m_Layer: 8
   m_Name: Terreno
   m_TagString: Untagged
@@ -48565,22 +48568,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &308906140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308906136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 0
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1001 &311222622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49227,6 +49214,14 @@ PrefabInstance:
     - target: {fileID: 1153962311790919225, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327500713654321553, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -832796959, guid: 105d59257785e17428f6bf3717a00d64, type: 3}
+    - target: {fileID: 7327500713654321553, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7327500715194216675, guid: 7a97b6f54f81e31428ecbe5d308fece4, type: 3}
       propertyPath: m_Name
@@ -72509,6 +72504,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7774569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.49434158
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005736637946533635, guid: f1434e4e94992504fa968ec87d38cd7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.23
       objectReference: {fileID: 0}
@@ -94970,17 +94973,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 593094964564986491, guid: ef94130b78be48949b8a4b5e34e07f42, type: 3}
-      propertyPath: m_DefaultArea
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 593094964564986491, guid: ef94130b78be48949b8a4b5e34e07f42, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 69015047748fd364697ceb14e6f06bae, type: 2}
-    - target: {fileID: 593094964564986491, guid: ef94130b78be48949b8a4b5e34e07f42, type: 3}
-      propertyPath: m_UseGeometry
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 593094964564986493, guid: ef94130b78be48949b8a4b5e34e07f42, type: 3}
       propertyPath: m_Name
       value: NavMesh

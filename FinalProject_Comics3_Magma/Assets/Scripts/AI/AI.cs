@@ -10,6 +10,7 @@ public class AI : MonoBehaviour
     [HideInInspector] public NavMeshAgent Agent;
     [HideInInspector] public EDirection CurrentDirection = EDirection.Down;
     public bool Stupid;
+    public Damageable Damageable { get; private set; }
 
     private void Awake()
     {
@@ -22,12 +23,24 @@ public class AI : MonoBehaviour
                 BehaviorTree.SetVariableValue("StoppingDistance", Agent.stoppingDistance);
             }
 
+            Damageable = gameObject.SearchComponent<Damageable>();
         }
-       
+
+
     }
     private void Update()
     {
         if (!Stupid && Agent.velocity.magnitude > 0.01f)
             CurrentDirection = Agent.velocity.CalculateDirection();
+    }
+    public void Stop()
+    {
+        BehaviorTree.enabled = false;
+        Agent.enabled = false;
+    }
+    public void Play()
+    {
+        BehaviorTree.enabled = true;
+        Agent.enabled = true;
     }
 }

@@ -1,0 +1,23 @@
+slime.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+base
+bounds:2,19,265,176
+bordo teste fuori
+bounds:586,149,163,95
+contorno
+bounds:303,226,281,270
+corpo
+bounds:586,246,264,250
+curve
+bounds:303,2,276,222
+ombra
+bounds:852,216,280,152
+rotate:90
+shine
+bounds:2,197,299,299
+testa dentro
+bounds:751,170,50,74
+teste fuori
+bounds:581,30,128,117

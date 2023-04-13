@@ -88,6 +88,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject
                             Damager.EquipAttackMeleeSubCategory(EMeleeAttackType.Punch);
 
                         }
+                        else if( passedString == "CLAW")
+                        {
+
+                            Damager.EquipAttackMeleeSubCategory(EMeleeAttackType.Claw);
+                        }
+                        else if(passedString == "MULTIPLE CLAW")
+                        {
+
+                            Damager.EquipAttackMeleeSubCategory(EMeleeAttackType.MultipleClaw);
+                        }
                         break;
                     case EAttackType.Shoot:
                         if(passedString == "SPELL")
