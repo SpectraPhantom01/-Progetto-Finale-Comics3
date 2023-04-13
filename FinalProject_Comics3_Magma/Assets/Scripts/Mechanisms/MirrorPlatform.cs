@@ -4,42 +4,17 @@ using UnityEngine;
 
 public class MirrorPlatform : MonoBehaviour
 {
-    [SerializeField] List<Vector2> platforms;
-
-    private void Awake()
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
     {
-        foreach(Transform child in transform)
+        var mainMirrorPlatform = gameObject.GetComponentInParent<Main_MirrorPlatform>();
+
+        if (mainMirrorPlatform != null)
         {
-            platforms.Add(child.position);
-        }
+            Gizmos.color = Color.green;
 
-        if(platforms.Count == 0) 
-            Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var player = collision.gameObject.SearchComponent<PlayerController>();
-
-        if (player != null)
-        {
-            for (int i = 0; i < platforms.Count; i++)
-            {
-                player.GhostPositions.Add(platforms[i]);
-            }
+            Gizmos.DrawLine(transform.position, mainMirrorPlatform.gameObject.transform.position);
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        var player = collision.gameObject.SearchComponent<PlayerController>();
-
-        if (player != null)
-        {
-            for (int i = 0; i < platforms.Count; i++)
-            {
-                player.GhostPositions.Remove(platforms[i]);
-            }
-        }
-    }
+#endif   
 }

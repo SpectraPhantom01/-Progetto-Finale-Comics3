@@ -67,8 +67,6 @@ public class PlayerController : MonoBehaviour
         GhostActive = false;
         CanRewind = true;
 
-        ghostPositions.Add(transform.localPosition);
-
         StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
@@ -187,15 +185,24 @@ public class PlayerController : MonoBehaviour
 
         var ghostTime = ghostLifeTime + bonusGhostTime1 + bonusGhostTime2;
 
+        if (ghostPositions.Count > 0)
+        {
+            foreach (Vector2 position in ghostPositions)
+            {
+                instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
+                instantiatedGhost.Initialize(true, PlayerManager);
+                GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
+            }
+        }
+
         instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager);
-
-        //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
-        //StartCoroutine(ghostRoutine);
+        GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
 
         ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
 
-        GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
+        //GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
+        GameManager.Instance.GhostManager.StartReadingDistance();
     }
   
     public void Rewind()
