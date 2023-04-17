@@ -35,7 +35,7 @@ public class AttackingCharacterState : State
         m_Owner.CanMove = false;
         m_Owner.IsAttacking = true;
         
-        //m_Owner.Rigidbody.velocity = Vector3.zero; 
+        m_Owner.Rigidbody.velocity = Vector3.zero; 
 
         _timeElapsed = 0;
         //m_Owner.PlayerManager._trackEntry = m_Owner.PlayerManager.CurrentSkeleton.state.SetAnimation(0, "attacco", false); //TEST            
