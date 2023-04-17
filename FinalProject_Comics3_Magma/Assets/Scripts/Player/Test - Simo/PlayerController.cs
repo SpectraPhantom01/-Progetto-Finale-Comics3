@@ -212,6 +212,9 @@ public class PlayerController : MonoBehaviour
         instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager);
 
+        instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
+        instantiatedGhost.lastDirection = lastDirection;
+
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
   
