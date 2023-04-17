@@ -21,7 +21,7 @@ public class AttackingCharacterState : State
     public override void OnEnd()
     {
         m_Owner.IsAttacking = false;
-        //m_Owner.CanMove = true;
+        m_Owner.CanMove = true;
     }
 
     public override void OnFixedUpdate()

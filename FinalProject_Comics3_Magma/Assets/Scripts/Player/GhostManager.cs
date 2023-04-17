@@ -101,7 +101,7 @@ public class GhostManager : MonoBehaviour
     public void ResetGhost()
     {
         //Destroy(ghost.gameObject); 
-        foreach(PlayerController ghost in ghosts) 
+        foreach (PlayerController ghost in ghosts)
         {
             Destroy(ghost.gameObject);
         }
