@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         DestroyGhost();
+        
     }
 
     public void DestroyGhost()

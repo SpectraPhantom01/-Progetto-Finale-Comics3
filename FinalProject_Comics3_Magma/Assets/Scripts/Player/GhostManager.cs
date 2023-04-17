@@ -70,7 +70,7 @@ public class GhostManager : MonoBehaviour
                     break;
                 case InputType.Ghost:
                     player.DestroyGhost();
-                    break;
+                    return;
                 case InputType.MovementStart:
                     if (!ghost.IsDashing)
                     {
@@ -93,9 +93,6 @@ public class GhostManager : MonoBehaviour
                     break;
             }
         }        
-
-        if(input == InputType.Ghost) //Spostato fuori dal foreach per evitare errori (soluzione migliore?)
-            ResetValues();
     }
 
     public void ResetGhost()
@@ -105,7 +102,8 @@ public class GhostManager : MonoBehaviour
         {
             Destroy(ghost.gameObject);
         }
-        //ResetValues();
+
+        ResetValues();
     }
 
     public void ResetValues() 
