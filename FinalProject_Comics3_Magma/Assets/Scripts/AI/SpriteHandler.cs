@@ -1,4 +1,3 @@
-using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,15 +6,14 @@ using UnityEngine;
 
 public class SpriteHandler : MonoBehaviour
 {
-
-    SkeletonAnimation skeleton;
+    SpriteRenderer spriteRenderer;
 
     GameObject _graphics;
     private void Awake()
     {
-        skeleton = gameObject.SearchComponent<SkeletonAnimation>();
+        spriteRenderer = gameObject.SearchComponent<SpriteRenderer>();
 
-        _graphics = skeleton.gameObject;
+        _graphics = spriteRenderer.gameObject;
     }
 
     private void Update()

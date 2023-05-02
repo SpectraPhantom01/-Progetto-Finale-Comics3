@@ -71,7 +71,6 @@ public class Pillar : MonoBehaviour
     {
         pillarState = state;
     }
-
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

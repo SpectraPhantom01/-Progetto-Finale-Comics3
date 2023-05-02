@@ -659,7 +659,7 @@ MonoBehaviour:
   dashingPower: 15
   dashingTime: 0.3
   dashingCooldown: 0.25
-  ghostPrefab: {fileID: 2087631721950435330, guid: faf264dc60018ad4a941df9dd89eb412, type: 3}
+  ghostPrefab: {fileID: 3138579559502232296, guid: 25e674b5b378e164bab528df2f2b9ded, type: 3}
   ghostLifeTime: 4
   rewindCooldown: 1
   attackPoint: {fileID: 960920955020320483}
@@ -667,7 +667,6 @@ MonoBehaviour:
   Direction: {x: 0, y: 0}
   Damager: {fileID: 0}
   lastDirection: {x: 0, y: -1}
-  Father: {fileID: 0}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
   serializedVersion: 4
@@ -718,8 +717,7 @@ MonoBehaviour:
     MaxSpeedLoseSand: 0
     DEBUGLossXsec: 0
   PlayerLockTime: 0.1
-  LockTime: 0.5
-  Invincible: 0
+  EnemyLockTime: 0.5
   KnockBackResistance: 0
   DamageReductionPerc: 0
   DamageReduction: 0
