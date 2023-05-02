@@ -14,8 +14,14 @@ public class SpriteHandler : MonoBehaviour
     private void Awake()
     {
         skeleton = gameObject.SearchComponent<SkeletonAnimation>();
-
-        _graphics = skeleton.gameObject;
+        if (skeleton)
+        {
+            _graphics = skeleton.gameObject;
+        }
+        else
+        {
+            _graphics = gameObject.SearchComponent<SpriteRenderer>().gameObject;
+        }
     }
 
     private void Update()
