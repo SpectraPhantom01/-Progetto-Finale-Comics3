@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Bombarcana
   m_EditorClassIdentifier: 
   ObjectName: Bombarcana
-  ObjectDescription: "Created by the dentist known as Lintagg, he hoped this bomb
-    would be a deterrent for future conflict, due to its sheer brutality.\r"
+  ObjectDescription: BOMBA
   ObjectInventorySprite: {fileID: 21300000, guid: a0be646539817344ab94d30febabb602, type: 3}
   OnGameSprite: {fileID: 21300000, guid: a0be646539817344ab94d30febabb602, type: 3}
   IsConsumable: 1
   IsKeyObject: 0
-  QuantityOnPick: 3
+  QuantityOnPick: 100
   PickableEffectType: 4
   EffectInPercentage: 0
   EffectInTime: 0

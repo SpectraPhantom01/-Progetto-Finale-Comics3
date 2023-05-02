@@ -5,17 +5,14 @@ using UnityEngine;
 public class LavaSlime : MonoBehaviour
 {
     [SerializeField] GameObject trailPrefab;
-    [SerializeField] Transform pivot;
     TrailRenderer trailRenderer;
-
+    private void Start()
+    {
+        SpawnTrail();
+    }
     public void SpawnTrail()
     {
-        if(trailRenderer == null)
-        {
-
-            trailRenderer = Instantiate(trailPrefab, pivot).GetComponent<TrailRenderer>();
-            trailRenderer.transform.localPosition = new Vector3(0, 0.5f, 0);
-        }
+        trailRenderer = Instantiate(trailPrefab, transform).GetComponent<TrailRenderer>();
     }
     public void BreakTrail()
     {
@@ -24,7 +21,6 @@ public class LavaSlime : MonoBehaviour
 
             trailRenderer.transform.SetParent(null);
             trailRenderer.autodestruct = true;
-            trailRenderer = null;
         }
     }
 }
