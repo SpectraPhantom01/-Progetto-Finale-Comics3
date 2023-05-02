@@ -35,6 +35,7 @@ public class SpellBullet : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidBody.velocity = _speed * Time.deltaTime * transform.up;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,6 +47,15 @@ public class SpellBullet : MonoBehaviour
                 Damager.GiveDamage(damageable, _attack, transform, 0);
         }
 
-        Destroy(gameObject);
+        if (collision.gameObject.layer != LayerMask.NameToLayer("MonodirectionalBarrier"))
+        {
+            Destroy(gameObject);
+        }        
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (_rigidBody.velocity.magnitude != (_speed * Time.deltaTime * transform.up).magnitude)
+            Destroy(gameObject);
     }
 }
