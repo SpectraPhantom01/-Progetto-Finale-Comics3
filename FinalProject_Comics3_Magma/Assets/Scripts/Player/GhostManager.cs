@@ -7,7 +7,6 @@ public enum InputType { Dash, Ghost, MovementStart, MovementEnd, Attack, Interac
 
 public class GhostManager : MonoBehaviour
 {
-    //Dictionary<InputType, UnityEngine.InputSystem.InputAction.CallbackContext> ghostDictionary;
     Queue<InputType> inputTypes = new Queue<InputType>();
     Queue<Vector2> callbackContexts = new Queue<Vector2>();
     List<float> timeDistance = new List<float>();
@@ -18,8 +17,10 @@ public class GhostManager : MonoBehaviour
     float timeElapsed = 0;
     float currentTimeElapsed = 0;
 
-    PlayerController ghost;
+    //PlayerController ghost; //Deve diventare una lista di ghost
+    List<PlayerController> ghosts = new List<PlayerController>();
     PlayerController player;
+
     void Update()
     {
         if(readInput)
@@ -28,11 +29,11 @@ public class GhostManager : MonoBehaviour
 
             if(currentTimeElapsed >= timeDistance[0]) 
             { 
-                if(ghost == null) // nel caso in cui il Ghost venga ucciso mentre si sta muovendo... Non si sa mai
-                {
-                    ResetValues();
-                    return;
-                }
+                //if(ghost == null) // nel caso in cui il Ghost venga ucciso mentre si sta muovendo... Non si sa mai
+                //{
+                //    ResetValues();
+                //    return;
+                //}
 
                 timeDistance.RemoveAt(0);
                 EseguiInputGhost();
@@ -42,11 +43,11 @@ public class GhostManager : MonoBehaviour
         {
             timeElapsed += Time.deltaTime;
             
-            if (ghost == null) // nel caso in cui il Ghost venga ucciso mentre si sta muovendo... Non si sa mai
-            {
-                ResetValues();
-                return;
-            }
+            //if (ghost == null) // nel caso in cui il Ghost venga ucciso mentre si sta muovendo... Non si sa mai
+            //{
+            //    ResetValues();
+            //    return;
+            //}
         }
     }
 
@@ -60,52 +61,60 @@ public class GhostManager : MonoBehaviour
         var input = inputTypes.Dequeue();
         var callbackValue = callbackContexts.Dequeue();
 
-        switch (input)
+        foreach(PlayerController ghost in ghosts)
         {
-            case InputType.Dash:
-                ghost.Dash();
-                break;
-            case InputType.Ghost:
-                player.DestroyGhost();
-                break;
-            case InputType.MovementStart:
-                if (!ghost.IsDashing)
-                {
-                    ghost.StateMachine.SetState(EPlayerState.Walking);
+            switch (input)
+            {
+                case InputType.Dash:
+                    ghost.Dash();
+                    break;
+                case InputType.Ghost:
+                    player.DestroyGhost();
+                    return;
+                case InputType.MovementStart:
+                    if (!ghost.IsDashing)
+                    {
+                        ghost.StateMachine.SetState(EPlayerState.Walking);
 
-                    Vector2 readedDirection = callbackValue;
+                        Vector2 readedDirection = callbackValue;
 
-                    ghost.Direction = readedDirection.normalized;
-                    ghost.lastDirection = readedDirection.normalized;
-                }
-                break;
-            case InputType.MovementEnd:
-                ghost.Direction = callbackValue;
-                break;
-            case InputType.Attack:
-                ghost.Attack();
-                break;
-            case InputType.Interaction:
-                ghost.Attack();
-                break;
-        }
-
-        
+                        ghost.Direction = readedDirection.normalized;
+                        ghost.lastDirection = readedDirection.normalized;
+                    }
+                    break;
+                case InputType.MovementEnd:
+                    ghost.Direction = callbackValue;
+                    break;
+                case InputType.Attack:
+                    ghost.Attack();
+                    break;
+                case InputType.Interaction:
+                    ghost.Attack();
+                    break;
+            }
+        }        
     }
 
     public void ResetGhost()
     {
-        Destroy(ghost.gameObject);
+        //Destroy(ghost.gameObject); 
+        foreach (PlayerController ghost in ghosts)
+        {
+            Destroy(ghost.gameObject);
+        }
+
         ResetValues();
     }
 
-    public void ResetValues()
+    public void ResetValues() 
     {
         readInput = false;
 
         inputTypes.Clear();
         callbackContexts.Clear();
         timeDistance.Clear();
+
+        ghosts.Clear();
 
         timeElapsed = 0;
         currentTimeElapsed = 0;
@@ -124,14 +133,27 @@ public class GhostManager : MonoBehaviour
         readTime = false;
     }
 
-    public void StartReadingDistance(PlayerController newGhost)
-    {
-        ghost = newGhost;
+    //public void StartReadingDistance(PlayerController newGhost)
+    //{
+    //    //ghost = newGhost; 
 
+    //    timeDistance.Clear();
+    //    timeElapsed = 0;
+
+    //    readTime = true;       
+    //}
+
+    public void AddGhost(PlayerController newGhost)
+    {
+        ghosts.Add(newGhost);
+    }
+
+    public void StartReadingDistance()
+    {
         timeDistance.Clear();
         timeElapsed = 0;
 
-        readTime = true;       
+        readTime = true;
     }
 
 }

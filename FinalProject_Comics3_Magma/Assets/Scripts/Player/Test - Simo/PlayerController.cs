@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     PlayerController instantiatedGhost;
     Coroutine ghostRoutine;
-
+    List<Vector2> ghostPositions = new List<Vector2>();
 
     //public bool IsMoving { get; private set; } = false;
     public Rigidbody2D Rigidbody => rb;
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     public PlayerManager PlayerManager => _playerManager;
     public PlayerManager Father;
     public bool ImGhost { get; set; } = false;
+    public List<Vector2> GhostPositions { get => ghostPositions; }
 
     private void Awake()
     {
@@ -184,15 +185,37 @@ public class PlayerController : MonoBehaviour
 
         var ghostTime = ghostLifeTime + bonusGhostTime1 + bonusGhostTime2;
 
-        instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
-        instantiatedGhost.Initialize(true, PlayerManager);
+        if (ghostPositions.Count > 0)
+        {
+            foreach (Vector2 position in ghostPositions)
+            {
+                InstantiateGhost(position);
+            }
+        }
+        else
+        {
+            InstantiateGhost(transform.localPosition);
+        }
 
-        //ghostRoutine = GhostRoutine(); //Why? A quanto pare serve per la StopCoroutine...funziona così
-        //StartCoroutine(ghostRoutine);
+        //instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
+        //instantiatedGhost.Initialize(true, PlayerManager);
+        //GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
 
         ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
 
-        GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
+        //GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
+        GameManager.Instance.GhostManager.StartReadingDistance();
+    }
+
+    private void InstantiateGhost(Vector2 position)
+    {
+        instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
+        instantiatedGhost.Initialize(true, PlayerManager);
+
+        instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
+        instantiatedGhost.lastDirection = lastDirection;
+
+        GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
   
     public void Rewind()
@@ -207,6 +230,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         DestroyGhost();
+        
     }
 
     public void DestroyGhost()
