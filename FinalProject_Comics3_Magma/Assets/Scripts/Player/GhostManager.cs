@@ -97,6 +97,7 @@ public class GhostManager : MonoBehaviour
 
     public void ResetGhost()
     {
+        GameManager.Instance.EnableGhostRendering();
         //Destroy(ghost.gameObject); 
         foreach (PlayerController ghost in ghosts)
         {

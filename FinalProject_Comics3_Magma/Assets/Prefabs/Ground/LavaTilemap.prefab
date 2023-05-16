@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1136021033550741065}
   - component: {fileID: 9085055003494823007}
   - component: {fileID: 597511246915085734}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8340609773643580119}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LavaTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2535696492026486733}
   - component: {fileID: 2069553451754595342}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

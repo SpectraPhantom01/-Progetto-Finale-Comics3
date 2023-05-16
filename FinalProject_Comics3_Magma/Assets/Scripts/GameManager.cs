@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, ISubscriber
 {
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     [Header("Enemy Settings")]
     [SerializeField] EnemyController EnemyPrefab;
 
+    [SerializeField] Volume globalVolume;
     // Corrected Variables
     private InputSystem inputSystem;
     private PlayerController playerController;
@@ -47,7 +50,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     public PlayerController Player => playerController;
 
     public GhostManager GhostManager => ghostManager;
-
+    Coroutine ghostEffect;
     private void Awake()
     {
         instance = this;
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour, ISubscriber
             {
                 // finish ghost, destroy object
                 GhostManager.RegistraInput(Vector2.zero, InputType.Ghost);
+
             }
 
             playerController.StateMachine.SetState(EPlayerState.Rewind);
@@ -126,9 +130,59 @@ public class GameManager : MonoBehaviour, ISubscriber
             {
                 // if he is already moving, register a state
                 GhostManager.RegistraInput(playerController.Direction, InputType.MovementStart);
+
             }
         }
 
+        EnableGhostRendering();
+    }
+
+    public void EnableGhostRendering()
+    {
+        if (playerController.GhostActive)
+        {
+
+            globalVolume.gameObject.SetActive(true);
+            ghostEffect = StartCoroutine(GhostEffect());
+        }
+        else
+        {
+
+            globalVolume.gameObject.SetActive(false);
+            StopCoroutine(ghostEffect);
+        }
+    }
+
+    private IEnumerator GhostEffect()
+    {
+        globalVolume.profile.TryGet<ChromaticAberration>(out var type);
+        float intensity = 0.5f;
+        bool goingUp = true;
+        bool goingDown = false;
+        while (true)
+        {
+            type.intensity.Override(intensity);
+            yield return null;
+
+            if(goingDown)
+            { 
+                intensity -= 0.01f;
+                if (intensity <= 0.5f)
+                {
+                    goingUp = true;
+                    goingDown = false;
+                }
+            }
+            else if(goingUp)
+            {
+                intensity += 0.01f;
+                if(intensity >= 1)
+                {
+                    goingUp = false;
+                    goingDown = true;
+                }
+            }
+        }
     }
 
     private void Dash_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -138,7 +192,6 @@ public class GameManager : MonoBehaviour, ISubscriber
             GhostManager.RegistraInput(Vector2.zero, InputType.Dash);
         }
 
-        
         playerController.Dash();
 
         //playerController.StateMachine.SetState(EPlayerState.Dashing);
