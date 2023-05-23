@@ -24,7 +24,7 @@ public class RoomTriggerEditor : Editor
 
         if (GUILayout.Button("Get Inside Bounds Enemies", style))
         {
-            insideEnemies = FindObjectsOfType<EnemyController>().Where(x => collider.bounds.Contains(x.transform.position)).ToList();
+            insideEnemies = FindObjectsOfType<EnemyController>(true).Where(x => collider.bounds.Contains(x.transform.position)).ToList();
             room.EnemyControllers = insideEnemies.ToList();
         }
 

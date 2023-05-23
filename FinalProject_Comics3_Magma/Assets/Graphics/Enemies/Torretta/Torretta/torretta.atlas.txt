@@ -1,0 +1,34 @@
+torretta.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+Braccio Dx
+bounds:2,979,771,975
+Braccio Sx
+bounds:2,2,771,975
+Catene 1
+bounds:775,979,771,975
+Catene 2
+bounds:775,2,771,975
+
+torretta_2.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+Corpo
+bounds:2,979,771,975
+Gamba Dx
+bounds:2,2,771,975
+Gamba Sx
+bounds:775,979,771,975
+Ombra
+bounds:775,2,771,975
+
+torretta_3.png
+size:2048,1024
+filter:Linear,Linear
+pma:true
+Spalla Sx
+bounds:2,2,771,975
+Testa
+bounds:775,2,771,975
