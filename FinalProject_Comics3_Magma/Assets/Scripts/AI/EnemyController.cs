@@ -23,6 +23,7 @@ public class EnemyController : AI, IAliveEntity
 
     [Header("References")]
     [SerializeField] PatrolPath patrolPath;
+    [SerializeField] GameObject shootingEnemyGraphicsPrefab;
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name => GetName();
@@ -30,6 +31,7 @@ public class EnemyController : AI, IAliveEntity
     public bool DestroyOnKill = true;
     private Damager _damager;
     private List<Hourglass> initialHourglasses;
+    private GameObject shootingEnemyGraphics;
     private string GetName()
     {
         return enemyType switch
@@ -64,6 +66,12 @@ public class EnemyController : AI, IAliveEntity
 
         if (GameManager.Instance.Player != null)
             Initialize("Target", GameManager.Instance.Player.gameObject);
+
+        if(enemyType == EEnemyType.BasicShootingEnemy)
+        {
+            shootingEnemyGraphics = Instantiate(shootingEnemyGraphicsPrefab, transform.position, Quaternion.identity);
+            onKillEnemy += () => Destroy(shootingEnemyGraphics);
+        }
     }
 
     private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
