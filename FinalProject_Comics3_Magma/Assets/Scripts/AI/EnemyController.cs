@@ -24,6 +24,7 @@ public class EnemyController : AI, IAliveEntity
     [Header("References")]
     [SerializeField] PatrolPath patrolPath;
     [SerializeField] GameObject shootingEnemyGraphicsPrefab;
+    [SerializeField] Vector3 spawnGraphicsOffset;
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name => GetName();
@@ -70,6 +71,7 @@ public class EnemyController : AI, IAliveEntity
         if(enemyType == EEnemyType.BasicShootingEnemy)
         {
             shootingEnemyGraphics = Instantiate(shootingEnemyGraphicsPrefab, transform.position, Quaternion.identity);
+            shootingEnemyGraphics.transform.position += spawnGraphicsOffset;
             onKillEnemy += () => Destroy(shootingEnemyGraphics);
         }
     }
