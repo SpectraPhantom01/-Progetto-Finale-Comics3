@@ -33,6 +33,7 @@ public class EnemyController : AI, IAliveEntity
     private Damager _damager;
     private List<Hourglass> initialHourglasses;
     private GameObject shootingEnemyGraphics;
+    public Damager Damager => _damager;
     private string GetName()
     {
         return enemyType switch
@@ -76,7 +77,7 @@ public class EnemyController : AI, IAliveEntity
         }
     }
 
-    private void Initialize(string targetBehaviorVariable, GameObject playerTarget)
+    public virtual void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         IsAlive = true;
         BehaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);

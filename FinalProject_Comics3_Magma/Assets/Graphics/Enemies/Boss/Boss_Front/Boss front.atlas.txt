@@ -1,0 +1,47 @@
+Boss front.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+braccio dx
+bounds:689,497,177,286
+braccio sx
+bounds:513,193,177,286
+capellli
+bounds:471,124,63,341
+rotate:90
+catenine pendolo
+bounds:692,275,220,180
+rotate:90
+coscia dx
+bounds:471,15,55,221
+rotate:90
+coscia sx
+bounds:951,250,53,222
+gamba dx
+bounds:868,525,50,258
+gamba sx
+bounds:471,72,50,258
+rotate:90
+luce diietro
+bounds:2,242,509,766
+luce gemma
+bounds:471,192,39,48
+mano dx
+bounds:874,332,75,140
+mano sx
+bounds:814,47,74,140
+mantello davanti
+bounds:2,2,238,467
+rotate:90
+mantello dietr
+bounds:513,785,223,509
+rotate:90
+ombra
+bounds:920,474,309,79
+rotate:90
+proiettile
+bounds:890,104,69,144
+torso
+bounds:513,481,174,302
+viso
+bounds:692,189,194,84

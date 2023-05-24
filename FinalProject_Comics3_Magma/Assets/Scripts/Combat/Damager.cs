@@ -133,7 +133,7 @@ public class Damager : MonoBehaviour
                 if (damageableList.Count > 0)
                 {
                     SpellBullet spellBullet = Instantiate(_equippedAttack.SpellPrefab, damagerArea.position, Quaternion.identity);
-                    spellBullet.Initialize(_damageableMask, _equippedAttack, _isPlayer ? _playerManager.CurrentDirection : _ai.CurrentDirection, gameObject.layer, (damageableList.Min(x => x.transform.position) - transform.position).normalized);
+                    spellBullet.Initialize(_damageableMask, _equippedAttack, gameObject.layer, (damageableList.Min(x => x.transform.position) - damagerArea.position).normalized);
                 }
             }
         }

@@ -31,7 +31,7 @@ public static class VectorExtensionMethods
     }
 
 
-    public static EDirection CalculateDirection(this Vector3 velocity)
+    public static EDirection CalculateDirection(this Vector3 velocity, EDirection currentDirection)
     {
         if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y)) // horizontal priority
         {
@@ -39,7 +39,7 @@ public static class VectorExtensionMethods
             {
                 return EDirection.Right;
             }
-            else
+            else if(velocity.x < 0)
             {
                 return EDirection.Left;
             }
@@ -50,10 +50,12 @@ public static class VectorExtensionMethods
             {
                 return EDirection.Up;
             }
-            else
+            else if(velocity.y < 0)
             {
                 return EDirection.Down;
             }
         }
+
+        return currentDirection;
     }
 }

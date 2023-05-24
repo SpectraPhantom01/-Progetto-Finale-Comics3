@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e955451034a1ed4bb3557d501c219c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Graphics: {fileID: 0}
 --- !u!50 &5412517164752914393
 Rigidbody2D:
   serializedVersion: 4
@@ -374,7 +375,7 @@ MonoBehaviour:
   damagerArea: {fileID: 5412517165411632139}
   _damageableMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 131136
   _interactableMask:
     serializedVersion: 2
     m_Bits: 0
