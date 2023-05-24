@@ -21,7 +21,6 @@ public class BossController : EnemyController
     [SerializeField] float bombAttackAnimationTime;
     [SerializeField] float shootAttackAnimationTime;
     [Header("Bullets")]
-    [SerializeField] GameObject bullet;
     [SerializeField] float delayAttackShoot;
     [SerializeField] GameObject bomb;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
@@ -60,6 +59,27 @@ public class BossController : EnemyController
     public void AttackBomb()
     {
         DisableBehavior();
+
+        var center = targetEnemy.transform.position;
+        var ray = center + Vector3.right * 10;
+        var distance = Mathf.Sqrt(Mathf.Pow(ray.x - center.x, 2) + Mathf.Pow(ray.y - center.y, 2));
+
+        List<Vector3> positions = new();
+
+        var rayCircleInside = (distance / 2) / Mathf.Sqrt(2);
+        int count = UnityEngine.Random.Range(2, 6);
+        for (int i = 0; i < count; i++)
+        {
+            var angle = UnityEngine.Random.Range(0, Mathf.PI * 2);
+            positions.Add(new Vector3(rayCircleInside * Mathf.Cos(angle) , rayCircleInside * Mathf.Sin(angle), 0));
+        }
+
+        Destroy(Instantiate(bomb, targetEnemy.transform.position, Quaternion.identity), 7.5f);
+
+        foreach (var pos in positions)
+        {
+            Destroy(Instantiate(bomb, targetEnemy.transform.position + pos, Quaternion.identity), 7.5f);
+        }
 
         Attacking = true;
 
