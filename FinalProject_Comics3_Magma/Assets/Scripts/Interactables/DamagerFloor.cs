@@ -32,6 +32,8 @@ public class DamagerFloor : MonoBehaviour
             }
         }
     }
+
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         var player = collision.gameObject.SearchComponent<PlayerManager>();
