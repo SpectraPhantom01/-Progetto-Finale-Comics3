@@ -1,0 +1,29 @@
+boss back.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+braccio dx
+bounds:513,272,149,259
+braccio sx
+bounds:746,759,166,226
+capelli
+bounds:914,655,61,330
+gamba dx
+bounds:743,253,132,251
+gamba sx
+bounds:746,506,135,251
+luce
+bounds:2,219,509,766
+mano dx
+bounds:513,199,71,136
+rotate:90
+mano sx
+bounds:496,61,71,136
+mantello
+bounds:2,2,215,492
+rotate:90
+mantello dietro
+bounds:513,533,231,452
+ombra
+bounds:664,232,299,77
+rotate:90

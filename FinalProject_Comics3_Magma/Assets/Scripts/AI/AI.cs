@@ -31,7 +31,7 @@ public class AI : MonoBehaviour
     private void Update()
     {
         if (!Stupid && Agent.velocity.magnitude > 0.01f)
-            CurrentDirection = Agent.velocity.CalculateDirection();
+            CurrentDirection = Agent.velocity.CalculateDirection(CurrentDirection);
     }
     public void Stop()
     {

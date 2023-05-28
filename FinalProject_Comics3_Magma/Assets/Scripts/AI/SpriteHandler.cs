@@ -10,23 +10,25 @@ public class SpriteHandler : MonoBehaviour
 
     SkeletonAnimation skeleton;
 
-    GameObject _graphics;
+    public GameObject Graphics;
     private void Awake()
     {
+        if (Graphics != null) return;
+        
         skeleton = gameObject.SearchComponent<SkeletonAnimation>();
         if (skeleton)
         {
-            _graphics = skeleton.gameObject;
+            Graphics = skeleton.gameObject;
         }
         else
         {
-            _graphics = gameObject.SearchComponent<SpriteRenderer>().gameObject;
+            Graphics = gameObject.SearchComponent<SpriteRenderer>().gameObject;
         }
     }
 
     private void Update()
     {
-        _graphics.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        Graphics.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
     }
 
 

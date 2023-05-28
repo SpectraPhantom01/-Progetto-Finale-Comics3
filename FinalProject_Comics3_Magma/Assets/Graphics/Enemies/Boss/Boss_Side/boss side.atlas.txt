@@ -1,0 +1,49 @@
+boss side.png
+size:2048,512
+filter:Linear,Linear
+pma:true
+braccio dx
+bounds:1198,209,241,192
+braccio sx
+bounds:1550,401,97,262
+rotate:90
+capelli
+bounds:1198,403,95,350
+rotate:90
+catenine pendolo
+bounds:681,34,29,174
+rotate:90
+dito dx
+bounds:1171,271,47,18
+rotate:90
+dito sx
+bounds:681,5,27,50
+rotate:90
+gamba davanti
+bounds:1814,264,229,234
+gamba dietro
+bounds:1441,179,220,224
+rotate:90
+gemma
+bounds:1128,96,38,46
+luce
+bounds:2,2,496,677
+rotate:90
+mano dx dietro
+bounds:1717,293,106,60
+rotate:90
+mano sx
+bounds:1667,263,48,136
+mantello davanti
+bounds:681,320,178,515
+rotate:90
+mantello dietro
+bounds:681,144,174,488
+rotate:90
+ombra
+bounds:681,65,299,77
+proiettile
+bounds:982,73,69,144
+rotate:90
+viso
+bounds:1667,164,58,97
