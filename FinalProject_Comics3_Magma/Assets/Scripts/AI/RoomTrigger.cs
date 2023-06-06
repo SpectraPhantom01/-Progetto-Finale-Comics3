@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoomTrigger : MonoBehaviour
 {
-    [SerializeField ] public List<EnemyController> EnemyControllers;
-
+    [HideInInspector] public List<EnemyController> EnemyControllers;
+    [SerializeField] UnityEvent OnClearedRoom;
     private void Start()
     {
         foreach(EnemyController enemy in EnemyControllers)
         {
-            enemy.onKillEnemy += () => EnemyControllers.Remove(enemy);
+            enemy.onKillEnemy += () => { 
+                EnemyControllers.Remove(enemy);
+                if (EnemyControllers.Count == 0) 
+                { OnClearedRoom.Invoke(); } 
+            };
         }
     }
 

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class EnemyController : AI, IAliveEntity
 {
@@ -25,6 +26,9 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] PatrolPath patrolPath;
     [SerializeField] GameObject shootingEnemyGraphicsPrefab;
     [SerializeField] Vector3 spawnGraphicsOffset;
+
+    [Header("Event On Kill")]
+    [SerializeField] UnityEvent onKillEnemySceneRef; 
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name => GetName();
@@ -109,6 +113,7 @@ public class EnemyController : AI, IAliveEntity
     public void Kill()
     {
         onKillEnemy?.Invoke();
+        onKillEnemySceneRef.Invoke();
 
         if (DestroyOnKill)
             Destroy(gameObject);
