@@ -54,5 +54,7 @@ public class RoomTriggerEditor : Editor
         {
             room.EnemyControllers.Clear();
         }
+
+        base.OnInspectorGUI();
     }
 }
