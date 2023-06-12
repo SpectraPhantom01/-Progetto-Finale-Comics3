@@ -296,6 +296,11 @@ MonoBehaviour:
   attackScriptableObjects:
   - {fileID: 11400000, guid: f64c625dc129cca4c85d10924770e3a8, type: 2}
   patrolPath: {fileID: 0}
+  shootingEnemyGraphicsPrefab: {fileID: 0}
+  spawnGraphicsOffset: {x: 0, y: 0, z: 0}
+  onKillEnemySceneRef:
+    m_PersistentCalls:
+      m_Calls: []
   DestroyOnKill: 1
   lineColor: {r: 0, g: 0, b: 0, a: 0}
   shootAttackRangeOfViewColor: {r: 0, g: 0, b: 0, a: 0}
@@ -394,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e955451034a1ed4bb3557d501c219c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Graphics: {fileID: 0}
 --- !u!50 &9194923868905474655
 Rigidbody2D:
   serializedVersion: 4
