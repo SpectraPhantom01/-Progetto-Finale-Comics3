@@ -13,6 +13,8 @@ public class Pillar : MonoBehaviour
 {
     [SerializeField] PillarHandler pillarHandler;
     [SerializeField] float pillarDestroyedTime;
+    [SerializeField] Sprite active;
+    [SerializeField] Sprite inactive;
     EPillarState pillarState = EPillarState.Active;
     //bool destroyed = false;
 

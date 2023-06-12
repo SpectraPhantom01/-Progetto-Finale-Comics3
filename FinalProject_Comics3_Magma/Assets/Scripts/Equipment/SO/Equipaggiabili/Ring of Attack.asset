@@ -18,10 +18,12 @@ MonoBehaviour:
 
     Effect: Raises Etim''s attack
     by 10%.'
-  ObjectInventorySprite: {fileID: 242521226, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
-  OnGameSprite: {fileID: 242521226, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  ObjectInventorySprite: {fileID: 21300000, guid: fdc40cb61c9963f4db91a90490c83be3, type: 3}
+  OnGameSprite: {fileID: 21300000, guid: fdc40cb61c9963f4db91a90490c83be3, type: 3}
   IsConsumable: 0
   IsKeyObject: 0
   QuantityOnPick: 1
   PickableEffectType: 0
   EffectInPercentage: 10
+  EffectInTime: 0
+  Bomb: {fileID: 0}

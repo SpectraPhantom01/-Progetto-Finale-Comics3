@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     [SerializeField] EnemyController EnemyPrefab;
 
     [SerializeField] Volume globalVolume;
+    [SerializeField] float speedGhostEffect = 0.001f;
     // Corrected Variables
     private InputSystem inputSystem;
     private PlayerController playerController;
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour, ISubscriber
 
             if(goingDown)
             { 
-                intensity -= 0.01f;
+                intensity -= speedGhostEffect;
                 if (intensity <= 0.5f)
                 {
                     goingUp = true;
@@ -175,7 +176,7 @@ public class GameManager : MonoBehaviour, ISubscriber
             }
             else if(goingUp)
             {
-                intensity += 0.01f;
+                intensity += speedGhostEffect;
                 if(intensity >= 1)
                 {
                     goingUp = false;
