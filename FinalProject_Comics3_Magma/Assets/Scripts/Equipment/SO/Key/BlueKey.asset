@@ -16,10 +16,12 @@ MonoBehaviour:
   ObjectDescription: 'Description: The Blue Key that opens the Gates of Pavv''s Academy,
     up until some time ago, was thought to be just for show. The Gates were open
     for all, once.'
-  ObjectInventorySprite: {fileID: 1869455321, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
-  OnGameSprite: {fileID: 1869455321, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  ObjectInventorySprite: {fileID: 21300000, guid: a7fadb37c136ca04bb0e9621a0a9e08a, type: 3}
+  OnGameSprite: {fileID: 21300000, guid: a7fadb37c136ca04bb0e9621a0a9e08a, type: 3}
   IsConsumable: 0
   IsKeyObject: 1
   QuantityOnPick: 1
   PickableEffectType: 0
   EffectInPercentage: 0
+  EffectInTime: 0
+  Bomb: {fileID: 0}

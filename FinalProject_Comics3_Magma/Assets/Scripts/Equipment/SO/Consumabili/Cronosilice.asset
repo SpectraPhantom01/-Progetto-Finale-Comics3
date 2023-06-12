@@ -18,10 +18,12 @@ MonoBehaviour:
 
     Use:
     Repairs 25% of the damage dealt to the Hourglass in use.'
-  ObjectInventorySprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
-  OnGameSprite: {fileID: 828160497, guid: c911cda8ee5b159429f509eac20dafa2, type: 3}
+  ObjectInventorySprite: {fileID: 21300000, guid: 9500b83b67ea8484d9f817263657fe96, type: 3}
+  OnGameSprite: {fileID: 21300000, guid: 9500b83b67ea8484d9f817263657fe96, type: 3}
   IsConsumable: 1
   IsKeyObject: 0
   QuantityOnPick: 5
-  PickableEffectType: 2
+  PickableEffectType: 5
   EffectInPercentage: 25
+  EffectInTime: 25
+  Bomb: {fileID: 0}
