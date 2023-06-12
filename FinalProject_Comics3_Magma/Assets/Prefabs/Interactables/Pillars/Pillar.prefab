@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5075945338884328226}
   - component: {fileID: 5075945338884328224}
   - component: {fileID: 5075945338884328227}
-  - component: {fileID: 5458143727636579183}
   m_Layer: 15
   m_Name: Pillar
   m_TagString: Untagged
@@ -127,16 +126,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pillarHandler: {fileID: 0}
   pillarDestroyedTime: 2
---- !u!114 &5458143727636579183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5075945338884328228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1848722f7f21684cb949e34e1b1c027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: {x: 0.5, y: 0.5, z: 0}
+  sprite: {fileID: 0}
