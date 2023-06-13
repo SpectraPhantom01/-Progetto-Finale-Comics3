@@ -1,0 +1,49 @@
+ArtiglioFront.png
+size:1336,189
+filter:Linear,Linear
+pma:true
+Braccio Dx
+bounds:773,68,119,388
+offsets:36,24,340,514
+rotate:90
+Braccio Sx
+bounds:245,67,120,389
+offsets:184,21,340,514
+rotate:90
+Collana
+bounds:1163,142,45,131
+offsets:146,298,340,514
+rotate:90
+Collo
+bounds:1296,98,38,89
+offsets:151,381,340,514
+Corpo
+bounds:2,11,176,241
+rotate:90
+Gambe Dx
+bounds:245,3,62,294
+offsets:97,23,340,514
+rotate:90
+Gambe Sx
+bounds:773,2,64,294
+offsets:181,25,340,514
+rotate:90
+Mutandine
+bounds:541,7,58,180
+offsets:141,136,340,514
+rotate:90
+Occhi
+bounds:751,15,50,11
+offsets:145,368,340,514
+rotate:90
+Palpebre
+bounds:723,11,54,26
+offsets:143,362,340,514
+rotate:90
+Testa
+bounds:636,67,120,135
+offsets:111,312,340,514
+rotate:90
+ombra
+bounds:1069,2,258,64
+offsets:44,40,340,514
