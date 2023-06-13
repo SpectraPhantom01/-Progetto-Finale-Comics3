@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6666794590657639054}
   - component: {fileID: 6666794590657639053}
   - component: {fileID: 6666794590657639052}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: BulletBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6666794591883303658}
   - component: {fileID: 6666794591883303659}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -132512135
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9e5cff27b67e0ba4796403130060adad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

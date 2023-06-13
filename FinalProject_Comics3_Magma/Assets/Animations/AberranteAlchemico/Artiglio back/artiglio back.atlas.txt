@@ -1,0 +1,46 @@
+artiglio back.png
+size:1187,309
+filter:Linear,Linear
+pma:true
+Braccio Dx
+bounds:476,194,113,323
+offsets:5,0,118,336
+rotate:90
+Braccio sx
+bounds:476,79,113,323
+offsets:0,0,118,336
+rotate:90
+Collana
+bounds:1049,190,70,117
+offsets:135,317,340,514
+Collo
+bounds:1036,8,40,91
+offsets:150,381,340,514
+rotate:90
+Corpo
+bounds:801,131,176,246
+rotate:90
+Gamba Dx
+bounds:476,10,67,271
+rotate:90
+Gamba Sx
+bounds:801,62,67,271
+rotate:90
+Mutandine Dietro
+bounds:749,2,58,179
+rotate:90
+aurea
+bounds:2,3,304,472
+offsets:21,41,340,514
+rotate:90
+ombra
+bounds:1121,50,257,64
+offsets:44,40,340,514
+rotate:90
+piede alzato dx
+bounds:930,17,43,104
+offsets:1,0,45,105
+rotate:90
+piede alzato sx
+bounds:1074,85,43,103
+offsets:1,1,45,105

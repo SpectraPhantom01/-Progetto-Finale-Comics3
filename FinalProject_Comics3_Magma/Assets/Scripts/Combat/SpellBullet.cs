@@ -12,6 +12,7 @@ public class SpellBullet : MonoBehaviour
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _damageableMask = gameObject.layer;
     }
 
     public void Initialize(LayerMask target, AttackScriptableObject attack, int objectLayer, Vector3 direction)
@@ -21,7 +22,6 @@ public class SpellBullet : MonoBehaviour
         _lifeTime = attack.bulletLifeTime;
         _speed = attack.bulletFixedSpeed;
         _damageableMask = target;
-        gameObject.layer = objectLayer;
 
         transform.LookAt(transform.position + Vector3.forward, direction);
     }
@@ -44,21 +44,15 @@ public class SpellBullet : MonoBehaviour
         if (_damageableMask.Contains(collision.gameObject.layer))
         {
             Damageable damageable = collision.gameObject.SearchComponent<Damageable>();
-            if(damageable != null)
+            if (damageable != null)
                 Damager.GiveDamage(damageable, _attack, transform, 0);
 
-            Destroy(gameObject);
         }
+        else if (collision.gameObject.layer == 17)
+            return;
 
-        //if (collision.gameObject.layer != LayerMask.NameToLayer("MonodirectionalBarrier"))  // <<<---  WHAT THE HELL IS THIS SHIT ?????????????????????
-        //{
-        //    Destroy(gameObject);
-        //}        
+        Destroy(gameObject);
+
     }
 
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    if (_rigidBody.velocity.magnitude != (_speed * Time.deltaTime * transform.up).magnitude)  // <<<---  WHAT THE HELL IS THIS SHIT ?????????????????????
-    //        Destroy(gameObject);
-    //}
 }

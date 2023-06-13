@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7771308242209587007}
   - component: {fileID: 5655315999987998241}
   - component: {fileID: 8500626956937268458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine GameObject (torretta)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3549417440078217293}
   - component: {fileID: 1852632866886735911}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Luce Palla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7865952135187000510}
   - component: {fileID: 2923939923585035984}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fascio Di Luce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4557811557795366167}
   - component: {fileID: 7866714391866746087}
-  m_Layer: 0
+  - component: {fileID: 480589257703797553}
+  m_Layer: 7
   m_Name: ShootingEnemyGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +336,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7866714391866746087
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -352,7 +353,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &480589257703797553
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718147292097491088}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.6233046, y: -0.20785248}
+      - {x: 0.2756688, y: 0.007053852}
+      - {x: -1.6257832, y: -1.9979968}
+      - {x: 0.059349775, y: -3.2624674}
+      - {x: 3.027053, y: -1.1441805}
 --- !u!1 &8038862674168073282
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6518979294414201471}
   - component: {fileID: 326792582545129872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sfera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

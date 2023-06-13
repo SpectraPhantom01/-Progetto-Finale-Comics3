@@ -12,8 +12,8 @@ public class Pillar : MonoBehaviour
 {
     [SerializeField] PillarHandler pillarHandler;
     [SerializeField] float pillarDestroyedTime;
-    [SerializeField] Sprite active;
-    [SerializeField] Sprite inactive;
+    [SerializeField] Color activeColor;
+    [SerializeField] Color inactiveColor;
     EPillarState pillarState = EPillarState.Active;
     //bool destroyed = false;
 
@@ -38,9 +38,7 @@ public class Pillar : MonoBehaviour
     {
         if (pillarHandler != null && pillarState == EPillarState.Active) 
         {
-            Debug.Log("Pilastro distrutto");
-
-            sprite.color = Color.red;
+            sprite.color = activeColor;
 
             pillarState = EPillarState.Destroyed;
             ActiveRoutine();
@@ -58,9 +56,8 @@ public class Pillar : MonoBehaviour
     private IEnumerator PillarRoutine()
     {
         yield return new WaitForSeconds(pillarDestroyedTime);
-        Debug.Log("Pilastro riattivato");
         pillarState = EPillarState.Active;
-        sprite.color = Color.blue;
+        sprite.color = inactiveColor;
     }
 
     public EPillarState GetPillarState()
