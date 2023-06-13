@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -976,47 +976,47 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tileset Eternity's End Pavimenti alberi 01_7: 1372519402
       Tileset Eternity's End Pavimenti alberi 01_0: 940673080
-      Tileset Eternity's End Pavimenti alberi 01_6: 1335478121
-      Tileset Eternity's End Pavimenti alberi 01_2: 820444801
-      Tileset Eternity's End Pavimenti alberi 01_19: -726495615
-      Tileset Eternity's End Pavimenti alberi 01_3: -1493872749
-      Tileset Eternity's End Pavimenti alberi 01_8: -2025833114
-      Tileset Eternity's End Pavimenti alberi 01_14: -2085310368
-      Tileset Eternity's End Pavimenti alberi 01_17: -2062382665
-      Tileset Eternity's End Pavimenti alberi 01_16: 1257104486
-      Tileset Eternity's End Pavimenti alberi 01_23: 1796322829
-      Tileset Eternity's End Pavimenti alberi 01_36: 1230344832
-      Tileset Eternity's End Pavimenti alberi 01_15: 1627948585
-      Tileset Eternity's End Pavimenti alberi 01_31: 171019658
-      Tileset Eternity's End Pavimenti alberi 01_22: 2109311133
-      Tileset Eternity's End Pavimenti alberi 01_4: 604346441
-      Tileset Eternity's End Pavimenti alberi 01_20: 1939165558
-      Tileset Eternity's End Pavimenti alberi 01_29: -1741608449
-      Tileset Eternity's End Pavimenti alberi 01_32: 1918261171
-      Tileset Eternity's End Pavimenti alberi 01_24: -240178086
-      Tileset Eternity's End Pavimenti alberi 01_27: 1433426646
-      Tileset Eternity's End Pavimenti alberi 01_34: 1033076280
-      Tileset Eternity's End Pavimenti alberi 01_18: 1337859759
-      Tileset Eternity's End Pavimenti alberi 01_37: 453084844
-      Tileset Eternity's End Pavimenti alberi 01_13: 774260962
-      Tileset Eternity's End Pavimenti alberi 01_11: -428836254
-      Tileset Eternity's End Pavimenti alberi 01_39: -132402646
-      Tileset Eternity's End Pavimenti alberi 01_9: -1690776412
-      Tileset Eternity's End Pavimenti alberi 01_33: -1529111424
-      Tileset Eternity's End Pavimenti alberi 01_40: 283961649
-      Tileset Eternity's End Pavimenti alberi 01_26: 990376869
-      Tileset Eternity's End Pavimenti alberi 01_35: -1942006000
-      Tileset Eternity's End Pavimenti alberi 01_25: 990763354
-      Tileset Eternity's End Pavimenti alberi 01_12: 1306702353
-      Tileset Eternity's End Pavimenti alberi 01_38: -364819966
-      Tileset Eternity's End Pavimenti alberi 01_5: -469735861
-      Tileset Eternity's End Pavimenti alberi 01_10: -1139905047
       Tileset Eternity's End Pavimenti alberi 01_1: -1032798624
-      Tileset Eternity's End Pavimenti alberi 01_28: 1311005660
-      Tileset Eternity's End Pavimenti alberi 01_30: -386773078
+      Tileset Eternity's End Pavimenti alberi 01_10: -1139905047
+      Tileset Eternity's End Pavimenti alberi 01_11: -428836254
+      Tileset Eternity's End Pavimenti alberi 01_12: 1306702353
+      Tileset Eternity's End Pavimenti alberi 01_13: 774260962
+      Tileset Eternity's End Pavimenti alberi 01_14: -2085310368
+      Tileset Eternity's End Pavimenti alberi 01_15: 1627948585
+      Tileset Eternity's End Pavimenti alberi 01_16: 1257104486
+      Tileset Eternity's End Pavimenti alberi 01_17: -2062382665
+      Tileset Eternity's End Pavimenti alberi 01_18: 1337859759
+      Tileset Eternity's End Pavimenti alberi 01_19: -726495615
+      Tileset Eternity's End Pavimenti alberi 01_2: 820444801
+      Tileset Eternity's End Pavimenti alberi 01_20: 1939165558
       Tileset Eternity's End Pavimenti alberi 01_21: 1444350053
+      Tileset Eternity's End Pavimenti alberi 01_22: 2109311133
+      Tileset Eternity's End Pavimenti alberi 01_23: 1796322829
+      Tileset Eternity's End Pavimenti alberi 01_24: -240178086
+      Tileset Eternity's End Pavimenti alberi 01_25: 990763354
+      Tileset Eternity's End Pavimenti alberi 01_26: 990376869
+      Tileset Eternity's End Pavimenti alberi 01_27: 1433426646
+      Tileset Eternity's End Pavimenti alberi 01_28: 1311005660
+      Tileset Eternity's End Pavimenti alberi 01_29: -1741608449
+      Tileset Eternity's End Pavimenti alberi 01_3: -1493872749
+      Tileset Eternity's End Pavimenti alberi 01_30: -386773078
+      Tileset Eternity's End Pavimenti alberi 01_31: 171019658
+      Tileset Eternity's End Pavimenti alberi 01_32: 1918261171
+      Tileset Eternity's End Pavimenti alberi 01_33: -1529111424
+      Tileset Eternity's End Pavimenti alberi 01_34: 1033076280
+      Tileset Eternity's End Pavimenti alberi 01_35: -1942006000
+      Tileset Eternity's End Pavimenti alberi 01_36: 1230344832
+      Tileset Eternity's End Pavimenti alberi 01_37: 453084844
+      Tileset Eternity's End Pavimenti alberi 01_38: -364819966
+      Tileset Eternity's End Pavimenti alberi 01_39: -132402646
+      Tileset Eternity's End Pavimenti alberi 01_4: 604346441
+      Tileset Eternity's End Pavimenti alberi 01_40: 283961649
+      Tileset Eternity's End Pavimenti alberi 01_5: -469735861
+      Tileset Eternity's End Pavimenti alberi 01_6: 1335478121
+      Tileset Eternity's End Pavimenti alberi 01_7: 1372519402
+      Tileset Eternity's End Pavimenti alberi 01_8: -2025833114
+      Tileset Eternity's End Pavimenti alberi 01_9: -1690776412
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

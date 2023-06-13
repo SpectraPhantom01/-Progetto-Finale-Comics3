@@ -1036,7 +1036,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Testing
+          m_StringArgument: Dungeon 1 - Simo
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1563421579}
@@ -1544,19 +1544,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &5370556132324532115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5370556132324532126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97efe35d0cc142a4faa1d8314d3fe0af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
 --- !u!1 &5370556132324532126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1556,6 @@ GameObject:
   - component: {fileID: 5370556132324532113}
   - component: {fileID: 5370556132324532112}
   - component: {fileID: 5370556132324532127}
-  - component: {fileID: 5370556132324532115}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
