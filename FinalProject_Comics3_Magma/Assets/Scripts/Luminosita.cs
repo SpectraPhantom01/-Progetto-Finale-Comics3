@@ -13,11 +13,12 @@ public class Luminosita : MonoBehaviour
     private Color targetColor;          // colore di transizione corrente
     private float alpha;                // alfa corrente
     private bool isIncreasing = true;   // indica se stiamo aumentando o diminuendo l'alfa
-
+    Renderer _ren;
     void Start()
     {
         // inizializziamo il colore di transizione corrente
         targetColor = color1;
+        _ren = GetComponent<Renderer>();
     }
 
     void Update()
@@ -58,6 +59,6 @@ public class Luminosita : MonoBehaviour
 
         // aggiorniamo il colore di sfondo del GameObject
         Color newColor = Color.Lerp(baseColor, targetColor, alpha);
-        GetComponent<Renderer>().material.color = newColor;
+        _ren.material.color = newColor;
     }
 }

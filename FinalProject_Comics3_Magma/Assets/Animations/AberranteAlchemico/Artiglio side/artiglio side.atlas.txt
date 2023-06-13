@@ -1,0 +1,43 @@
+artiglio side.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+Braccio Davanti
+bounds:308,104,265,406
+offsets:39,0,340,514
+Collana
+bounds:943,141,41,107
+offsets:174,292,340,514
+Collo
+bounds:694,83,86,68
+offsets:132,361,340,514
+Gambe Davanti
+bounds:925,250,96,260
+offsets:0,0,96,261
+Gambe Dietro
+bounds:789,2,90,241
+offsets:0,0,90,242
+Mutandine
+bounds:881,79,60,164
+offsets:224,140,340,514
+Occhi
+bounds:881,57,43,20
+offsets:92,354,340,514
+Palpebre
+bounds:2,5,48,31
+offsets:91,351,340,514
+aurea
+bounds:2,38,304,472
+offsets:21,41,340,514
+braccio dietro
+bounds:575,153,212,357
+offsets:0,0,212,360
+corpo
+bounds:789,245,134,265
+offsets:2,0,142,265
+ombra
+bounds:308,11,291,91
+offsets:21,28,340,514
+testa
+bounds:601,19,91,132
+offsets:88,309,340,514
