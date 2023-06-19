@@ -15,7 +15,7 @@ MonoBehaviour:
   AttackType: 2
   DamageAmount: 10
   HourglassPercentageDamageAmount: 10
-  KnockBack: 15
+  KnockBack: 115
   hitBoxRangeView: {x: 1, y: 1}
   hitBoxRangeDamage: {x: 2, y: 2}
   MeleeAttackType: 0
