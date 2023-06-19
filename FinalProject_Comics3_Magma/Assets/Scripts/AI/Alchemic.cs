@@ -1,6 +1,7 @@
 using BehaviorDesigner.Runtime.Tasks;
 using Spine;
 using Spine.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,21 @@ public class Alchemic : EnemyController
     public void EndAttack()
     {
         Attacking = false;
+    }
+
+    public void CoolDownBehavior()
+    {
+        StartCoroutine(DisableBehavior());
+        EndAttack();
+
+    }
+
+    private IEnumerator DisableBehavior()
+    {
+        BehaviorTree.enabled = false;
+        yield return new WaitForSeconds(2f);
+        BehaviorTree.enabled = true;
+
     }
 
     public void HandleSkeletonRotation()
