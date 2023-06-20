@@ -1,5 +1,3 @@
-using BehaviorDesigner.Runtime.Tasks.Unity.UnityDebug;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,10 +22,10 @@ public class Main_MirrorPlatform : MonoBehaviour
         var player = collision.gameObject.SearchComponent<PlayerController>();
 
         if (player != null)
-        {           
-            foreach(Transform platform in platforms) 
-            { 
-                player.GhostPositions.Add(platform.gameObject.transform.position);  
+        {
+            foreach (Transform platform in platforms)
+            {
+                player.GhostPositions.Add(platform.gameObject.transform.position);
             }
 
             player.GhostPositions.Add(transform.position);
