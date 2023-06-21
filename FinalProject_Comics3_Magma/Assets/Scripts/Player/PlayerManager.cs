@@ -164,7 +164,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         stoppedHourglass = false;
     }
 
-    public void PickUpObject(PickableScriptableObject newObject, GameObject pickableGameObject)
+    public void PickUpObject(PickableScriptableObject newObject, PickableObject pickableGameObject)
     {
         if (!InventoryArray.Any(x => x != null && x.PickableSO == null)) return;
 
@@ -178,7 +178,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     Quantity = newObject.QuantityOnPick
                 };
                 InventoryArray[i] = pickableObject;
-                Destroy(pickableGameObject);
+                pickableGameObject.Picked();
                 return;
             }
         }

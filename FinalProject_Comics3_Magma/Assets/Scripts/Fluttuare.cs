@@ -16,7 +16,7 @@ public class Fluttuare : MonoBehaviour
     void Update()
     {
         // calcoliamo la nuova posizione Y del GameObject
-        float newY = startY + amplitude * Mathf.Sin(Time.time * speed);
+        float newY = startY + amplitude * Mathf.Sin(Time.deltaTime * speed);
 
         // aggiorniamo la posizione del GameObject
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);

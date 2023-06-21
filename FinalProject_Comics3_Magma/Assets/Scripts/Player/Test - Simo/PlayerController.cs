@@ -324,7 +324,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(hit.TryGetComponent<PickableObject>(out var pickable))
                 {
-                    _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable.gameObject);
+                    _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable);
                     return true;
                 }
             }

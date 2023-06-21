@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    [SerializeField] GameObject loaderCanvas;
-    [SerializeField] Image progressBar;
+    GameObject loaderCanvas;
+    Image progressBar;
     float _target;
 
     private void Awake()
@@ -25,6 +26,9 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        loaderCanvas = GetComponentInChildren<UILoadingBackground>(true).gameObject;
+        progressBar = GetComponentInChildren<UIProgressBar>(true).GetComponent<Image>();
     }
 
     public async void LoadScene(string sceneName)
@@ -52,5 +56,10 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         progressBar.fillAmount = Mathf.MoveTowards(progressBar.fillAmount, _target, 3 * Time.deltaTime);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

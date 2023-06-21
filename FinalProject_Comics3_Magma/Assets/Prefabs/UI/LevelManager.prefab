@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1742177942072853718}
   - component: {fileID: 1742177942072853713}
   - component: {fileID: 1742177942072853712}
+  - component: {fileID: 9062801153471129051}
   m_Layer: 5
   m_Name: ProgressBar
   m_TagString: Untagged
@@ -211,6 +212,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9062801153471129051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742177942072853715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f01a9a695bfea945bab8103f52097ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742177943356337875
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239c8569886f35c4e95381c70de2ef03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loaderCanvas: {fileID: 1742177943525120628}
-  progressBar: {fileID: 1742177942072853712}
 --- !u!1 &1742177943525120628
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +349,7 @@ GameObject:
   - component: {fileID: 1742177943525120629}
   - component: {fileID: 1742177943525120635}
   - component: {fileID: 1742177943525120634}
+  - component: {fileID: 6000148703163274725}
   m_Layer: 5
   m_Name: LoadingBackground
   m_TagString: Untagged
@@ -405,3 +417,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6000148703163274725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742177943525120628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770b9d36f743b454b80aacddcad5aa5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
