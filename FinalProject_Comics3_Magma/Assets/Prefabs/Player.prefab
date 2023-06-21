@@ -640,6 +640,49 @@ MonoBehaviour:
   runSword: corsa
   dashSword: scatto
   hourglassVFX: {fileID: 0}
+  audioSource: {fileID: 5342880442482358570}
+  stepAudioList:
+  - {fileID: 8300000, guid: f9d8cabf9341bd148b8ad2a443066535, type: 3}
+  - {fileID: 8300000, guid: 0bddbfd4336956e478387baed820bddf, type: 3}
+  - {fileID: 8300000, guid: 933f01e408660594cad10603ecd9059d, type: 3}
+  - {fileID: 8300000, guid: 63527d5dab6c4234dac37e4db3368b76, type: 3}
+  - {fileID: 8300000, guid: c0b2ca46aee94f04cb50b43e95feddb1, type: 3}
+  - {fileID: 8300000, guid: bf0be16471858914695bbf4fe937269a, type: 3}
+  - {fileID: 8300000, guid: 08f1064467aaa014b8cf3a731d2f3925, type: 3}
+  - {fileID: 8300000, guid: b83dc167635606b48a2a92018857e144, type: 3}
+  - {fileID: 8300000, guid: 3a7ab93c7af85ef4fbfcfb5ec9143e89, type: 3}
+  - {fileID: 8300000, guid: 704b83fe6af606e4fae47a64757b2f41, type: 3}
+  - {fileID: 8300000, guid: 6ef8b76023801674091cafe47345ab75, type: 3}
+  - {fileID: 8300000, guid: cda228db90ba18a4cad30a71b840cd3c, type: 3}
+  - {fileID: 8300000, guid: 14de82551d44be0439b76d6552361f5f, type: 3}
+  - {fileID: 8300000, guid: 7cbe28628ddec4f449c671e4330e04a9, type: 3}
+  - {fileID: 8300000, guid: 53be71399c78a3d4797f3e3a7052c134, type: 3}
+  - {fileID: 8300000, guid: 75a255bb2be7b1e45af4eb932dd5779a, type: 3}
+  - {fileID: 8300000, guid: 6ac381ce00d904b46a17b4802a66d993, type: 3}
+  - {fileID: 8300000, guid: 41995abc4b78cc643a549a1c79cb0fbe, type: 3}
+  - {fileID: 8300000, guid: dc218f0d8cbe84948a32d09c87a5fbe0, type: 3}
+  - {fileID: 8300000, guid: e0e0d48c470085d458f4732b56622e40, type: 3}
+  - {fileID: 8300000, guid: c003874e815977e4398a9c3b5da68607, type: 3}
+  - {fileID: 8300000, guid: 157bce725c3d80e468233940ec168238, type: 3}
+  - {fileID: 8300000, guid: 7db6c8504988f724b806a28011009a78, type: 3}
+  - {fileID: 8300000, guid: 404d7c7f757a6b34da7460a018627d53, type: 3}
+  dashAudioList:
+  - {fileID: 8300000, guid: a593e48cad853544b8f01447f6891a9f, type: 3}
+  - {fileID: 8300000, guid: 6153161980101574fbf92c105bcc4977, type: 3}
+  - {fileID: 8300000, guid: e3e3074342092d2478a06ea10b86f31b, type: 3}
+  - {fileID: 8300000, guid: bf1c9036a560aaf4faf2dae50eba8bd4, type: 3}
+  attackAudioList:
+  - {fileID: 8300000, guid: 9014272b94f4fc3498d2f6126b797336, type: 3}
+  - {fileID: 8300000, guid: ab09a379b2419d14db25e908e900796f, type: 3}
+  - {fileID: 8300000, guid: 0c38f3aad91faf2429c09b1370327add, type: 3}
+  - {fileID: 8300000, guid: 10bb240b341ef0c4da1d32e947e09de9, type: 3}
+  - {fileID: 8300000, guid: 27a4c7324da8e094ebdfe3637e01c733, type: 3}
+  - {fileID: 8300000, guid: 8295d557fcf8beb418bb04655076e387, type: 3}
+  - {fileID: 8300000, guid: 9db0b5bcd338a9d45a726328a24c33ab, type: 3}
+  - {fileID: 8300000, guid: 8cc07aaea5a7e234088249f071b42f8b, type: 3}
+  - {fileID: 8300000, guid: 43511c3db58a48c498b26e9c39a86578, type: 3}
+  - {fileID: 8300000, guid: 9b5c9e127bd47b043adca7c88033e357, type: 3}
+  - {fileID: 8300000, guid: 11f75a37293a8174ebc3c6b573a75119, type: 3}
   _currentCheckPoint: {fileID: 0}
   CurrentDirection: 1
 --- !u!114 &3138579559502232296
