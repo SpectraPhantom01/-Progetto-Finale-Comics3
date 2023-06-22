@@ -640,7 +640,6 @@ MonoBehaviour:
   runSword: corsa
   dashSword: scatto
   hourglassVFX: {fileID: 0}
-  audioSource: {fileID: 5342880442482358570}
   _currentCheckPoint: {fileID: 0}
   CurrentDirection: 1
 --- !u!114 &3138579559502232296
@@ -793,9 +792,9 @@ AudioSource:
   m_GameObject: {fileID: 3138579559502232215}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour, ISubscriber
     private InputSystem inputSystem;
     private PlayerController playerController;
     private GhostManager ghostManager;
-    private LanguageManager languageManager;
 
     // Properties
     public PlayerController Player => playerController;
@@ -80,14 +79,6 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.ActiveObjectFour.performed += ActiveObjectFourPerformed;
         // END INPUT SYSTEM
 
-
-
-        if (!FileSystem.Load("LanguageManager", "csv", out string[] fileLoaded))
-            throw new Exception("File LanguageManager non caricato correttamente, controllare eventuali posizioni del file o il nome del file o l'estensione del file");
-
-        CSVFileReader.Parse(fileLoaded, ';', "", true);
-
-        languageManager = new LanguageManager(CSVFileReader.FileMatrix);
 
         Publisher.Subscribe(this, typeof(SaveMessage));
         Publisher.Subscribe(this, typeof(LoadMessage));
@@ -240,10 +231,6 @@ public class GameManager : MonoBehaviour, ISubscriber
     private void Start()
     {
         //Invoke("ChangeLanguage", 5);
-    }
-    private void ChangeLanguage()
-    {
-        Publisher.Publish(new ChangeLanguageMessage(ELanguage.Italiano));
     }
 
     public void OnPublish(IPublisherMessage message)

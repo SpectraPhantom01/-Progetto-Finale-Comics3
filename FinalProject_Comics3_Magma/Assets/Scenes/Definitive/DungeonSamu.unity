@@ -191,10 +191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (1)
@@ -252,10 +252,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554625634}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1571758300}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (1)
@@ -9060,10 +9060,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -9075,7 +9071,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (7)
@@ -33500,10 +33496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (10)
@@ -34149,10 +34145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554625634}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1571758300}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava
@@ -34210,10 +34206,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 426192895}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000038
@@ -34275,10 +34267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 172085152}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 616863975}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (5)
@@ -34336,10 +34328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (6)
@@ -34458,10 +34450,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -34657,10 +34649,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -34669,6 +34657,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (9)
@@ -34931,10 +34923,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (5)
@@ -35168,10 +35160,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (5)
@@ -35229,10 +35221,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (4)
@@ -35290,10 +35282,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 172085152}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 616863975}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (3)
@@ -35361,10 +35353,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -35426,10 +35418,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -35507,10 +35495,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -35720,10 +35704,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 426192895}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor
@@ -35842,10 +35822,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -36084,10 +36064,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor
@@ -36145,10 +36125,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -36160,7 +36136,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (4)
@@ -36413,10 +36389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (3)
@@ -37956,10 +37932,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (7)
@@ -38022,10 +37998,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (13)
@@ -38184,10 +38160,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -38661,10 +38637,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (1)
@@ -38789,10 +38761,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (7)
@@ -38943,10 +38915,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -39012,10 +38980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -39077,10 +39045,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (5)
@@ -39216,10 +39184,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (3)
@@ -39426,10 +39394,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1971393335}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -39438,6 +39402,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1482468775}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (8)
@@ -39736,10 +39704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -40032,10 +40000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -40113,10 +40077,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (2)
@@ -40267,10 +40231,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (16)
@@ -40385,10 +40349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554625634}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1571758300}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (6)
@@ -40674,10 +40638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -40755,10 +40715,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -40886,10 +40842,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -40901,7 +40853,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (6)
@@ -40959,10 +40911,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -41061,10 +41009,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 947932130}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (14)
@@ -41119,6 +41063,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5930749408481756822, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
   m_PrefabInstance: {fileID: 168657087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &616863975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 2099057152}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &618874693
 PrefabInstance:
@@ -41278,6 +41227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb11d7897f78f24892632a5dde570a4, type: 3}
+--- !u!4 &621476995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 1744557502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &639104798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41367,10 +41321,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 172085152}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 616863975}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (4)
@@ -41545,10 +41499,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -41693,10 +41643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1971393335}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -41705,6 +41651,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1482468775}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (7)
@@ -41762,10 +41712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 172085152}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 616863975}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (7)
@@ -42337,10 +42287,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -42423,10 +42369,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554625634}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -42827,10 +42769,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (10)
@@ -42888,10 +42830,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 947932130}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (15)
@@ -42942,6 +42880,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+--- !u!4 &826223538 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 128032371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827314162
 GameObject:
   m_ObjectHideFlags: 0
@@ -43227,10 +43170,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -43239,6 +43178,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (7)
@@ -43508,14 +43451,6 @@ PrefabInstance:
       propertyPath: hourglasses.Array.data[6].MaxSpeedLoseSand
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 5342880442482358570, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5342880442482358570, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5448869124922163963, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -43537,10 +43472,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava
@@ -43598,10 +43529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (8)
@@ -43693,10 +43624,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -43758,10 +43689,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 172085152}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 616863975}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (6)
@@ -43819,10 +43750,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (1)
@@ -43873,6 +43800,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+--- !u!4 &919434983 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 1447381857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &922886264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43880,10 +43812,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor
@@ -43941,10 +43869,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (2)
@@ -44002,10 +43930,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -44083,10 +44007,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -44148,10 +44072,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 990069069}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -44160,6 +44080,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1992170065}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (8)
@@ -44284,10 +44208,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -44460,10 +44384,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -44475,7 +44395,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (8)
@@ -44538,10 +44458,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -44890,10 +44806,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -44905,7 +44817,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (9)
@@ -44984,10 +44896,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 426192895}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (1)
@@ -45117,10 +45025,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -45626,10 +45530,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (5)
@@ -45763,10 +45667,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (8)
@@ -45824,10 +45728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -46214,10 +46118,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -46336,10 +46240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1971393335}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -46348,6 +46248,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1482468775}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (9)
@@ -46437,10 +46341,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (11)
@@ -46498,10 +46402,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 947932130}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (13)
@@ -46559,10 +46459,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -46624,10 +46524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava
@@ -46774,10 +46674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 990069069}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -46786,6 +46682,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1992170065}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (7)
@@ -46843,10 +46743,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -47034,10 +46934,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (15)
@@ -47289,10 +47189,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (3)
@@ -47535,10 +47435,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554625634}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1571758300}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (9)
@@ -47596,10 +47496,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -47771,10 +47667,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -47783,6 +47675,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (10)
@@ -47889,10 +47785,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (4)
@@ -47950,54 +47846,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4622136122795620678, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1999054
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136122795620678, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136123168785514, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.19989014
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136123168785514, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136123652840392, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1999054
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136123652840392, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136124040621353, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1999054
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136124040621353, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136124545153092, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1999054
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136124545153092, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136124733556908, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.1999054
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622136124733556908, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
-      objectReference: {fileID: 0}
     - target: {fileID: 5234018146896073476, guid: 615115c6457bf9c48acf23621c0f9620, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -48099,10 +47947,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (2)
@@ -48168,10 +48012,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -48326,10 +48166,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (2)
@@ -48468,10 +48308,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 426192895}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48604,10 +48440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (11)
@@ -48840,10 +48676,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -49217,10 +49049,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -49229,6 +49057,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (8)
@@ -49380,10 +49212,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -66878,6 +66706,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1275556454543748377, guid: f7a47b0efc39520479a99ea5d2d96032, type: 3}
   m_PrefabInstance: {fileID: 2054584709}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1482468775 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 1971393334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1486384358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67173,10 +67006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -67437,6 +67266,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
   m_PrefabInstance: {fileID: 1486384358}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1559883198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 1099719304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1571758300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
@@ -67449,10 +67283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (14)
@@ -67607,10 +67441,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (8)
@@ -67683,10 +67517,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -67821,10 +67651,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (7)
@@ -67955,10 +67785,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (4)
@@ -68016,10 +67846,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -68234,10 +68060,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (9)
@@ -68295,10 +68121,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -68387,10 +68209,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -68642,10 +68460,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2106766154}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 1559883198}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (12)
@@ -69146,10 +68964,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -69161,7 +68975,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (3)
@@ -69445,10 +69259,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1433790362}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (2)
@@ -69630,10 +69440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (4)
@@ -69696,10 +69506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -69761,10 +69571,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -69776,7 +69582,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (5)
@@ -69834,10 +69640,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1554625634}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -69911,10 +69713,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 990069069}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -69923,6 +69721,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1992170065}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (10)
@@ -69980,10 +69782,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1971393335}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -69992,6 +69790,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1482468775}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (10)
@@ -70127,10 +69929,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (1)
@@ -70344,10 +70146,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -70479,6 +70281,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
   m_PrefabInstance: {fileID: 1971393334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1992170065 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731510899316979407, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
+  m_PrefabInstance: {fileID: 990069068}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1997755000
 PrefabInstance:
@@ -70617,10 +70424,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 990069069}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0000033
@@ -70629,6 +70432,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1992170065}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (9)
@@ -70748,10 +70555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 947932130}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (12)
@@ -70876,10 +70679,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 5930749408481756811, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_Name
       value: Lava (6)
@@ -70937,10 +70740,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -71063,10 +70866,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482549277}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -71362,10 +71161,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 426192895}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -71755,10 +71550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -71894,10 +71689,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1447381858}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
     - target: {fileID: 4670908350459373727, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.2500353
@@ -71909,7 +71700,7 @@ PrefabInstance:
     - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 1571758300}
+      objectReference: {fileID: 919434983}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (2)
@@ -72024,10 +71815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1744557503}
     m_Modifications:
-    - target: {fileID: 4731359358223312309, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 1544343311101178037, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 621476995}
     - target: {fileID: 5930749408029917358, guid: f0fb4b409fb97184e8c8f0c976cfbd78, type: 3}
       propertyPath: m_SortingOrder
       value: -9
@@ -73232,10 +73023,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (3)
@@ -73293,10 +73084,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 128032372}
     m_Modifications:
-    - target: {fileID: 869335005851623485, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
-      propertyPath: OutputAudioMixerGroup
+    - target: {fileID: 6401807356697015613, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
+      propertyPath: respawnPoint
       value: 
-      objectReference: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
+      objectReference: {fileID: 826223538}
     - target: {fileID: 7706211054119229795, guid: 1c4d0dd65fa2785438ec66cd2cfdc380, type: 3}
       propertyPath: m_Name
       value: CedibleFloor (6)

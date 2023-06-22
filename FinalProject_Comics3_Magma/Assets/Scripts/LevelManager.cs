@@ -5,10 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
+
+    [SerializeField] GameObject errorPanel;
+    [SerializeField] TextMeshProUGUI errorText;
 
     GameObject loaderCanvas;
     Image progressBar;
@@ -61,5 +65,25 @@ public class LevelManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    void OnEnable()
+    {
+        Application.logMessageReceived += LogCallback;
+    }
+
+    //Called when there is an exception
+    public void LogCallback(string condition, string stackTrace, LogType type)
+    {
+        if (type == LogType.Error || type == LogType.Exception)
+        {
+            errorPanel.SetActive(true);
+            errorText.text = condition + " - " + stackTrace;
+        }
+    }
+
+    void OnDisable()
+    {
+        Application.logMessageReceived -= LogCallback;
     }
 }

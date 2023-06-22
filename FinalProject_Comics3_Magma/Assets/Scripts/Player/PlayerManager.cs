@@ -138,12 +138,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     _uiPlayArea.SetSandLevel(ESandLevel.Medium);
             }
             
-
-#if UNITY_EDITOR
-
-            Damageable.CurrentHourglass.Calculate_TimeLossXsecond();
-#endif
-
         }
     }
 
