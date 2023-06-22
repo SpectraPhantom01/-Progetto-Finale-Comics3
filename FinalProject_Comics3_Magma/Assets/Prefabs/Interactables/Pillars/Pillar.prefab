@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5075945338884328226}
   - component: {fileID: 5075945338884328224}
   - component: {fileID: 5075945338884328227}
+  - component: {fileID: 561330093787638654}
   m_Layer: 15
   m_Name: Pillar
   m_TagString: Untagged
@@ -129,3 +130,17 @@ MonoBehaviour:
   activeColor: {r: 1, g: 1, b: 0, a: 1}
   inactiveColor: {r: 0, g: 1, b: 0.19908285, a: 1}
   sprite: {fileID: 0}
+--- !u!114 &561330093787638654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075945338884328228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ddf58580101ea46bfbf4b0fe65512a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  amplitude: 0.1
