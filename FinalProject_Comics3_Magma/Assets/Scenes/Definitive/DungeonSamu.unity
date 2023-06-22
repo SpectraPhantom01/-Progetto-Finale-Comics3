@@ -36016,7 +36016,7 @@ PolygonCollider2D:
       - {x: -29.606695, y: 4.60442}
       - {x: -29.596474, y: -7.693429}
       - {x: -28.785885, y: -14.551582}
-      - {x: -28.322884, y: -22.374454}
+      - {x: -28.822884, y: -22.624454}
       - {x: -27.780184, y: -27.06156}
       - {x: -24.524525, y: -33.58767}
       - {x: -24.706627, y: -38.627792}
@@ -36032,14 +36032,14 @@ PolygonCollider2D:
       - {x: 14.868, y: -108.3305}
       - {x: 40.383442, y: -98.36452}
       - {x: 47.340725, y: -77.9013}
-      - {x: 43.866962, y: -61.051117}
+      - {x: 48.592365, y: -63.413822}
       - {x: 52.249847, y: -52.51366}
-      - {x: 43.73487, y: -39.28018}
-      - {x: 30.951286, y: -31.921}
-      - {x: 15.85176, y: -41.28373}
-      - {x: 11.800996, y: -38.56198}
-      - {x: 11.5918455, y: -28.592896}
-      - {x: 17.308231, y: -19.587128}
+      - {x: 40.022053, y: -43.893074}
+      - {x: 30.388739, y: -40.1342}
+      - {x: 24.876251, y: -37.50818}
+      - {x: 22.94348, y: -32.76053}
+      - {x: 23.102673, y: -28.132462}
+      - {x: 17.558231, y: -19.587128}
       - {x: 17.598862, y: 3.4054391}
       - {x: 2.7134662, y: 3.4507027}
 --- !u!4 &195274316
@@ -43465,6 +43465,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+--- !u!114 &869180849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3138579559502232296, guid: a6ce6b14ee3ead248b6b551314544953, type: 3}
+  m_PrefabInstance: {fileID: 869180848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af99d10640d9f9489e6a1ce1d99666d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &885510101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43614,6 +43625,7 @@ Transform:
   - {fileID: 119184173}
   - {fileID: 968840912}
   - {fileID: 1709263795}
+  - {fileID: 2113097595}
   m_Father: {fileID: 1039430763}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45599,6 +45611,10 @@ PrefabInstance:
       propertyPath: globalVolume
       value: 
       objectReference: {fileID: 1752825702}
+    - target: {fileID: 515980288605367512, guid: 4f1f0df5ce8696a40b27229d76480f3a, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 869180849}
     - target: {fileID: 515980288605367513, guid: 4f1f0df5ce8696a40b27229d76480f3a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -66831,6 +66847,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1496551655
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 889799779}
+    m_Modifications:
+    - target: {fileID: 3572698495584504297, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: PickableScriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: bfa13243bb8a0a343944c705ea6d27a2, type: 2}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.500063
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.50007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572698495584504303, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+      propertyPath: m_Name
+      value: PickableObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
 --- !u!1001 &1512054000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71682,6 +71759,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7448047994064019266, guid: 6de861c0a6d6630429c686bbcac4bd28, type: 3}
   m_PrefabInstance: {fileID: 1099719304}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2113097595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3572698495584504299, guid: a67b88a25912380429c1d9eab56338c9, type: 3}
+  m_PrefabInstance: {fileID: 1496551655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2114381118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73343,7 +73425,6 @@ MonoBehaviour:
     HourglassLife: 0
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   PlayerLockTime: 0.1
   LockTime: 0.5
   Invincible: 0

@@ -99,11 +99,15 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
             for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
-                _uiPlayArea.AddNewHourglass();
+                AddNewHourglass();
             }
         }
     }
 
+    public void AddNewHourglass()
+    {
+        _uiPlayArea.AddNewHourglass();
+    }
 
     private void Update()
     {
@@ -157,8 +161,10 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private IEnumerator StopHourglassCoroutine(float time)
     {
         stoppedHourglass = true;
+        hourglassVFX.Stop();
         yield return new WaitForSeconds(time);
         stoppedHourglass = false;
+        hourglassVFX.Play();
     }
 
     public void PickUpObject(PickableScriptableObject newObject, PickableObject pickableGameObject)

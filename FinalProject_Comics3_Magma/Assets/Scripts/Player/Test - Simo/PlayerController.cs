@@ -165,7 +165,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayRandomSoundOnList(List<AudioClip> audioClipList)
     {
-        audioSource.PlayOneShot(audioClipList[UnityEngine.Random.Range(0, audioClipList.Count)]);
+        if(!ImGhost)
+            audioSource.PlayOneShot(audioClipList[UnityEngine.Random.Range(0, audioClipList.Count)]);
     }
 
     //public IEnumerator DashRoutine()

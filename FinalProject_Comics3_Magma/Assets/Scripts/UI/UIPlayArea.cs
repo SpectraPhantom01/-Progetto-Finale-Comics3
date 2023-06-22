@@ -44,6 +44,11 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
         Publisher.Unsubscribe(this, typeof(UseNextHourglassMessage));
     }
 
+    private void OnDisable()
+    {
+        OnDisableSubscribe();
+    }
+
     public void OnPublish(IPublisherMessage message)
     {
         if(message is AddNewHourglass)

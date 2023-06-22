@@ -42,6 +42,10 @@ public class PickableScriptableObject : ScriptableObject
             case EPickableEffectType.ReduceDamageAndKnockback:
                 damageable.StartNewResistance(objectToUse.PickableSO.EffectInPercentage, objectToUse.PickableSO.EffectInTime);
                 break;
+            case EPickableEffectType.AddHourglass:
+                damageable.Hourglasses.Add(new Hourglass(500));
+                playerManager.AddNewHourglass();
+                break;
         }
     }
 
@@ -55,5 +59,6 @@ public enum EPickableEffectType
     HealHourglass,
     ThrowBomb,
     StopHourglass,
-    ReduceDamageAndKnockback
+    ReduceDamageAndKnockback,
+    AddHourglass
 }

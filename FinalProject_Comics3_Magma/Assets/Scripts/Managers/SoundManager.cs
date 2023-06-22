@@ -14,7 +14,9 @@ public class SoundManager : MonoBehaviour
             {
                 instance = FindObjectOfType<SoundManager>();
                 if (instance != null)
+                {
                     return instance;
+                }
 
                 GameObject go = new("SoundManager");
                 return go.AddComponent<SoundManager>();
@@ -29,11 +31,6 @@ public class SoundManager : MonoBehaviour
     }
 
     public AudioMixer AudioMixer;
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-
-    }
     public void ActiveAudio(bool active)
     {
         if (active)

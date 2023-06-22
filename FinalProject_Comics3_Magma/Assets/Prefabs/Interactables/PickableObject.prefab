@@ -49,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3572698495584504298}
   PickableScriptableObject: {fileID: 0}
+  OnPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &3572698495584504298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -139,5 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ddf58580101ea46bfbf4b0fe65512a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  amplitude: 0.2
+  speed: 0.1
+  amplitude: 0.1

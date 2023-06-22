@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour, ISubscriber
     #endregion
 
     [Header("Player Settings")]
-    [SerializeField] PlayerManager PlayerPrefab;
+    //[SerializeField] PlayerManager PlayerPrefab;
+    [SerializeField] PlayerController playerController;
 
     [Header("Enemy Settings")]
     [SerializeField] EnemyController EnemyPrefab;
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour, ISubscriber
     [SerializeField] float speedGhostEffect = 0.001f;
     // Corrected Variables
     private InputSystem inputSystem;
-    private PlayerController playerController;
     private GhostManager ghostManager;
 
     // Properties
@@ -54,10 +54,7 @@ public class GameManager : MonoBehaviour, ISubscriber
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
 
-
-        playerController = FindObjectOfType<PlayerController>();
         ghostManager = GetComponent<GhostManager>();
         ghostManager.Initialize(playerController);
         //if (playerMovement == null)
@@ -235,14 +232,14 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     public void OnPublish(IPublisherMessage message)
     {
-        if (message is SaveMessage)
-        {
-            StartCoroutine(SavingCoroutine());
-        }
-        else if (message is LoadMessage)
-        {
-            StartCoroutine(LoadingCoroutine());
-        }
+        //if (message is SaveMessage)
+        //{
+        //    StartCoroutine(SavingCoroutine());
+        //}
+        //else if (message is LoadMessage)
+        //{
+        //    StartCoroutine(LoadingCoroutine());
+        //}
 
     }
 
@@ -257,44 +254,44 @@ public class GameManager : MonoBehaviour, ISubscriber
         OnDisableSubscribe();
     }
 
-    private IEnumerator SavingCoroutine()
-    {
-        float currentNtimeScale = Time.timeScale;
-        Time.timeScale = 0;
-        var savableEntities = FindObjectsOfType<SavableEntity>().ToList();
-        SavableInfosList savableInfosList = new();
-        savableInfosList.SavableInfos = savableEntities.Select(x => x.SaveInfo()).ToList();
-        yield return new WaitUntil(() => FileSystem.SaveJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", savableInfosList));
-        Time.timeScale = currentNtimeScale;
-    }
+    //private IEnumerator SavingCoroutine()
+    //{
+    //    float currentNtimeScale = Time.timeScale;
+    //    Time.timeScale = 0;
+    //    var savableEntities = FindObjectsOfType<SavableEntity>().ToList();
+    //    SavableInfosList savableInfosList = new();
+    //    savableInfosList.SavableInfos = savableEntities.Select(x => x.SaveInfo()).ToList();
+    //    yield return new WaitUntil(() => FileSystem.SaveJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", savableInfosList));
+    //    Time.timeScale = currentNtimeScale;
+    //}
 
-    private IEnumerator LoadingCoroutine()
-    {
-        SavableInfosList savableEntities = null;
-        yield return new WaitUntil(() => FileSystem.LoadJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", out savableEntities));
-        foreach (var savableInfo in savableEntities.SavableInfos)
-        {
-            if (savableInfo.IsPlayer)
-            {
-                Debug.Log("Spawn player");
-                var player = Instantiate(PlayerPrefab, new Vector3(savableInfo.xPos, savableInfo.yPos, savableInfo.zPos), Quaternion.identity);
-                List<Hourglass> hourglasses = new List<Hourglass>();
-                hourglasses.Add(new Hourglass(savableInfo.currentHourglassLife));
-                for (int i = 1; i < savableInfo.hourglassQuantity; i++)
-                {
-                    hourglasses.Add(new Hourglass(50));
-                }
-                player.Damageable.SetHourglasses(hourglasses);
-                player.Damageable.SetCurrentLife(savableInfo.currentHourglassLife);
-            }
-            else
-            {
-                Debug.Log("Spawn enemy");
-            }
-        }
-        //_gameObject.transform.position = new Vector3(savableEntities.SavableInfos[0].xPos, savableEntities.SavableInfos[0].yPos, savableEntities.SavableInfos[0].zPos);
-        //_gameObject2.transform.position = new Vector3(savableEntities.SavableInfos[1].xPos, savableEntities.SavableInfos[1].yPos, savableEntities.SavableInfos[1].zPos);
-    }
+    //private IEnumerator LoadingCoroutine()
+    //{
+    //    SavableInfosList savableEntities = null;
+    //    yield return new WaitUntil(() => FileSystem.LoadJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", out savableEntities));
+    //    foreach (var savableInfo in savableEntities.SavableInfos)
+    //    {
+    //        if (savableInfo.IsPlayer)
+    //        {
+    //            Debug.Log("Spawn player");
+    //            var player = Instantiate(PlayerPrefab, new Vector3(savableInfo.xPos, savableInfo.yPos, savableInfo.zPos), Quaternion.identity);
+    //            List<Hourglass> hourglasses = new List<Hourglass>();
+    //            hourglasses.Add(new Hourglass(savableInfo.currentHourglassLife));
+    //            for (int i = 1; i < savableInfo.hourglassQuantity; i++)
+    //            {
+    //                hourglasses.Add(new Hourglass(50));
+    //            }
+    //            player.Damageable.SetHourglasses(hourglasses);
+    //            player.Damageable.SetCurrentLife(savableInfo.currentHourglassLife);
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Spawn enemy");
+    //        }
+    //    }
+    //    //_gameObject.transform.position = new Vector3(savableEntities.SavableInfos[0].xPos, savableEntities.SavableInfos[0].yPos, savableEntities.SavableInfos[0].zPos);
+    //    //_gameObject2.transform.position = new Vector3(savableEntities.SavableInfos[1].xPos, savableEntities.SavableInfos[1].yPos, savableEntities.SavableInfos[1].zPos);
+    //}
 
     public void EnablePlayerInputs(bool enable)
     {
@@ -306,6 +303,8 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     public void ChangeScene(string sceneName)
     {
+        EnablePlayerInputs(false);
         LevelManager.Instance.LoadScene(sceneName);
+        Destroy(gameObject);
     }
 }
