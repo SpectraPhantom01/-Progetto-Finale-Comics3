@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -27,25 +28,23 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private AudioListener _audioListner;
+    public AudioMixer AudioMixer;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
 
     }
-    private void Start()
-    {
-        _audioListner = FindObjectOfType<AudioListener>();
-    }
-
     public void ActiveAudio(bool active)
     {
-        if(_audioListner == null)
+        if (active)
         {
-            _audioListner = FindObjectOfType<AudioListener>();
-        }
 
-        _audioListner.enabled = active;
-        
+            AudioMixer.SetFloat("Master", 0);
+        }
+        else
+        {
+
+            AudioMixer.SetFloat("Master", -80);
+        }
     }
 }

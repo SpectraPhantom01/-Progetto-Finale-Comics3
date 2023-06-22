@@ -31,11 +31,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] string dashSword;
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
-    [Header("SFX")]
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] List<AudioClip> stepAudioList;
-    [SerializeField] List<AudioClip> dashAudioList;
-    [SerializeField] List<AudioClip> attackAudioList;
 
     public CheckPoint _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
@@ -102,21 +97,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
-            Debug.LogWarning("PERCHè NON FUNZIONA????????????????????????????????????????????");
-
-            upSkeleton.state.Event += State_Event;
-            downSkeleton.state.Event += State_Event;
-            rightSkeleton.state.Event += State_Event;
-            leftSkeleton.state.Event += State_Event;
-            upSkeletonRun.state.Event += State_Event;
-            downSkeletonRun.state.Event += State_Event;
-
-            upSkeleton.gameObject.SetActive(false);
-            rightSkeleton.gameObject.SetActive(false);
-            leftSkeleton.gameObject.SetActive(false);
-            upSkeletonRun.gameObject.SetActive(false);
-            downSkeletonRun.gameObject.SetActive(false);
-
             for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
                 _uiPlayArea.AddNewHourglass();
@@ -124,25 +104,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
     }
 
-    private void State_Event(TrackEntry trackEntry, Spine.Event e)
-    {
-        int rndNum;
-        if (e.Data.Name == run)
-        {
-            rndNum = UnityEngine.Random.Range(0, stepAudioList.Count);
-            audioSource.PlayOneShot(stepAudioList[rndNum]);
-        }
-        else if (e.Data.Name == attack)
-        {
-            rndNum = UnityEngine.Random.Range(0, attackAudioList.Count);
-            audioSource.PlayOneShot(attackAudioList[rndNum]);
-        }
-        else if(e.Data.Name == dash)
-        {
-            rndNum = UnityEngine.Random.Range(0, dashAudioList.Count);
-            audioSource.PlayOneShot(dashAudioList[rndNum]);
-        }
-    }
 
     private void Update()
     {
