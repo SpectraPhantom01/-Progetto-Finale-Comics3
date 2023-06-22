@@ -9,6 +9,7 @@ public class PickableObject : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     public PickableScriptableObject PickableScriptableObject;
     public UnityEvent OnPickedUp;
+    public bool destroyOnPick = true;
     private void Start()
     {
         spriteRenderer.sprite = PickableScriptableObject.OnGameSprite;
@@ -17,6 +18,7 @@ public class PickableObject : MonoBehaviour
     public void Picked()
     {
         OnPickedUp?.Invoke();
-        Destroy(gameObject);
+        if(destroyOnPick)
+            Destroy(gameObject);
     }
 }
