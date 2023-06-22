@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Engeneer
   m_EditorClassIdentifier: 
   ObjectName: Engeneer Rusted
-  ObjectDescription: Heal the hourglass
+  ObjectDescription: 'Use: repairs the current Hourglass of 75'
   ObjectInventorySprite: {fileID: 21300000, guid: d461f384263404b408ca08b20349f7e0, type: 3}
   OnGameSprite: {fileID: 21300000, guid: d461f384263404b408ca08b20349f7e0, type: 3}
   IsConsumable: 1
   IsKeyObject: 0
   QuantityOnPick: 1
   PickableEffectType: 3
-  EffectInPercentage: 10
-  EffectInTime: 10
+  EffectInPercentage: 75
+  EffectInTime: 75
   Bomb: {fileID: 0}

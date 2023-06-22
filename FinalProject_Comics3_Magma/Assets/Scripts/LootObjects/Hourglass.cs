@@ -4,13 +4,11 @@ public class Hourglass : IPickable
 {
     public float Time;
     public float HourglassLife = 100;
-    public float BaseTimeLoseSand;
+    public float BaseTimeLoseSand = 1;
     public float RealTimeLoseSand => HourglassLife == 100 ? BaseTimeLoseSand : BaseTimeLoseSand - (MathF.Abs(HourglassLife -100) * (BaseTimeLoseSand - MaxSpeedLoseSand) / 100);
-    public float MaxSpeedLoseSand;
+    public float MaxSpeedLoseSand = 0.1f;
 
-#if UNITY_EDITOR
-    public float DEBUGLossXsec = 1;
-#endif
+
     public Hourglass(float time)
     {
         Time = time;
@@ -30,10 +28,5 @@ public class Hourglass : IPickable
         if (HourglassLife > 100)
             HourglassLife = 100;
     }
-#if UNITY_EDITOR
-    public void Calculate_TimeLossXsecond()
-    {
-        DEBUGLossXsec = 1/RealTimeLoseSand;
-    }
-#endif
+
 }

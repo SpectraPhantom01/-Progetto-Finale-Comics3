@@ -17,7 +17,7 @@ MonoBehaviour:
     happened, it lets someone earn precious seconds, lest they Vanish too soon.
 
     Use:
-    Repairs 25% of the damage dealt to the Hourglass in use.'
+    Stops the loose of dust for 25 seconds'
   ObjectInventorySprite: {fileID: 21300000, guid: 9500b83b67ea8484d9f817263657fe96, type: 3}
   OnGameSprite: {fileID: 21300000, guid: 9500b83b67ea8484d9f817263657fe96, type: 3}
   IsConsumable: 1

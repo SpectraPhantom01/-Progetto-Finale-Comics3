@@ -13,10 +13,12 @@ public class WalkingCharacterState : State
     public override void OnStart()
     {
         //Debug.Log("Sono in walking");
+        //m_Owner.ResetWalkingTimeSound();
     }
 
     public override void OnUpdate()
     {
+        m_Owner.UpdateWalkingSound();
         if (m_Owner.Direction.magnitude == 0)
         {
             m_Owner.StateMachine.SetState(EPlayerState.Idle);

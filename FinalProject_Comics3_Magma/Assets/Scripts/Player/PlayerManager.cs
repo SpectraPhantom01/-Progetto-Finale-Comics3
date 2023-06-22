@@ -92,16 +92,23 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _currentSkeleton = downSkeleton;
         _currentSkeleton.state.SetAnimation(0, idle, true);
 
+
         if (!_playerController.ImGhost)
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
             for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
-                _uiPlayArea.AddNewHourglass();
+                AddNewHourglass();
             }
         }
     }
+
+    public void AddNewHourglass()
+    {
+        _uiPlayArea.AddNewHourglass();
+    }
+
     private void Update()
     {
         if(!_playerController.ImGhost && !stoppedHourglass)
@@ -135,12 +142,6 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     _uiPlayArea.SetSandLevel(ESandLevel.Medium);
             }
             
-
-#if UNITY_EDITOR
-
-            Damageable.CurrentHourglass.Calculate_TimeLossXsecond();
-#endif
-
         }
     }
 
@@ -160,11 +161,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     private IEnumerator StopHourglassCoroutine(float time)
     {
         stoppedHourglass = true;
+        hourglassVFX.Stop();
         yield return new WaitForSeconds(time);
         stoppedHourglass = false;
+        hourglassVFX.Play();
     }
 
-    public void PickUpObject(PickableScriptableObject newObject, GameObject pickableGameObject)
+    public void PickUpObject(PickableScriptableObject newObject, PickableObject pickableGameObject)
     {
         if (!InventoryArray.Any(x => x != null && x.PickableSO == null)) return;
 
@@ -178,7 +181,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                     Quantity = newObject.QuantityOnPick
                 };
                 InventoryArray[i] = pickableObject;
-                Destroy(pickableGameObject);
+                pickableGameObject.Picked();
                 return;
             }
         }

@@ -28,12 +28,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform attackPoint;
     public Transform AttackPosition;
 
+    [Header("SFX")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip activeGhost;
+    [SerializeField] AudioClip destroyGhost;
+    [SerializeField] List<AudioClip> attackAudioList;
+    [SerializeField] List<AudioClip> dashAudioList;
+    [SerializeField] List<AudioClip> stepAudioList;
+    [SerializeField] float timeBetweenSteps = 0.5f;
 
     [HideInInspector] public Vector2 Direction;
     [HideInInspector] public GenericStateMachine<EPlayerState> StateMachine = new GenericStateMachine<EPlayerState>();
     [HideInInspector] public Damager Damager;
     [HideInInspector] public Vector2 lastDirection;
-
+    [HideInInspector] public float WalkingSoundTime = 0;
     float value;
     Rigidbody2D rb;
     PlayerController instantiatedGhost;
@@ -80,6 +88,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         EquipAttack(EAttackType.Melee);
+        ResetWalkingTimeSound();
         if (!ImGhost)
         {
             _playerManager.Damageable.onGetDamage += TryDestroyGhost;
@@ -148,9 +157,16 @@ public class PlayerController : MonoBehaviour
     {
         if (CanDash && Direction.magnitude > 0) //Controllabile volendo anche da GM
         {
+            PlayRandomSoundOnList(dashAudioList);
             StateMachine.SetState(EPlayerState.Dashing);
             //StartCoroutine(DashRoutine());
         }
+    }
+
+    private void PlayRandomSoundOnList(List<AudioClip> audioClipList)
+    {
+        if(!ImGhost)
+            audioSource.PlayOneShot(audioClipList[UnityEngine.Random.Range(0, audioClipList.Count)]);
     }
 
     //public IEnumerator DashRoutine()
@@ -162,7 +178,7 @@ public class PlayerController : MonoBehaviour
     //    //Debug.Log("Dash effettuato");
 
     //    yield return new WaitForSeconds(dashingTime);
-        
+
     //    StartCoroutine(DashCooldownRoutine());
     //}
 
@@ -215,6 +231,8 @@ public class PlayerController : MonoBehaviour
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
 
+        audioSource.PlayOneShot(activeGhost);
+
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
   
@@ -222,6 +240,7 @@ public class PlayerController : MonoBehaviour
     {
         StopCoroutine(ghostRoutine);
         transform.position = instantiatedGhost.transform.position;
+        audioSource.PlayOneShot(activeGhost);
         //DestroyGhost();
         GhostActivation();
     }
@@ -230,7 +249,8 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         DestroyGhost();
-        
+
+        audioSource.PlayOneShot(destroyGhost);
     }
 
     public void DestroyGhost()
@@ -279,6 +299,8 @@ public class PlayerController : MonoBehaviour
     {
         if(!ImGhost)
         {
+            PlayRandomSoundOnList(attackAudioList);
+
             if (!TryPickUp())
             {
                 StateMachine.SetState(EPlayerState.Attacking);
@@ -324,7 +346,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(hit.TryGetComponent<PickableObject>(out var pickable))
                 {
-                    _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable.gameObject);
+                    _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable);
                     return true;
                 }
             }
@@ -332,4 +354,18 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    public void UpdateWalkingSound()
+    {
+        WalkingSoundTime += Time.deltaTime;
+        if(WalkingSoundTime >= timeBetweenSteps)
+        {
+            WalkingSoundTime = 0;
+            PlayRandomSoundOnList(stepAudioList);
+        }
+    }
+
+    public void ResetWalkingTimeSound()
+    {
+        WalkingSoundTime = timeBetweenSteps;
+    }
 }

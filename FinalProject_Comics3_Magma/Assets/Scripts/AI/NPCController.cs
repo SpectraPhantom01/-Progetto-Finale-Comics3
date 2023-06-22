@@ -1,44 +1,22 @@
-using BehaviorDesigner.Runtime;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCController : AI, IAliveEntity
 {
-    [Header("Path")]
-    [SerializeField] PatrolPath patrolPath;
 
     public bool IsAlive { get; set; }
     public string Name { get; set; }
     public List<AttackScriptableObject> AttackList { get; }
-
-
-    private void Start()
-    {
-        BehaviorTree.SetVariableValue("PatrolPathPoints", patrolPath.Path);
-    }
+    public UnityEvent OnKill;
 
     public void Kill()
     {
+        OnKill.Invoke();
         Destroy(gameObject);
     }
 
 
     public GameObject GetGameObject() => gameObject;
 
-#if UNITY_EDITOR
-    [Header("Gizmo Settings")]
-    [SerializeField] Color lineColor;
-
-    private void OnDrawGizmos()
-    {
-        if (patrolPath == null) return;
-        if (patrolPath.transform.GetChild(0) == null) return;
-
-        Gizmos.color = lineColor;
-        Gizmos.DrawLine(transform.position, patrolPath.transform.GetChild(0).position);
-
-    }
-
-#endif
 }

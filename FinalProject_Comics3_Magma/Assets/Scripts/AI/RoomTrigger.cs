@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,12 +9,13 @@ public class RoomTrigger : MonoBehaviour
     [SerializeField] UnityEvent OnClearedRoom;
     private void Start()
     {
-        foreach(EnemyController enemy in EnemyControllers)
+        foreach (EnemyController enemy in EnemyControllers)
         {
-            enemy.onKillEnemy += () => { 
+            enemy.onKillEnemy += () =>
+            {
                 EnemyControllers.Remove(enemy);
-                if (EnemyControllers.Count == 0) 
-                { OnClearedRoom.Invoke(); } 
+                if (EnemyControllers.Count == 0)
+                { OnClearedRoom.Invoke(); }
             };
         }
     }
@@ -22,9 +23,12 @@ public class RoomTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
-        if(playerManager != null)
+        if (playerManager != null)
         {
-            EnemyControllers.ForEach(x => x.SetFieldOfView());
+            foreach (var enemy in EnemyControllers.Where(e => e != null))
+            {
+                enemy.SetFieldOfView();
+            }
         }
     }
 
@@ -33,7 +37,10 @@ public class RoomTrigger : MonoBehaviour
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if (playerManager != null)
         {
-            EnemyControllers.ForEach(x => x.ResetFieldOfView());
+            foreach (var enemy in EnemyControllers.Where(e => e != null))
+            {
+                enemy.ResetFieldOfView();
+            }
         }
     }
 }

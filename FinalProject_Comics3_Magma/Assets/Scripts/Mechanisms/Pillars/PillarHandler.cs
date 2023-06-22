@@ -29,7 +29,6 @@ public class PillarHandler : MonoBehaviour
         if (pillarsList.All(p => p.GetPillarState() == EPillarState.Destroyed))
         {
             Event?.Invoke();
-            Debug.Log("=== Attivazione evento ===");
 
             Deactivation();
         }

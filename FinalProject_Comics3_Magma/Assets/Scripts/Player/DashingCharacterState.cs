@@ -49,7 +49,7 @@ public class DashingCharacterState : State
         //Debug.Log(_position);
         //Debug.Log(m_Owner.transform.position);
 
-        Debug.Log(Vector2.Distance(_position,(Vector2)m_Owner.transform.position));
+        //Debug.Log(Vector2.Distance(_position,(Vector2)m_Owner.transform.position));
     }
 
     public override void OnFixedUpdate() 

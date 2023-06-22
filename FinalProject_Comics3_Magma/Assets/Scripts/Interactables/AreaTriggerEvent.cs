@@ -25,4 +25,9 @@ public class AreaTriggerEvent : MonoBehaviour
             onTriggerExit.Invoke();
         }
     }
+
+    public void LoadScene(string sceneName)
+    {
+        LevelManager.Instance.LoadScene(sceneName);
+    }
 }
