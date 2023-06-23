@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Damager Damager;
     [HideInInspector] public Vector2 lastDirection;
     [HideInInspector] public float WalkingSoundTime = 0;
+    [HideInInspector] public UnityEvent Listeners;
     float value;
     Rigidbody2D rb;
     PlayerController instantiatedGhost;
@@ -195,6 +197,8 @@ public class PlayerController : MonoBehaviour
     {
         GhostActive = true;
 
+        audioSource.PlayOneShot(activeGhost);
+
         var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
         var bonusGhostTime1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[0].EffectInTime : 0 : 0;
         var bonusGhostTime2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[1].EffectInTime : 0 : 0;
@@ -231,8 +235,6 @@ public class PlayerController : MonoBehaviour
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
 
-        audioSource.PlayOneShot(activeGhost);
-
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
   
@@ -243,12 +245,20 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(activeGhost);
         //DestroyGhost();
         GhostActivation();
+
+        Listeners?.Invoke();
+
+        Listeners.RemoveAllListeners();
     }
 
     private IEnumerator GhostRoutine(float time)
     {
         yield return new WaitForSeconds(time);
         DestroyGhost();
+
+        Listeners?.Invoke();
+
+        Listeners.RemoveAllListeners();
 
         audioSource.PlayOneShot(destroyGhost);
     }

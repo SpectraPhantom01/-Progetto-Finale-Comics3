@@ -82,6 +82,9 @@ MonoBehaviour:
   onTeleportEvent:
     m_PersistentCalls:
       m_Calls: []
+  listenerHolderToIgnore: {fileID: 0}
+  ignoreGhost: 0
+  vfxOnTeleportPrefab: {fileID: 3726962543553703371, guid: 1fc8fe96d1bf1a541b377e2a165c9585, type: 3}
   activeGizmo: 1
   lineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &5005736637946533633
@@ -108,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!212 &6015473473614677028
 SpriteRenderer:
@@ -150,7 +153,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 14f09ae79b357b54ab56d1075a595cfd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

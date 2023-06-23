@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
@@ -408,6 +409,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if (!_playerController.ImGhost)
             Respawn(_currentCheckPoint.transform.position);
     }
+
+    public bool HasObjectInInventory(EPickableEffectType effectType) => InventoryArray.Where(pickable => pickable != null && pickable.PickableSO != null).Any(pickable => pickable.PickableSO.PickableEffectType == effectType);
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

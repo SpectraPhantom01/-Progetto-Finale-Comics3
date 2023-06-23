@@ -7,12 +7,16 @@ public class AreaTriggerEvent : MonoBehaviour
 {
     [SerializeField] UnityEvent onTriggerEnter;
     [SerializeField] UnityEvent onTriggerExit;
+    [SerializeField] bool ignoreGhost;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var player = collision.gameObject.SearchComponent<PlayerManager>();
         if (player != null)
         {
+            if (ignoreGhost && player.PlayerController.ImGhost)
+                return;
+
             onTriggerEnter.Invoke();
         }
     }

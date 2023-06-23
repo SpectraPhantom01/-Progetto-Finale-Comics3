@@ -39,7 +39,8 @@ public class PillarHandler : MonoBehaviour
         foreach (Pillar pillar in pillarsList)
         {
             pillar.SetPillarState(EPillarState.Inactive);
-            pillar.StopCoroutine(pillar.pillarRoutine);
+            if(pillar.pillarRoutine != null)
+                pillar.StopCoroutine(pillar.pillarRoutine);
 
             pillar.sprite.color = Color.black;
         }

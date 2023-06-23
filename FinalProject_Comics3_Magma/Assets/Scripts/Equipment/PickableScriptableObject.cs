@@ -33,7 +33,7 @@ public class PickableScriptableObject : ScriptableObject
                 damageable.HealHourglass(objectToUse.PickableSO.EffectInPercentage);
                 break;
             case EPickableEffectType.ThrowBomb:
-                var newBomb = Instantiate(objectToUse.PickableSO.Bomb, attackPosition.position, Quaternion.identity);
+                var newBomb = Instantiate(objectToUse.PickableSO.Bomb, attackPosition.position + (Vector3.up / 2), Quaternion.identity);
                 newBomb.Initialize(playerManager.CurrentVectorDirection);
                 break;
             case EPickableEffectType.StopHourglass:

@@ -12,6 +12,7 @@ public class Pillar : MonoBehaviour
 {
     [SerializeField] PillarHandler pillarHandler;
     [SerializeField] float pillarDestroyedTime;
+    [SerializeField] bool endless;
     [SerializeField] Color activeColor;
     [SerializeField] Color inactiveColor;
     EPillarState pillarState = EPillarState.Active;
@@ -41,7 +42,10 @@ public class Pillar : MonoBehaviour
             sprite.color = activeColor;
 
             pillarState = EPillarState.Destroyed;
-            ActiveRoutine();
+
+            if (!endless)
+                ActiveRoutine();
+
             pillarHandler.CheckPillars();
             
         }
