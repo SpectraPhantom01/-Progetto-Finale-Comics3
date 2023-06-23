@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 5206365596199030469}
   m_Layer: 14
   m_Name: Ghost Prefab 2.0
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,9 +422,17 @@ MonoBehaviour:
   rewindCooldown: 1
   attackPoint: {fileID: 4189288848341662729}
   AttackPosition: {fileID: 4821780848565332128}
+  audioSource: {fileID: 0}
+  activeGhost: {fileID: 0}
+  destroyGhost: {fileID: 0}
+  attackAudioList: []
+  dashAudioList: []
+  stepAudioList: []
+  timeBetweenSteps: 0.5
   Direction: {x: 0, y: 0}
   Damager: {fileID: 0}
   lastDirection: {x: 0, y: -1}
+  WalkingSoundTime: 0
   Father: {fileID: 0}
 --- !u!50 &5206365596199030469
 Rigidbody2D:

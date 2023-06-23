@@ -288,6 +288,7 @@ MonoBehaviour:
   Agent: {fileID: 7327500715194216676}
   CurrentDirection: 1
   Stupid: 0
+  SoundToSpawnOnKillPrefab: {fileID: 6418838848264368311, guid: 1052ba024b2d3ec4ca095d400ed9835e, type: 3}
   enemyType: 0
   FieldOfViewAngle: 360
   FieldOfViewAngleAfterSee: 360

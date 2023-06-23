@@ -118,6 +118,9 @@ public class EnemyController : AI, IAliveEntity
         onKillEnemy?.Invoke();
         onKillEnemySceneRef.Invoke();
 
+        if(SoundToSpawnOnKillPrefab != null)
+            Destroy(Instantiate(SoundToSpawnOnKillPrefab, transform.position, Quaternion.identity), 1.5f);
+
         if (DestroyOnKill)
             Destroy(gameObject);
         else

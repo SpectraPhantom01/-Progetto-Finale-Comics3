@@ -12,6 +12,8 @@ public class AI : MonoBehaviour
     public bool Stupid;
     public Damageable Damageable { get; private set; }
 
+    [Header("SFX")]
+    public GameObject SoundToSpawnOnKillPrefab;
     private void Awake()
     {
         if(!Stupid)
@@ -25,8 +27,6 @@ public class AI : MonoBehaviour
 
             Damageable = gameObject.SearchComponent<Damageable>();
         }
-
-
     }
     private void Update()
     {

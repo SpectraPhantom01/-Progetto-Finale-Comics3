@@ -9,6 +9,7 @@ public class Bomb : MonoBehaviour
     [SerializeField, Range(0f, 1f)] float parabolic;
     [SerializeField] GameObject areaEffect;
     [SerializeField] float destroyAreaAfterSpawn;
+    [SerializeField] GameObject sfxExplosion;
     Rigidbody2D _rigidbody;
     float timePassed;
     bool used = false;
@@ -37,6 +38,9 @@ public class Bomb : MonoBehaviour
                 var vfx =Instantiate(areaEffect, transform.position, Quaternion.identity);
                 Destroy(vfx, destroyAreaAfterSpawn);
             }
+
+
+            Destroy(Instantiate(sfxExplosion, transform.position, Quaternion.identity), 1f);
 
             Destroy(gameObject);
             used = true;

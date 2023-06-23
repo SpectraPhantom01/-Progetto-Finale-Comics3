@@ -200,6 +200,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             {
                 RemoveObject(pickableObject);
                 _uiPlayArea.ResetActiveObject(slotIndex);
+                Inventory.ActiveObjectSlots[slotIndex] = null;
             }
             else
                 _uiPlayArea.SetActiveObject(slotIndex, objectToUse.PickableSO.ObjectInventorySprite, objectToUse.Quantity);

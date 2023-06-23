@@ -9,6 +9,7 @@ public class SpellBullet : MonoBehaviour
     AttackScriptableObject _attack;
     LayerMask _damageableMask;
     float timePassed;
+    [SerializeField] GameObject sfxExplosion;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -51,6 +52,7 @@ public class SpellBullet : MonoBehaviour
         else if (collision.gameObject.layer == 17)
             return;
 
+        Destroy(Instantiate(sfxExplosion, transform.position, Quaternion.identity), 1f);
         Destroy(gameObject);
 
     }
