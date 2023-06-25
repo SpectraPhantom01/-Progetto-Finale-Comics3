@@ -715,6 +715,9 @@ MonoBehaviour:
   Damager: {fileID: 0}
   lastDirection: {x: 0, y: -1}
   WalkingSoundTime: 0
+  Listeners:
+    m_PersistentCalls:
+      m_Calls: []
   Father: {fileID: 0}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
@@ -754,23 +757,21 @@ MonoBehaviour:
     HourglassLife: 0
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   - Time: 50
     HourglassLife: 0
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   - Time: 50
     HourglassLife: 0
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   PlayerLockTime: 0.1
   LockTime: 0.5
   Invincible: 0
   KnockBackResistance: 0
   DamageReductionPerc: 0
   DamageReduction: 0
+  vfxToSpawnOnDamage: {fileID: 1979589331404243672, guid: b5d83d5fab5ec064f9087429b3ca4996, type: 3}
 --- !u!114 &4272628589318761874
 MonoBehaviour:
   m_ObjectHideFlags: 0

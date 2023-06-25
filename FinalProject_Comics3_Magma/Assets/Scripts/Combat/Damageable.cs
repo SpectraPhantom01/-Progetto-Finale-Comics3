@@ -1,4 +1,5 @@
 using BehaviorDesigner.Runtime;
+using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -41,9 +42,13 @@ public class Damageable : MonoBehaviour
     [SerializeField] float DamageReductionPerc;
 
     [SerializeField] float DamageReduction; //Da spostare in un eventuale SO e chiamarla Defence?
+    [Header("VFX OnDamage")]
+    [SerializeField] GameObject vfxToSpawnOnDamage;
+
     public Hourglass CurrentHourglass => _currentHourglass;
 
     private Coroutine resistanceCoroutine;
+    private Coroutine materialDamageCoroutine;
     private void Awake()
     {
         ai = gameObject.SearchComponent<AI>();
@@ -78,6 +83,8 @@ public class Damageable : MonoBehaviour
 
         if (Invincible)
             return;
+
+        SpawnDamageVFX();
 
         CalculateDamage(amount);
         _currentHourglass.Damage(hourglassPercentageDamage);
@@ -272,4 +279,11 @@ public class Damageable : MonoBehaviour
         DamageReductionPerc = castDamageReductionPerc;
         DamageReduction = castDamageReduction;
     }
+
+    public void SpawnDamageVFX()
+    {
+        Instantiate(vfxToSpawnOnDamage, transform.position, Quaternion.identity);
+    }
+
+
 }

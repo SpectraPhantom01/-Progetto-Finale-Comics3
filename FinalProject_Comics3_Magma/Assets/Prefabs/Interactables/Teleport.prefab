@@ -85,6 +85,7 @@ MonoBehaviour:
   listenerHolderToIgnore: {fileID: 0}
   ignoreGhost: 0
   vfxOnTeleportPrefab: {fileID: 3726962543553703371, guid: 1fc8fe96d1bf1a541b377e2a165c9585, type: 3}
+  timeDelayTeleport: 0.5
   activeGizmo: 1
   lineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!61 &5005736637946533633

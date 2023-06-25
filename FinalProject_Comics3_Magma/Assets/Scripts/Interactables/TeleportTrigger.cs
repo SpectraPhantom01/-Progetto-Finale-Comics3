@@ -10,6 +10,7 @@ public class TeleportTrigger : MonoBehaviour
     [SerializeField] TeleportTrigger listenerHolderToIgnore;
     [SerializeField] bool ignoreGhost;
     [SerializeField] GameObject vfxOnTeleportPrefab;
+    [SerializeField, Range(0.5f, 5f)] float timeDelayTeleport;
     public UnityEvent Listeners => onTeleportEvent;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,8 +21,9 @@ public class TeleportTrigger : MonoBehaviour
             if (ignoreGhost && player.PlayerController.ImGhost)
                 return;
 
-            player.transform.position = destinationPoint.position;
-            Instantiate(vfxOnTeleportPrefab, destinationPoint.position, Quaternion.identity);
+            player.Teleport(destinationPoint.position, timeDelayTeleport, vfxOnTeleportPrefab);
+
+            Instantiate(vfxOnTeleportPrefab, transform.position, Quaternion.identity);
             onTeleportEvent.Invoke();
 
             if (player.PlayerController.GhostActive && listenerHolderToIgnore != null)

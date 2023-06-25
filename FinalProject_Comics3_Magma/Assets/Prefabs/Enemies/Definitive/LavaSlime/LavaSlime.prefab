@@ -232,6 +232,7 @@ MonoBehaviour:
   KnockBackResistance: 100
   DamageReductionPerc: 0
   DamageReduction: 0
+  vfxToSpawnOnDamage: {fileID: 1979589331404243672, guid: b5d83d5fab5ec064f9087429b3ca4996, type: 3}
 --- !u!1 &7327500715194216675
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,6 +51,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [HideInInspector] public Pickable[] InventoryArray => Inventory.InventoryObjects;
     UIPlayArea _uiPlayArea;
     bool stoppedHourglass = false;
+    bool isTeleporting = false;
     public void Kill()
     {
 
@@ -118,8 +119,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
 
-        HandleSkeletonRotation();
-        HandleSkeletonAnimation();
+        if (!isTeleporting)
+        {
+            HandleSkeletonRotation();
+            HandleSkeletonAnimation();
+        }
     }
 
     private void HandleHourglass()
@@ -411,6 +415,31 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     }
 
     public bool HasObjectInInventory(EPickableEffectType effectType) => InventoryArray.Where(pickable => pickable != null && pickable.PickableSO != null).Any(pickable => pickable.PickableSO.PickableEffectType == effectType);
+
+    public void Teleport(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab)
+    {
+        StartCoroutine(TeleportCoroutine(position, timeDelayTeleport, vfxOnTeleportPrefab));
+    }
+
+    private IEnumerator TeleportCoroutine(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab)
+    {
+        isTeleporting = true;
+        _currentSkeleton.gameObject.SetActive(false);
+        GameManager.Instance.EnablePlayerInputs(false);
+
+        var time = timeDelayTeleport > 0 ? timeDelayTeleport / 2 : 0;
+
+        yield return new WaitForSeconds(time);
+
+        transform.position = position;
+
+        yield return new WaitForSeconds(time);
+
+        isTeleporting = false;
+        _currentSkeleton.gameObject.SetActive(true);
+        Instantiate(vfxOnTeleportPrefab, position, Quaternion.identity);
+        GameManager.Instance.EnablePlayerInputs(true);
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
