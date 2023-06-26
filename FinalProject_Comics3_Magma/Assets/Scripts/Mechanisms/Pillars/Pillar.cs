@@ -43,6 +43,7 @@ public class Pillar : MonoBehaviour
 
             pillarState = EPillarState.Destroyed;
 
+
             if (!endless)
                 ActiveRoutine();
 

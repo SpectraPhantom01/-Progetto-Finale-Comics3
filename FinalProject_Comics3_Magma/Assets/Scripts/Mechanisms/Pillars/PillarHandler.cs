@@ -10,7 +10,9 @@ public class PillarHandler : MonoBehaviour
     [Header("Event List")]
     [Space(5)]
     public UnityEvent Event;
+    [SerializeField] GameObject sfxOnComplete;
 
+    [SerializeField] GameObject sfxOnHit;
     List<Pillar> pillarsList = new List<Pillar>();
 
     private void Start()
@@ -30,7 +32,13 @@ public class PillarHandler : MonoBehaviour
         {
             Event?.Invoke();
 
+            Instantiate(sfxOnComplete, transform.position, Quaternion.identity);
+
             Deactivation();
+        }
+        else
+        {
+            Instantiate(sfxOnHit, transform.position, Quaternion.identity);
         }
     }
 
