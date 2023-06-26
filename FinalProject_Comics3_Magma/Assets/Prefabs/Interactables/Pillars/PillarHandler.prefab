@@ -47,3 +47,5 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
+  sfxOnComplete: {fileID: 6418838848264368311, guid: 611111192f580f543955bdc015f0fd4d, type: 3}
+  sfxOnHit: {fileID: 6418838848264368311, guid: 7d0a6dab1c14f594abc08c293572798d, type: 3}

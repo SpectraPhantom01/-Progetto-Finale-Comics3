@@ -127,8 +127,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pillarHandler: {fileID: 0}
   pillarDestroyedTime: 2
+  endless: 0
   activeColor: {r: 0, g: 1, b: 0.2, a: 1}
   inactiveColor: {r: 1, g: 1, b: 0, a: 1}
+  sfxOnHit: {fileID: 6418838848264368311, guid: 7d0a6dab1c14f594abc08c293572798d, type: 3}
   sprite: {fileID: 0}
 --- !u!114 &561330093787638654
 MonoBehaviour:

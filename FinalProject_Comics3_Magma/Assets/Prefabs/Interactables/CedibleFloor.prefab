@@ -112,6 +112,7 @@ MonoBehaviour:
   timeBeforeSwapFloor: 2
   cedibleFloorVFX: {fileID: 5018874063188205542, guid: 55c2a4f2b7df07540aa5c09d5601b6f6, type: 3}
   lavaCollider: {fileID: 2303332800233603869}
+  sfxToSpawnOnHit: {fileID: 6418838848264368311, guid: 288183faeefd1f94db2ffc198edc1111, type: 3}
 --- !u!1 &7706211054265899618
 GameObject:
   m_ObjectHideFlags: 0
