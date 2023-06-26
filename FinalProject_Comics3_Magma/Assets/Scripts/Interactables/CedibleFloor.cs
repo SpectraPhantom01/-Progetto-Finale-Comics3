@@ -9,6 +9,7 @@ public class CedibleFloor : MonoBehaviour
     [SerializeField] float timeBeforeSwapFloor;
     [SerializeField] ParticleSystem cedibleFloorVFX;
     [SerializeField] Collider2D lavaCollider;
+    [SerializeField] GameObject sfxToSpawnOnHit;
     private void Awake()
     {
         var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
@@ -25,6 +26,7 @@ public class CedibleFloor : MonoBehaviour
         {
             var particle = Instantiate(cedibleFloorVFX, transform.position, Quaternion.identity);
             Destroy(particle.gameObject, 1f);
+            Instantiate(sfxToSpawnOnHit, transform.position, Quaternion.identity);
             StartCoroutine(SwapFloorCoroutine(timeBeforeSwapFloor));
         }
     }
