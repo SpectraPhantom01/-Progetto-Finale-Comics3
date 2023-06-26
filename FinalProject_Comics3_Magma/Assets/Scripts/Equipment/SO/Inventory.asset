@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42ed86961e7539458768fce9fbecef0, type: 3}
+  m_Name: Inventory
+  m_EditorClassIdentifier: 
+  InventoryObjects:
+  - PickableSO: {fileID: 11400000, guid: 527893a647ee70d4caac3f8a9189c3f5, type: 2}
+    Quantity: 5
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  EquipmentSlots:
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  ActiveObjectSlots:
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0
+  - PickableSO: {fileID: 0}
+    Quantity: 0

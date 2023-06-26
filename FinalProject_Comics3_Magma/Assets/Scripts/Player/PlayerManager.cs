@@ -1,11 +1,10 @@
-using Spine;
+using System.IO;
 using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
@@ -99,6 +98,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
+            
+
             for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
                 AddNewHourglass();
@@ -174,7 +175,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void PickUpObject(PickableScriptableObject newObject, PickableObject pickableGameObject)
     {
-        if (!InventoryArray.Any(x => x != null && x.PickableSO == null)) return;
+        if (InventoryArray.Where(p => p != null && p.PickableSO != null).Count() == InventoryArray.Length) return;
 
         for (int i = 0; i < InventoryArray.Length; i++)
         {
@@ -441,6 +442,15 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         GameManager.Instance.EnablePlayerInputs(true);
     }
 
+    private void OnDestroy()
+    {
+        int count = Inventory.ActiveObjectSlots.Length;
+        Inventory.ActiveObjectSlots = new Pickable[count];
+
+        count = Inventory.EquipmentSlots.Length;
+        Inventory.EquipmentSlots = new Pickable[count];
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
@@ -456,13 +466,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 #endif
 }
 
-[Serializable]
-public class Inventory
-{
-    public Pickable[] InventoryObjects;
-    public Pickable[] EquipmentSlots;
-    public Pickable[] ActiveObjectSlots;
-}
+
 [Serializable]
 public class Pickable
 {
