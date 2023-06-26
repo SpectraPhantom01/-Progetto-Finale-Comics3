@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-public class GameManager : MonoBehaviour, ISubscriber
+public class GameManager : MonoBehaviour
 {
     #region SINGLETON
     private static GameManager instance;
@@ -76,9 +76,6 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.ActiveObjectFour.performed += ActiveObjectFourPerformed;
         // END INPUT SYSTEM
 
-
-        Publisher.Subscribe(this, typeof(SaveMessage));
-        Publisher.Subscribe(this, typeof(LoadMessage));
     }
 
     private void ActiveObjectOnePerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -225,73 +222,6 @@ public class GameManager : MonoBehaviour, ISubscriber
             playerController.Attack();
     }
 
-    private void Start()
-    {
-        //Invoke("ChangeLanguage", 5);
-    }
-
-    public void OnPublish(IPublisherMessage message)
-    {
-        //if (message is SaveMessage)
-        //{
-        //    StartCoroutine(SavingCoroutine());
-        //}
-        //else if (message is LoadMessage)
-        //{
-        //    StartCoroutine(LoadingCoroutine());
-        //}
-
-    }
-
-    public void OnDisableSubscribe()
-    {
-        Publisher.Unsubscribe(this, typeof(SaveMessage));
-        Publisher.Unsubscribe(this, typeof(LoadMessage));
-    }
-
-    private void OnDestroy()
-    {
-        OnDisableSubscribe();
-    }
-
-    //private IEnumerator SavingCoroutine()
-    //{
-    //    float currentNtimeScale = Time.timeScale;
-    //    Time.timeScale = 0;
-    //    var savableEntities = FindObjectsOfType<SavableEntity>().ToList();
-    //    SavableInfosList savableInfosList = new();
-    //    savableInfosList.SavableInfos = savableEntities.Select(x => x.SaveInfo()).ToList();
-    //    yield return new WaitUntil(() => FileSystem.SaveJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", savableInfosList));
-    //    Time.timeScale = currentNtimeScale;
-    //}
-
-    //private IEnumerator LoadingCoroutine()
-    //{
-    //    SavableInfosList savableEntities = null;
-    //    yield return new WaitUntil(() => FileSystem.LoadJson($"SavedScene_{SceneManager.GetActiveScene().name}", "json", out savableEntities));
-    //    foreach (var savableInfo in savableEntities.SavableInfos)
-    //    {
-    //        if (savableInfo.IsPlayer)
-    //        {
-    //            Debug.Log("Spawn player");
-    //            var player = Instantiate(PlayerPrefab, new Vector3(savableInfo.xPos, savableInfo.yPos, savableInfo.zPos), Quaternion.identity);
-    //            List<Hourglass> hourglasses = new List<Hourglass>();
-    //            hourglasses.Add(new Hourglass(savableInfo.currentHourglassLife));
-    //            for (int i = 1; i < savableInfo.hourglassQuantity; i++)
-    //            {
-    //                hourglasses.Add(new Hourglass(50));
-    //            }
-    //            player.Damageable.SetHourglasses(hourglasses);
-    //            player.Damageable.SetCurrentLife(savableInfo.currentHourglassLife);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Spawn enemy");
-    //        }
-    //    }
-    //    //_gameObject.transform.position = new Vector3(savableEntities.SavableInfos[0].xPos, savableEntities.SavableInfos[0].yPos, savableEntities.SavableInfos[0].zPos);
-    //    //_gameObject2.transform.position = new Vector3(savableEntities.SavableInfos[1].xPos, savableEntities.SavableInfos[1].yPos, savableEntities.SavableInfos[1].zPos);
-    //}
 
     public void EnablePlayerInputs(bool enable)
     {

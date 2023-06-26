@@ -51,7 +51,9 @@ public class UIPauseMenu : MonoBehaviour
         foreach (var inventoryObject in _playerManager.InventoryArray.Where(x => x != null && x.PickableSO != null && !x.PickableSO.IsKeyObject))
         {
             var newButton = Instantiate(buttonActionPrefab, gridEquippablePanel.transform);
-            newButton.Initialize(inventoryObject, this, _playerManager.Inventory.EquipmentSlots.Where(x => x != null).ToArray(), _playerManager.Inventory.ActiveObjectSlots.Where(x => x != null).ToArray());
+            newButton.Initialize(inventoryObject, this,
+                _playerManager.Inventory.EquipmentSlots.Where(x => x != null).ToArray(),
+                _playerManager.Inventory.ActiveObjectSlots.Where(x => x != null).ToArray());
             _pickableButtonInInventory.Add(newButton);
         }
 
@@ -61,6 +63,7 @@ public class UIPauseMenu : MonoBehaviour
     {
         _currentSelected = null;
     }
+
 
     public void SetSelectedObject(Pickable pickable, UIButtonAction buttonAction)
     {
