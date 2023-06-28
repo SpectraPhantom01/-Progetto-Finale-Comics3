@@ -444,6 +444,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     private void OnDestroy()
     {
+        if (PlayerController.ImGhost) return;
+
         int count = Inventory.ActiveObjectSlots.Length;
         Inventory.ActiveObjectSlots = new Pickable[count];
 
