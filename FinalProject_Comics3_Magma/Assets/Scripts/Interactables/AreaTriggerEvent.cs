@@ -8,6 +8,7 @@ public class AreaTriggerEvent : MonoBehaviour
     [SerializeField] UnityEvent onTriggerEnter;
     [SerializeField] UnityEvent onTriggerExit;
     [SerializeField] bool ignoreGhost;
+    [SerializeField] GameObject sfxToSpawnOnTrigger;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +19,7 @@ public class AreaTriggerEvent : MonoBehaviour
                 return;
 
             onTriggerEnter.Invoke();
+
         }
     }
 
@@ -26,8 +28,17 @@ public class AreaTriggerEvent : MonoBehaviour
         var player = collision.gameObject.SearchComponent<PlayerManager>();
         if (player != null)
         {
+            if (ignoreGhost && player.PlayerController.ImGhost)
+                return;
+
             onTriggerExit.Invoke();
         }
+    }
+
+    public void SpawnSound()
+    {
+        if (sfxToSpawnOnTrigger != null)
+            Instantiate(sfxToSpawnOnTrigger, transform.position, Quaternion.identity);
     }
 
     public void LoadScene(string sceneName)

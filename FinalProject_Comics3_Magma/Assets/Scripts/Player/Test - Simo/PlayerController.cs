@@ -378,4 +378,5 @@ public class PlayerController : MonoBehaviour
     {
         WalkingSoundTime = timeBetweenSteps;
     }
+
 }

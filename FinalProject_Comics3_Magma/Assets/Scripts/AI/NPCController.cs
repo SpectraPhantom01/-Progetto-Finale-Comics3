@@ -13,6 +13,10 @@ public class NPCController : AI, IAliveEntity
     public void Kill()
     {
         OnKill.Invoke();
+
+        if(SoundToSpawnOnKillPrefab != null)
+            Instantiate(SoundToSpawnOnKillPrefab, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 

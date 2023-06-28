@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
@@ -417,12 +418,12 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public bool HasObjectInInventory(EPickableEffectType effectType) => InventoryArray.Where(pickable => pickable != null && pickable.PickableSO != null).Any(pickable => pickable.PickableSO.PickableEffectType == effectType);
 
-    public void Teleport(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab)
+    public void Teleport(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab, UnityEvent onTeleportHalfEvent, UnityEvent onTeleportEndEvent)
     {
-        StartCoroutine(TeleportCoroutine(position, timeDelayTeleport, vfxOnTeleportPrefab));
+        StartCoroutine(TeleportCoroutine(position, timeDelayTeleport, vfxOnTeleportPrefab, onTeleportHalfEvent, onTeleportEndEvent));
     }
 
-    private IEnumerator TeleportCoroutine(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab)
+    private IEnumerator TeleportCoroutine(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab, UnityEvent onTeleportHalfEvent, UnityEvent onTeleportEndEvent)
     {
         isTeleporting = true;
         _currentSkeleton.gameObject.SetActive(false);
@@ -434,7 +435,11 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
         transform.position = position;
 
+        onTeleportHalfEvent?.Invoke();
+
         yield return new WaitForSeconds(time);
+
+        onTeleportEndEvent?.Invoke();
 
         isTeleporting = false;
         _currentSkeleton.gameObject.SetActive(true);
@@ -453,6 +458,14 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         Inventory.EquipmentSlots = new Pickable[count];
     }
 
+    public int GetDefaultSortingOrder()
+    {
+        if(_currentSkeleton == null)
+            return downSkeleton.GetComponent<MeshRenderer>().sortingOrder;
+        
+        return _currentSkeleton.GetComponent<MeshRenderer>().sortingOrder;
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
@@ -464,6 +477,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             Gizmos.DrawWireSphere(transform.position, attackShoot.shootAttackRangeOfView);
         }
     }
+
 
 #endif
 }

@@ -5,6 +5,8 @@ public class TeleportTrigger : MonoBehaviour
 {
     [SerializeField] Transform destinationPoint;
     [SerializeField] UnityEvent onTeleportEvent;
+    [SerializeField] UnityEvent onTeleportHalfEvent;
+    [SerializeField] UnityEvent onTeleportEndEvent;
     [Header("Read Tooltip")]
     [Tooltip("If Player is Ghosting you can revert actions by adding here a Teleport in Scene holding UnityEvents")]
     [SerializeField] TeleportTrigger listenerHolderToIgnore;
@@ -21,7 +23,7 @@ public class TeleportTrigger : MonoBehaviour
             if (ignoreGhost && player.PlayerController.ImGhost)
                 return;
 
-            player.Teleport(destinationPoint.position, timeDelayTeleport, vfxOnTeleportPrefab);
+            player.Teleport(destinationPoint.position, timeDelayTeleport, vfxOnTeleportPrefab, onTeleportHalfEvent, onTeleportEndEvent);
 
             Instantiate(vfxOnTeleportPrefab, transform.position, Quaternion.identity);
             onTeleportEvent.Invoke();

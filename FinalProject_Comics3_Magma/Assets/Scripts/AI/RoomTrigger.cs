@@ -7,6 +7,7 @@ public class RoomTrigger : MonoBehaviour
 {
     [HideInInspector] public List<EnemyController> EnemyControllers;
     [SerializeField] UnityEvent OnClearedRoom;
+    [SerializeField] GameObject sfxToSpawnOnClearRoom;
     private void Start()
     {
         foreach (EnemyController enemy in EnemyControllers)
@@ -15,9 +16,19 @@ public class RoomTrigger : MonoBehaviour
             {
                 EnemyControllers.Remove(enemy);
                 if (EnemyControllers.Count == 0)
-                { OnClearedRoom.Invoke(); }
+                {
+
+                    OnClearedRoom?.Invoke();
+
+                }
             };
         }
+    }
+
+    public void SpawnSound()
+    {
+        if (sfxToSpawnOnClearRoom != null)
+            Instantiate(sfxToSpawnOnClearRoom, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

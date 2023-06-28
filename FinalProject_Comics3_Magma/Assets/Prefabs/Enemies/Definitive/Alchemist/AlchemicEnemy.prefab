@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 4864961509559804078}
   - component: {fileID: 5923026781706902094}
   - component: {fileID: 3141447971159484484}
+  - component: {fileID: 7269225286819340234}
   m_Layer: 0
   m_Name: UpSkeleton
   m_TagString: Untagged
@@ -118,7 +119,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3141447971159484484
 MonoBehaviour:
@@ -160,6 +161,18 @@ MonoBehaviour:
   _animationName: Idle
   loop: 1
   timeScale: 1
+--- !u!114 &7269225286819340234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3768958439845594380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4654917890698544188
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +589,7 @@ GameObject:
   - component: {fileID: 2233677802874566854}
   - component: {fileID: 7731589123959985654}
   - component: {fileID: 5765736812816733339}
+  - component: {fileID: 418287847872186600}
   m_Layer: 0
   m_Name: RightSkeleton
   m_TagString: Untagged
@@ -646,7 +660,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5765736812816733339
 MonoBehaviour:
@@ -688,6 +702,18 @@ MonoBehaviour:
   _animationName: Idle
   loop: 1
   timeScale: 1
+--- !u!114 &418287847872186600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587211955449888945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6535843125970222445
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +757,7 @@ GameObject:
   - component: {fileID: 5314276446783012225}
   - component: {fileID: 5486506411353921480}
   - component: {fileID: 7204759857609498336}
+  - component: {fileID: 2347986475641947230}
   m_Layer: 0
   m_Name: LeftSkeleton
   m_TagString: Untagged
@@ -801,7 +828,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7204759857609498336
 MonoBehaviour:
@@ -843,6 +870,18 @@ MonoBehaviour:
   _animationName: Idle
   loop: 1
   timeScale: 1
+--- !u!114 &2347986475641947230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951668978998060682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8006929507101758754
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +894,7 @@ GameObject:
   - component: {fileID: 4689400927066196361}
   - component: {fileID: 6749982264349520966}
   - component: {fileID: 2522819690155145612}
+  - component: {fileID: 3557444795542081831}
   m_Layer: 0
   m_Name: DownSkeleton
   m_TagString: Untagged
@@ -925,7 +965,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2522819690155145612
 MonoBehaviour:
@@ -967,3 +1007,15 @@ MonoBehaviour:
   _animationName: Idle
   loop: 1
   timeScale: 1
+--- !u!114 &3557444795542081831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8006929507101758754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -78,23 +78,21 @@ MonoBehaviour:
     HourglassLife: 50
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   - Time: 50
     HourglassLife: 50
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   - Time: 50
     HourglassLife: 50
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0
-    DEBUGLossXsec: 0
   PlayerLockTime: 0.3
   LockTime: 0.5
   Invincible: 0
   KnockBackResistance: 100
   DamageReductionPerc: 0
   DamageReduction: 0
+  vfxToSpawnOnDamage: {fileID: 0}
 --- !u!114 &13796407790351450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +150,7 @@ GameObject:
   - component: {fileID: 13796407897410227}
   - component: {fileID: 13796407897410226}
   - component: {fileID: 13796407897410225}
+  - component: {fileID: 6561461456976530897}
   m_Layer: 0
   m_Name: Spine GameObject (boss side)
   m_TagString: Untagged
@@ -222,7 +221,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 19
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &13796407897410225
 MonoBehaviour:
@@ -264,6 +263,18 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &6561461456976530897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13796407897410239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &13796407967421577
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +324,7 @@ GameObject:
   - component: {fileID: 13796408273586666}
   - component: {fileID: 13796408273586665}
   - component: {fileID: 13796408273586664}
+  - component: {fileID: 7739532921896735589}
   m_Layer: 7
   m_Name: Spine GameObject (Boss front)
   m_TagString: Untagged
@@ -383,7 +395,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 19
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &13796408273586664
 MonoBehaviour:
@@ -425,6 +437,18 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &7739532921896735589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13796408273586678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &13796408278993749
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +461,7 @@ GameObject:
   - component: {fileID: 13796408278993737}
   - component: {fileID: 13796408278993736}
   - component: {fileID: 13796408278993751}
+  - component: {fileID: 8881460885152331839}
   m_Layer: 0
   m_Name: Spine GameObject (boss side) (1)
   m_TagString: Untagged
@@ -507,7 +532,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 19
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &13796408278993751
 MonoBehaviour:
@@ -549,6 +574,18 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &8881460885152331839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13796408278993749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &13796408554284650
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +638,7 @@ MonoBehaviour:
   Agent: {fileID: 0}
   CurrentDirection: 1
   Stupid: 0
+  SoundToSpawnOnKillPrefab: {fileID: 0}
   enemyType: 7
   FieldOfViewAngle: 360
   FieldOfViewAngleAfterSee: 360
@@ -610,6 +648,9 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   shootingEnemyGraphicsPrefab: {fileID: 0}
   spawnGraphicsOffset: {x: 0, y: 0, z: 0}
+  onKillEnemySceneRef:
+    m_PersistentCalls:
+      m_Calls: []
   DestroyOnKill: 1
   lineColor: {r: 0, g: 0, b: 0, a: 0}
   shootAttackRangeOfViewColor: {r: 0, g: 0, b: 0, a: 0}
@@ -722,6 +763,7 @@ GameObject:
   - component: {fileID: 13796409033229477}
   - component: {fileID: 13796409033229476}
   - component: {fileID: 13796409033229475}
+  - component: {fileID: 8195296768084048176}
   m_Layer: 7
   m_Name: Spine GameObject (boss back)
   m_TagString: Untagged
@@ -792,7 +834,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 19
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &13796409033229475
 MonoBehaviour:
@@ -834,6 +876,18 @@ MonoBehaviour:
   _animationName: 
   loop: 1
   timeScale: 1
+--- !u!114 &8195296768084048176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13796409033229473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6666999f72d150442b42a6c673aab98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &13796409815958514
 GameObject:
   m_ObjectHideFlags: 0
