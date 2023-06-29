@@ -18,7 +18,12 @@ public class PillarHandler : MonoBehaviour
     private void Start()
     {
         if (pillarsList.Count == 0)
+        {
+#if UNITY_EDITOR
+            Debug.Log($"None Pillars detected, destroying this {name}");
+#endif
             Destroy(gameObject);
+        }
     }
 
     //private void Update()

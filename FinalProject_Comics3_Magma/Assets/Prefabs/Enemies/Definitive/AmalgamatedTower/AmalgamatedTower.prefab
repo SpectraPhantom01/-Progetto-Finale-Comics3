@@ -173,7 +173,7 @@ MonoBehaviour:
   Agent: {fileID: 5852271817506438498}
   CurrentDirection: 1
   Stupid: 0
-  SoundToSpawnOnKillPrefab: {fileID: 0}
+  SoundToSpawnOnKillPrefab: {fileID: 6418838848264368311, guid: 1052ba024b2d3ec4ca095d400ed9835e, type: 3}
   enemyType: 2
   FieldOfViewAngle: 360
   FieldOfViewAngleAfterSee: 360
@@ -184,6 +184,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   shootingEnemyGraphicsPrefab: {fileID: 6718147292097491088, guid: fc55abebc940c394c877ee5314a0c842, type: 3}
   spawnGraphicsOffset: {x: -0.27, y: -2.4, z: 0}
+  spawnRotated: 0
   onKillEnemySceneRef:
     m_PersistentCalls:
       m_Calls: []
@@ -548,7 +549,7 @@ MonoBehaviour:
   damagerArea: {fileID: 5412517165411632139}
   _damageableMask:
     serializedVersion: 2
-    m_Bits: 524151
+    m_Bits: 64
   _interactableMask:
     serializedVersion: 2
     m_Bits: 0
@@ -570,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hourglasses:
-  - Time: 5
+  - Time: 30
     HourglassLife: 0
     BaseTimeLoseSand: 0
     MaxSpeedLoseSand: 0

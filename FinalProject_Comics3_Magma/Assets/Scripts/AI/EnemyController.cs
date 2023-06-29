@@ -26,6 +26,7 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] PatrolPath patrolPath;
     [SerializeField] GameObject shootingEnemyGraphicsPrefab;
     [SerializeField] Vector3 spawnGraphicsOffset;
+    [SerializeField] bool spawnRotated;
 
     [Header("Event On Kill")]
     [SerializeField] UnityEvent onKillEnemySceneRef; 
@@ -75,7 +76,7 @@ public class EnemyController : AI, IAliveEntity
 
         if(enemyType == EEnemyType.BasicShootingEnemy)
         {
-            shootingEnemyGraphics = Instantiate(shootingEnemyGraphicsPrefab, transform.position, Quaternion.identity);
+            shootingEnemyGraphics = Instantiate(shootingEnemyGraphicsPrefab, transform.position, spawnRotated ? Quaternion.Euler(0, 180, 0) : Quaternion.identity);
             shootingEnemyGraphics.transform.position += spawnGraphicsOffset;
             onKillEnemy += () => Destroy(shootingEnemyGraphics);
         }

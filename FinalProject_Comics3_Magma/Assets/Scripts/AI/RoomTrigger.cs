@@ -31,15 +31,22 @@ public class RoomTrigger : MonoBehaviour
             Instantiate(sfxToSpawnOnClearRoom, transform.position, Quaternion.identity);
     }
 
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if (playerManager != null)
         {
-            foreach (var enemy in EnemyControllers.Where(e => e != null))
-            {
-                enemy.SetFieldOfView();
-            }
+            SetFieldOfView();
+        }
+    }
+
+    public void SetFieldOfView()
+    {
+        foreach (var enemy in EnemyControllers.Where(e => e != null))
+        {
+            enemy.SetFieldOfView();
         }
     }
 
@@ -48,10 +55,15 @@ public class RoomTrigger : MonoBehaviour
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
         if (playerManager != null)
         {
-            foreach (var enemy in EnemyControllers.Where(e => e != null))
-            {
-                enemy.ResetFieldOfView();
-            }
+            ResetFieldOfView();
+        }
+    }
+
+    private void ResetFieldOfView()
+    {
+        foreach (var enemy in EnemyControllers.Where(e => e != null))
+        {
+            enemy.ResetFieldOfView();
         }
     }
 }

@@ -23,6 +23,8 @@ public class BossController : EnemyController
     [Header("Bullets")]
     [SerializeField] float delayAttackShoot;
     [SerializeField] GameObject bomb;
+    [SerializeField] int minBombs = 2;
+    [SerializeField] int maxBombs = 6;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
     public bool Attacking;
     GameObject targetEnemy;
@@ -67,7 +69,7 @@ public class BossController : EnemyController
         List<Vector3> positions = new();
 
         var rayCircleInside = (distance / 2) / Mathf.Sqrt(2);
-        int count = UnityEngine.Random.Range(2, 6);
+        int count = UnityEngine.Random.Range(minBombs, maxBombs);
         for (int i = 0; i < count; i++)
         {
             var angle = UnityEngine.Random.Range(0, Mathf.PI * 2);

@@ -92,7 +92,7 @@ MonoBehaviour:
   KnockBackResistance: 100
   DamageReductionPerc: 0
   DamageReduction: 0
-  vfxToSpawnOnDamage: {fileID: 0}
+  vfxToSpawnOnDamage: {fileID: 1979589331404243672, guid: b5d83d5fab5ec064f9087429b3ca4996, type: 3}
 --- !u!114 &13796407790351450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,6 +648,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   shootingEnemyGraphicsPrefab: {fileID: 0}
   spawnGraphicsOffset: {x: 0, y: 0, z: 0}
+  spawnRotated: 0
   onKillEnemySceneRef:
     m_PersistentCalls:
       m_Calls: []

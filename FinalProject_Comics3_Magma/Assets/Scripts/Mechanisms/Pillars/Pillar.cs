@@ -15,6 +15,7 @@ public class Pillar : MonoBehaviour
     [SerializeField] bool endless;
     [SerializeField] Color activeColor;
     [SerializeField] Color inactiveColor;
+    [SerializeField] UnityEvent onHitPillar;
     EPillarState pillarState = EPillarState.Active;
     //bool destroyed = false;
 
@@ -43,6 +44,7 @@ public class Pillar : MonoBehaviour
 
             pillarState = EPillarState.Destroyed;
 
+            onHitPillar?.Invoke();
 
             if (!endless)
                 ActiveRoutine();
