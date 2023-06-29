@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -34,6 +35,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     public UIPauseMenu PauseMenu;
     public UIPlayArea UIPlayArea;
+    [SerializeField] GameObject writtenPanel;
+    [SerializeField] TextMeshProUGUI messageText;
     bool pause = false;
     private void Awake()
     {
@@ -51,5 +54,11 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenWrittenPanel(string message)
+    {
+        writtenPanel.SetActive(true);
+        messageText.text = message;
     }
 }
