@@ -31,8 +31,6 @@ public class RoomTrigger : MonoBehaviour
             Instantiate(sfxToSpawnOnClearRoom, transform.position, Quaternion.identity);
     }
 
-    
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerManager playerManager = collision.GetComponentInParent<PlayerManager>();
