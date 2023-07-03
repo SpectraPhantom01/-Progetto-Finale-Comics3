@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Definitive/MainMenu.unity
     guid: 9a4d90023ab8b2149a913bb5d844bf06
   - enabled: 1
-    path: Assets/Scenes/Definitive/Dungeon 1 - Simo.unity
+    path: Assets/Scenes/Definitive/City - Simo.unity
     guid: 629cd21b5b092b54ba553263ab999a0e
   - enabled: 1
     path: Assets/Scenes/Definitive/DungeonSamu.unity
