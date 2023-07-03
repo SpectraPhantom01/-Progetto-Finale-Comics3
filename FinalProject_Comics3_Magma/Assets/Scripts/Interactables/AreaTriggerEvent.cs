@@ -49,6 +49,5 @@ public class AreaTriggerEvent : MonoBehaviour
     public void OpenMessage(string message)
     {
         UIManager.Instance.OpenWrittenPanel(message);
-        Time.timeScale = 0;
     }
 }

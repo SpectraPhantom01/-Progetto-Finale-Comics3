@@ -17,7 +17,7 @@ public class UIKeyObjectsInventory : MonoBehaviour
     PlayerManager _playerManager;
     List<UIButtonAction> _buttonActions;
     UIButtonAction _currentSelected;
-
+    [HideInInspector] public bool IsFirstOpen = true;
 
     private void Awake()
     {
@@ -42,6 +42,12 @@ public class UIKeyObjectsInventory : MonoBehaviour
             var newButton = Instantiate(buttonActionPrefab, gridEquippablePanel.transform);
             newButton.Initialize(inventoryObject, this);
             _buttonActions.Add(newButton);
+        }
+
+        if (IsFirstOpen)
+        {
+            IsFirstOpen = false;
+            UIManager.Instance.OpenWrittenPanel("Here you will find all the Key Objects. These objects will be used by Ethim to access new areas and will disappear once use it.");
         }
     }
     public void SetSelectedObject(Pickable pickable)

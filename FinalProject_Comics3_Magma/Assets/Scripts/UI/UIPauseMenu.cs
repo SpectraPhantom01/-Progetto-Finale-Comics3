@@ -23,9 +23,15 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] GameObject OptionsMenu;
     [SerializeField] Sprite defaultSpriteImage;
     [SerializeField] UIButtonAction[] actionButtons;
+
+    [Header("Messages")]
+    [SerializeField] List<string> messagesOnFirstOpen;
+
     PlayerManager _playerManager;
     List<UIButtonAction> _pickableButtonInInventory;
     UIButtonAction _currentSelected;
+
+    [HideInInspector] public bool IsFirstOpen = true;
     private void Awake()
     {
         _playerManager = GameManager.Instance.Player.GetComponent<PlayerManager>();
@@ -57,6 +63,11 @@ public class UIPauseMenu : MonoBehaviour
             _pickableButtonInInventory.Add(newButton);
         }
 
+        if (IsFirstOpen)
+        {
+            IsFirstOpen = false;
+            Message();
+        }
     }
 
     private void OnDisable()
@@ -76,19 +87,21 @@ public class UIPauseMenu : MonoBehaviour
         }
 
         if (_currentSelected == null || buttonAction.ActionType == EButtonActionType.InventoryObject)
-            SelectButton(buttonAction);
+        {
+            SelectButton(buttonAction); // se ho selezionato un bottone della lista dell'inventario e attualmente non c'è un altro bottone premuto
+        }
         else if (_currentSelected.ActionType == EButtonActionType.InventoryObject && buttonAction.ActionType != EButtonActionType.InventoryObject && !_currentSelected.ObjectInfos.PickableSO.IsKeyObject)
         {
             if (_currentSelected.ObjectInfos.PickableSO.IsConsumable && buttonAction.ActionType == EButtonActionType.ActiveObject)
             {
-                TryEquipSlot(buttonAction);
+                TryEquipSlot(buttonAction); // se l'oggetto è active object
             }
             else if (!_currentSelected.ObjectInfos.PickableSO.IsConsumable && buttonAction.ActionType == EButtonActionType.EquipmentObject)
             {
-                TryEquipSlot(buttonAction);
+                TryEquipSlot(buttonAction); // se l'oggetto è equipment
             }
 
-            SelectButton(buttonAction);
+            SelectButton(buttonAction); 
         }
         else if (buttonAction.ActionType != EButtonActionType.InventoryObject && buttonAction.ObjectInfos != null && buttonAction.ObjectInfos.PickableSO != null)
         {
@@ -223,5 +236,10 @@ public class UIPauseMenu : MonoBehaviour
             else
                 DestroyPickableButton(button);
         }
+    }
+
+    public void Message()
+    {
+        UIManager.Instance.OpenWrittenPanel(messagesOnFirstOpen[0], messagesOnFirstOpen);
     }
 }

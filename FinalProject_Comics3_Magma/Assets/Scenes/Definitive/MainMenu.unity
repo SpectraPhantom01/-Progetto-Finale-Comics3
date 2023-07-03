@@ -6281,6 +6281,7 @@ MonoBehaviour:
   inventorySlots: 30
   equipmentSlots: 2
   activeObjectsSlots: 4
+  logScriptableObject: {fileID: 11400000, guid: 05c798c92ac2bd74a8c1c2c85df0ff20, type: 2}
 --- !u!1001 &3491774807238669782
 PrefabInstance:
   m_ObjectHideFlags: 0
