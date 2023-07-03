@@ -6,10 +6,11 @@ public class UIContinueButton : MonoBehaviour
 {
     public delegate void OnContinueClicked();
     public OnContinueClicked onContinueClicked;
-
+    public GameObject writtenPanel;
     public void Continue()
     {
         onContinueClicked?.Invoke();
         Time.timeScale = 1.0f;
+        writtenPanel.SetActive(false);
     }
 }
