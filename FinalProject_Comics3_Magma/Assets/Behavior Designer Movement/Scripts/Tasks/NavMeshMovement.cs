@@ -33,11 +33,14 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         /// </summary>
         public override void OnStart()
         {
-            navMeshAgent.speed = speed.Value;
-            navMeshAgent.angularSpeed = angularSpeed.Value;
-            navMeshAgent.isStopped = false;
-            startUpdateRotation = navMeshAgent.updateRotation;
-            UpdateRotation(updateRotation.Value);
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.speed = speed.Value;
+                navMeshAgent.angularSpeed = angularSpeed.Value;
+                navMeshAgent.isStopped = false;
+                startUpdateRotation = navMeshAgent.updateRotation;
+                UpdateRotation(updateRotation.Value);
+            }
         }
 
         /// <summary>
@@ -47,7 +50,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         /// <returns>True if the destination is valid.</returns>
         protected override bool SetDestination(Vector3 destination)
         {
-            navMeshAgent.isStopped = false;
+            if (navMeshAgent != null)
+                navMeshAgent.isStopped = false;
             return navMeshAgent.SetDestination(destination);
         }
 
@@ -57,8 +61,11 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         /// <param name="update">Should the rotation be updated?</param>
         protected override void UpdateRotation(bool update)
         {
-            navMeshAgent.updateRotation = update;
-            navMeshAgent.updateUpAxis = update;
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.updateRotation = update;
+                navMeshAgent.updateUpAxis = update;
+            }
         }
 
         /// <summary>
@@ -98,9 +105,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         {
             // The path hasn't been computed yet if the path is pending.
             float remainingDistance;
-            if (navMeshAgent.pathPending) {
+            if (navMeshAgent.pathPending)
+            {
                 remainingDistance = float.PositiveInfinity;
-            } else {
+            }
+            else
+            {
                 remainingDistance = navMeshAgent.remainingDistance;
             }
 
@@ -113,7 +123,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         protected override void Stop()
         {
             UpdateRotation(startUpdateRotation);
-            if (navMeshAgent.hasPath) {
+            if (navMeshAgent.hasPath)
+            {
                 navMeshAgent.isStopped = true;
             }
         }
@@ -123,9 +134,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Movement
         /// </summary>
         public override void OnEnd()
         {
-            if (stopOnTaskEnd.Value) {
+            if (stopOnTaskEnd.Value)
+            {
                 Stop();
-            } else {
+            }
+            else
+            {
                 UpdateRotation(startUpdateRotation);
             }
         }

@@ -241,6 +241,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   shootingEnemyGraphicsPrefab: {fileID: 0}
   spawnGraphicsOffset: {x: 0, y: 0, z: 0}
+  spawnRotated: 0
   onKillEnemySceneRef:
     m_PersistentCalls:
       m_Calls: []
@@ -573,7 +574,7 @@ MonoBehaviour:
   PlayerLockTime: 0.1
   LockTime: 0.5
   Invincible: 0
-  KnockBackResistance: 50
+  KnockBackResistance: 100
   DamageReductionPerc: 0
   DamageReduction: 0
   vfxToSpawnOnDamage: {fileID: 1979589331404243672, guid: b5d83d5fab5ec064f9087429b3ca4996, type: 3}
