@@ -23,7 +23,8 @@ public class Alchemic : EnemyController
 
     private void Update()
     {
-        CurrentDirection = Agent.velocity.CalculateDirection(CurrentDirection);
+        if(Agent != null)
+            CurrentDirection = Agent.velocity.CalculateDirection(CurrentDirection);
 
         HandleSkeletonRotation();
         if (!Attacking)
@@ -46,7 +47,9 @@ public class Alchemic : EnemyController
     public override void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         base.Initialize(targetBehaviorVariable, playerTarget);
-        BehaviorTree.SetVariableValue("AlchemicController", gameObject);
+
+        if(BehaviorTree != null)
+            BehaviorTree.SetVariableValue("AlchemicController", gameObject);
         _currentSkeleton = downSkeleton;
         _currentSkeleton.state.SetAnimation(0, idle, true);
     }
@@ -65,9 +68,11 @@ public class Alchemic : EnemyController
 
     private IEnumerator DisableBehavior()
     {
-        BehaviorTree.enabled = false;
+        if (BehaviorTree != null)
+            BehaviorTree.enabled = false;
         yield return new WaitForSeconds(2f);
-        BehaviorTree.enabled = true;
+        if (BehaviorTree != null)
+            BehaviorTree.enabled = true;
 
     }
 
