@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 1742177943356337878}
   - component: {fileID: 1742177943356337873}
   - component: {fileID: 1742177943356337872}
+  - component: {fileID: 4047007919233319334}
   m_Layer: 5
   m_Name: LevelManager
   m_TagString: Untagged
@@ -341,6 +342,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   errorPanel: {fileID: 5443694574113835233}
   errorText: {fileID: 2623457799623771454}
+  animator: {fileID: 4047007919233319334}
+--- !u!95 &4047007919233319334
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742177943356337875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d808de68792fdb468c08b5325977ddd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1742177943525120628
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.62352943}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

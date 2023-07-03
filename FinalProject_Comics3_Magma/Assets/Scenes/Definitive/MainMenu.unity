@@ -6151,6 +6151,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1742177941623652742, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742177941623652742, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
       propertyPath: m_fontColor.b
       value: 0.11091134
       objectReference: {fileID: 0}
@@ -6166,6 +6170,14 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4280032480
       objectReference: {fileID: 0}
+    - target: {fileID: 1742177942072853712, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742177943356337872, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1234133487279679431}
     - target: {fileID: 1742177943356337875, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
       propertyPath: m_Name
       value: LevelManager (1)
@@ -6258,6 +6270,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1742177943525120634, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742177943525120634, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: d75f8db78f74b0e46b9e259a8f87a80a, type: 3}
+    - target: {fileID: 1742177943525120634, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
 --- !u!1 &1234133487279679425 stripped
@@ -6282,6 +6306,11 @@ MonoBehaviour:
   equipmentSlots: 2
   activeObjectsSlots: 4
   logScriptableObject: {fileID: 11400000, guid: 05c798c92ac2bd74a8c1c2c85df0ff20, type: 2}
+--- !u!95 &1234133487279679431 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4047007919233319334, guid: 2fd6954f98431934b91245d7eafb10dd, type: 3}
+  m_PrefabInstance: {fileID: 1234133487279679424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3491774807238669782
 PrefabInstance:
   m_ObjectHideFlags: 0

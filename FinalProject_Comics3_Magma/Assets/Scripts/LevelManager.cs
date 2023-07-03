@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] GameObject errorPanel;
     [SerializeField] TextMeshProUGUI errorText;
-
+    [SerializeField] Animator animator;
     GameObject loaderCanvas;
     Image progressBar;
     float _target;
@@ -54,6 +54,15 @@ public class LevelManager : MonoBehaviour
         await Task.Delay(1000);
 
         scene.allowSceneActivation = true;
+
+        await Task.Delay(2000);
+
+        animator.SetTrigger("Close");
+    }
+
+    public void CloseCanvas()
+    {
+
         loaderCanvas.SetActive(false);
     }
 
