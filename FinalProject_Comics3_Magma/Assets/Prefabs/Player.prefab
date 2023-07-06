@@ -586,7 +586,7 @@ MonoBehaviour:
   dashingTime: 0.3
   dashingCooldown: 0.25
   ghostPrefab: {fileID: 2087631721950435330, guid: faf264dc60018ad4a941df9dd89eb412, type: 3}
-  ghostLifeTime: 4
+  ghostLifeTime: 8
   rewindCooldown: 1
   attackPoint: {fileID: 960920955020320483}
   AttackPosition: {fileID: 8474878009925126730}

@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Volume globalVolume;
     [SerializeField] float speedGhostEffect = 0.001f;
+    [SerializeField] float weightSpeed = 0.001f;
     // Corrected Variables
     private InputSystem inputSystem;
     private GhostManager ghostManager;
@@ -144,12 +145,17 @@ public class GameManager : MonoBehaviour
     private IEnumerator GhostEffect()
     {
         globalVolume.profile.TryGet<ChromaticAberration>(out var type);
+        globalVolume.weight = 1;
+
+        var ghostTime = playerController.GetGhostLifeTime();
+
         float intensity = 0.5f;
         bool goingUp = true;
         bool goingDown = false;
         while (true)
         {
             type.intensity.Override(intensity);
+            globalVolume.weight = Mathf.Lerp(globalVolume.weight, 0, weightSpeed);
             yield return null;
 
             if(goingDown)
@@ -207,7 +213,7 @@ public class GameManager : MonoBehaviour
             GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementStart);
         }
 
-        if (/*!playerController.IsDashing */ playerController.CanMove)
+        if ( playerController.CanMove)
         {
             playerController.StateMachine.SetState(EPlayerState.Walking);           
         }      
