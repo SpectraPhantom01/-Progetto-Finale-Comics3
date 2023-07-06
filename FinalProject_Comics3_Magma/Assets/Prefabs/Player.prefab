@@ -588,6 +588,7 @@ MonoBehaviour:
   ghostPrefab: {fileID: 2087631721950435330, guid: faf264dc60018ad4a941df9dd89eb412, type: 3}
   ghostLifeTime: 8
   rewindCooldown: 1
+  playerGhostPrefab: {fileID: 2087631721950435330, guid: 8ca61f6dace221c4681685802271572f, type: 3}
   attackPoint: {fileID: 960920955020320483}
   AttackPosition: {fileID: 8474878009925126730}
   audioSource: {fileID: 5342880442482358570}

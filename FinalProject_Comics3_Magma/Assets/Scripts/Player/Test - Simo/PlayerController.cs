@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerController ghostPrefab;
     [SerializeField] float ghostLifeTime;
     public float rewindCooldown;
+    [Tooltip("This prefab will follow the player but won't do any damage")]
+    [SerializeField] PlayerController playerGhostPrefab;
 
     [Space(10)]
     [SerializeField] Transform attackPoint;
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
     public PlayerManager PlayerManager => _playerManager;
     public PlayerManager Father;
     public bool ImGhost { get; set; } = false;
+    public bool FakeGhost { get; set; } = false;
     public List<Vector2> GhostPositions { get => ghostPositions; }
 
     private void Awake()
@@ -118,10 +121,11 @@ public class PlayerController : MonoBehaviour
         StateMachine.OnFixedUpdate();
     }
 
-    public void Initialize(bool isGhost, PlayerManager playerManager)
+    public void Initialize(bool isGhost, PlayerManager playerManager, bool fakeGhost)
     {
         ImGhost = isGhost;
         Father = playerManager;
+        FakeGhost = fakeGhost;
     }
 
     private void MoveDirection()
@@ -194,7 +198,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            InstantiateGhost(transform.localPosition);
+            InstantiateGhost(transform.localPosition, true);
         }
 
         ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime())); 
@@ -212,13 +216,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void InstantiateGhost(Vector2 position)
+    private void InstantiateGhost(Vector2 position, bool alone = false)
     {
         instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
-        instantiatedGhost.Initialize(true, PlayerManager);
+        instantiatedGhost.Initialize(true, PlayerManager, false);
 
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
+
+        if (!alone)
+        {
+            var playerGhost = Instantiate(playerGhostPrefab, position, Quaternion.Euler(-90, 0, 0));
+            playerGhost.Initialize(true, PlayerManager, true);
+
+            playerGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
+            playerGhost.lastDirection = lastDirection;
+
+            GameManager.Instance.PlayerGhostControllerList.Add(playerGhost);
+        }
 
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
@@ -309,7 +324,7 @@ public class PlayerController : MonoBehaviour
                 Damager.SearchInteractable();
             }
         }
-        else
+        else if(!FakeGhost)
         {
             StateMachine.SetState(EPlayerState.Attacking);
             Damager.Attack();

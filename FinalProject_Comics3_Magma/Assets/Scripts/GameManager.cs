@@ -37,9 +37,6 @@ public class GameManager : MonoBehaviour
     //[SerializeField] PlayerManager PlayerPrefab;
     [SerializeField] PlayerController playerController;
 
-    [Header("Enemy Settings")]
-    [SerializeField] EnemyController EnemyPrefab;
-
     [SerializeField] Volume globalVolume;
     [SerializeField] float speedGhostEffect = 0.001f;
     [SerializeField] float weightSpeed = 0.001f;
@@ -49,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     // Properties
     public PlayerController Player => playerController;
-
+    public List<PlayerController> PlayerGhostControllerList;
     public GhostManager GhostManager => ghostManager;
     Coroutine ghostEffect;
     private void Awake()
@@ -58,6 +55,7 @@ public class GameManager : MonoBehaviour
 
         ghostManager = GetComponent<GhostManager>();
         ghostManager.Initialize(playerController);
+        PlayerGhostControllerList = new();
         //if (playerMovement == null)
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
@@ -130,12 +128,13 @@ public class GameManager : MonoBehaviour
     {
         if (playerController.GhostActive)
         {
-
             globalVolume.gameObject.SetActive(true);
             ghostEffect = StartCoroutine(GhostEffect());
         }
         else
         {
+            PlayerGhostControllerList.ForEach(gh => Destroy(gh.gameObject));
+            PlayerGhostControllerList.Clear();
 
             globalVolume.gameObject.SetActive(false);
             StopCoroutine(ghostEffect);
@@ -184,11 +183,14 @@ public class GameManager : MonoBehaviour
         if (playerController.GhostActive)
         {
             GhostManager.RegistraInput(Vector2.zero, InputType.Dash);
+
+            PlayerGhostControllerList.ForEach(pG =>
+            {
+                pG.Dash();
+            });
         }
 
         playerController.Dash();
-
-        //playerController.StateMachine.SetState(EPlayerState.Dashing);
     }
 
     private void Movement_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -196,6 +198,11 @@ public class GameManager : MonoBehaviour
         if (playerController.GhostActive)
         {
             GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementEnd);
+
+            PlayerGhostControllerList.ForEach(pG =>
+            {
+                pG.Direction = obj.ReadValue<Vector2>();
+            });
         }
 
         playerController.Direction = obj.ReadValue<Vector2>();
@@ -211,9 +218,16 @@ public class GameManager : MonoBehaviour
         if (playerController.GhostActive)
         {
             GhostManager.RegistraInput(obj.ReadValue<Vector2>(), InputType.MovementStart);
+
+            PlayerGhostControllerList.ForEach(pG =>
+            {
+                pG.Direction = readedDirection.normalized;
+                pG.lastDirection = readedDirection.normalized;
+                pG.StateMachine.SetState(EPlayerState.Walking);
+            });
         }
 
-        if ( playerController.CanMove)
+        if (playerController.CanMove)
         {
             playerController.StateMachine.SetState(EPlayerState.Walking);           
         }      
@@ -224,6 +238,14 @@ public class GameManager : MonoBehaviour
         if (playerController.GhostActive)
         {
             GhostManager.RegistraInput(Vector2.zero, InputType.Attack);
+
+            PlayerGhostControllerList.ForEach(pG =>
+            {
+                if (!pG.IsAttacking)
+                {
+                    pG.Attack();
+                }
+            });
         }
 
         if(!playerController.IsAttacking) 
