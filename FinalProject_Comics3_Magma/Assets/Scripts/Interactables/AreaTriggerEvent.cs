@@ -43,7 +43,7 @@ public class AreaTriggerEvent : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        LevelManager.Instance.LoadScene(sceneName);
+        GameManager.Instance.ChangeScene(sceneName);
     }
 
     public void OpenMessage(string message)

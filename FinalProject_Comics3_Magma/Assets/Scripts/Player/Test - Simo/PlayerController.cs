@@ -22,8 +22,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ghost Settings")]
     [SerializeField] PlayerController ghostPrefab;
-    public float ghostLifeTime;
+    [SerializeField] float ghostLifeTime;
     public float rewindCooldown;
+    [Tooltip("This prefab will follow the player but won't do any damage")]
+    [SerializeField] PlayerController playerGhostPrefab;
 
     [Space(10)]
     [SerializeField] Transform attackPoint;
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
     public PlayerManager PlayerManager => _playerManager;
     public PlayerManager Father;
     public bool ImGhost { get; set; } = false;
+    public bool FakeGhost { get; set; } = false;
     public List<Vector2> GhostPositions { get => ghostPositions; }
 
     private void Awake()
@@ -118,10 +121,11 @@ public class PlayerController : MonoBehaviour
         StateMachine.OnFixedUpdate();
     }
 
-    public void Initialize(bool isGhost, PlayerManager playerManager)
+    public void Initialize(bool isGhost, PlayerManager playerManager, bool fakeGhost)
     {
         ImGhost = isGhost;
         Father = playerManager;
+        FakeGhost = fakeGhost;
     }
 
     private void MoveDirection()
@@ -157,11 +161,10 @@ public class PlayerController : MonoBehaviour
     //Gestione Dash:
     public void Dash()
     {
-        if (CanDash && Direction.magnitude > 0) //Controllabile volendo anche da GM
+        if (CanDash && Direction.magnitude > 0) 
         {
             PlayRandomSoundOnList(dashAudioList);
             StateMachine.SetState(EPlayerState.Dashing);
-            //StartCoroutine(DashRoutine());
         }
     }
 
@@ -170,19 +173,6 @@ public class PlayerController : MonoBehaviour
         if(!ImGhost)
             audioSource.PlayOneShot(audioClipList[UnityEngine.Random.Range(0, audioClipList.Count)]);
     }
-
-    //public IEnumerator DashRoutine()
-    //{
-    //    CanDash = false;
-    //    IsDashing = true;
-    //    rb.velocity = Direction.normalized * dashingPower;
-
-    //    //Debug.Log("Dash effettuato");
-
-    //    yield return new WaitForSeconds(dashingTime);
-
-    //    StartCoroutine(DashCooldownRoutine());
-    //}
 
     public IEnumerator DashCooldownRoutine()
     {
@@ -199,12 +189,6 @@ public class PlayerController : MonoBehaviour
 
         audioSource.PlayOneShot(activeGhost);
 
-        var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
-        var bonusGhostTime1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[0].EffectInTime : 0 : 0;
-        var bonusGhostTime2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[1].EffectInTime : 0 : 0;
-
-        var ghostTime = ghostLifeTime + bonusGhostTime1 + bonusGhostTime2;
-
         if (ghostPositions.Count > 0)
         {
             foreach (Vector2 position in ghostPositions)
@@ -214,26 +198,42 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            InstantiateGhost(transform.localPosition);
+            InstantiateGhost(transform.localPosition, true);
         }
 
-        //instantiatedGhost = Instantiate(ghostPrefab, transform.localPosition, Quaternion.Euler(-90, 0, 0));
-        //instantiatedGhost.Initialize(true, PlayerManager);
-        //GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
+        ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime())); 
 
-        ghostRoutine = StartCoroutine(GhostRoutine(ghostTime)); // ghostRoutine è una classe Coroutine, non IEnumerator, così la puoi gestire in questo modo
-
-        //GameManager.Instance.GhostManager.StartReadingDistance(instantiatedGhost);
         GameManager.Instance.GhostManager.StartReadingDistance();
     }
 
-    private void InstantiateGhost(Vector2 position)
+    public float GetGhostLifeTime()
+    {
+        var equipments = GetCurrentEquipment(ImGhost ? Father.Inventory : _playerManager?.Inventory);
+        var bonusGhostTime1 = equipments[0] != null ? equipments[0].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[0].EffectInTime : 0 : 0;
+        var bonusGhostTime2 = equipments[1] != null ? equipments[1].PickableEffectType == EPickableEffectType.AddGhostTime ? equipments[1].EffectInTime : 0 : 0;
+
+        return ghostLifeTime + bonusGhostTime1 + bonusGhostTime2;
+
+    }
+
+    private void InstantiateGhost(Vector2 position, bool alone = false)
     {
         instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
-        instantiatedGhost.Initialize(true, PlayerManager);
+        instantiatedGhost.Initialize(true, PlayerManager, false);
 
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
+
+        if (!alone)
+        {
+            var playerGhost = Instantiate(playerGhostPrefab, position, Quaternion.Euler(-90, 0, 0));
+            playerGhost.Initialize(true, PlayerManager, true);
+
+            playerGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
+            playerGhost.lastDirection = lastDirection;
+
+            GameManager.Instance.PlayerGhostControllerList.Add(playerGhost);
+        }
 
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour
         StopCoroutine(ghostRoutine);
         transform.position = instantiatedGhost.transform.position;
         audioSource.PlayOneShot(activeGhost);
-        //DestroyGhost();
+
         GhostActivation();
 
         Listeners?.Invoke();
@@ -268,8 +268,6 @@ public class PlayerController : MonoBehaviour
         CanRewind = false;
         GhostActive = false;
 
-        //Destroy(instantiatedGhost);
-        //instantiatedGhost = null;
 
         GameManager.Instance.GhostManager.ResetGhost();
 
@@ -326,7 +324,7 @@ public class PlayerController : MonoBehaviour
                 Damager.SearchInteractable();
             }
         }
-        else
+        else if(!FakeGhost)
         {
             StateMachine.SetState(EPlayerState.Attacking);
             Damager.Attack();
