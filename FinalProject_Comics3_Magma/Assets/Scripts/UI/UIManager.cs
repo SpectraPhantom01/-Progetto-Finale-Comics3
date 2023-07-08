@@ -87,6 +87,8 @@ public class UIManager : MonoBehaviour
 
         Time.timeScale = 0;
 
+        GameManager.Instance.MessageActive = true;
+
         uiOptions.Add(message);
 
         logSO.Logs.Add(message);
@@ -105,5 +107,10 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         OpenWrittenPanel(message);
+    }
+
+    public void CloseWrittenPanelByContinueButton()
+    {
+        continueButton.Continue();
     }
 }

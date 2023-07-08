@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour
     public PlayerController Player => playerController;
     public List<PlayerController> PlayerGhostControllerList;
     public GhostManager GhostManager => ghostManager;
+
+    public bool MessageActive { get; set; }
+
     Coroutine ghostEffect;
     private void Awake()
     {
@@ -235,6 +238,12 @@ public class GameManager : MonoBehaviour
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (MessageActive)
+        {
+            UIManager.Instance.CloseWrittenPanelByContinueButton();
+            return;
+        }
+
         if (playerController.GhostActive)
         {
             GhostManager.RegistraInput(Vector2.zero, InputType.Attack);

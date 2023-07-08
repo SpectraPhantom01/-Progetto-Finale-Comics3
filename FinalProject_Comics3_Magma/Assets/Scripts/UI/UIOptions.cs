@@ -25,6 +25,7 @@ public class UIOptions : MonoBehaviour
     public void Add(string message)
     {
         var newText = Instantiate(textPrefab, container);
+        newText.transform.SetAsFirstSibling();
         newText.text = message;
     }
 }
