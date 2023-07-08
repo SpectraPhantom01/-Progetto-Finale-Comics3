@@ -34,7 +34,7 @@ RectTransform:
   - {fileID: 2285304431845720978}
   - {fileID: 5866175332483835972}
   m_Father: {fileID: 7702403423620529456}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -112,8 +112,8 @@ RectTransform:
   m_Children:
   - {fileID: 7783731041066930925}
   - {fileID: 2033624761730236246}
-  - {fileID: 7186274500434014509}
   - {fileID: 7155210135429989989}
+  - {fileID: 7186274500434014509}
   m_Father: {fileID: 5234018147030928422}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd89f70def7f26445877433902f0d26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveBoolOpened: {fileID: 11400000, guid: 2ee15f6c9ce3dcc4dbe39bb83eadbd69, type: 2}
   container: {fileID: 3502145513443001017}
   textPrefab: {fileID: 5534959880800447296, guid: b5b93cc5daeecb14cad987fa5e9cb535, type: 3}
-  IsFirstOpen: 1
 --- !u!1 &198929263010505890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,13 +3334,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76dc9203104706b43b595002065d085e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveBoolOpened: {fileID: 11400000, guid: c023240082906cb43bec787c60d75681, type: 2}
   buttonActionPrefab: {fileID: 1256022385582560826, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
   gridEquippablePanel: {fileID: 7989221787347070438}
   selectedObjectImage: {fileID: 2815682864020185401}
   objectTitle: {fileID: 5694154815611483868}
   objectType: {fileID: 8032929515499896025}
   objectDescription: {fileID: 80774251485577329}
-  IsFirstOpen: 1
 --- !u!1 &4285098155201512719
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,7 +4317,7 @@ RectTransform:
   m_Children:
   - {fileID: 1248094438143657338}
   m_Father: {fileID: 7702403423620529456}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.6657085, y: 0.8645186}
@@ -5002,6 +5002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18dfb1824ddd3e6449eaf787b80872cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveBoolOpened: {fileID: 11400000, guid: 2679daec62f4e2d49ad5adf3afa8c434, type: 2}
   buttonActionPrefab: {fileID: 1256022385582560826, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
   gridEquippablePanel: {fileID: 5234018146820728662}
   selectedObjectImage: {fileID: 5234018148865311185}
@@ -5028,7 +5029,6 @@ MonoBehaviour:
   - 'Active Objects: these are consumable objects and will disappear when the quantity
     will reach the 0. In game you can use the faster by typing the numbers on the
     keyboard from 1 to 4'
-  IsFirstOpen: 1
 --- !u!1 &5234018147109552705
 GameObject:
   m_ObjectHideFlags: 0

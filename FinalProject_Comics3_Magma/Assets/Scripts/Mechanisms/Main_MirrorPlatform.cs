@@ -29,6 +29,7 @@ public class Main_MirrorPlatform : MonoBehaviour
             }
 
             player.GhostPositions.Add(transform.position);
+            // TODO: ASSICURARSI LA POSIZIONE INIZIALE DEL PLAYER IN UN'ALTRA MANIERA E SPOSTARE QUESTA CHIAMATA SOPRA IL FOREACH
         }
     }
 

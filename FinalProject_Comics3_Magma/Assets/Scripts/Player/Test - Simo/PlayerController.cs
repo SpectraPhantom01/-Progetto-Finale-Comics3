@@ -191,14 +191,14 @@ public class PlayerController : MonoBehaviour
 
         if (ghostPositions.Count > 0)
         {
-            foreach (Vector2 position in ghostPositions)
+            for (int i = 0; i < ghostPositions.Count; i++)
             {
-                InstantiateGhost(position);
+                InstantiateGhost(ghostPositions[i], i);
             }
         }
         else
         {
-            InstantiateGhost(transform.localPosition, true);
+            InstantiateGhost(transform.localPosition, 0);
         }
 
         ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime())); 
@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void InstantiateGhost(Vector2 position, bool alone = false)
+    private void InstantiateGhost(Vector2 position, int index)
     {
         instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager, false);
@@ -224,8 +224,8 @@ public class PlayerController : MonoBehaviour
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
 
-        if (!alone)
-        {
+        //if (index > 0)
+        //{
             var playerGhost = Instantiate(playerGhostPrefab, position, Quaternion.Euler(-90, 0, 0));
             playerGhost.Initialize(true, PlayerManager, true);
 
@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
             playerGhost.lastDirection = lastDirection;
 
             GameManager.Instance.PlayerGhostControllerList.Add(playerGhost);
-        }
+        //}
 
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
@@ -342,7 +342,8 @@ public class PlayerController : MonoBehaviour
 
     public void EquipAttack(EAttackType eAttackType)
     {
-        Damager.EquipAttack(eAttackType);
+        if(!FakeGhost)
+            Damager.EquipAttack(eAttackType);
     }
 
     public bool TryPickUp()

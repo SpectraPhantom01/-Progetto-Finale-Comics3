@@ -8,15 +8,16 @@ using UnityEngine;
 
 public class UIOptions : MonoBehaviour
 {
+    [Header("Openable")]
+    [SerializeField] UISaveBool saveBoolOpened;
     [SerializeField] Transform container;
     [SerializeField] TextMeshProUGUI textPrefab;
-    [HideInInspector] public bool IsFirstOpen = true;
 
     private void OnEnable()
     {
-        if (IsFirstOpen)
+        if (!saveBoolOpened.OpenedOnce)
         {
-            IsFirstOpen = false;
+            saveBoolOpened.OpenedOnce = true;
             UIManager.Instance.OpenWrittenPanel("Here you can active or deactive the sound, exit the game and read all the logs you've opened until now");
         }
     }

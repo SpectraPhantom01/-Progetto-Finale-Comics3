@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIPauseMenu : MonoBehaviour
 {
+    [Header("Openable")]
+    [SerializeField] UISaveBool saveBoolOpened;
+
     [SerializeField] UIButtonAction buttonActionPrefab;
     [SerializeField] GameObject gridEquippablePanel;
 
@@ -31,7 +34,7 @@ public class UIPauseMenu : MonoBehaviour
     List<UIButtonAction> _pickableButtonInInventory;
     UIButtonAction _currentSelected;
 
-    [HideInInspector] public bool IsFirstOpen = true;
+
     private void Awake()
     {
         _playerManager = GameManager.Instance.Player.GetComponent<PlayerManager>();
@@ -63,9 +66,9 @@ public class UIPauseMenu : MonoBehaviour
             _pickableButtonInInventory.Add(newButton);
         }
 
-        if (IsFirstOpen)
+        if (!saveBoolOpened.OpenedOnce)
         {
-            IsFirstOpen = false;
+            saveBoolOpened.OpenedOnce = true;
             Message();
         }
     }
