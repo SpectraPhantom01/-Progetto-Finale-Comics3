@@ -19,4 +19,14 @@ public class UIDialoguePanel : MonoBehaviour
         else
             onEnd.Invoke();
     }
+
+    private void OnEnable()
+    {
+        GameManager.Instance.DialogueMessageActive = true;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.DialogueMessageActive = false;
+    }
 }

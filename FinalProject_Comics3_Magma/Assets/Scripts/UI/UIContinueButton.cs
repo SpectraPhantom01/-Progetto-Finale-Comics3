@@ -7,10 +7,10 @@ public class UIContinueButton : MonoBehaviour
     public delegate void OnContinueClicked();
     public OnContinueClicked onContinueClicked;
     public GameObject writtenPanel;
-    public void Continue()
+    public void Continue(bool gamePaused = false)
     {
         onContinueClicked?.Invoke();
-        Time.timeScale = 1.0f;
+        Time.timeScale = gamePaused ? 0 : 1.0f;
         writtenPanel.SetActive(false);
     }
 }

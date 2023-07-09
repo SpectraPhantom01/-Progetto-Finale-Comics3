@@ -17,7 +17,21 @@
             base.OnAwake();
 
             Damager = GetDefaultGameObject(targetGameObject.Value).SearchComponent<Damager>();
+            if(Damager == null)
+            {
+                Damager = GetDefaultGameObject(targetGameObject.Value).SearchComponent<EnemyController>().Damager;
+            }
             BossController = GetDefaultGameObject(targetGameObject.Value).SearchComponent<BossController>();
+        }
+
+        public override void OnStart()
+        {
+            base.OnStart();
+            Damager = GetDefaultGameObject(targetGameObject.Value).SearchComponent<Damager>();
+            if (Damager == null)
+            {
+                Damager = GetDefaultGameObject(targetGameObject.Value).SearchComponent<EnemyController>().Damager;
+            }
         }
 
         public override TaskStatus OnUpdate()
@@ -26,6 +40,9 @@
             {
                 string passedString = value.Value.ToUpper();
                 //GetDefaultGameObject(targetGameObject.Value).SendMessage(message.Value, value.Value.value.GetValue());
+
+                if(Damager == null)
+                    Damager = GetDefaultGameObject(targetGameObject.Value).SearchComponent<EnemyController>().Damager;
 
                 if (passedString == "MELEE")
                 {

@@ -18,6 +18,7 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] public float FieldOfViewAngle;
     [SerializeField] public float FieldOfViewAngleAfterSee;
     [SerializeField] public float FieldOfViewDistance;
+    [SerializeField] Transform cannonShootArea;
 
     [Header("Attack types must be unique in this list")]
     [SerializeField] List<AttackScriptableObject> attackScriptableObjects;
@@ -36,10 +37,8 @@ public class EnemyController : AI, IAliveEntity
     public string Name => GetName();
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
     public bool DestroyOnKill = true;
-    private Damager _damager;
     private List<Hourglass> initialHourglasses;
     private GameObject shootingEnemyGraphics;
-    public Damager Damager => _damager;
     private string GetName()
     {
         return enemyType switch
@@ -59,9 +58,26 @@ public class EnemyController : AI, IAliveEntity
 
     private void Start()
     {
-        _damager = gameObject.SearchComponent<Damager>();
-
         initialHourglasses = new List<Hourglass>();
+
+        if (enemyType == EEnemyType.BasicShootingEnemy)
+        {
+            shootingEnemyGraphics = Instantiate(shootingEnemyGraphicsPrefab, transform.position, spawnRotated ? Quaternion.Euler(0, 180, 0) : Quaternion.identity);
+            
+            Damager = shootingEnemyGraphics.GetComponentInChildren<Damager>();
+            Damager.Initialize(AttackList, cannonShootArea);
+
+            Damageable = shootingEnemyGraphics.GetComponentInChildren<Damageable>();
+            Damageable.Initialize(this, GetComponent<Rigidbody2D>());
+
+            shootingEnemyGraphics.transform.position += spawnGraphicsOffset;
+            onKillEnemy += () => Destroy(shootingEnemyGraphics);
+        }
+
+
+        if (GameManager.Instance.Player != null)
+            Initialize("Target", GameManager.Instance.Player.gameObject);
+
         foreach (Hourglass hourglass in Damageable.Hourglasses)
         {
             initialHourglasses.Add(new Hourglass(hourglass.Time)
@@ -71,28 +87,13 @@ public class EnemyController : AI, IAliveEntity
                 MaxSpeedLoseSand = hourglass.MaxSpeedLoseSand,
             });
         }
-
-        if (GameManager.Instance.Player != null)
-            Initialize("Target", GameManager.Instance.Player.gameObject);
-
-        if(enemyType == EEnemyType.BasicShootingEnemy)
-        {
-            shootingEnemyGraphics = Instantiate(shootingEnemyGraphicsPrefab, transform.position, spawnRotated ? Quaternion.Euler(0, 180, 0) : Quaternion.identity);
-            if (spawnRotated)
-            {
-
-                Damager.GetComponent<BoxCollider2D>().offset = boxColliderOffset;
-            }
-            shootingEnemyGraphics.transform.position += spawnGraphicsOffset;
-            onKillEnemy += () => Destroy(shootingEnemyGraphics);
-        }
     }
 
     public virtual void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         IsAlive = true;
         BehaviorTree.SetVariableValue(targetBehaviorVariable, playerTarget);
-        BehaviorTree.SetVariableValue("Damager", _damager.gameObject);
+        BehaviorTree.SetVariableValue("Damager", Damager.gameObject);
         switch (enemyType)
         {
             case EEnemyType.DefensiveGolem:

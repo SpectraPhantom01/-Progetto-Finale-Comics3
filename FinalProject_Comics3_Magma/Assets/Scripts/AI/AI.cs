@@ -10,7 +10,8 @@ public class AI : MonoBehaviour
     [HideInInspector] public NavMeshAgent Agent;
     [HideInInspector] public EDirection CurrentDirection = EDirection.Down;
     public bool Stupid;
-    public Damageable Damageable { get; private set; }
+    public Damageable Damageable { get; set; }
+    public Damager Damager { get; set; }
 
     [Header("SFX")]
     public GameObject SoundToSpawnOnKillPrefab;
@@ -25,7 +26,9 @@ public class AI : MonoBehaviour
                 BehaviorTree.SetVariableValue("StoppingDistance", Agent.stoppingDistance);
             }
 
+            Damager = gameObject.SearchComponent<Damager>();
             Damageable = gameObject.SearchComponent<Damageable>();
+
         }
     }
     private void Update()

@@ -181,6 +181,13 @@ public class Damager : MonoBehaviour
         damageable.Damage(damage, attack.KnockBack, -(transform.position - damageable.transform.position).normalized, attack.HourglassPercentageDamageAmount);
     }
 
+    public void Initialize(List<AttackScriptableObject> attackList, Transform damagerArea)
+    {
+        
+        this.damagerArea = damagerArea;
+        _attackList = attackList;
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

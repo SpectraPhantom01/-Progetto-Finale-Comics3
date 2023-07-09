@@ -40,8 +40,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIOptions uiOptions;
     [SerializeField] UIContinueButton continueButton;
     [SerializeField] LogScriptableObject logSO;
+    [SerializeField] UIDialoguePanel dialoguePanel;
     bool pause = false;
-
+    int indexMessage = 0;
     private List<string> logs;
     private void Awake()
     {
@@ -70,6 +71,8 @@ public class UIManager : MonoBehaviour
     {
         pause = !pause;
 
+        GameManager.Instance.EnableCursor(pause);
+
         Time.timeScale = pause ? 0 : 1;
 
         pauseMenu.SetActive(pause);
@@ -96,6 +99,7 @@ public class UIManager : MonoBehaviour
         if(nextMessages != null && nextMessages.Count > 1)
         {
             List<Coroutine> messagesCoroutine = new();
+            indexMessage = nextMessages.Count - 1;
             for (int i = 1; i < nextMessages.Count; i++)
             {
                 messagesCoroutine.Add(StartCoroutine(NextMessageCoroutine(i * 0.3f, nextMessages[i])));
@@ -109,8 +113,24 @@ public class UIManager : MonoBehaviour
         OpenWrittenPanel(message);
     }
 
-    public void CloseWrittenPanelByContinueButton()
+    public bool CloseWrittenPanelByContinueButton()
     {
-        continueButton.Continue();
+        if (!writtenPanel.activeSelf)
+            return false;
+
+        if (indexMessage > 0)
+        {
+            continueButton.Continue();
+            indexMessage -= 1;
+        }
+        else
+            continueButton.Continue(pause);
+
+        return true;
+    }
+
+    public void NextDialogue()
+    {
+        dialoguePanel.Next();
     }
 }

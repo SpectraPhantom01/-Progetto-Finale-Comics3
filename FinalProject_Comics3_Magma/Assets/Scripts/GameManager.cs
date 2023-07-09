@@ -50,11 +50,15 @@ public class GameManager : MonoBehaviour
     public GhostManager GhostManager => ghostManager;
 
     public bool MessageActive { get; set; }
+    public bool DialogueMessageActive { get; set; }
 
     Coroutine ghostEffect;
     private void Awake()
     {
         instance = this;
+
+        playerController ??= FindObjectOfType<PlayerController>(true);
+        globalVolume ??= FindObjectOfType<Volume>(true);
 
         ghostManager = GetComponent<GhostManager>();
         ghostManager.Initialize(playerController);
@@ -80,6 +84,7 @@ public class GameManager : MonoBehaviour
         inputSystem.Player.ActiveObjectFour.performed += ActiveObjectFourPerformed;
         // END INPUT SYSTEM
 
+        EnableCursor(false);
     }
 
     private void ActiveObjectOnePerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -240,7 +245,13 @@ public class GameManager : MonoBehaviour
     {
         if (MessageActive)
         {
-            UIManager.Instance.CloseWrittenPanelByContinueButton();
+            if(UIManager.Instance.CloseWrittenPanelByContinueButton())
+                return;
+        }
+
+        if (DialogueMessageActive)
+        {
+            UIManager.Instance.NextDialogue();
             return;
         }
 
@@ -267,13 +278,31 @@ public class GameManager : MonoBehaviour
         if (enable)
             inputSystem.Player.Enable();
         else
-            inputSystem.Player.Disable();
+        {
+            inputSystem.Player.Movement.Disable();
+            inputSystem.Player.MovementWASD.Disable();
+
+            inputSystem.Player.Dash.Disable();
+            inputSystem.Player.Rewind.Disable();
+            inputSystem.Player.Pause.Disable();
+            inputSystem.Player.ActiveObjectOne.Disable();
+            inputSystem.Player.ActiveObjectTwo.Disable();
+            inputSystem.Player.ActiveObjectThree.Disable();
+            inputSystem.Player.ActiveObjectFour.Disable();
+        }
     }
 
     public void ChangeScene(string sceneName)
     {
         EnablePlayerInputs(false);
+        inputSystem.Player.Attack.Disable();
+        Destroy(gameObject, 0.1f);
         LevelManager.Instance.LoadScene(sceneName);
-        Destroy(gameObject);
+    }
+
+    public void EnableCursor(bool enabled)
+    {
+        Cursor.lockState = enabled ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = enabled;
     }
 }

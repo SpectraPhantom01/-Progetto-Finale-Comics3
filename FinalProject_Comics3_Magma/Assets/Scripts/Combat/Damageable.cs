@@ -73,8 +73,15 @@ public class Damageable : MonoBehaviour
 
         _currentHourglass = hourglasses.First();
         _currentTimeLife = _currentHourglass.Time;
-        _entity = gameObject.SearchComponent<IAliveEntity>();
 
+        _entity ??= gameObject.SearchComponent<IAliveEntity>();
+
+    }
+
+    public void Initialize(IAliveEntity entity, Rigidbody2D rigidbody)
+    {
+        _entity = entity;
+        _rigidBody = rigidbody;
     }
 
     public void Damage(float amount, float knockBack, Vector2 direction, float hourglassPercentageDamage)
@@ -285,5 +292,24 @@ public class Damageable : MonoBehaviour
         Instantiate(vfxToSpawnOnDamage, transform.position, Quaternion.identity);
     }
 
+    public float GetTotalLifeTime()
+    {
+        float lifeTime = 0;
+        foreach (var hourglass in Hourglasses)
+        {
+            lifeTime += hourglass.Time;
+        }
+        return lifeTime;
+    }
 
+    public float GetRelativeTotalLifeTime()
+    {
+        float lifeTime = CurrentTimeLife;
+        for (int i = 1; i < Hourglasses.Count; i++)
+        {
+            Hourglass hourglass = Hourglasses[i];
+            lifeTime += hourglass.Time;
+        }
+        return lifeTime;
+    }
 }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a957ef394df9a3428c71c0a83da8226, type: 3}
   m_Name: PauseMenu
   m_EditorClassIdentifier: 
-  OpenedOnce: 0
+  OpenedOnce: 1

@@ -21,6 +21,6 @@ MonoBehaviour:
   MeleeAttackType: 0
   ShootingAttackType: 1
   SpellPrefab: {fileID: 6666794590657639054, guid: e89d21d364c594c42983276428c44519, type: 3}
-  shootAttackRangeOfView: 100
+  shootAttackRangeOfView: 500
   bulletFixedSpeed: 400
   bulletLifeTime: 6

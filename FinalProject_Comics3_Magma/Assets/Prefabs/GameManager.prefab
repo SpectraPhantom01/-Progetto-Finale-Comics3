@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
-  EnemyPrefab: {fileID: 0}
   globalVolume: {fileID: 0}
-  speedGhostEffect: 0.01
-  weightSpeed: 0.01
+  speedGhostEffect: 0.003
+  weightSpeed: 0.004
+  PlayerGhostControllerList: []
 --- !u!114 &7769003773320941112
 MonoBehaviour:
   m_ObjectHideFlags: 0

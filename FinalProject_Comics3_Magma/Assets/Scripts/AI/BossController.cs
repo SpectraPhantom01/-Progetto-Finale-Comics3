@@ -1,8 +1,10 @@
+using Cinemachine;
 using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : EnemyController
 {
@@ -25,10 +27,15 @@ public class BossController : EnemyController
     [SerializeField] GameObject bomb;
     [SerializeField] int minBombs = 2;
     [SerializeField] int maxBombs = 6;
+    [Header("Refs")]
+    [SerializeField] GameObject lifeSliderPanel;
+    [SerializeField] Slider lifeSlider;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
     public bool Attacking;
     GameObject targetEnemy;
-
+    float initialtotalLife;
+    AudioSource _explosionAudioSource;
+    CinemachineImpulseSource _impulseSource;
     public override void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         base.Initialize(targetBehaviorVariable, playerTarget);
@@ -39,6 +46,19 @@ public class BossController : EnemyController
         targetEnemy = GameManager.Instance.Player.gameObject;
 
         Damager.EquipAttack(EAttackType.Shoot);
+
+        initialtotalLife = Damageable.GetTotalLifeTime();
+
+        Damageable.onGetDamage += () =>
+        {
+            var percent = Damageable.GetRelativeTotalLifeTime() / initialtotalLife;
+            lifeSlider.value = percent;
+        };
+
+        onKillEnemy += () => lifeSliderPanel.SetActive(false);
+
+        _explosionAudioSource = GetComponent<AudioSource>();
+        _impulseSource = GetComponent<CinemachineImpulseSource>();
     }
     public void AttackShoot()
     {
@@ -76,7 +96,10 @@ public class BossController : EnemyController
             positions.Add(new Vector3(rayCircleInside * Mathf.Cos(angle) , rayCircleInside * Mathf.Sin(angle), 0));
         }
 
-        Destroy(Instantiate(bomb, targetEnemy.transform.position, Quaternion.identity), 7.5f);
+        var bombOnPlayer = Instantiate(bomb, targetEnemy.transform.position, Quaternion.identity);
+        bombOnPlayer.GetComponent<BombVFX>().onExplosion += PlayBombSound;
+        bombOnPlayer.GetComponent<BombVFX>().onExplosion += ShakeCamera;
+        Destroy(bombOnPlayer, 7.5f);
 
         foreach (var pos in positions)
         {
@@ -88,6 +111,16 @@ public class BossController : EnemyController
         _currentSkeleton.state.SetAnimation(0, bombAttack, false);
 
         StartCoroutine(WaitAnimation(bombAttackAnimationTime));
+    }
+
+    public void PlayBombSound()
+    {
+        _explosionAudioSource.Play();
+    }
+
+    public void ShakeCamera()
+    {
+        _impulseSource.GenerateImpulse();
     }
 
     private IEnumerator WaitAnimation(float time)

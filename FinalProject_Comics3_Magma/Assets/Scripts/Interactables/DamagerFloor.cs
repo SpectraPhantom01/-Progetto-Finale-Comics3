@@ -30,7 +30,7 @@ public class DamagerFloor : MonoBehaviour
         else
         {
             var enemy = collision.gameObject.SearchComponent<EnemyController>();
-            if (enemy != null)
+            if (enemy != null && enemy.EnemyType != EEnemyType.Boss)
             {
                 enemy.Kill();
             }
@@ -55,7 +55,7 @@ public class DamagerFloor : MonoBehaviour
         else
         {
             var enemy = collision.gameObject.SearchComponent<EnemyController>();
-            if (enemy != null)
+            if (enemy != null && enemy.EnemyType != EEnemyType.Boss)
             {
                 enemy.Kill();
             }
