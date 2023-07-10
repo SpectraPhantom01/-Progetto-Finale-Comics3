@@ -153,9 +153,8 @@ public class BossController : EnemyController
 
     public void SpawnDestroyEffect()
     {
-
         if (SoundToSpawnOnKillPrefab != null)
-            Destroy(Instantiate(SoundToSpawnOnKillPrefab, transform.position, Quaternion.identity), 1.5f);
+            Instantiate(SoundToSpawnOnKillPrefab, transform.position, Quaternion.identity);
     }
 
     public void ShakeCamera()
