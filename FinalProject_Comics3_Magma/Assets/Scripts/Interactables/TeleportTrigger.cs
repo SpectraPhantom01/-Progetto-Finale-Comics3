@@ -20,7 +20,10 @@ public class TeleportTrigger : MonoBehaviour
         var player = collision.gameObject.SearchComponent<PlayerManager>();
         if (player != null)
         {
-            if (ignoreGhost && player.PlayerController.ImGhost)
+            if (player.PlayerController.ImGhost)
+                return;
+
+            if (player.PlayerController.GhostActive)
                 return;
 
             player.Teleport(destinationPoint.position, timeDelayTeleport, vfxOnTeleportPrefab, onTeleportHalfEvent, onTeleportEndEvent);
