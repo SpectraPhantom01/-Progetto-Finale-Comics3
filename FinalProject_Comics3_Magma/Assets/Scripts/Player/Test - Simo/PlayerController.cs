@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<AudioClip> attackAudioList;
     [SerializeField] List<AudioClip> dashAudioList;
     [SerializeField] List<AudioClip> stepAudioList;
+    [SerializeField] List<AudioClip> hitAudioList;
     [SerializeField] float timeBetweenSteps = 0.5f;
 
     [HideInInspector] public Vector2 Direction;
@@ -97,7 +98,10 @@ public class PlayerController : MonoBehaviour
         if (!ImGhost)
         {
             _playerManager.Damageable.onGetDamage += TryDestroyGhost;
+            _playerManager.Damageable.onGetDamage += () => PlayRandomSoundOnList(hitAudioList);
         }
+
+        
     }
 
     private void TryDestroyGhost()

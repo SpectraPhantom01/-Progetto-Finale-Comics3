@@ -40,6 +40,11 @@ public class RoomTrigger : MonoBehaviour
         }
     }
 
+    public void KillAll()
+    {
+        EnemyControllers.Where(e => e != null && e.IsAlive).ToList().ForEach(e => e.Kill());
+    }
+
     public void SetFieldOfView()
     {
         foreach (var enemy in EnemyControllers.Where(e => e != null))

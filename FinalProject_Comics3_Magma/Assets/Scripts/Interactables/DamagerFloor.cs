@@ -62,6 +62,15 @@ public class DamagerFloor : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var enemy = collision.gameObject.SearchComponent<EnemyController>();
+        if (enemy != null && enemy.EnemyType != EEnemyType.Boss)
+        {
+            enemy.Kill();
+        }
+    }
+
     public void SetRespawnpoint(Transform newRespawnPoint)
     {
         respawnPoint = newRespawnPoint;

@@ -31,7 +31,9 @@ public class EnemyController : AI, IAliveEntity
     [SerializeField] Vector2 boxColliderOffset;
 
     [Header("Event On Kill")]
-    [SerializeField] UnityEvent onKillEnemySceneRef; 
+    [SerializeField] UnityEvent onKillEnemySceneRef;
+
+    public UnityEvent OnKillEnemySceneRef => onKillEnemySceneRef;
     public EEnemyType EnemyType => enemyType;
     public bool IsAlive { get; set; }
     public string Name => GetName();
@@ -121,7 +123,7 @@ public class EnemyController : AI, IAliveEntity
     }
 
 
-    public void Kill()
+    public virtual void Kill()
     {
         onKillEnemy?.Invoke();
         onKillEnemySceneRef.Invoke();
@@ -131,8 +133,6 @@ public class EnemyController : AI, IAliveEntity
 
         if (DestroyOnKill)
             Destroy(gameObject);
-        else
-            gameObject.SetActive(false);
     }
 
     public GameObject GetGameObject() => gameObject;

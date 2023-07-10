@@ -50,10 +50,10 @@ MonoBehaviour:
   damagerArea: {fileID: 0}
   _damageableMask:
     serializedVersion: 2
-    m_Bits: 32896
+    m_Bits: 1081472
   _interactableMask:
     serializedVersion: 2
-    m_Bits: 32896
+    m_Bits: 1081472
   hitBox: {x: 1, y: 1}
   triggerDamage: 50
   contactKnockback: 20

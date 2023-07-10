@@ -94,7 +94,10 @@ public class Damageable : MonoBehaviour
         SpawnDamageVFX();
 
         CalculateDamage(amount);
-        _currentHourglass.Damage(hourglassPercentageDamage);
+        if (_currentHourglass != null)
+            _currentHourglass.Damage(hourglassPercentageDamage);
+        else
+            return;
 
         if (_currentTimeLife <= 0)
         {

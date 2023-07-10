@@ -234,6 +234,7 @@ MonoBehaviour:
   FieldOfViewAngle: 360
   FieldOfViewAngleAfterSee: 360
   FieldOfViewDistance: 5
+  cannonShootArea: {fileID: 0}
   attackScriptableObjects:
   - {fileID: 11400000, guid: 9bee4ad59a197dd4cbea0e09eda099e8, type: 2}
   - {fileID: 11400000, guid: d157b5abfc4fb5d4a8c6a2684fe8ba22, type: 2}
@@ -242,6 +243,7 @@ MonoBehaviour:
   shootingEnemyGraphicsPrefab: {fileID: 0}
   spawnGraphicsOffset: {x: 0, y: 0, z: 0}
   spawnRotated: 0
+  boxColliderOffset: {x: 0, y: 0}
   onKillEnemySceneRef:
     m_PersistentCalls:
       m_Calls: []
@@ -361,7 +363,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4654917890698544188}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

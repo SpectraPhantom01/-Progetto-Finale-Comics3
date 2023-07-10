@@ -11,6 +11,8 @@ public class VolumeHandler : MonoBehaviour
 
     public void Fade()
     {
+        if (!gameObject.activeSelf) return;
+
         StartCoroutine(FadeCoroutine());
     }
 

@@ -71,13 +71,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _currentSkeleton = downSkeleton;
         _currentSkeleton.state.SetAnimation(0, idle, true);
 
-        photographInventory = new InventoryStruct(InventoryArray, Inventory.EquipmentSlots, Inventory.ActiveObjectSlots);
 
         if (!_playerController.ImGhost)
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
 
-            
+            photographInventory = new InventoryStruct(InventoryArray, Inventory.EquipmentSlots, Inventory.ActiveObjectSlots);
+
 
             for (int i = 1; i < Damageable.HourglassesCount; i++)
             {

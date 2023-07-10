@@ -274,6 +274,25 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void EnablePlayerInputs(bool enable)
+    {
+        if (enable)
+            inputSystem.Player.Enable();
+        else
+        {
+            inputSystem.Player.Movement.Disable();
+            inputSystem.Player.MovementWASD.Disable();
+
+            inputSystem.Player.Dash.Disable();
+            inputSystem.Player.Rewind.Disable();
+            inputSystem.Player.Pause.Disable();
+            inputSystem.Player.ActiveObjectOne.Disable();
+            inputSystem.Player.ActiveObjectTwo.Disable();
+            inputSystem.Player.ActiveObjectThree.Disable();
+            inputSystem.Player.ActiveObjectFour.Disable();
+        }
+    }
+
     public void EnablePlayerInputs(bool enable, bool overrideAttack = false)
     {
         if (enable)
@@ -291,7 +310,7 @@ public class GameManager : MonoBehaviour
             inputSystem.Player.ActiveObjectThree.Disable();
             inputSystem.Player.ActiveObjectFour.Disable();
 
-            if(overrideAttack)
+            if (overrideAttack)
                 inputSystem.Player.Attack.Disable();
         }
     }

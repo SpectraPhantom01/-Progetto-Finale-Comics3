@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BossController : EnemyController
@@ -30,16 +31,20 @@ public class BossController : EnemyController
     [Header("Refs")]
     [SerializeField] GameObject lifeSliderPanel;
     [SerializeField] Slider lifeSlider;
+    [Header("Fases")]
+    [SerializeField] List<Fase> faseList;
     public SkeletonAnimation CurrentSkeleton => _currentSkeleton;
     public bool Attacking;
     GameObject targetEnemy;
     float initialtotalLife;
     AudioSource _explosionAudioSource;
     CinemachineImpulseSource _impulseSource;
+    int faseIndex;
     public override void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         base.Initialize(targetBehaviorVariable, playerTarget);
 
+        faseIndex = 0;
         BehaviorTree.SetVariableValue("BossController", gameObject);
         _currentSkeleton = downSkeleton;
         _currentSkeleton.state.SetAnimation(0, idle, true);
@@ -51,14 +56,42 @@ public class BossController : EnemyController
 
         Damageable.onGetDamage += () =>
         {
-            var percent = Damageable.GetRelativeTotalLifeTime() / initialtotalLife;
+            var relativeLifeTime = Damageable.GetRelativeTotalLifeTime();
+            var percent = relativeLifeTime / initialtotalLife;
             lifeSlider.value = percent;
+
+            if (faseIndex < faseList.Count && faseList[faseIndex].Life >= relativeLifeTime)
+            {
+                faseList[faseIndex].Event.Invoke();
+                faseIndex++;
+            }
         };
 
         onKillEnemy += () => lifeSliderPanel.SetActive(false);
 
         _explosionAudioSource = GetComponent<AudioSource>();
         _impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
+
+    public override void Kill()
+    {
+        onKillEnemy?.Invoke();
+        OnKillEnemySceneRef.Invoke();
+
+
+    }
+
+    public void DeactiveAll()
+    {
+        Agent.velocity = Vector3.zero;
+        IsAlive = false;
+        BehaviorTree.enabled = false;
+        Agent.enabled = false;
+        Damager.enabled = false;
+        Damageable.enabled = false;
+        this.enabled = false;
+        StopAllCoroutines();
+        Attacking = false;
     }
     public void AttackShoot()
     {
@@ -118,6 +151,13 @@ public class BossController : EnemyController
         _explosionAudioSource.Play();
     }
 
+    public void SpawnDestroyEffect()
+    {
+
+        if (SoundToSpawnOnKillPrefab != null)
+            Destroy(Instantiate(SoundToSpawnOnKillPrefab, transform.position, Quaternion.identity), 1.5f);
+    }
+
     public void ShakeCamera()
     {
         _impulseSource.GenerateImpulse();
@@ -132,6 +172,7 @@ public class BossController : EnemyController
 
     private void Update()
     {
+        if (!IsAlive) return;
 
         CurrentDirection = Agent.velocity.CalculateDirection(CurrentDirection);
 
@@ -221,4 +262,10 @@ public class BossController : EnemyController
 
         }
     }
+}
+[Serializable]
+public class Fase
+{
+    public float Life;
+    public UnityEvent Event;
 }
