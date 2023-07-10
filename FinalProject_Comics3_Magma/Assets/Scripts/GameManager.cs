@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Volume globalVolume;
     [SerializeField] float speedGhostEffect = 0.001f;
     [SerializeField] float weightSpeed = 0.001f;
+    [SerializeField] GameObject cameraGameOver;
     // Corrected Variables
     private InputSystem inputSystem;
     private GhostManager ghostManager;
@@ -273,7 +274,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void EnablePlayerInputs(bool enable)
+    public void EnablePlayerInputs(bool enable, bool overrideAttack = false)
     {
         if (enable)
             inputSystem.Player.Enable();
@@ -289,6 +290,9 @@ public class GameManager : MonoBehaviour
             inputSystem.Player.ActiveObjectTwo.Disable();
             inputSystem.Player.ActiveObjectThree.Disable();
             inputSystem.Player.ActiveObjectFour.Disable();
+
+            if(overrideAttack)
+                inputSystem.Player.Attack.Disable();
         }
     }
 
@@ -304,5 +308,16 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = enabled ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = enabled;
+    }
+
+    public void GameOver()
+    {
+        EnableCursor(true);
+        UIManager.Instance.OpenGameOverPanel();
+    }
+
+    public void EnableCameraGameOver(bool enabled)
+    {
+        cameraGameOver.SetActive(enabled);
     }
 }

@@ -133,4 +133,9 @@ public class UIManager : MonoBehaviour
     {
         dialoguePanel.Next();
     }
+
+    public void OpenGameOverPanel()
+    {
+        UIPlayArea.OpenGameOverPanel();
+    }
 }

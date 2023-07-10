@@ -32,12 +32,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] string dashSword;
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
+    [SerializeField] GameObject deathVFX;
 
     public CheckPoint _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
     public Vector3 CurrentVectorDirection => CurrentDirection switch { EDirection.Up => Vector3.up, EDirection.Down => Vector3.down, EDirection.Left => Vector3.left, EDirection.Right => Vector3.right, _ => Vector3.down };
     public bool IsAlive { get; set; }
-    public string Name => "Etim";
+    public string Name => "Ethim";
     public Damageable Damageable => _damageable;
 
     public List<AttackScriptableObject> AttackList { get => attackScriptableObjects; }
@@ -52,32 +53,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     UIPlayArea _uiPlayArea;
     bool stoppedHourglass = false;
     bool isTeleporting = false;
-    public void Kill()
-    {
 
-        Debug.Log("animazione SEI MORTO!");
-        StartCoroutine(KillCoroutine());
-    }
-
-    public void Respawn(Vector3 position)
-    {
-        transform.position = position;
-    }
-
-    private IEnumerator KillCoroutine()
-    {
-        GameManager.Instance.EnablePlayerInputs(false);
-        _playerController.Rigidbody.velocity = Vector2.zero;
-        _playerController.Direction = Vector2.zero;
-        var collider = gameObject.SearchComponent<Collider2D>();
-        collider.enabled = false;
-        yield return new WaitForSeconds(1);
-
-        Respawn(Vector3.zero);
-        Damageable.Heal(50);
-        GameManager.Instance.EnablePlayerInputs(true);
-        collider.enabled = true;
-    }
+    private InventoryStruct photographInventory;
 
     private void Awake()
     {
@@ -94,6 +71,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         _currentSkeleton = downSkeleton;
         _currentSkeleton.state.SetAnimation(0, idle, true);
 
+        photographInventory = new InventoryStruct(InventoryArray, Inventory.EquipmentSlots, Inventory.ActiveObjectSlots);
 
         if (!_playerController.ImGhost)
         {
@@ -115,13 +93,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     private void Update()
     {
-        if(!_playerController.ImGhost && !stoppedHourglass)
+        if(!_playerController.ImGhost && !stoppedHourglass && IsAlive)
             HandleHourglass();
 
         if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
 
-        if (!isTeleporting)
+        if (!isTeleporting && IsAlive)
         {
             HandleSkeletonRotation();
             HandleSkeletonAnimation();
@@ -135,6 +113,10 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             hourglassTimePassed = 0;
             _damageable.Damage(amountLoseSand);
+
+            if (!IsAlive)
+                return;
+
             var emission = hourglassVFX.emission;
             emission.rateOverTime = 5 + Mathf.Abs(Damageable.CurrentHourglass.HourglassLife - 100);
 
@@ -465,6 +447,38 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         
         return _currentSkeleton.GetComponent<MeshRenderer>().sortingOrder;
     }
+
+    public void Kill()
+    {
+        IsAlive = false;
+        GameManager.Instance.EnablePlayerInputs(false, true);
+        PlayerController.Rigidbody.isKinematic = true;
+        var colliders = GetComponentsInChildren<Collider2D>(true);
+        foreach (var collider in colliders)
+        {
+            collider.enabled = false;
+        }
+        Damageable.enabled = false;
+        PlayerController.Damager.enabled = false;
+
+        Inventory.ActiveObjectSlots = photographInventory.ActiveObjectSlots.ToArray();
+        Inventory.EquipmentSlots = photographInventory.EquipmentSlots.ToArray();
+        Inventory.InventoryObjects = photographInventory.InventoryObjects.ToArray();
+
+        GameManager.Instance.EnableCameraGameOver(true);
+        deathVFX.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        GameManager.Instance.GameOver();
+    }
+
+    public void Respawn(Vector3 position)
+    {
+        transform.position = position;
+    }
+
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

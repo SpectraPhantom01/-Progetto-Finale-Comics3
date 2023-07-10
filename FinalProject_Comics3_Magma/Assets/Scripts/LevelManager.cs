@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -94,5 +95,10 @@ public class LevelManager : MonoBehaviour
     void OnDisable()
     {
         Application.logMessageReceived -= LogCallback;
+    }
+
+    internal void ReloadScene()
+    {
+        LoadScene(SceneManager.GetActiveScene().name);
     }
 }

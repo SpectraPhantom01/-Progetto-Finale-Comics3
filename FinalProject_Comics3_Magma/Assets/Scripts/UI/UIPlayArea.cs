@@ -21,6 +21,7 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
     [SerializeField] Image equip4Image;
     [SerializeField] TextMeshProUGUI equip4text;
     [SerializeField] Sprite baseSprite;
+    [SerializeField] GameObject gameOverPanel;
     List<Image> SandImages;
 
     public bool IsMaxSprite;
@@ -149,6 +150,20 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
             equip4Image.sprite = baseSprite;
             equip4text.text = $"0";
         }
+    }
+    public void OpenGameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
+    }
+
+    public void ReloadScene()
+    {
+        LevelManager.Instance.ReloadScene();
+    }
+
+    public void ExitGame()
+    {
+        LevelManager.Instance.ExitGame();
     }
 }
 
