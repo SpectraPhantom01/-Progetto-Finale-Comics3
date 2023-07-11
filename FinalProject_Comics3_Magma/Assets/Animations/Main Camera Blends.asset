@@ -80,7 +80,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: PlayerCameraZoom
-    m_To: '**ANY CAMERA**'
+    m_To: PlayerCamera_Room3
     m_Blend:
       m_Style: 1
       m_Time: 2
@@ -90,10 +90,43 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: '**ANY CAMERA**'
+  - m_From: PlayerCamera_Room3
     m_To: PlayerCameraZoom
     m_Blend:
       m_Style: 1
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: PlayerCamera_Room4
+    m_To: PlayerCamera_Room5
+    m_Blend:
+      m_Style: 0
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: PlayerCamera_Room5
+    m_To: PlayerCamera_Room6
+    m_Blend:
+      m_Style: 0
+      m_Time: 2
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: PlayerCamera_Room6
+    m_To: PlayerCamera_FinalRoom
+    m_Blend:
+      m_Style: 0
       m_Time: 2
       m_CustomCurve:
         serializedVersion: 2
