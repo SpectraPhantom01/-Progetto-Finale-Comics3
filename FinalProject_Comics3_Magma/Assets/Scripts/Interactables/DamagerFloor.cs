@@ -9,6 +9,14 @@ public class DamagerFloor : MonoBehaviour
     [SerializeField] Transform respawnPoint;
     [SerializeField] AudioSource audioSourceOnCollision;
     public Transform RespawnPoint => respawnPoint;
+    private void Awake()
+    {
+        var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
+        if (cedibleArea != null)
+        {
+            SetRespawnpoint(cedibleArea.RespawnPoint);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var player = collision.gameObject.SearchComponent<PlayerManager>();
@@ -79,9 +87,9 @@ public class DamagerFloor : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
-        if (cedibleArea != null)
-            respawnPoint = cedibleArea.RespawnPoint;
+        //var cedibleArea = gameObject.GetComponentInParent<CedibleFloorArea>();
+        //if (cedibleArea != null)
+        //    respawnPoint = cedibleArea.RespawnPoint;
         if (respawnPoint != null)
         {
             Gizmos.color = Color.white;
