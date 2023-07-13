@@ -238,7 +238,6 @@ MonoBehaviour:
   attackScriptableObjects:
   - {fileID: 11400000, guid: 9bee4ad59a197dd4cbea0e09eda099e8, type: 2}
   - {fileID: 11400000, guid: d157b5abfc4fb5d4a8c6a2684fe8ba22, type: 2}
-  - {fileID: 11400000, guid: f64c625dc129cca4c85d10924770e3a8, type: 2}
   patrolPath: {fileID: 0}
   shootingEnemyGraphicsPrefab: {fileID: 0}
   spawnGraphicsOffset: {x: 0, y: 0, z: 0}
@@ -576,7 +575,7 @@ MonoBehaviour:
   PlayerLockTime: 0.1
   LockTime: 0.5
   Invincible: 0
-  KnockBackResistance: 100
+  KnockBackResistance: 10
   DamageReductionPerc: 0
   DamageReduction: 0
   vfxToSpawnOnDamage: {fileID: 1979589331404243672, guid: b5d83d5fab5ec064f9087429b3ca4996, type: 3}

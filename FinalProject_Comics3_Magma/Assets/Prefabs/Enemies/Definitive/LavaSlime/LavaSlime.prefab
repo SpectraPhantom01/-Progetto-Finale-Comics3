@@ -242,7 +242,7 @@ MonoBehaviour:
   PlayerLockTime: 0.1
   LockTime: 0.5
   Invincible: 0
-  KnockBackResistance: 100
+  KnockBackResistance: 0
   DamageReductionPerc: 0
   DamageReduction: 0
   vfxToSpawnOnDamage: {fileID: 1979589331404243672, guid: b5d83d5fab5ec064f9087429b3ca4996, type: 3}
@@ -308,11 +308,14 @@ MonoBehaviour:
   FieldOfViewAngle: 360
   FieldOfViewAngleAfterSee: 360
   FieldOfViewDistance: 5
+  cannonShootArea: {fileID: 0}
   attackScriptableObjects:
   - {fileID: 11400000, guid: f64c625dc129cca4c85d10924770e3a8, type: 2}
   patrolPath: {fileID: 0}
   shootingEnemyGraphicsPrefab: {fileID: 0}
   spawnGraphicsOffset: {x: 0, y: 0, z: 0}
+  spawnRotated: 0
+  boxColliderOffset: {x: 0, y: 0}
   onKillEnemySceneRef:
     m_PersistentCalls:
       m_Calls: []

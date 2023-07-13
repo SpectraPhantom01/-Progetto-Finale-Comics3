@@ -138,4 +138,10 @@ public class UIManager : MonoBehaviour
     {
         UIPlayArea.OpenGameOverPanel();
     }
+
+    public void ReloadScene()
+    {
+        Pause();
+        GameManager.Instance.Player.PlayerManager.Kill();
+    }
 }
