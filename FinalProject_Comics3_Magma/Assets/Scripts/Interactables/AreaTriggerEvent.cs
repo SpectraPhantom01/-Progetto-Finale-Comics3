@@ -50,4 +50,14 @@ public class AreaTriggerEvent : MonoBehaviour
     {
         UIManager.Instance.OpenWrittenPanel(message);
     }
+
+    public void DisablePlayerInputs()
+    {
+        GameManager.Instance.EnablePlayerInputs(false, true);
+    }
+
+    public void EnablePlayerInputs()
+    {
+        GameManager.Instance.EnablePlayerInputs(true);
+    }
 }

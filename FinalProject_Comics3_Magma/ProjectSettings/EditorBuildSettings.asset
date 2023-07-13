@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Definitive/FinalDungeon.unity
     guid: 763da224782a29f4ca10e401b42b32cc
+  - enabled: 1
+    path: Assets/Scenes/Definitive/City - Final.unity
+    guid: b6607c302f00e754aa66f7e809e69d24
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8fa1c993fc29b684fae82ec21a6e3409, type: 2}

@@ -163,8 +163,8 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             type.intensity.Override(intensity);
-            globalVolume.weight = Mathf.Lerp(globalVolume.weight, 0, weightSpeed);
-            yield return null;
+            globalVolume.weight = Mathf.Lerp(globalVolume.weight, 0.15f, weightSpeed - (ghostTime * weightSpeed / 100));
+            yield return new WaitForEndOfFrame();
 
             if(goingDown)
             { 
@@ -313,6 +313,14 @@ public class GameManager : MonoBehaviour
             if (overrideAttack)
                 inputSystem.Player.Attack.Disable();
         }
+    }
+
+    public void EnablePauseMenuInput(bool enabled)
+    {
+        if (enabled)
+            inputSystem.Player.Pause.Enable();
+        else
+            inputSystem.Player.Pause.Disable();
     }
 
     public void ChangeScene(string sceneName)

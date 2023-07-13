@@ -7,8 +7,9 @@ public class DestroyEffectGenerator : MonoBehaviour
 {
     [SerializeField] CinemachineImpulseSource impulse;
     [SerializeField] ParticleSystem cedibleRoofParticle;
+    [SerializeField] ParticleSystem smokeParticle;
     [SerializeField] AudioSource sfx;
-    [SerializeField] float frequency;
+    [SerializeField] Vector2 randomFrequency;
 
     private void Start()
     {
@@ -21,8 +22,9 @@ public class DestroyEffectGenerator : MonoBehaviour
         {
             impulse.GenerateImpulse();
             cedibleRoofParticle.Play();
+            smokeParticle.Play();
             sfx.Play();
-            yield return new WaitForSeconds(frequency);
+            yield return new WaitForSeconds(Random.Range(randomFrequency.x, randomFrequency.y));
         }
     }
 
