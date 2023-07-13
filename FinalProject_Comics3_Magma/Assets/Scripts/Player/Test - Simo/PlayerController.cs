@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         Damager = gameObject.SearchComponent<Damager>();
-        
+
         rb = GetComponent<Rigidbody2D>();
         _playerManager = GetComponent<PlayerManager>();
         CanMove = true;
@@ -101,12 +100,12 @@ public class PlayerController : MonoBehaviour
             _playerManager.Damageable.onGetDamage += () => PlayRandomSoundOnList(hitAudioList);
         }
 
-        
+
     }
 
     private void TryDestroyGhost()
     {
-        if(GhostActive)
+        if (GhostActive)
         {
             InterruptGhost();
         }
@@ -154,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
             value = Mathf.Clamp(value, -speed, speed);
 
-            rb.velocity = Direction * value; 
+            rb.velocity = Direction * value;
         }
 
         AttackPointRotation();
@@ -165,7 +164,7 @@ public class PlayerController : MonoBehaviour
     //Gestione Dash:
     public void Dash()
     {
-        if (CanDash && Direction.magnitude > 0) 
+        if (CanDash && Direction.magnitude > 0)
         {
             PlayRandomSoundOnList(dashAudioList);
             StateMachine.SetState(EPlayerState.Dashing);
@@ -174,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayRandomSoundOnList(List<AudioClip> audioClipList)
     {
-        if(!ImGhost)
+        if (!ImGhost)
             audioSource.PlayOneShot(audioClipList[UnityEngine.Random.Range(0, audioClipList.Count)]);
     }
 
@@ -197,7 +196,10 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < ghostPositions.Count; i++)
             {
-                InstantiateGhost(ghostPositions[i], i);
+                if (i == ghostPositions.Count - 1)
+                    InstantiateGhost(ghostPositions[i], i);
+                else
+                    InstantiateGhost(ghostPositions[i], 0);
             }
         }
         else
@@ -205,7 +207,7 @@ public class PlayerController : MonoBehaviour
             InstantiateGhost(transform.localPosition, 0);
         }
 
-        ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime())); 
+        ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime()));
 
         GameManager.Instance.GhostManager.StartReadingDistance();
     }
@@ -228,8 +230,8 @@ public class PlayerController : MonoBehaviour
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
 
-        //if (index > 0)
-        //{
+        if (index == 0)
+        {
             var playerGhost = Instantiate(playerGhostPrefab, position, Quaternion.Euler(-90, 0, 0));
             playerGhost.Initialize(true, PlayerManager, true);
 
@@ -237,11 +239,11 @@ public class PlayerController : MonoBehaviour
             playerGhost.lastDirection = lastDirection;
 
             GameManager.Instance.PlayerGhostControllerList.Add(playerGhost);
-        //}
+        }
 
         GameManager.Instance.GhostManager.AddGhost(instantiatedGhost);
     }
-  
+
     public void Rewind()
     {
         StopCoroutine(ghostRoutine);
@@ -287,8 +289,8 @@ public class PlayerController : MonoBehaviour
     private void GhostActivation()
     {
         CanRewind = false;
-        GhostActive = false;  
-        
+        GhostActive = false;
+
         GameManager.Instance.GhostManager.StartExecuteInputs();
     }
 
@@ -307,9 +309,9 @@ public class PlayerController : MonoBehaviour
         attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
     }
 
-    public void Attack() 
+    public void Attack()
     {
-        if(!ImGhost)
+        if (!ImGhost)
         {
             PlayRandomSoundOnList(attackAudioList);
 
@@ -328,7 +330,7 @@ public class PlayerController : MonoBehaviour
                 Damager.SearchInteractable();
             }
         }
-        else if(!FakeGhost)
+        else if (!FakeGhost)
         {
             StateMachine.SetState(EPlayerState.Attacking);
             Damager.Attack();
@@ -346,7 +348,7 @@ public class PlayerController : MonoBehaviour
 
     public void EquipAttack(EAttackType eAttackType)
     {
-        if(!FakeGhost)
+        if (!FakeGhost)
             Damager.EquipAttack(eAttackType);
     }
 
@@ -357,7 +359,7 @@ public class PlayerController : MonoBehaviour
         {
             foreach (var hit in collidersHit)
             {
-                if(hit.TryGetComponent<PickableObject>(out var pickable))
+                if (hit.TryGetComponent<PickableObject>(out var pickable))
                 {
                     _playerManager.PickUpObject(pickable.PickableScriptableObject, pickable);
                     return true;
@@ -370,7 +372,7 @@ public class PlayerController : MonoBehaviour
     public void UpdateWalkingSound()
     {
         WalkingSoundTime += Time.deltaTime;
-        if(WalkingSoundTime >= timeBetweenSteps)
+        if (WalkingSoundTime >= timeBetweenSteps)
         {
             WalkingSoundTime = 0;
             PlayRandomSoundOnList(stepAudioList);

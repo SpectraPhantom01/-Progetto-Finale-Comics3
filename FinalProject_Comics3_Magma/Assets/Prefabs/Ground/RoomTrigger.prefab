@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyControllers: []
+  OnClearedRoom:
+    m_PersistentCalls:
+      m_Calls: []
+  sfxToSpawnOnClearRoom: {fileID: 0}
 --- !u!60 &1779960557415724533
 PolygonCollider2D:
   m_ObjectHideFlags: 0
