@@ -38,7 +38,7 @@ public class DamagerFloor : MonoBehaviour
         else
         {
             var enemy = collision.gameObject.SearchComponent<EnemyController>();
-            if (enemy != null && enemy.EnemyType != EEnemyType.Boss)
+            if (enemy != null && enemy.EnemyType != EEnemyType.Boss && enemy.EnemyType != EEnemyType.LavaSlime)
             {
                 enemy.Kill();
             }
@@ -63,7 +63,7 @@ public class DamagerFloor : MonoBehaviour
         else
         {
             var enemy = collision.gameObject.SearchComponent<EnemyController>();
-            if (enemy != null && enemy.EnemyType != EEnemyType.Boss)
+            if (enemy != null && enemy.EnemyType != EEnemyType.Boss && enemy.EnemyType != EEnemyType.LavaSlime)
             {
                 enemy.Kill();
             }
@@ -73,7 +73,7 @@ public class DamagerFloor : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemy = collision.gameObject.SearchComponent<EnemyController>();
-        if (enemy != null && enemy.EnemyType != EEnemyType.Boss)
+        if (enemy != null && enemy.EnemyType != EEnemyType.Boss && enemy.EnemyType != EEnemyType.LavaSlime)
         {
             enemy.Kill();
         }
