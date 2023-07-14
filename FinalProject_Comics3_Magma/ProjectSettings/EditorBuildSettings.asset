@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Definitive/MainMenu.unity
     guid: 9a4d90023ab8b2149a913bb5d844bf06
   - enabled: 1
+    path: Assets/Scenes/Definitive/CutScene.unity
+    guid: dbfa6f35e51a6824d8f4450e59f5621c
+  - enabled: 1
     path: Assets/Scenes/Definitive/City - Simo.unity
     guid: 629cd21b5b092b54ba553263ab999a0e
   - enabled: 1

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,24 +10,87 @@ public class UIDialoguePanel : MonoBehaviour
     [SerializeField] List<string> Messages;
     [SerializeField] TextMeshProUGUI messageText;
     [SerializeField] UnityEvent onEnd;
+    [SerializeField] bool useEvents;
+    [SerializeField] List<MessageAndEvent> messagesAndEvents;
+    [SerializeField] bool callGameManager = true;
+    [SerializeField] float alphaTextSpeed = 0.05f;
     int index = 0;
+    Coroutine nextCoroutine;
+    int count;
+    private void Start()
+    {
+        count = useEvents ? messagesAndEvents.Count : Messages.Count;
+    }
     public void Next()
     {
-        messageText.text = Messages[index];
+        if(nextCoroutine == null)
+            nextCoroutine = StartCoroutine(NextCoroutine());
+        else
+        {
+            StopCoroutine(nextCoroutine);
+            nextCoroutine = StartCoroutine(NextCoroutine());
+        }
+        
+    }
 
-        if(index + 1 < Messages.Count)
-             index++;
+    private IEnumerator NextCoroutine()
+    {
+        while (true)
+        {
+            messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, messageText.color.a - alphaTextSpeed);
+
+            if(messageText.color.a <= 0.1f)
+            {
+                if (useEvents)
+                {
+                    messageText.text = messagesAndEvents[index].Message;
+                    messagesAndEvents[index].Event?.Invoke();
+                }
+                else
+                    messageText.text = Messages[index];
+
+                messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, 0);
+                break;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        while (true)
+        {
+            messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, messageText.color.a + alphaTextSpeed);
+
+            if (messageText.color.a >= 0.9f)
+            {
+                messageText.color = new Color(messageText.color.r, messageText.color.g, messageText.color.b, 1);
+                break;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (index + 1 < count)
+            index++;
         else
             onEnd.Invoke();
     }
 
     private void OnEnable()
     {
-        GameManager.Instance.DialogueMessageActive = true;
+        if(callGameManager)
+            GameManager.Instance.DialogueMessageActive = true;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.DialogueMessageActive = false;
+        if(callGameManager)
+            GameManager.Instance.DialogueMessageActive = false;
     }
+}
+
+[Serializable]
+public class MessageAndEvent
+{
+    public string Message;
+    public UnityEvent Event;
 }

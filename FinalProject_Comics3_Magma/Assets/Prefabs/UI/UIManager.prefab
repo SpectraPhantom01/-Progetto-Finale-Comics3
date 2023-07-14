@@ -4549,7 +4549,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4154526525477948195}
   - component: {fileID: 7612268230694246963}
-  - component: {fileID: 6204736397990357778}
   - component: {fileID: 8603609924818137465}
   - component: {fileID: 101579958138103595}
   m_Layer: 5
@@ -4588,27 +4587,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592245976819049379}
   m_CullTransparentMesh: 1
---- !u!95 &6204736397990357778
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4592245976819049379}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85a646bad18808946a0225f1d7eccb1c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8603609924818137465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4672,6 +4650,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  useEvents: 0
+  messagesAndEvents: []
+  callGameManager: 1
 --- !u!1 &4600832100826254043
 GameObject:
   m_ObjectHideFlags: 0
