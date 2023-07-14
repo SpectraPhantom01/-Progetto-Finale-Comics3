@@ -143,6 +143,7 @@ public class EnemyController : AI, IAliveEntity
         Damageable.SetHourglasses(initialHourglasses);
     }
 
+
 #if UNITY_EDITOR
     [Header("Gizmo Settings")]
     [SerializeField] Color lineColor;

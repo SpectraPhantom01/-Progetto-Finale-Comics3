@@ -1114,6 +1114,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 125a54f61e553854f9adc108306df76c, type: 3}
   - {fileID: 8300000, guid: 4039530ac08fbe2458533021c8305465, type: 3}
   - {fileID: 8300000, guid: 51fd1bd4363b1424a91b458d68080fd6, type: 3}
+  hitEnemyAudioList:
+  - {fileID: 8300000, guid: 7b3cb518c0a72a449901b503bda83d2f, type: 3}
+  - {fileID: 8300000, guid: db797e2b53e23914b9245948374b20c4, type: 3}
+  - {fileID: 8300000, guid: 7f93a513d4a43d0418f27a4bf0add92f, type: 3}
+  - {fileID: 8300000, guid: 72a3007d0ecc74243a52fa0caae1b40f, type: 3}
+  - {fileID: 8300000, guid: 7891b60c11e2a2a4a854ea7d14cbd1d7, type: 3}
+  - {fileID: 8300000, guid: abf238f9e22b4534182020e6657e4e4b, type: 3}
   timeBetweenSteps: 0.4
   Direction: {x: 0, y: 0}
   Damager: {fileID: 0}

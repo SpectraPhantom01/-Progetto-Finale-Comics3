@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<AudioClip> dashAudioList;
     [SerializeField] List<AudioClip> stepAudioList;
     [SerializeField] List<AudioClip> hitAudioList;
+    [SerializeField] List<AudioClip> hitEnemyAudioList;
     [SerializeField] float timeBetweenSteps = 0.5f;
 
     [HideInInspector] public Vector2 Direction;
@@ -326,15 +327,23 @@ public class PlayerController : MonoBehaviour
 
                 Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
 
-                Damager.Attack(); // <<---
-                Damager.SearchInteractable();
+                if (!Damager.SearchInteractable())
+                    if (Damager.Attack())
+                    {
+                        PlayRandomSoundOnList(hitEnemyAudioList);
+                    }
+
             }
         }
         else if (!FakeGhost)
         {
             StateMachine.SetState(EPlayerState.Attacking);
-            Damager.Attack();
-            Damager.SearchInteractable();
+
+            if (!Damager.SearchInteractable())
+                if (Damager.Attack())
+                {
+                    PlayRandomSoundOnList(hitEnemyAudioList);
+                }
         }
     }
 

@@ -121,14 +121,6 @@ public class Damageable : MonoBehaviour
             {
                 StartCoroutine(KnockbackRoutine(PlayerLockTime));
                 playerController.StateMachine.SetState(EPlayerState.Idle); 
-                               
-                //Introdurre uno stato di danneggiamento?
-
-                ////TEMPORANEO
-                ////-----------------------------------------------------------------
-                //playerController.StopCoroutine(playerController.DashRoutine());
-                //StartCoroutine(playerController.DashCooldownRoutine());
-                ////-----------------------------------------------------------------
             }
             else
             {

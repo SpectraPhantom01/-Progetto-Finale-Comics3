@@ -71,7 +71,7 @@ public class Damager : MonoBehaviour
         }
     }
 
-    private void AttackMelee()
+    private bool AttackMelee()
     {
         if(_equippedAttack != null)
         {
@@ -84,28 +84,32 @@ public class Damager : MonoBehaviour
                     .Where(x => x != null).ToList();
 
                 damageableList.ForEach(damageable => GiveDamage(damageable, _equippedAttack, transform, _bonusAttackPercentage));
+
+                return damageableList.Count > 0;
             }
 
         }
-        
+        return false;
     }
 
-    public void SearchInteractable()
+    public bool SearchInteractable()
     {
         var collidersHit = Physics2D.OverlapBoxAll(damagerArea.position, hitBox, 0, _interactableMask).ToList();
         if(collidersHit.Count > 0)
         {
-            SearchPillars(collidersHit);
+            return SearchPillars(collidersHit);
         }
+        return false;
     }
 
-    private void SearchPillars(List<Collider2D> collidersHit)
+    private bool SearchPillars(List<Collider2D> collidersHit)
     {
         var interactableList = collidersHit
                           .Where(x => _interactableMask.Contains(x.gameObject.layer))
                           .Select(x => x.gameObject.SearchComponent<Pillar>())
                           .Where(x => x != null).ToList();
         interactableList.ForEach(interactable => interactable.PillarDestruction());
+        return interactableList.Count > 0;
     }
 
     public void SizeUpHitBox()
@@ -139,17 +143,18 @@ public class Damager : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public bool Attack()
     {
         switch (_equippedAttack.AttackType)
         {
             case EAttackType.Melee:
-                AttackMelee();
-                break;
+                return AttackMelee();
+                
             case EAttackType.Shoot:
                 AttackShoot();
                 break;
         }
+        return false;
     }
 
     public void EquipAttack(EAttackType eAttackType)
