@@ -712,8 +712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1058394320}
   spriteRenderer: {fileID: 0}
-  fadeSpeed: 0.005
-  destinationAlpha: 0.4
+  fadeSpeed: 0.008
+  destinationAlpha: 0.3
 --- !u!1 &1435270705
 GameObject:
   m_ObjectHideFlags: 0
