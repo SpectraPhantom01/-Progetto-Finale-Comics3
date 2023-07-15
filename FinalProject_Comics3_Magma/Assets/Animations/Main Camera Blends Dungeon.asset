@@ -36,7 +36,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: PlayerCamera
-    m_To: PlayerCamera (1)
+    m_To: PlayerCamera 10
     m_Blend:
       m_Style: 0
       m_Time: 2
@@ -46,7 +46,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: PlayerCamera (1)
+  - m_From: PlayerCamera 10
     m_To: PlayerCamera
     m_Blend:
       m_Style: 1
