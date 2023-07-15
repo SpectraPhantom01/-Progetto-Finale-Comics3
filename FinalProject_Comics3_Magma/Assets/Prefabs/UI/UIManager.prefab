@@ -1785,7 +1785,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1258291199
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 2
@@ -4653,6 +4653,7 @@ MonoBehaviour:
   useEvents: 0
   messagesAndEvents: []
   callGameManager: 1
+  alphaTextSpeed: 0.05
 --- !u!1 &4600832100826254043
 GameObject:
   m_ObjectHideFlags: 0
@@ -8720,16 +8721,20 @@ MonoBehaviour:
 
 
 
+
+
     <i>Created by</i>
 
     TEAM MAGMA
 
 
 
-    <i>Design</i>
 
-    Angeletti
-    Samuele
+
+    <i>Level
+    Design</i>
+
+    Angeletti Samuele
 
     Bagliesi Simone
 
@@ -8737,14 +8742,8 @@ MonoBehaviour:
 
     <i>Environment</i>
 
-    Carbone Andrea
-
-
-
-    <i>Animations</i>
-
-    Guidi
-    Valentina
+    Carbone
+    Andrea
 
 
 
@@ -8769,8 +8768,49 @@ MonoBehaviour:
 
 
 
-    <i>Project
-    Management</i>
+    <i>Character
+    Design</i>
+
+    Carbone Andrea
+
+    Guidi Valentina
+
+
+
+    <i>Character Animations</i>
+
+    Guidi
+    Valentina
+
+
+
+    <i>Character Logics</i>
+
+    Bagliesi Simone
+
+
+
+    <i>AI</i>
+
+    Angeletti
+    Samuele
+
+
+
+    <i>AI Animations</i>
+
+    Guidi Valentina
+
+
+
+    <i>Sound Design</i>
+
+    Angeletti
+    Samuele
+
+
+
+    <i>Project Management</i>
 
     Angeletti Samuele
 
@@ -8779,10 +8819,10 @@ MonoBehaviour:
 
 
 
-    <i>Special thanks to</i>
+    <i>Special
+    thanks to</i>
 
-    Scuola
-    Comics'
+    Scuola Comics & all the Teachers'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31c9f34dc4de2e34fb55d339682364ca, type: 2}
   m_sharedMaterial: {fileID: 7478859483336731800, guid: 31c9f34dc4de2e34fb55d339682364ca, type: 2}

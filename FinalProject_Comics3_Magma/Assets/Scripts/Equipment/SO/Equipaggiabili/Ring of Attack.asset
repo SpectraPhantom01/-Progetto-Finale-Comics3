@@ -24,6 +24,6 @@ MonoBehaviour:
   IsKeyObject: 0
   QuantityOnPick: 1
   PickableEffectType: 0
-  EffectInPercentage: 10
+  EffectInPercentage: 50
   EffectInTime: 0
   Bomb: {fileID: 0}
