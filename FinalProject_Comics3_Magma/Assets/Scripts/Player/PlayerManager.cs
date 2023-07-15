@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if(!_playerController.ImGhost && !stoppedHourglass && IsAlive)
             HandleHourglass();
 
-        if (_playerController.Rigidbody.velocity.magnitude > 0.01f)
+        if (_playerController.Rigidbody.velocity.magnitude > 0.01f && PlayerController.CanMove)
             CurrentDirection = _playerController.Rigidbody.velocity.CalculateDirection();
 
         if (!isTeleporting && IsAlive)

@@ -158,7 +158,11 @@ public class Damageable : MonoBehaviour
     private IEnumerator KnockbackRoutine(float time)
     {
         if (_agent != null)
-            _agent.enabled = false;
+        {
+            _agent.SetDestination(_agent.gameObject.transform.position);
+            _agent.velocity = Vector3.zero;
+            _agent.isStopped = true;
+        }
         if (_behaviorTree != null)
             _behaviorTree.enabled = false;
 
@@ -170,9 +174,7 @@ public class Damageable : MonoBehaviour
             _rigidBody.bodyType = RigidbodyType2D.Dynamic;
 
         yield return new WaitForSeconds(time);
-
-        if (_agent != null)
-            _agent.enabled = true;
+        
         if (_behaviorTree != null)
             _behaviorTree.enabled = true;
 

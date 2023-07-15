@@ -62,7 +62,7 @@ public class Alchemic : EnemyController
     public void CoolDownBehavior()
     {
         StartCoroutine(DisableBehavior());
-        EndAttack();
+        Invoke(nameof(EndAttack), 0.5f);
 
     }
 

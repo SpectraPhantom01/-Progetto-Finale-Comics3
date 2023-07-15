@@ -312,6 +312,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
+
         if (!ImGhost)
         {
             PlayRandomSoundOnList(attackAudioList);
@@ -327,24 +328,26 @@ public class PlayerController : MonoBehaviour
 
                 Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
 
-                if (!Damager.SearchInteractable())
-                    if (Damager.Attack())
-                    {
-                        PlayRandomSoundOnList(hitEnemyAudioList);
-                    }
-
+                StartCoroutine(AttackCoroutine());
             }
         }
         else if (!FakeGhost)
         {
             StateMachine.SetState(EPlayerState.Attacking);
 
-            if (!Damager.SearchInteractable())
-                if (Damager.Attack())
-                {
-                    PlayRandomSoundOnList(hitEnemyAudioList);
-                }
+            StartCoroutine(AttackCoroutine());
         }
+    }
+
+    public IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        if (!Damager.SearchInteractable())
+            if (Damager.Attack())
+            {
+                PlayRandomSoundOnList(hitEnemyAudioList);
+            }
     }
 
     private PickableScriptableObject[] GetCurrentEquipment(Inventory inventory)

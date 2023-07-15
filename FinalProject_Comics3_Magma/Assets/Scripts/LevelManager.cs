@@ -77,25 +77,25 @@ public class LevelManager : MonoBehaviour
         Application.Quit();
     }
 
-    void OnEnable()
-    {
-        Application.logMessageReceived += LogCallback;
-    }
+    //void OnEnable()
+    //{
+    //    Application.logMessageReceived += LogCallback;
+    //}
 
-    //Called when there is an exception
-    public void LogCallback(string condition, string stackTrace, LogType type)
-    {
-        if (type == LogType.Error || type == LogType.Exception)
-        {
-            errorPanel.SetActive(true);
-            errorText.text = condition + " - " + stackTrace;
-        }
-    }
+    ////Called when there is an exception
+    //public void LogCallback(string condition, string stackTrace, LogType type)
+    //{
+    //    if (type == LogType.Error || type == LogType.Exception)
+    //    {
+    //        errorPanel.SetActive(true);
+    //        errorText.text = condition + " - " + stackTrace;
+    //    }
+    //}
 
-    void OnDisable()
-    {
-        Application.logMessageReceived -= LogCallback;
-    }
+    //void OnDisable()
+    //{
+    //    Application.logMessageReceived -= LogCallback;
+    //}
 
     internal void ReloadScene()
     {
