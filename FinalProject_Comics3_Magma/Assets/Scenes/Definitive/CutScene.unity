@@ -713,7 +713,7 @@ MonoBehaviour:
   image: {fileID: 1058394320}
   spriteRenderer: {fileID: 0}
   fadeSpeed: 0.005
-  destinationAlpha: 0.7
+  destinationAlpha: 0.4
 --- !u!1 &1435270705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1661,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+  - Message: ...
+    Event:
+      m_PersistentCalls:
+        m_Calls: []
   - Message: I became a man of sand now! my life is tearing away grain after grain...
       But I will have my revenge before this place collapse under the lake of Lava!
     Event:
