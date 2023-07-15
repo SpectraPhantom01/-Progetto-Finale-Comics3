@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   InventoryObjects:
-  - PickableSO: {fileID: 11400000, guid: 527893a647ee70d4caac3f8a9189c3f5, type: 2}
-    Quantity: 5
+  - PickableSO: {fileID: 0}
+    Quantity: 0
   - PickableSO: {fileID: 0}
     Quantity: 0
   - PickableSO: {fileID: 0}
