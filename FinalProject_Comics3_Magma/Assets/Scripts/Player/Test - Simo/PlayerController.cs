@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [Space(10)]
     [SerializeField] Transform attackPoint;
     public Transform AttackPosition;
+    [SerializeField] Animator slashEffectAnimator;
 
     [Header("SFX")]
     [SerializeField] AudioSource audioSource;
@@ -115,6 +116,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         StateMachine.OnUpdate();
+        if (CanMove && !IsDashing)
+            AttackPointRotation();
     }
 
     private void FixedUpdate()
@@ -157,7 +160,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Direction * value;
         }
 
-        AttackPointRotation();
     }
 
 
@@ -306,7 +308,7 @@ public class PlayerController : MonoBehaviour
     private void AttackPointRotation()
     {
         Quaternion toRotation = Quaternion.LookRotation(Vector3.back, lastDirection);
-        attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 720 * Time.fixedDeltaTime);
+        attackPoint.rotation = Quaternion.RotateTowards(attackPoint.rotation, toRotation, 5000 * Time.deltaTime);
     }
 
     public void Attack()
@@ -337,6 +339,8 @@ public class PlayerController : MonoBehaviour
             if(!FakeGhost)
                 StartCoroutine(AttackCoroutine());
         }
+
+        slashEffectAnimator.SetTrigger("Slash");
     }
 
     public IEnumerator AttackCoroutine()

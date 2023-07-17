@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] string idleSword;
     [SerializeField] string runSword;
     [SerializeField] string dashSword;
+    [SerializeField] SpriteRenderer slashEffectRenderer;
     [Header("VFX")]
     [SerializeField] ParticleSystem hourglassVFX;
     [SerializeField] GameObject deathVFX;
@@ -294,6 +295,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 rightSkeleton.gameObject.SetActive(false);
                 leftSkeleton.gameObject.SetActive(false);
                 downSkeletonRun.gameObject.gameObject.SetActive(false);
+
+                slashEffectRenderer.flipY = false;
                 break;
             case EDirection.Down:
                 if (_playerController.Rigidbody.velocity.magnitude != 0)
@@ -317,6 +320,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 rightSkeleton.gameObject.SetActive(false);
                 leftSkeleton.gameObject.SetActive(false);
                 upSkeletonRun.gameObject.SetActive(false);
+
+                slashEffectRenderer.flipY = false;
                 break;
             case EDirection.Left:
                 if (leftSkeleton.gameObject.activeSelf) return;
@@ -329,6 +334,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 downSkeletonRun.gameObject.SetActive(false);
 
                 nextSkeleton = leftSkeleton;
+
+                slashEffectRenderer.flipY = true;
                 break;
             case EDirection.Right:
                 if (rightSkeleton.gameObject.activeSelf) return;
@@ -341,6 +348,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
                 downSkeletonRun.gameObject.SetActive(false);
 
                 nextSkeleton = rightSkeleton;
+
+                slashEffectRenderer.flipY = false;
                 break;
         }
 
