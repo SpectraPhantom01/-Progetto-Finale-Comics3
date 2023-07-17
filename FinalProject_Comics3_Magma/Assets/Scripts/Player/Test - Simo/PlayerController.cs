@@ -200,12 +200,12 @@ public class PlayerController : MonoBehaviour
                 if (i == ghostPositions.Count - 1)
                     InstantiateGhost(ghostPositions[i], i);
                 else
-                    InstantiateGhost(ghostPositions[i], 0);
+                    InstantiateGhost(ghostPositions[i], 0, i == 0);
             }
         }
         else
         {
-            InstantiateGhost(transform.localPosition, 0);
+            InstantiateGhost(transform.localPosition, 0, true);
         }
 
         ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime()));
@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void InstantiateGhost(Vector2 position, int index)
+    private void InstantiateGhost(Vector2 position, int index, bool ignoreSingle = false)
     {
         instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager, false);
@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
 
-        if (index == 0)
+        if (index == 0 && !ignoreSingle)
         {
             var playerGhost = Instantiate(playerGhostPrefab, position, Quaternion.Euler(-90, 0, 0));
             playerGhost.Initialize(true, PlayerManager, true);
