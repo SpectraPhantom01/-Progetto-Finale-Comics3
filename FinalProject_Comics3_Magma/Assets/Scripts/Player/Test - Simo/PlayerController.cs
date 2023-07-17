@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public UnityEvent Listeners;
     float value;
     Rigidbody2D rb;
-    PlayerController instantiatedGhost;
+    Vector3 playerPositionOnGhostActive;
     Coroutine ghostRoutine;
     List<Vector2> ghostPositions = new List<Vector2>();
 
@@ -193,19 +193,18 @@ public class PlayerController : MonoBehaviour
 
         audioSource.PlayOneShot(activeGhost);
 
+        playerPositionOnGhostActive = transform.position;
+
         if (ghostPositions.Count > 0)
         {
             for (int i = 0; i < ghostPositions.Count; i++)
             {
-                if (i == ghostPositions.Count - 1)
-                    InstantiateGhost(ghostPositions[i], i);
-                else
-                    InstantiateGhost(ghostPositions[i], 0, i == 0);
+                InstantiateGhost(ghostPositions[i], i);
             }
         }
         else
         {
-            InstantiateGhost(transform.localPosition, 0, true);
+            InstantiateGhost(transform.localPosition, 0);
         }
 
         ghostRoutine = StartCoroutine(GhostRoutine(GetGhostLifeTime()));
@@ -223,15 +222,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void InstantiateGhost(Vector2 position, int index, bool ignoreSingle = false)
+    private void InstantiateGhost(Vector2 position, int index)
     {
-        instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
+        var instantiatedGhost = Instantiate(ghostPrefab, position, Quaternion.Euler(-90, 0, 0));
         instantiatedGhost.Initialize(true, PlayerManager, false);
 
         instantiatedGhost.PlayerManager.CurrentDirection = PlayerManager.CurrentDirection;
         instantiatedGhost.lastDirection = lastDirection;
 
-        if (index == 0 && !ignoreSingle)
+        if (index > 0)
         {
             var playerGhost = Instantiate(playerGhostPrefab, position, Quaternion.Euler(-90, 0, 0));
             playerGhost.Initialize(true, PlayerManager, true);
@@ -248,7 +247,7 @@ public class PlayerController : MonoBehaviour
     public void Rewind()
     {
         StopCoroutine(ghostRoutine);
-        transform.position = instantiatedGhost.transform.position;
+        transform.position = playerPositionOnGhostActive;
         audioSource.PlayOneShot(activeGhost);
 
         GhostActivation();
@@ -331,11 +330,12 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(AttackCoroutine());
             }
         }
-        else if (!FakeGhost)
+        else
         {
             StateMachine.SetState(EPlayerState.Attacking);
 
-            StartCoroutine(AttackCoroutine());
+            if(!FakeGhost)
+                StartCoroutine(AttackCoroutine());
         }
     }
 

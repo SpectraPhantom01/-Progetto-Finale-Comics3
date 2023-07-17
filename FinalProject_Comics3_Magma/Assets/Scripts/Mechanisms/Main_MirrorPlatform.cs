@@ -23,13 +23,12 @@ public class Main_MirrorPlatform : MonoBehaviour
 
         if (player != null)
         {
+            player.GhostPositions.Add(transform.position);
+
             foreach (Transform platform in platforms)
             {
                 player.GhostPositions.Add(platform.gameObject.transform.position);
             }
-
-            player.GhostPositions.Add(transform.position);
-            // TODO: ASSICURARSI LA POSIZIONE INIZIALE DEL PLAYER IN UN'ALTRA MANIERA E SPOSTARE QUESTA CHIAMATA SOPRA IL FOREACH
         }
     }
 
@@ -39,11 +38,6 @@ public class Main_MirrorPlatform : MonoBehaviour
 
         if (player != null)
         {
-            //foreach (MirrorPlatform platform in platforms)
-            //{
-            //    player.GhostPositions.Remove(platform.gameObject.transform.position);
-            //}
-
             player.GhostPositions.Clear();
         }
     }

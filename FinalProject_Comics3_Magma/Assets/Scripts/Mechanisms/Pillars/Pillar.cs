@@ -32,7 +32,7 @@ public class Pillar : MonoBehaviour
         else
         {
             pillarHandler.AddPillar(this);
-            sprite = GetComponent<SpriteRenderer>();
+            sprite = GetComponentInChildren<SpriteRenderer>();
         }           
     }
 
