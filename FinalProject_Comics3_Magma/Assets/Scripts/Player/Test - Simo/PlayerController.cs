@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Vector3 playerPositionOnGhostActive;
     Coroutine ghostRoutine;
-    List<Vector2> ghostPositions = new List<Vector2>();
+    List<Vector2> ghostPositions = new();
 
     //public bool IsMoving { get; private set; } = false;
     public Rigidbody2D Rigidbody => rb;
