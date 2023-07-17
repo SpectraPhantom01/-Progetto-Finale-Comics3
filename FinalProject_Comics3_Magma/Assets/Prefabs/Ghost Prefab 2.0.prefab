@@ -616,7 +616,7 @@ MonoBehaviour:
   damagerArea: {fileID: 4821780848565332128}
   _damageableMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1048704
   _interactableMask:
     serializedVersion: 2
     m_Bits: 32768

@@ -1062,6 +1062,7 @@ MonoBehaviour:
   idleSword: idle
   runSword: corsa
   dashSword: scatto
+  slashEffectRenderer: {fileID: 2514338357002888295}
   hourglassVFX: {fileID: 0}
   deathVFX: {fileID: 2394301464986334417}
   _currentCheckPoint: {fileID: 0}

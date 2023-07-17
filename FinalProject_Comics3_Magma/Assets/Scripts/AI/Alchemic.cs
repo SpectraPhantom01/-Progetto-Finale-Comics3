@@ -44,6 +44,17 @@ public class Alchemic : EnemyController
         _currentSkeleton.state.SetAnimation(0, attackMultiple, true);
     }
 
+    public void Attack()
+    {
+        StartCoroutine(AttackCoroutine());
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Damager.Attack();
+    }
+
     public override void Initialize(string targetBehaviorVariable, GameObject playerTarget)
     {
         base.Initialize(targetBehaviorVariable, playerTarget);

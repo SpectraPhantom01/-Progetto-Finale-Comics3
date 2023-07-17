@@ -491,10 +491,7 @@ MonoBehaviour:
   amountLoseSand: 1
   attackScriptableObjects:
   - {fileID: 11400000, guid: 6eb0e907bc6c8ac41bcec2cb5b4fba12, type: 2}
-  Inventory:
-    InventoryObjects: []
-    EquipmentSlots: []
-    ActiveObjectSlots: []
+  Inventory: {fileID: 0}
   upSkeleton: {fileID: 320636664393706386}
   downSkeleton: {fileID: 21121566970217140}
   rightSkeleton: {fileID: 7777422146697839349}
@@ -508,7 +505,9 @@ MonoBehaviour:
   idleSword: idle
   runSword: corsa
   dashSword: scatto
+  slashEffectRenderer: {fileID: 0}
   hourglassVFX: {fileID: 0}
+  deathVFX: {fileID: 0}
   _currentCheckPoint: {fileID: 0}
   CurrentDirection: 1
 --- !u!114 &3138579559502232296
@@ -532,10 +531,27 @@ MonoBehaviour:
   ghostPrefab: {fileID: 3138579559502232296}
   ghostLifeTime: 4
   rewindCooldown: 1
+  playerGhostPrefab: {fileID: 0}
   attackPoint: {fileID: 870940659323138454}
+  AttackPosition: {fileID: 0}
+  slashEffectAnimator: {fileID: 0}
+  audioSource: {fileID: 0}
+  activeGhost: {fileID: 0}
+  destroyGhost: {fileID: 0}
+  attackAudioList: []
+  dashAudioList: []
+  stepAudioList: []
+  hitAudioList: []
+  hitEnemyAudioList: []
+  timeBetweenSteps: 0.5
   Direction: {x: 0, y: 0}
   Damager: {fileID: 0}
   lastDirection: {x: 0, y: -1}
+  WalkingSoundTime: 0
+  Listeners:
+    m_PersistentCalls:
+      m_Calls: []
+  Father: {fileID: 0}
 --- !u!50 &9166515653511605295
 Rigidbody2D:
   serializedVersion: 4
@@ -759,7 +775,7 @@ MonoBehaviour:
   damagerArea: {fileID: 2560590474689324126}
   _damageableMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1048704
   _interactableMask:
     serializedVersion: 2
     m_Bits: 32768
