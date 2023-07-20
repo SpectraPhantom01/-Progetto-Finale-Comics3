@@ -55,18 +55,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Power 1"",
+                    ""name"": ""AttackMouse"",
                     ""type"": ""Button"",
-                    ""id"": ""0489247b-3293-4956-a7e8-d829362989e3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Power 2"",
-                    ""type"": ""Button"",
-                    ""id"": ""fb503a61-f581-49e6-a4e7-440213ea4478"",
+                    ""id"": ""0aadc512-0510-4c15-a10e-6610c8f76d25"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -85,15 +76,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""Rewind"",
                     ""type"": ""Button"",
                     ""id"": ""a7568a94-888e-4fb3-b1bd-2fd184fad138"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interaction"",
-                    ""type"": ""Button"",
-                    ""id"": ""20816ea0-c44b-4948-9d20-f2e73142cf87"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -204,33 +186,11 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""bb652d7e-2464-4bf5-b52e-d88cf3e8c461"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ae6944d6-3bf8-4958-8254-e7757b0f8733"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Power 1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""92afaad9-772b-4b00-92c9-381f76bcf9a1"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Power 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -248,22 +208,11 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b744433e-a885-4a02-b591-d89fbed928a0"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rewind"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5eb25bd7-1c3f-4b5b-8b7d-7faf22547761"",
-                    ""path"": ""<Keyboard>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -376,6 +325,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""MovementWASD"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4dcc2773-46f1-437f-9b49-5b169aeb7075"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -399,11 +359,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_MovementWASD = m_Player.FindAction("MovementWASD", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Power1 = m_Player.FindAction("Power 1", throwIfNotFound: true);
-        m_Player_Power2 = m_Player.FindAction("Power 2", throwIfNotFound: true);
+        m_Player_AttackMouse = m_Player.FindAction("AttackMouse", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Rewind = m_Player.FindAction("Rewind", throwIfNotFound: true);
-        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_ActiveObjectOne = m_Player.FindAction("ActiveObjectOne", throwIfNotFound: true);
         m_Player_ActiveObjectTwo = m_Player.FindAction("ActiveObjectTwo", throwIfNotFound: true);
@@ -473,11 +431,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_MovementWASD;
     private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Power1;
-    private readonly InputAction m_Player_Power2;
+    private readonly InputAction m_Player_AttackMouse;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Rewind;
-    private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_ActiveObjectOne;
     private readonly InputAction m_Player_ActiveObjectTwo;
@@ -490,11 +446,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @MovementWASD => m_Wrapper.m_Player_MovementWASD;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        public InputAction @Power1 => m_Wrapper.m_Player_Power1;
-        public InputAction @Power2 => m_Wrapper.m_Player_Power2;
+        public InputAction @AttackMouse => m_Wrapper.m_Player_AttackMouse;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Rewind => m_Wrapper.m_Player_Rewind;
-        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @ActiveObjectOne => m_Wrapper.m_Player_ActiveObjectOne;
         public InputAction @ActiveObjectTwo => m_Wrapper.m_Player_ActiveObjectTwo;
@@ -518,21 +472,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @Power1.started += instance.OnPower1;
-            @Power1.performed += instance.OnPower1;
-            @Power1.canceled += instance.OnPower1;
-            @Power2.started += instance.OnPower2;
-            @Power2.performed += instance.OnPower2;
-            @Power2.canceled += instance.OnPower2;
+            @AttackMouse.started += instance.OnAttackMouse;
+            @AttackMouse.performed += instance.OnAttackMouse;
+            @AttackMouse.canceled += instance.OnAttackMouse;
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
             @Rewind.started += instance.OnRewind;
             @Rewind.performed += instance.OnRewind;
             @Rewind.canceled += instance.OnRewind;
-            @Interaction.started += instance.OnInteraction;
-            @Interaction.performed += instance.OnInteraction;
-            @Interaction.canceled += instance.OnInteraction;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -561,21 +509,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @Power1.started -= instance.OnPower1;
-            @Power1.performed -= instance.OnPower1;
-            @Power1.canceled -= instance.OnPower1;
-            @Power2.started -= instance.OnPower2;
-            @Power2.performed -= instance.OnPower2;
-            @Power2.canceled -= instance.OnPower2;
+            @AttackMouse.started -= instance.OnAttackMouse;
+            @AttackMouse.performed -= instance.OnAttackMouse;
+            @AttackMouse.canceled -= instance.OnAttackMouse;
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
             @Rewind.started -= instance.OnRewind;
             @Rewind.performed -= instance.OnRewind;
             @Rewind.canceled -= instance.OnRewind;
-            @Interaction.started -= instance.OnInteraction;
-            @Interaction.performed -= instance.OnInteraction;
-            @Interaction.canceled -= instance.OnInteraction;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -622,11 +564,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnMovementWASD(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnPower1(InputAction.CallbackContext context);
-        void OnPower2(InputAction.CallbackContext context);
+        void OnAttackMouse(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnRewind(InputAction.CallbackContext context);
-        void OnInteraction(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnActiveObjectOne(InputAction.CallbackContext context);
         void OnActiveObjectTwo(InputAction.CallbackContext context);

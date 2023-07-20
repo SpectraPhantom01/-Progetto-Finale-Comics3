@@ -4,7 +4,7 @@ using UnityEngine;
 public class Main_MirrorPlatform : MonoBehaviour
 {
     List<Transform> platforms = new List<Transform>();
-
+    [SerializeField] GameObject helpQMessage;
     private void Awake()
     {
         foreach (Transform child in transform)
@@ -23,6 +23,8 @@ public class Main_MirrorPlatform : MonoBehaviour
 
         if (player != null)
         {
+            helpQMessage.SetActive(true);
+
             player.GhostPositions.Add(transform.position);
 
             foreach (Transform platform in platforms)
@@ -38,6 +40,7 @@ public class Main_MirrorPlatform : MonoBehaviour
 
         if (player != null)
         {
+            helpQMessage.SetActive(false);
             player.GhostPositions.Clear();
         }
     }

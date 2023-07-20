@@ -33,18 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Power 1",
+                    "name": "AttackMouse",
                     "type": "Button",
-                    "id": "0489247b-3293-4956-a7e8-d829362989e3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Power 2",
-                    "type": "Button",
-                    "id": "fb503a61-f581-49e6-a4e7-440213ea4478",
+                    "id": "0aadc512-0510-4c15-a10e-6610c8f76d25",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -63,15 +54,6 @@
                     "name": "Rewind",
                     "type": "Button",
                     "id": "a7568a94-888e-4fb3-b1bd-2fd184fad138",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interaction",
-                    "type": "Button",
-                    "id": "20816ea0-c44b-4948-9d20-f2e73142cf87",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -182,33 +164,11 @@
                 {
                     "name": "",
                     "id": "bb652d7e-2464-4bf5-b52e-d88cf3e8c461",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae6944d6-3bf8-4958-8254-e7757b0f8733",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Power 1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "92afaad9-772b-4b00-92c9-381f76bcf9a1",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Power 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -226,22 +186,11 @@
                 {
                     "name": "",
                     "id": "b744433e-a885-4a02-b591-d89fbed928a0",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Rewind",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5eb25bd7-1c3f-4b5b-8b7d-7faf22547761",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -354,6 +303,17 @@
                     "action": "MovementWASD",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4dcc2773-46f1-437f-9b49-5b169aeb7075",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

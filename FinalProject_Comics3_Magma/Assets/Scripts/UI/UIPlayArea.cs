@@ -11,6 +11,7 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
     [SerializeField] Image SandLevel;
     [SerializeField] Image SandImagePrefab;
     [SerializeField] GameObject HourglassesContent;
+    [SerializeField] GameObject helpQMessage;
     [Header("Equip Slots")]
     [SerializeField] Image equip1Image;
     [SerializeField] TextMeshProUGUI equip1text;
@@ -151,6 +152,12 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
             equip4text.text = $"0";
         }
     }
+
+    public void EnableQMessage(bool enabled)
+    {
+        helpQMessage.SetActive(enabled);
+    }
+
     public void OpenGameOverPanel()
     {
         gameOverPanel.SetActive(true);

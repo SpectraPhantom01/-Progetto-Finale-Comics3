@@ -248,7 +248,9 @@ public class PlayerController : MonoBehaviour
 
     public void Rewind()
     {
-        StopCoroutine(ghostRoutine);
+        if(ghostRoutine != null)
+            StopCoroutine(ghostRoutine);
+
         transform.position = playerPositionOnGhostActive;
         audioSource.PlayOneShot(activeGhost);
 
@@ -262,11 +264,16 @@ public class PlayerController : MonoBehaviour
     private IEnumerator GhostRoutine(float time)
     {
         yield return new WaitForSeconds(time);
-        DestroyGhost();
 
-        Listeners?.Invoke();
+        // ghost starts anyway after time is up
+        GhostActive = false;
+        GameManager.Instance.EndGhost();
+        Rewind();
 
-        Listeners.RemoveAllListeners();
+        // old code
+        //DestroyGhost();
+        //Listeners?.Invoke();
+        //Listeners.RemoveAllListeners();
 
         audioSource.PlayOneShot(destroyGhost);
     }

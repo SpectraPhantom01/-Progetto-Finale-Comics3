@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         inputSystem.Player.MovementWASD.performed += Movement_started;
         inputSystem.Player.MovementWASD.canceled += Movement_canceled;
         inputSystem.Player.Attack.performed += Attack_performed;
+        inputSystem.Player.AttackMouse.performed += Attack_performed;
         inputSystem.Player.Dash.performed += Dash_performed;
         inputSystem.Player.Rewind.performed += Rewind_performed;
         inputSystem.Player.Pause.performed += Pause_performed;
@@ -133,11 +134,20 @@ public class GameManager : MonoBehaviour
         EnableGhostRendering();
     }
 
+    public void EndGhost()
+    {
+
+        GhostManager.RegistraInput(Vector2.zero, InputType.Ghost);
+        EnableGhostRendering();
+    }
+
     public void EnableGhostRendering()
     {
         if (playerController.GhostActive)
         {
             globalVolume.gameObject.SetActive(true);
+            UIManager.Instance.UIPlayArea.EnableQMessage(true);
+
             ghostEffect = StartCoroutine(GhostEffect());
         }
         else
@@ -146,6 +156,7 @@ public class GameManager : MonoBehaviour
             PlayerGhostControllerList.Clear();
 
             globalVolume.gameObject.SetActive(false);
+            UIManager.Instance.UIPlayArea.EnableQMessage(false);
             StopCoroutine(ghostEffect);
         }
     }

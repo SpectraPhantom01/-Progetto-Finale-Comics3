@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     UIPlayArea _uiPlayArea;
     bool stoppedHourglass = false;
     bool isTeleporting = false;
-
+    DamagedVolumeHandler _damagedVolumeHandler;
     private InventoryStruct photographInventory;
 
     private void Awake()
@@ -65,6 +65,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         {
             IsAlive = true;
             _damageable = gameObject.SearchComponent<Damageable>();
+            _damagedVolumeHandler = GetComponentInChildren<DamagedVolumeHandler>(true);
         }
     }
     private void Start()
@@ -84,6 +85,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             {
                 AddNewHourglass();
             }
+
+            Damageable.onGetDamage += _damagedVolumeHandler.FadeUp;
         }
     }
 
