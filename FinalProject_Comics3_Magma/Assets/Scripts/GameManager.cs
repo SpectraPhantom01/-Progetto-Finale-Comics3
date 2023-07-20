@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         inputSystem.Player.MovementWASD.performed += Movement_started;
         inputSystem.Player.MovementWASD.canceled += Movement_canceled;
         inputSystem.Player.Attack.performed += Attack_performed;
+        inputSystem.Player.AttackMouse.performed += Attack_performed;
         inputSystem.Player.Dash.performed += Dash_performed;
         inputSystem.Player.Rewind.performed += Rewind_performed;
         inputSystem.Player.Pause.performed += Pause_performed;
