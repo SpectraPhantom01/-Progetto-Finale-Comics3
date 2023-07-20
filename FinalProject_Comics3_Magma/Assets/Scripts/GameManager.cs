@@ -134,6 +134,13 @@ public class GameManager : MonoBehaviour
         EnableGhostRendering();
     }
 
+    public void EndGhost()
+    {
+
+        GhostManager.RegistraInput(Vector2.zero, InputType.Ghost);
+        EnableGhostRendering();
+    }
+
     public void EnableGhostRendering()
     {
         if (playerController.GhostActive)
