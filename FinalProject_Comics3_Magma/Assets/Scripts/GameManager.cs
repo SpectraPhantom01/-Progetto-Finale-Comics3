@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public bool DialogueMessageActive { get; set; }
 
     Coroutine ghostEffect;
+    bool gamePaused;
     private void Awake()
     {
         instance = this;
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
         // INPUT SYSTEM
-
+        gamePaused = false;
         inputSystem = new InputSystem();
         inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += Movement_started;
@@ -108,11 +109,15 @@ public class GameManager : MonoBehaviour
 
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        gamePaused = !gamePaused;
         UIManager.Instance.Pause();
     }
 
     private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (gamePaused)
+            return;
+
         if (playerController.CanRewind)
         {
             if (playerController.GhostActive)
@@ -200,6 +205,9 @@ public class GameManager : MonoBehaviour
 
     private void Dash_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (gamePaused)
+            return;
+
         if (playerController.GhostActive)
         {
             GhostManager.RegistraInput(Vector2.zero, InputType.Dash);
@@ -230,6 +238,9 @@ public class GameManager : MonoBehaviour
 
     private void Movement_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (gamePaused)
+            return;
+
         Vector2 readedDirection = obj.ReadValue<Vector2>();
 
         playerController.Direction = readedDirection.normalized;
@@ -266,6 +277,9 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.NextDialogue();
             return;
         }
+
+        if (gamePaused)
+            return;
 
         if (playerController.GhostActive)
         {

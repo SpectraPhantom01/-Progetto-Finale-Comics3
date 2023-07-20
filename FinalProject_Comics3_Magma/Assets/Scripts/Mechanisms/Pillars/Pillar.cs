@@ -33,6 +33,11 @@ public class Pillar : MonoBehaviour
         {
             pillarHandler.AddPillar(this);
             sprite = GetComponentInChildren<SpriteRenderer>();
+            if (endless)
+            {
+                sprite.color = Color.cyan;
+                inactiveColor = Color.cyan;
+            }
         }           
     }
 
