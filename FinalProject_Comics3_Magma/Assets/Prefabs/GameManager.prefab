@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   globalVolume: {fileID: 0}
-  speedGhostEffect: 0.003
-  weightSpeed: 0.004
+  speedGhostEffect: 0.008
+  weightSpeed: 0.01
   cameraGameOver: {fileID: 3215994714818300637}
   PlayerGhostControllerList: []
 --- !u!114 &7769003773320941112
