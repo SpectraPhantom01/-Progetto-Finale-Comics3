@@ -146,6 +146,8 @@ public class GameManager : MonoBehaviour
         if (playerController.GhostActive)
         {
             globalVolume.gameObject.SetActive(true);
+            UIManager.Instance.UIPlayArea.EnableQMessage(true);
+
             ghostEffect = StartCoroutine(GhostEffect());
         }
         else
@@ -154,6 +156,7 @@ public class GameManager : MonoBehaviour
             PlayerGhostControllerList.Clear();
 
             globalVolume.gameObject.SetActive(false);
+            UIManager.Instance.UIPlayArea.EnableQMessage(false);
             StopCoroutine(ghostEffect);
         }
     }
