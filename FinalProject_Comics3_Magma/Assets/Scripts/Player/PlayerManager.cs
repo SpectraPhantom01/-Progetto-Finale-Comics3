@@ -35,7 +35,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     [SerializeField] ParticleSystem hourglassVFX;
     [SerializeField] GameObject deathVFX;
 
-    public CheckPoint _currentCheckPoint;
+    private CheckPoint _currentCheckPoint;
+    public CheckPoint CheckPoint => _currentCheckPoint;
     public EDirection CurrentDirection = EDirection.Down;
     public Vector3 CurrentVectorDirection => CurrentDirection switch { EDirection.Up => Vector3.up, EDirection.Down => Vector3.down, EDirection.Left => Vector3.left, EDirection.Right => Vector3.right, _ => Vector3.down };
     public bool IsAlive { get; set; }
@@ -410,6 +411,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
             Respawn(_currentCheckPoint.transform.position);
     }
 
+
     public bool HasObjectInInventory(EPickableEffectType effectType) => InventoryArray.Where(pickable => pickable != null && pickable.PickableSO != null).Any(pickable => pickable.PickableSO.PickableEffectType == effectType);
 
     public void Teleport(Vector3 position, float timeDelayTeleport, GameObject vfxOnTeleportPrefab, UnityEvent onTeleportHalfEvent, UnityEvent onTeleportEndEvent)
@@ -463,6 +465,7 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     public void Kill()
     {
         IsAlive = false;
+        GameManager.Instance.Save();
         GameManager.Instance.EnablePlayerInputs(false, true);
         PlayerController.Rigidbody.isKinematic = true;
         var colliders = GetComponentsInChildren<Collider2D>(true);

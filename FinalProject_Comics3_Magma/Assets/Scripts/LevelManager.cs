@@ -36,7 +36,33 @@ public class LevelManager : MonoBehaviour
         progressBar = GetComponentInChildren<UIProgressBar>(true).GetComponent<Image>();
     }
 
+
     public async void LoadScene(string sceneName)
+    {
+        _target = 0;
+        progressBar.fillAmount = 0;
+
+        var scene = SceneManager.LoadSceneAsync(sceneName);
+        scene.allowSceneActivation = false;
+
+        loaderCanvas.SetActive(true);
+
+        do
+        {
+            await Task.Delay(100);
+            _target = scene.progress;
+        } while (scene.progress < 0.9f);
+
+        await Task.Delay(1000);
+
+        scene.allowSceneActivation = true;
+
+        await Task.Delay(2000);
+
+        animator.SetTrigger("Close");
+    }
+
+    public async Task LoadSceneAsync(string sceneName)
     {
         _target = 0;
         progressBar.fillAmount = 0;

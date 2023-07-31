@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using Action = System.Action;
+
 public class GameManager : MonoBehaviour
 {
     #region SINGLETON
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float speedGhostEffect = 0.001f;
     [SerializeField] float weightSpeed = 0.001f;
     [SerializeField] GameObject cameraGameOver;
+    [SerializeField] SaveSO saveAsset;
     // Corrected Variables
     private InputSystem inputSystem;
     private GhostManager ghostManager;
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     Coroutine ghostEffect;
     bool gamePaused;
+    bool gameStart;
     private void Awake()
     {
         instance = this;
@@ -71,7 +76,6 @@ public class GameManager : MonoBehaviour
         // INPUT SYSTEM
         gamePaused = false;
         inputSystem = new InputSystem();
-        inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += Movement_started;
         inputSystem.Player.Movement.canceled += Movement_canceled;
         inputSystem.Player.MovementWASD.performed += Movement_started;
@@ -88,6 +92,22 @@ public class GameManager : MonoBehaviour
         // END INPUT SYSTEM
 
         EnableCursor(false);
+    }
+
+    private void Start()
+    {
+        if(saveAsset.SceneName != string.Empty && saveAsset.LastCheckPointPosition != Vector3.zero)
+            Player.PlayerManager.Respawn(saveAsset.LastCheckPointPosition);
+
+        gameStart = true;
+        StartCoroutine(WaitForEndOfFrameCoroutine(() => EnablePlayerInputs(true)));
+    }
+
+    private IEnumerator WaitForEndOfFrameCoroutine(Action action)
+    {
+        yield return new WaitForEndOfFrame();
+        gameStart = false;
+        action.Invoke();
     }
 
     private void ActiveObjectOnePerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -336,7 +356,10 @@ public class GameManager : MonoBehaviour
             inputSystem.Player.ActiveObjectFour.Disable();
 
             if (overrideAttack)
+            {
                 inputSystem.Player.Attack.Disable();
+                inputSystem.Player.AttackMouse.Disable();
+            }
         }
     }
 
@@ -352,7 +375,8 @@ public class GameManager : MonoBehaviour
     {
         EnablePlayerInputs(false);
         inputSystem.Player.Attack.Disable();
-        Destroy(gameObject, 0.1f);
+        inputSystem.Player.AttackMouse.Disable();
+        StartCoroutine(WaitForEndOfFrameCoroutine(() => Destroy(gameObject)));
         LevelManager.Instance.LoadScene(sceneName);
     }
 
@@ -371,5 +395,22 @@ public class GameManager : MonoBehaviour
     public void EnableCameraGameOver(bool enabled)
     {
         cameraGameOver.SetActive(enabled);
+    }
+
+    public void Save()
+    {
+        saveAsset.SceneName = SceneManager.GetActiveScene().name;
+    }
+
+    public void SetCheckPoint(CheckPoint checkPoint)
+    {
+        saveAsset.LastCheckPointPosition = checkPoint.transform.position;
+        if (gameStart)
+            checkPoint.LoadRooms();
+    }
+
+    public void Load()
+    {
+        ChangeScene(saveAsset.SceneName);
     }
 }

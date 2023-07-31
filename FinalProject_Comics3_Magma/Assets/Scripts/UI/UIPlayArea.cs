@@ -165,7 +165,7 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
 
     public void ReloadScene()
     {
-        LevelManager.Instance.ReloadScene();
+        GameManager.Instance.Load();
     }
 
     public void ExitGame()

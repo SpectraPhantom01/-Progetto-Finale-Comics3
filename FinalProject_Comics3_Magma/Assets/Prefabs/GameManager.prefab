@@ -51,6 +51,7 @@ MonoBehaviour:
   speedGhostEffect: 0.008
   weightSpeed: 0.01
   cameraGameOver: {fileID: 3215994714818300637}
+  saveAsset: {fileID: 11400000, guid: 4d04525174e232a4a81e97aab7ace263, type: 2}
   PlayerGhostControllerList: []
 --- !u!114 &7769003773320941112
 MonoBehaviour:

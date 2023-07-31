@@ -386,6 +386,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c023240082906cb43bec787c60d75681, type: 2}
   - {fileID: 11400000, guid: 2ee15f6c9ce3dcc4dbe39bb83eadbd69, type: 2}
   - {fileID: 11400000, guid: 2679daec62f4e2d49ad5adf3afa8c434, type: 2}
+  saveSO: {fileID: 11400000, guid: 4d04525174e232a4a81e97aab7ace263, type: 2}
 --- !u!1 &1742177943525120628
 GameObject:
   m_ObjectHideFlags: 0
