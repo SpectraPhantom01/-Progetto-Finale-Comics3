@@ -14,7 +14,11 @@ public class CheckPoint : MonoBehaviour
         {
             player.SetCheckPoint(this);
             if (SaverLevel)
+            {
+                GameManager.Instance.Save();
                 GameManager.Instance.SetCheckPoint(this);
+                player.SaveInventory();
+            }
         }
     }
 

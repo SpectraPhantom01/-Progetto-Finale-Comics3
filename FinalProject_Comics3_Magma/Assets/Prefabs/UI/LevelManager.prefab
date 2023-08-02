@@ -238,7 +238,6 @@ GameObject:
   - component: {fileID: 1742177943356337873}
   - component: {fileID: 1742177943356337872}
   - component: {fileID: 4047007919233319334}
-  - component: {fileID: 5576697078613231807}
   m_Layer: 5
   m_Name: LevelManager
   m_TagString: Untagged
@@ -365,28 +364,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5576697078613231807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742177943356337875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e603c76bdb80be4abd51306c2d62daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 0494d91bc0fb66c44ab81e4d87ccd288, type: 2}
-  inventorySlots: 30
-  equipmentSlots: 2
-  activeObjectsSlots: 4
-  logScriptableObject: {fileID: 11400000, guid: 05c798c92ac2bd74a8c1c2c85df0ff20, type: 2}
-  saveBoolList:
-  - {fileID: 11400000, guid: c023240082906cb43bec787c60d75681, type: 2}
-  - {fileID: 11400000, guid: 2ee15f6c9ce3dcc4dbe39bb83eadbd69, type: 2}
-  - {fileID: 11400000, guid: 2679daec62f4e2d49ad5adf3afa8c434, type: 2}
-  saveSO: {fileID: 11400000, guid: 4d04525174e232a4a81e97aab7ace263, type: 2}
 --- !u!1 &1742177943525120628
 GameObject:
   m_ObjectHideFlags: 0

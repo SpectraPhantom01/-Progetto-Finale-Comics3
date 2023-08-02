@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.2
   DestroyOnEnd: 1
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -1373,7 +1374,7 @@ AudioSource:
   m_GameObject: {fileID: 4751609387052051401}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 13781db306022f14ba5214c80e1b2c23, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1591,6 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 5
   DestroyOnEnd: 1
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -1804,6 +1806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.2
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -1833,6 +1836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.4
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -1862,6 +1866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.8
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -1891,6 +1896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 1
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -1920,6 +1926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 1.5
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -1949,6 +1956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 1.9
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:
@@ -2014,6 +2022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 3
   DestroyOnEnd: 0
+  IgnoreCountdown: 0
   Event:
     m_PersistentCalls:
       m_Calls:

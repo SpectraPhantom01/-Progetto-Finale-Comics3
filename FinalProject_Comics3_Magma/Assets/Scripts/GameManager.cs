@@ -96,7 +96,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(saveAsset.SceneName != string.Empty && saveAsset.LastCheckPointPosition != Vector3.zero)
+        if(saveAsset.SceneName != string.Empty 
+            && SceneManager.GetActiveScene().name == saveAsset.SceneName 
+            && saveAsset.LastCheckPointPosition != Vector3.zero)
             Player.PlayerManager.Respawn(saveAsset.LastCheckPointPosition);
 
         gameStart = true;

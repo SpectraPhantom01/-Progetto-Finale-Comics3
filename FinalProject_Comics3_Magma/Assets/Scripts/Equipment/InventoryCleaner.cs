@@ -11,11 +11,10 @@ public class InventoryCleaner : MonoBehaviour
     [SerializeField] int activeObjectsSlots;
     [SerializeField] LogScriptableObject logScriptableObject;
     [SerializeField] List<UISaveBool> saveBoolList;
-    private void Start()
+    public void Delete()
     {
         inventory.ResetValues(inventorySlots, equipmentSlots, activeObjectsSlots);
         logScriptableObject.Clear();
         saveBoolList.ForEach(b => b.OpenedOnce = false);
-        Destroy(this);
     }
 }
