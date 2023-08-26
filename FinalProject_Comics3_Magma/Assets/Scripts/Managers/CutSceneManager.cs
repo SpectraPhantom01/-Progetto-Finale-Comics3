@@ -12,6 +12,18 @@ public class CutSceneManager : MonoBehaviour
         
         inputActions.Player.Attack.Enable();
         inputActions.Player.Attack.performed += Attack_performed;
+
+        if (LevelManager.FindInputDevice("gamepoad"))
+        {
+            inputActions.PlayerGamePad.Attack.Enable();
+            inputActions.PlayerGamePad.Attack.performed += Attack_performed;
+        }
+
+        if (LevelManager.FindInputDevice("joystick"))
+        {
+            inputActions.PlayerUSBJoyStick.Attack.Enable();
+            inputActions.PlayerUSBJoyStick.Attack.performed += Attack_performed;
+        }
     }
 
     private void Attack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -19,7 +31,7 @@ public class CutSceneManager : MonoBehaviour
         UIDialoguePanel.Next();
     }
 
-    private void OnDisable()
+    public void Disable()
     {
         inputActions.Disable();
     }

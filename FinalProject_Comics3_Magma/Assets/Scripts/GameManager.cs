@@ -2,8 +2,10 @@ using BehaviorDesigner.Runtime.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
     // Corrected Variables
     private InputSystem inputSystem;
     private GhostManager ghostManager;
-
+    private GamePadMouseHandler gamePadMouseHandler;
     // Properties
     public PlayerController Player => playerController;
     public List<PlayerController> PlayerGhostControllerList;
@@ -60,9 +62,14 @@ public class GameManager : MonoBehaviour
     Coroutine ghostEffect;
     bool gamePaused;
     bool gameStart;
+    bool gamePadInput = false;
+    bool joyStickInput = false;
+    bool mouseAndKeyboardInput = true;
     private void Awake()
     {
         instance = this;
+
+        gamePadMouseHandler = GetComponent<GamePadMouseHandler>();
 
         playerController ??= FindObjectOfType<PlayerController>(true);
         globalVolume ??= FindObjectOfType<Volume>(true);
@@ -73,9 +80,49 @@ public class GameManager : MonoBehaviour
         //if (playerMovement == null)
         //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
-        // INPUT SYSTEM
+        FindAndEnableDevices();
+
         gamePaused = false;
+        BuildInputs();
+
+        EnableCursor(false);
+    }
+
+    private bool FindAndEnableDevices()
+    {
+        joyStickInput = LevelManager.FindInputDevice("usb joystick");
+
+        gamePadInput = LevelManager.FindInputDevice("gamepad");
+
+        return gamePadInput || joyStickInput;
+    }
+
+    private void BuildInputs()
+    {
         inputSystem = new InputSystem();
+
+        inputSystem.PlayerGamePad.Movement.performed += Movement_started;
+        inputSystem.PlayerGamePad.Movement.canceled += Movement_canceled;
+        inputSystem.PlayerGamePad.Attack.performed += Attack_performed;
+        inputSystem.PlayerGamePad.Dash.performed += Dash_performed;
+        inputSystem.PlayerGamePad.Rewind.performed += Rewind_performed;
+        inputSystem.PlayerGamePad.Pause.performed += Pause_performed;
+        inputSystem.PlayerGamePad.ActiveObjectOne.performed += ActiveObjectOnePerformed;
+        inputSystem.PlayerGamePad.ActiveObjectTwo.performed += ActiveObjectTwoPerformed;
+        inputSystem.PlayerGamePad.ActiveObjectThree.performed += ActiveObjectThreePerformed;
+        inputSystem.PlayerGamePad.ActiveObjectFour.performed += ActiveObjectFourPerformed;
+
+        inputSystem.PlayerUSBJoyStick.Movement.performed += Movement_started;
+        inputSystem.PlayerUSBJoyStick.Movement.canceled += Movement_canceled;
+        inputSystem.PlayerUSBJoyStick.Attack.performed += Attack_performed;
+        inputSystem.PlayerUSBJoyStick.Dash.performed += Dash_performed;
+        inputSystem.PlayerUSBJoyStick.Rewind.performed += Rewind_performed;
+        inputSystem.PlayerUSBJoyStick.Pause.performed += Pause_performed;
+        inputSystem.PlayerUSBJoyStick.ActiveObjectOne.performed += ActiveObjectOnePerformed;
+        inputSystem.PlayerUSBJoyStick.ActiveObjectTwo.performed += ActiveObjectTwoPerformed;
+        inputSystem.PlayerUSBJoyStick.ActiveObjectThree.performed += ActiveObjectThreePerformed;
+        inputSystem.PlayerUSBJoyStick.ActiveObjectFour.performed += ActiveObjectFourPerformed;
+
         inputSystem.Player.Movement.performed += Movement_started;
         inputSystem.Player.Movement.canceled += Movement_canceled;
         inputSystem.Player.MovementWASD.performed += Movement_started;
@@ -89,9 +136,13 @@ public class GameManager : MonoBehaviour
         inputSystem.Player.ActiveObjectTwo.performed += ActiveObjectTwoPerformed;
         inputSystem.Player.ActiveObjectThree.performed += ActiveObjectThreePerformed;
         inputSystem.Player.ActiveObjectFour.performed += ActiveObjectFourPerformed;
-        // END INPUT SYSTEM
+    }
 
-        EnableCursor(false);
+    private void UIMouseMovement_performed(InputAction.CallbackContext obj)
+    {
+        
+       gamePadMouseHandler.SetDirection(obj.ReadValue<Vector2>());
+
     }
 
     private void Start()
@@ -103,6 +154,7 @@ public class GameManager : MonoBehaviour
 
         gameStart = true;
         StartCoroutine(WaitForEndOfFrameCoroutine(() => EnablePlayerInputs(true)));
+
     }
 
     private IEnumerator WaitForEndOfFrameCoroutine(Action action)
@@ -133,6 +185,45 @@ public class GameManager : MonoBehaviour
     {
         gamePaused = !gamePaused;
         UIManager.Instance.Pause();
+
+        if(joyStickInput)
+        {
+            gamePadMouseHandler.Active = gamePaused;
+            if (gamePaused)
+            {
+                inputSystem.PlayerUSBJoyStick.UIMouseMovement.performed += UIMouseMovement_performed;
+                inputSystem.PlayerUSBJoyStick.UIMouseMovement.canceled += UIMouseMovement_performed;
+                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
+            }
+            else
+            {
+                inputSystem.PlayerUSBJoyStick.UIMouseMovement.performed -= UIMouseMovement_performed;
+                inputSystem.PlayerUSBJoyStick.UIMouseMovement.canceled -= UIMouseMovement_performed;
+                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed -= UIMouseClick_performed;
+            }
+        }
+
+        if(gamePadInput)
+        {
+            gamePadMouseHandler.Active = gamePaused;
+            if (gamePaused)
+            {
+                inputSystem.PlayerGamePad.UIMouseMovement.performed += UIMouseMovement_performed;
+                inputSystem.PlayerGamePad.UIMouseMovement.canceled += UIMouseMovement_performed;
+                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
+            }
+            else
+            {
+                inputSystem.PlayerGamePad.UIMouseMovement.performed -= UIMouseMovement_performed;
+                inputSystem.PlayerGamePad.UIMouseMovement.canceled -= UIMouseMovement_performed;
+                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed -= UIMouseClick_performed;
+            }
+        }
+    }
+
+    private void UIMouseClick_performed(InputAction.CallbackContext obj)
+    {
+        gamePadMouseHandler.Click();
     }
 
     private void Rewind_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -324,60 +415,110 @@ public class GameManager : MonoBehaviour
     public void EnablePlayerInputs(bool enable)
     {
         if (enable)
-            inputSystem.Player.Enable();
+        {
+            if(mouseAndKeyboardInput)
+                inputSystem.Player.Enable();
+            
+            if(gamePadInput)
+                inputSystem.PlayerGamePad.Enable();
+            
+            if(joyStickInput)
+                inputSystem.PlayerUSBJoyStick.Enable();
+        }
         else
         {
-            inputSystem.Player.Movement.Disable();
-            inputSystem.Player.MovementWASD.Disable();
+            if (mouseAndKeyboardInput)
+            {
+                inputSystem.Player.Movement.Disable();
+                inputSystem.Player.MovementWASD.Disable();
+                inputSystem.Player.Dash.Disable();
+                inputSystem.Player.Rewind.Disable();
+                inputSystem.Player.Pause.Disable();
+                inputSystem.Player.ActiveObjectOne.Disable();
+                inputSystem.Player.ActiveObjectTwo.Disable();
+                inputSystem.Player.ActiveObjectThree.Disable();
+                inputSystem.Player.ActiveObjectFour.Disable();
+            }
 
-            inputSystem.Player.Dash.Disable();
-            inputSystem.Player.Rewind.Disable();
-            inputSystem.Player.Pause.Disable();
-            inputSystem.Player.ActiveObjectOne.Disable();
-            inputSystem.Player.ActiveObjectTwo.Disable();
-            inputSystem.Player.ActiveObjectThree.Disable();
-            inputSystem.Player.ActiveObjectFour.Disable();
+            if (gamePadInput)
+            {
+                inputSystem.PlayerGamePad.Movement.Disable();
+                inputSystem.PlayerGamePad.Dash.Disable();
+                inputSystem.PlayerGamePad.Rewind.Disable();
+                inputSystem.PlayerGamePad.Pause.Disable();
+                inputSystem.PlayerGamePad.ActiveObjectOne.Disable();
+                inputSystem.PlayerGamePad.ActiveObjectTwo.Disable();
+                inputSystem.PlayerGamePad.ActiveObjectThree.Disable();
+                inputSystem.PlayerGamePad.ActiveObjectFour.Disable();
+            }
+
+            if (joyStickInput)
+            {
+                inputSystem.PlayerUSBJoyStick.Movement.Disable();
+                inputSystem.PlayerUSBJoyStick.Dash.Disable();
+                inputSystem.PlayerUSBJoyStick.Rewind.Disable();
+                inputSystem.PlayerUSBJoyStick.Pause.Disable();
+                inputSystem.PlayerUSBJoyStick.ActiveObjectOne.Disable();
+                inputSystem.PlayerUSBJoyStick.ActiveObjectTwo.Disable();
+                inputSystem.PlayerUSBJoyStick.ActiveObjectThree.Disable();
+                inputSystem.PlayerUSBJoyStick.ActiveObjectFour.Disable();
+            }
         }
     }
 
     public void EnablePlayerInputs(bool enable, bool overrideAttack = false)
     {
-        if (enable)
-            inputSystem.Player.Enable();
-        else
+        EnablePlayerInputs(enable);
+
+        if (!enable && overrideAttack)
         {
-            inputSystem.Player.Movement.Disable();
-            inputSystem.Player.MovementWASD.Disable();
-
-            inputSystem.Player.Dash.Disable();
-            inputSystem.Player.Rewind.Disable();
-            inputSystem.Player.Pause.Disable();
-            inputSystem.Player.ActiveObjectOne.Disable();
-            inputSystem.Player.ActiveObjectTwo.Disable();
-            inputSystem.Player.ActiveObjectThree.Disable();
-            inputSystem.Player.ActiveObjectFour.Disable();
-
-            if (overrideAttack)
-            {
-                inputSystem.Player.Attack.Disable();
-                inputSystem.Player.AttackMouse.Disable();
-            }
+            inputSystem.Player.Attack.Disable();
+            inputSystem.Player.AttackMouse.Disable();
+            inputSystem.PlayerGamePad.Attack.Disable();
+            inputSystem.PlayerUSBJoyStick.Attack.Disable();
         }
     }
 
     public void EnablePauseMenuInput(bool enabled)
     {
         if (enabled)
-            inputSystem.Player.Pause.Enable();
+        {
+            if (mouseAndKeyboardInput)
+                inputSystem.Player.Enable();
+
+            if (gamePadInput)
+                inputSystem.PlayerGamePad.Enable();
+
+            if (joyStickInput)
+                inputSystem.PlayerUSBJoyStick.Enable();
+        }
         else
-            inputSystem.Player.Pause.Disable();
+        {
+            if (mouseAndKeyboardInput)
+                inputSystem.Player.Disable();
+
+            if (gamePadInput)
+                inputSystem.PlayerGamePad.Disable();
+
+            if (joyStickInput)
+                inputSystem.PlayerUSBJoyStick.Disable();
+        }
     }
 
     public void ChangeScene(string sceneName)
     {
         EnablePlayerInputs(false);
-        inputSystem.Player.Attack.Disable();
-        inputSystem.Player.AttackMouse.Disable();
+
+        if (mouseAndKeyboardInput)
+        {
+            inputSystem.Player.Attack.Disable();
+            inputSystem.Player.AttackMouse.Disable();
+        }
+        if (gamePadInput)
+            inputSystem.PlayerGamePad.Attack.Disable();
+        if (joyStickInput)
+            inputSystem.PlayerUSBJoyStick.Attack.Disable();
+
         StartCoroutine(WaitForEndOfFrameCoroutine(() => Destroy(gameObject)));
         LevelManager.Instance.LoadScene(sceneName);
     }
@@ -414,5 +555,33 @@ public class GameManager : MonoBehaviour
     public void Load()
     {
         ChangeScene(saveAsset.SceneName);
+    }
+
+    public bool TryEnableInputDevice(bool enable, EInputDeviceType inputDeviceType)
+    {
+        switch (inputDeviceType)
+        {
+            case EInputDeviceType.MouseAndKeyboard:
+
+                if (!enable && FindAndEnableDevices())
+                    mouseAndKeyboardInput = false;
+                else
+                    mouseAndKeyboardInput = true;
+                
+                return false;
+            case EInputDeviceType.GamePad:
+                if (LevelManager.FindInputDevice("gamepad"))
+                    gamePadInput = enable;
+                else
+                    return false;
+                break;
+            case EInputDeviceType.JoyStick:
+                if (LevelManager.FindInputDevice("joystick"))
+                    joyStickInput = enable;
+                else
+                    return false;
+                break;
+        }
+        return true;
     }
 }

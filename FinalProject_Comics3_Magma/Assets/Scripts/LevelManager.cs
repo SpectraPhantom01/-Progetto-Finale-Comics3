@@ -127,4 +127,16 @@ public class LevelManager : MonoBehaviour
     {
         LoadScene(SceneManager.GetActiveScene().name);
     }
+    public static bool FindInputDevice(string device)
+    {
+        var joysticks = Input.GetJoystickNames().ToList();
+        return joysticks.Any(j => j.ToLower().Contains(device));
+    }
+}
+
+public enum EInputDeviceType
+{
+    MouseAndKeyboard,
+    GamePad,
+    JoyStick
 }
