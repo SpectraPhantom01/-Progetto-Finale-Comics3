@@ -11,7 +11,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Action = System.Action;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISubscriber
 {
     #region SINGLETON
     private static GameManager instance;
@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
+        Publisher.Subscribe(this, typeof(InputDeviceChangedMessage));
+
         gamePadMouseHandler = GetComponent<GamePadMouseHandler>();
 
         playerController ??= FindObjectOfType<PlayerController>(true);
@@ -77,10 +79,8 @@ public class GameManager : MonoBehaviour
         ghostManager = GetComponent<GhostManager>();
         ghostManager.Initialize(playerController);
         PlayerGhostControllerList = new();
-        //if (playerMovement == null)
-        //    throw new Exception("PlayerMovement assente nella scena attuale, importare il prefab del player!!!");
 
-        FindAndEnableDevices();
+        EnableDevices();
 
         gamePaused = false;
         BuildInputs();
@@ -88,13 +88,12 @@ public class GameManager : MonoBehaviour
         EnableCursor(false);
     }
 
-    private bool FindAndEnableDevices()
+
+    private void EnableDevices()
     {
-        joyStickInput = LevelManager.FindInputDevice("usb joystick");
-
-        gamePadInput = LevelManager.FindInputDevice("gamepad");
-
-        return gamePadInput || joyStickInput;
+        joyStickInput = LevelManager.Instance.JoyStickInputAvailable;
+        mouseAndKeyboardInput = LevelManager.Instance.MouseAndKeyboardInputAvailable;
+        gamePadInput = LevelManager.Instance.GamePadInputAvailable;
     }
 
     private void BuildInputs()
@@ -557,31 +556,20 @@ public class GameManager : MonoBehaviour
         ChangeScene(saveAsset.SceneName);
     }
 
-    public bool TryEnableInputDevice(bool enable, EInputDeviceType inputDeviceType)
+    public void OnPublish(IPublisherMessage message)
     {
-        switch (inputDeviceType)
+        if(message is InputDeviceChangedMessage)
         {
-            case EInputDeviceType.MouseAndKeyboard:
-
-                if (!enable && FindAndEnableDevices())
-                    mouseAndKeyboardInput = false;
-                else
-                    mouseAndKeyboardInput = true;
-                
-                return false;
-            case EInputDeviceType.GamePad:
-                if (LevelManager.FindInputDevice("gamepad"))
-                    gamePadInput = enable;
-                else
-                    return false;
-                break;
-            case EInputDeviceType.JoyStick:
-                if (LevelManager.FindInputDevice("joystick"))
-                    joyStickInput = enable;
-                else
-                    return false;
-                break;
+            EnableDevices();
         }
-        return true;
+    }
+
+    public void OnDisableSubscribe()
+    {
+        Publisher.Unsubscribe(this, typeof(InputDeviceChangedMessage));
+    }
+    private void OnDestroy()
+    {
+        OnDisableSubscribe();
     }
 }

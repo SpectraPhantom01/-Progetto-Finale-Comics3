@@ -2,13 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GamePadMouseHandler : MonoBehaviour
 {
     Vector2 direction;
     public bool Active;
     public void SetDirection(Vector2 direc) { direction = direc; }
+    Camera mainCam;
+
+    private void Start()
+    {
+        mainCam = Camera.main;
+    }
     private void Update()
     {
         if(Active)
@@ -18,8 +26,20 @@ public class GamePadMouseHandler : MonoBehaviour
         }
     }
 
-    internal void Click()
+    public void Click()
     {
-        throw new NotImplementedException();
+        var hits = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = Input.mousePosition }, hits);
+        if(hits.Count > 0)
+        {
+            foreach(var hit in hits)
+            {
+                if(hit.gameObject.transform.TryGetComponent<Button>(out var button))
+                {
+                    button.onClick.Invoke();
+                    return;
+                }
+            }
+        }
     }
 }

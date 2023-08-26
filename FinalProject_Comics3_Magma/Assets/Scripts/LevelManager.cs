@@ -1,12 +1,9 @@
+using System.Linq;
 using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Linq;
-using TMPro;
-using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -19,9 +16,12 @@ public class LevelManager : MonoBehaviour
     Image progressBar;
     float _target;
 
+    public bool JoyStickInputAvailable { get; private set; }
+    public bool GamePadInputAvailable { get; private set; }
+    public bool MouseAndKeyboardInputAvailable { get; private set; } = true;
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
 
@@ -34,8 +34,10 @@ public class LevelManager : MonoBehaviour
 
         loaderCanvas = GetComponentInChildren<UILoadingBackground>(true).gameObject;
         progressBar = GetComponentInChildren<UIProgressBar>(true).GetComponent<Image>();
-    }
 
+        TryEnableInputDevice(true, EInputDeviceType.GamePad);
+        TryEnableInputDevice(true, EInputDeviceType.JoyStick);
+    }
 
     public async void LoadScene(string sceneName)
     {
@@ -131,6 +133,39 @@ public class LevelManager : MonoBehaviour
     {
         var joysticks = Input.GetJoystickNames().ToList();
         return joysticks.Any(j => j.ToLower().Contains(device));
+    }
+    public bool TryEnableInputDevice(bool enable, EInputDeviceType inputDeviceType)
+    {
+        switch (inputDeviceType)
+        {
+            case EInputDeviceType.MouseAndKeyboard:
+
+                if (!enable && (JoyStickInputAvailable || GamePadInputAvailable))
+                    MouseAndKeyboardInputAvailable = false;
+                else
+                {
+                    MouseAndKeyboardInputAvailable = true;
+                    Publisher.Publish(new InputDeviceChangedMessage());
+                    return true;
+                }
+
+                return false;
+            case EInputDeviceType.GamePad:
+                if (FindInputDevice("gamepad"))
+                    GamePadInputAvailable = enable;
+                else
+                    return false;
+                break;
+            case EInputDeviceType.JoyStick:
+                if (FindInputDevice("joystick"))
+                    JoyStickInputAvailable = enable;
+                else
+                    return false;
+                break;
+        }
+
+        Publisher.Publish(new InputDeviceChangedMessage());
+        return true;
     }
 }
 

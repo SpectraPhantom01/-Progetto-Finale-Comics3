@@ -475,13 +475,20 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         }
         Damageable.enabled = false;
         PlayerController.Damager.enabled = false;
-        SaveInventory();
+        RestoreFromPhotographInventory();
 
         GameManager.Instance.EnableCameraGameOver(true);
         deathVFX.SetActive(true);
     }
 
     public void SaveInventory()
+    {
+        photographInventory.ActiveObjectSlots = Inventory.ActiveObjectSlots.ToArray();
+        photographInventory.EquipmentSlots = Inventory.EquipmentSlots.ToArray();
+        photographInventory.InventoryObjects = Inventory.InventoryObjects.ToArray();
+    }
+
+    public void RestoreFromPhotographInventory()
     {
         Inventory.ActiveObjectSlots = photographInventory.ActiveObjectSlots.ToArray();
         Inventory.EquipmentSlots = photographInventory.EquipmentSlots.ToArray();
