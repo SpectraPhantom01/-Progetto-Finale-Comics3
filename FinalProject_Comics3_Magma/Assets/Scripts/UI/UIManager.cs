@@ -85,6 +85,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenWrittenPanel(string message, List<string> nextMessages = null)
     {
+        message = HandleInputControls(message);
+
         writtenPanel.SetActive(true);
         messageText.text = message;
 
@@ -96,7 +98,7 @@ public class UIManager : MonoBehaviour
 
         logSO.Logs.Add(message);
 
-        if(nextMessages != null && nextMessages.Count > 1)
+        if (nextMessages != null && nextMessages.Count > 1)
         {
             List<Coroutine> messagesCoroutine = new();
             indexMessage = nextMessages.Count - 1;
@@ -105,6 +107,77 @@ public class UIManager : MonoBehaviour
                 messagesCoroutine.Add(StartCoroutine(NextMessageCoroutine(i * 0.3f, nextMessages[i])));
             }
         }
+    }
+
+    private static string HandleInputControls(string message)
+    {
+        if (message.Contains("#"))
+        {
+            var messageSpit = message.Split('#');
+            message = string.Empty;
+            foreach (var text in messageSpit)
+            {
+                string castText = text;
+                if (text.ToUpper() == "SPACEBAR")
+                {
+                    if (LevelManager.Instance.JoyStickInputAvailable)
+                    {
+                        castText = "SQUARE";
+                    }
+                    else if (LevelManager.Instance.GamePadInputAvailable)
+                    {
+                        castText = " Y ";
+                    }
+                }
+                else if (text.ToUpper() == "WASD/ARROWS")
+                {
+                    if (LevelManager.Instance.JoyStickInputAvailable || LevelManager.Instance.GamePadInputAvailable)
+                    {
+                        castText = "LEFT STICK";
+                    }
+                }
+                else if (text.ToUpper() == "E OR LEFT MOUSE BUTTON")
+                {
+                    if (LevelManager.Instance.JoyStickInputAvailable)
+                    {
+                        castText = " X ";
+                    }
+                    else if (LevelManager.Instance.GamePadInputAvailable)
+                    {
+                        castText = " B ";
+                    }
+                }
+                else if (text.ToUpper() == "ESC")
+                {
+                    if (LevelManager.Instance.JoyStickInputAvailable || LevelManager.Instance.GamePadInputAvailable)
+                    {
+                        castText = "START";
+                    }
+                }
+                else if (text == "1 2 3 4")
+                {
+                    if (LevelManager.Instance.JoyStickInputAvailable || LevelManager.Instance.GamePadInputAvailable)
+                    {
+                        castText = "L1 L2 R1 R2";
+                    }
+                }
+                else if (text.ToUpper() == "Q")
+                {
+                    if (LevelManager.Instance.JoyStickInputAvailable)
+                    {
+                        castText = "CIRCLE";
+                    }
+                    else if (LevelManager.Instance.GamePadInputAvailable)
+                    {
+                        castText = "A";
+                    }
+                }
+
+                message += castText;
+            }
+        }
+
+        return message;
     }
 
     private IEnumerator NextMessageCoroutine(float time, string message)

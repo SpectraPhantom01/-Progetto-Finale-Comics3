@@ -13,13 +13,13 @@ public class CutSceneManager : MonoBehaviour
         inputActions.Player.Attack.Enable();
         inputActions.Player.Attack.performed += Attack_performed;
 
-        if (LevelManager.FindInputDevice("gamepoad"))
+        if (LevelManager.Instance.GamePadInputAvailable)
         {
             inputActions.PlayerGamePad.Attack.Enable();
             inputActions.PlayerGamePad.Attack.performed += Attack_performed;
         }
 
-        if (LevelManager.FindInputDevice("joystick"))
+        if (LevelManager.Instance.JoyStickInputAvailable)
         {
             inputActions.PlayerUSBJoyStick.Attack.Enable();
             inputActions.PlayerUSBJoyStick.Attack.performed += Attack_performed;

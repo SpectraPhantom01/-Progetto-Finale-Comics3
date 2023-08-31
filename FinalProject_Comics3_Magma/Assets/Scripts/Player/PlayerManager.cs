@@ -483,6 +483,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void SaveInventory()
     {
+        if (PlayerController.ImGhost) return;
+
         photographInventory.ActiveObjectSlots = Inventory.ActiveObjectSlots.ToArray();
         photographInventory.EquipmentSlots = Inventory.EquipmentSlots.ToArray();
         photographInventory.InventoryObjects = Inventory.InventoryObjects.ToArray();
@@ -490,6 +492,8 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
 
     public void RestoreFromPhotographInventory()
     {
+        if (PlayerController.ImGhost) return;
+
         Inventory.ActiveObjectSlots = photographInventory.ActiveObjectSlots.ToArray();
         Inventory.EquipmentSlots = photographInventory.EquipmentSlots.ToArray();
         Inventory.InventoryObjects = photographInventory.InventoryObjects.ToArray();

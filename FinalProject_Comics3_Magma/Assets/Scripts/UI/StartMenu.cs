@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class StartMenu : MonoBehaviour
+public class StartMenu : MonoBehaviour, ISubscriber
 {
     [SerializeField] SaveSO saveAsset;
     [SerializeField] Button continueButton;
@@ -15,56 +15,78 @@ public class StartMenu : MonoBehaviour
     {
         if (saveAsset.SceneName != string.Empty)
             continueButton.interactable = true;
-        
+
+        Publisher.Subscribe(this, typeof(InputDeviceChangedMessage));
+
+        gamePadMouseHandler = GetComponent<GamePadMouseHandler>();
     }
 
     private void Start()
     {
-        if(LevelManager.Instance.JoyStickInputAvailable)
+        SetInputToPads();
+    }
+
+    private void SetInputToPads()
+    {
+        inputAction = new InputSystem();
+
+        if (LevelManager.Instance.JoyStickInputAvailable)
         {
-            gamePadMouseHandler = gameObject.AddComponent<GamePadMouseHandler>();
-            inputAction = new InputSystem();
             inputAction.PlayerUSBJoyStick.Enable();
             inputAction.PlayerUSBJoyStick.UIMouseMovement.performed += UIMouseMovement_performed;
             inputAction.PlayerUSBJoyStick.UIMouseMovement.canceled += UIMouseMovement_performed;
             inputAction.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
-            gamePadMouseHandler.Active = true;
         }
-        
-        if(LevelManager.Instance.GamePadInputAvailable)
+
+        if (LevelManager.Instance.GamePadInputAvailable)
         {
-            gamePadMouseHandler = gameObject.AddComponent<GamePadMouseHandler>();
-            inputAction = new InputSystem();
             inputAction.PlayerGamePad.Enable();
             inputAction.PlayerGamePad.UIMouseMovement.performed += UIMouseMovement_performed;
             inputAction.PlayerGamePad.UIMouseMovement.canceled += UIMouseMovement_performed;
             inputAction.PlayerGamePad.UIMouseClick.performed += UIMouseClick_performed;
-            gamePadMouseHandler.Active = true;
         }
+
+        gamePadMouseHandler.Active = LevelManager.Instance.GamePadInputAvailable || LevelManager.Instance.JoyStickInputAvailable;
     }
 
     private void UIMouseClick_performed(InputAction.CallbackContext obj)
     {
-        gamePadMouseHandler.Click();
+        if (LevelManager.Instance.JoyStickInputAvailable || LevelManager.Instance.GamePadInputAvailable)
+            gamePadMouseHandler.Click();
     }
 
     private void UIMouseMovement_performed(InputAction.CallbackContext obj)
     {
-        gamePadMouseHandler.SetDirection(obj.ReadValue<Vector2>());
+        if (LevelManager.Instance.JoyStickInputAvailable || LevelManager.Instance.GamePadInputAvailable)
+            gamePadMouseHandler.SetDirection(obj.ReadValue<Vector2>());
     }
 
     private void OnDestroy()
     {
-        inputAction.Disable();
+        inputAction?.Disable();
     }
 
     private void OnDisable()
     {
-        inputAction.Disable();
+        OnDisableSubscribe();
+        inputAction?.Disable();
     }
 
     public void ContinueGame()
     {
         LevelManager.Instance.LoadScene(saveAsset.SceneName);
+    }
+
+    public void OnPublish(IPublisherMessage message)
+    {
+        if (message is InputDeviceChangedMessage)
+        {
+            SetInputToPads();
+        }
+    }
+
+    public void OnDisableSubscribe()
+    {
+        Publisher.Unsubscribe(this, typeof(InputDeviceChangedMessage));
     }
 }

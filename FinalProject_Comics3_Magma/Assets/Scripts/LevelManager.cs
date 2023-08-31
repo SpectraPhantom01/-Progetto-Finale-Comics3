@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,10 +18,11 @@ public class LevelManager : MonoBehaviour
     GameObject loaderCanvas;
     Image progressBar;
     float _target;
-
+    private Action onContinueButton;
     public bool JoyStickInputAvailable { get; private set; }
     public bool GamePadInputAvailable { get; private set; }
     public bool MouseAndKeyboardInputAvailable { get; private set; } = true;
+    Coroutine deviceCheck;
     private void Awake()
     {
         if (Instance == null)
@@ -37,6 +41,22 @@ public class LevelManager : MonoBehaviour
 
         TryEnableInputDevice(true, EInputDeviceType.GamePad);
         TryEnableInputDevice(true, EInputDeviceType.JoyStick);
+    }
+
+    private void Start()
+    {
+        DeviceCheck();
+    }
+
+    private void DeviceCheck()
+    {
+        if(deviceCheck == null)
+            deviceCheck = StartCoroutine(DevicesCheckCoroutine());
+        else
+        {
+            StopCoroutine(deviceCheck);
+            deviceCheck = StartCoroutine(DevicesCheckCoroutine());
+        }
     }
 
     public async void LoadScene(string sceneName)
@@ -105,25 +125,83 @@ public class LevelManager : MonoBehaviour
         Application.Quit();
     }
 
-    //void OnEnable()
-    //{
-    //    Application.logMessageReceived += LogCallback;
-    //}
+    private IEnumerator DevicesCheckCoroutine()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(2);
+            if (JoyStickInputAvailable)
+            {
+                JoyStickInputAvailable = FindInputDevice("joystick");
+                if (!JoyStickInputAvailable)
+                {
+                    SendNotDeviceDetectedMessage("USB Joystick");
+                }
+            }
 
-    ////Called when there is an exception
-    //public void LogCallback(string condition, string stackTrace, LogType type)
-    //{
-    //    if (type == LogType.Error || type == LogType.Exception)
-    //    {
-    //        errorPanel.SetActive(true);
-    //        errorText.text = condition + " - " + stackTrace;
-    //    }
-    //}
+            if (GamePadInputAvailable)
+            {
+                GamePadInputAvailable = FindInputDevice("gamepad");
+                if (!GamePadInputAvailable)
+                {
+                    SendNotDeviceDetectedMessage("GamePad");
 
-    //void OnDisable()
-    //{
-    //    Application.logMessageReceived -= LogCallback;
-    //}
+                }
+            }
+
+            if (!JoyStickInputAvailable && !GamePadInputAvailable)
+                break;
+        }
+
+        
+    }
+
+    private void SendNotDeviceDetectedMessage(string deviceName)
+    {
+        errorPanel.SetActive(true);
+        errorText.text = $"WARNING: {deviceName} Disconnected! Connect the device again and press the continue button.";
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        DeviceCheck();
+
+        onContinueButton += CheckAgaintDevices;
+    }
+
+    private void CheckAgaintDevices()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        JoyStickInputAvailable = FindInputDevice("joystick");
+        GamePadInputAvailable = FindInputDevice("gamepad");
+        if (JoyStickInputAvailable || GamePadInputAvailable)
+        {
+            DeviceCheck();
+        }
+        else
+        {
+            errorPanel.SetActive(true);
+            errorText.text = $"WARNING: NO DEVICE FOUND. Try restart the Game or play with Mouse and Keyboard";
+        }
+        onContinueButton -= CheckAgaintDevices;
+        onContinueButton += DisableCursorContinueButton;
+        Mouse.current.WarpCursorPosition(Input.mousePosition);
+        Publisher.Publish(new InputDeviceChangedMessage());
+    }
+
+    private void DisableCursorContinueButton()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        onContinueButton -= DisableCursorContinueButton;
+    }
+
+    public void ContinueAction()
+    {
+        onContinueButton?.Invoke();
+    }
 
     internal void ReloadScene()
     {
@@ -140,15 +218,6 @@ public class LevelManager : MonoBehaviour
         {
             case EInputDeviceType.MouseAndKeyboard:
 
-                if (!enable && (JoyStickInputAvailable || GamePadInputAvailable))
-                    MouseAndKeyboardInputAvailable = false;
-                else
-                {
-                    MouseAndKeyboardInputAvailable = true;
-                    Publisher.Publish(new InputDeviceChangedMessage());
-                    return true;
-                }
-
                 return false;
             case EInputDeviceType.GamePad:
                 if (FindInputDevice("gamepad"))
@@ -164,14 +233,9 @@ public class LevelManager : MonoBehaviour
                 break;
         }
 
+        DeviceCheck();
         Publisher.Publish(new InputDeviceChangedMessage());
         return true;
     }
-}
 
-public enum EInputDeviceType
-{
-    MouseAndKeyboard,
-    GamePad,
-    JoyStick
 }

@@ -118,8 +118,8 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.PlayerUSBJoyStick.Rewind.performed += Rewind_performed;
         inputSystem.PlayerUSBJoyStick.Pause.performed += Pause_performed;
         inputSystem.PlayerUSBJoyStick.ActiveObjectOne.performed += ActiveObjectOnePerformed;
-        inputSystem.PlayerUSBJoyStick.ActiveObjectTwo.performed += ActiveObjectTwoPerformed;
-        inputSystem.PlayerUSBJoyStick.ActiveObjectThree.performed += ActiveObjectThreePerformed;
+        inputSystem.PlayerUSBJoyStick.ActiveObjectTwo.performed += ActiveObjectThreePerformed;
+        inputSystem.PlayerUSBJoyStick.ActiveObjectThree.performed += ActiveObjectTwoPerformed;
         inputSystem.PlayerUSBJoyStick.ActiveObjectFour.performed += ActiveObjectFourPerformed;
 
         inputSystem.Player.Movement.performed += Movement_started;
@@ -132,8 +132,8 @@ public class GameManager : MonoBehaviour, ISubscriber
         inputSystem.Player.Rewind.performed += Rewind_performed;
         inputSystem.Player.Pause.performed += Pause_performed;
         inputSystem.Player.ActiveObjectOne.performed += ActiveObjectOnePerformed;
-        inputSystem.Player.ActiveObjectTwo.performed += ActiveObjectTwoPerformed;
-        inputSystem.Player.ActiveObjectThree.performed += ActiveObjectThreePerformed;
+        inputSystem.Player.ActiveObjectTwo.performed += ActiveObjectThreePerformed;
+        inputSystem.Player.ActiveObjectThree.performed += ActiveObjectTwoPerformed;
         inputSystem.Player.ActiveObjectFour.performed += ActiveObjectFourPerformed;
     }
 
