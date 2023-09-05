@@ -56,6 +56,16 @@ public class AreaTriggerEvent : MonoBehaviour
         GameManager.Instance.EnablePlayerInputs(false, true);
     }
 
+    public void EnableCursor()
+    {
+        GameManager.Instance.EnableCursor(true);
+    }
+
+    public void EnableUIInputToControllers()
+    {
+        GameManager.Instance.CheckAndAddRemoveInputEventsToControllers(true);
+    }
+
     public void EnablePlayerInputs()
     {
         GameManager.Instance.EnablePlayerInputs(true);

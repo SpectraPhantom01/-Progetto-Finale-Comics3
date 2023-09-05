@@ -190,15 +190,11 @@ public class GameManager : MonoBehaviour, ISubscriber
             gamePadMouseHandler.Active = gamePaused;
             if (gamePaused)
             {
-                inputSystem.PlayerUSBJoyStick.UIMouseMovement.performed += UIMouseMovement_performed;
-                inputSystem.PlayerUSBJoyStick.UIMouseMovement.canceled += UIMouseMovement_performed;
-                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
+                AddInputEventsToJoystick();
             }
             else
             {
-                inputSystem.PlayerUSBJoyStick.UIMouseMovement.performed -= UIMouseMovement_performed;
-                inputSystem.PlayerUSBJoyStick.UIMouseMovement.canceled -= UIMouseMovement_performed;
-                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed -= UIMouseClick_performed;
+                RemoveInputEventsToJoystick();
             }
         }
 
@@ -207,17 +203,41 @@ public class GameManager : MonoBehaviour, ISubscriber
             gamePadMouseHandler.Active = gamePaused;
             if (gamePaused)
             {
-                inputSystem.PlayerGamePad.UIMouseMovement.performed += UIMouseMovement_performed;
-                inputSystem.PlayerGamePad.UIMouseMovement.canceled += UIMouseMovement_performed;
-                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
+                AddInputEventsToGamePad();
             }
             else
             {
-                inputSystem.PlayerGamePad.UIMouseMovement.performed -= UIMouseMovement_performed;
-                inputSystem.PlayerGamePad.UIMouseMovement.canceled -= UIMouseMovement_performed;
-                inputSystem.PlayerUSBJoyStick.UIMouseClick.performed -= UIMouseClick_performed;
+                RemoveInputEventsToGamePad();
             }
         }
+    }
+
+    public void RemoveInputEventsToGamePad()
+    {
+        inputSystem.PlayerGamePad.UIMouseMovement.performed -= UIMouseMovement_performed;
+        inputSystem.PlayerGamePad.UIMouseMovement.canceled -= UIMouseMovement_performed;
+        inputSystem.PlayerUSBJoyStick.UIMouseClick.performed -= UIMouseClick_performed;
+    }
+
+    public void AddInputEventsToGamePad()
+    {
+        inputSystem.PlayerGamePad.UIMouseMovement.performed += UIMouseMovement_performed;
+        inputSystem.PlayerGamePad.UIMouseMovement.canceled += UIMouseMovement_performed;
+        inputSystem.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
+    }
+
+    public void RemoveInputEventsToJoystick()
+    {
+        inputSystem.PlayerUSBJoyStick.UIMouseMovement.performed -= UIMouseMovement_performed;
+        inputSystem.PlayerUSBJoyStick.UIMouseMovement.canceled -= UIMouseMovement_performed;
+        inputSystem.PlayerUSBJoyStick.UIMouseClick.performed -= UIMouseClick_performed;
+    }
+
+    public void AddInputEventsToJoystick()
+    {
+        inputSystem.PlayerUSBJoyStick.UIMouseMovement.performed += UIMouseMovement_performed;
+        inputSystem.PlayerUSBJoyStick.UIMouseMovement.canceled += UIMouseMovement_performed;
+        inputSystem.PlayerUSBJoyStick.UIMouseClick.performed += UIMouseClick_performed;
     }
 
     private void UIMouseClick_performed(InputAction.CallbackContext obj)
@@ -571,5 +591,33 @@ public class GameManager : MonoBehaviour, ISubscriber
     private void OnDestroy()
     {
         OnDisableSubscribe();
+    }
+
+    public void CheckAndAddRemoveInputEventsToControllers(bool adding)
+    {
+        if(adding)
+        {
+            if (joyStickInput)
+            {
+                AddInputEventsToJoystick();
+            }
+            
+            if(gamePadInput)
+            {
+                AddInputEventsToGamePad();
+            }
+        }
+        else
+        {
+            if (joyStickInput)
+            {
+                RemoveInputEventsToJoystick();
+            }
+
+            if (gamePadInput)
+            {
+                RemoveInputEventsToGamePad();
+            }
+        }
     }
 }
