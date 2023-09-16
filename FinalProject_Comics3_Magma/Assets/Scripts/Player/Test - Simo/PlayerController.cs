@@ -337,6 +337,8 @@ public class PlayerController : MonoBehaviour
                 Damager.SetBonusAttack(bonusAttack1, bonusAttack2);
 
                 StartCoroutine(AttackCoroutine());
+
+                slashEffectAnimator.SetTrigger("Slash");
             }
         }
         else
@@ -345,9 +347,10 @@ public class PlayerController : MonoBehaviour
 
             if(!FakeGhost)
                 StartCoroutine(AttackCoroutine());
+
+            slashEffectAnimator.SetTrigger("Slash");
         }
 
-        slashEffectAnimator.SetTrigger("Slash");
     }
 
     public IEnumerator AttackCoroutine()

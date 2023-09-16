@@ -165,7 +165,7 @@ public class UIManager : MonoBehaviour
                 {
                     if (LevelManager.Instance.JoyStickInputAvailable)
                     {
-                        castText = "CIRCLE";
+                        castText = "O";
                     }
                     else if (LevelManager.Instance.GamePadInputAvailable)
                     {

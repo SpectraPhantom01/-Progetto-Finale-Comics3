@@ -49,6 +49,13 @@ public class PickableScriptableObject : ScriptableObject
         }
     }
 
+    public bool IsEqual(PickableScriptableObject pickable)
+    {
+        return ObjectName == pickable.ObjectName
+            && ObjectDescription == pickable.ObjectDescription;
+    }
+
+    public bool IsActiveObject() => IsConsumable;
 }
 
 public enum EPickableEffectType

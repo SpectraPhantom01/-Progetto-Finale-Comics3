@@ -5861,6 +5861,9 @@ MonoBehaviour:
   - {fileID: 6470756162380028763}
   - {fileID: 6470756161795310841}
   - {fileID: 6470756161623374293}
+  equipmentButtons:
+  - {fileID: 6470756163070949591}
+  - {fileID: 6470756163069799866}
   messagesOnFirstOpen:
   - This is your inventory. All the items you grabbed are showed here and in the
     next page. Click on one object and then click in one of the slots of active objects
@@ -10210,6 +10213,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1256022385582560830, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
   m_PrefabInstance: {fileID: 5234018147179507437}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6470756163070949591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1256022385582560826, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
+  m_PrefabInstance: {fileID: 5234018147179507437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9137800c32ea4554ea260c69c970760a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5234018147361078144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10343,6 +10357,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
+--- !u!114 &6470756163069799866 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1256022385582560826, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}
+  m_PrefabInstance: {fileID: 5234018147361078144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9137800c32ea4554ea260c69c970760a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6470756163069799870 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1256022385582560830, guid: bf599a2ffa9a86a48933cee28bbba9ec, type: 3}

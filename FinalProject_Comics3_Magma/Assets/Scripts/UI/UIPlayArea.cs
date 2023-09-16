@@ -126,6 +126,26 @@ public class UIPlayArea : MonoBehaviour, ISubscriber
         }
     }
 
+    public void UpdateText(int slotIndex, int quantity)
+    {
+        if (slotIndex == 0)
+        {
+            equip1text.text = $"{quantity}";
+        }
+        else if (slotIndex == 1)
+        {
+            equip2text.text = $"{quantity}";
+        }
+        else if (slotIndex == 2)
+        {
+            equip3text.text = $"{quantity}";
+        }
+        else if (slotIndex == 3)
+        {
+            equip4text.text = $"{quantity}";
+        }
+    }
+
     internal void ResetActiveObject(int slotIndex)
     {
         if (slotIndex == 0)

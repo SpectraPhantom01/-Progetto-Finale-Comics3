@@ -26,13 +26,20 @@ public class UIButtonAction : MonoBehaviour
         SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
         ActionType = EButtonActionType.InventoryObject;
 
-        if (activeObjectsSlot.Any(x => x.ID == ObjectInfos.ID) || equipmentSlots.Any(x => x.ID == ObjectInfos.ID))
-            SetQuantity("E");
-        else
-            SetQuantity(ObjectInfos.Quantity.ToString());
+        CheckAlreadyEquipped(equipmentSlots, activeObjectsSlot);
 
         thisButton.interactable = true;
     }
+
+    public void CheckAlreadyEquipped(Pickable[] equipmentSlots, Pickable[] activeObjectsSlot)
+    {
+        if (activeObjectsSlot.Any(x => x != null && x.PickableSO != null && x.PickableSO.ObjectName == ObjectInfos.PickableSO.ObjectName)
+           || equipmentSlots.Any(x => x != null && x.PickableSO != null && x.PickableSO.ObjectName == ObjectInfos.PickableSO.ObjectName))
+            SetQuantity("E");
+        else
+            SetQuantity(ObjectInfos.Quantity.ToString());
+    }
+
     public void Initialize(Pickable scriptableObject, UIKeyObjectsInventory uiKeyObjectsInventory)
     {
         ObjectInfos = scriptableObject;
@@ -43,12 +50,15 @@ public class UIButtonAction : MonoBehaviour
 
         thisButton.interactable = true;
     }
+
     public void OverWrite(Pickable scriptableObject)
     {
         ObjectInfos = scriptableObject;
         SetSprite(scriptableObject.PickableSO.ObjectInventorySprite);
         SetQuantity(ObjectInfos.Quantity.ToString());
-        thisButton.interactable = true;
+
+        if(thisButton != null)
+            thisButton.interactable = true;
     }
 
     public void Clear()
@@ -61,6 +71,11 @@ public class UIButtonAction : MonoBehaviour
     public void SetQuantity(string text)
     {
         quantityText.text = text;
+    }
+
+    public void UpdateText()
+    {
+        quantityText.text = ObjectInfos.Quantity.ToString();
     }
 
     public void SetSprite(Sprite equipmentSprite)
