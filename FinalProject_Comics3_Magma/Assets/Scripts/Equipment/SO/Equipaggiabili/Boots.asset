@@ -19,7 +19,7 @@ MonoBehaviour:
   IsConsumable: 0
   IsKeyObject: 0
   QuantityOnPick: 1
-  PickableEffectType: 2
+  PickableEffectType: 3
   EffectInPercentage: 2
   EffectInTime: 2
   Bomb: {fileID: 0}

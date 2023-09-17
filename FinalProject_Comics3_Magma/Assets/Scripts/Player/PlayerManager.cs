@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Newtonsoft.Json;
 
 public class PlayerManager : MonoBehaviour, IAliveEntity
 {
@@ -78,10 +79,13 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         if (!_playerController.ImGhost)
         {
             _uiPlayArea = UIManager.Instance.UIPlayArea;
+
+            LoadInventory();
+            if(photographInventory.InventoryObjects == null)
+                photographInventory = new InventoryStruct(InventoryArray, Inventory.EquipmentSlots, Inventory.ActiveObjectSlots);
+
+
             UpdateInventoryButtons();
-
-            photographInventory = new InventoryStruct(InventoryArray, Inventory.EquipmentSlots, Inventory.ActiveObjectSlots);
-
 
             for (int i = 1; i < Damageable.HourglassesCount; i++)
             {
@@ -529,7 +533,28 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
     public void SaveInventory()
     {
         if (PlayerController.ImGhost) return;
+        InventoryToPhotography();
 
+        try
+        {
+
+            if (!File.Exists(Application.persistentDataPath + "\\inventory.txt"))
+            {
+                File.Create(Application.persistentDataPath + "\\inventory.txt");
+            }
+            else
+            {
+                File.WriteAllText(Application.persistentDataPath + "\\inventory.txt", JsonConvert.SerializeObject(new InventoryJSON(Inventory)));
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
+    }
+
+    private void InventoryToPhotography()
+    {
         photographInventory.ActiveObjectSlots = Inventory.ActiveObjectSlots.ToArray();
         photographInventory.EquipmentSlots = Inventory.EquipmentSlots.ToArray();
         photographInventory.InventoryObjects = Inventory.InventoryObjects.ToArray();
@@ -542,6 +567,54 @@ public class PlayerManager : MonoBehaviour, IAliveEntity
         Inventory.ActiveObjectSlots = photographInventory.ActiveObjectSlots.ToArray();
         Inventory.EquipmentSlots = photographInventory.EquipmentSlots.ToArray();
         Inventory.InventoryObjects = photographInventory.InventoryObjects.ToArray();
+    }
+
+    private void LoadInventory()
+    {
+        try
+        {
+            if (File.Exists(Application.persistentDataPath + "\\inventory.txt"))
+            {
+                var inventory = File.ReadAllText(Application.persistentDataPath + "\\inventory.txt");
+
+                if (string.IsNullOrEmpty(inventory))
+                    return;
+
+                var inventoryJson = JsonUtility.FromJson<InventoryJSON>(inventory);
+
+                for (int i = 0; i < inventoryJson.InventoryObjects.Length; i++)
+                {
+                    if (inventoryJson.InventoryObjects[i] != null)
+                    {
+                        Inventory.InventoryObjects[i].PickableSO = LevelManager.Instance.GetPickable(inventoryJson.InventoryObjects[i].EffectType);
+                        Inventory.InventoryObjects[i].Quantity = inventoryJson.InventoryObjects[i].Quantity;
+                    }
+                }
+
+                for (int i = 0; i < inventoryJson.ActiveObjectSlots.Length; i++)
+                {
+                    if (inventoryJson.ActiveObjectSlots[i] != null)
+                    {
+                        Inventory.ActiveObjectSlots[i].PickableSO = LevelManager.Instance.GetPickable(inventoryJson.ActiveObjectSlots[i].EffectType);
+                        Inventory.ActiveObjectSlots[i].Quantity = inventoryJson.ActiveObjectSlots[i].Quantity;
+                    }
+                }
+                for (int i = 0; i < inventoryJson.EquipmentSlots.Length; i++)
+                {
+                    if (inventoryJson.EquipmentSlots[i] != null)
+                    {
+                        Inventory.EquipmentSlots[i].PickableSO = LevelManager.Instance.GetPickable(inventoryJson.EquipmentSlots[i].EffectType);
+                        Inventory.EquipmentSlots[i].Quantity = inventoryJson.EquipmentSlots[i].Quantity;
+                    }
+                }
+
+                InventoryToPhotography();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 
     public void GameOver()
@@ -577,4 +650,11 @@ public class Pickable
 {
     public PickableScriptableObject PickableSO;
     public int Quantity;
+}
+
+[Serializable]
+public class PickableJSON
+{
+    public int Quantity;
+    public EPickableEffectType EffectType;
 }

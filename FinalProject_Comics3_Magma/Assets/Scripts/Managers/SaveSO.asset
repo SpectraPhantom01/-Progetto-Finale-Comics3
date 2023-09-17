@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c366343249a24e44a8261937a7cec58, type: 3}
   m_Name: SaveSO
   m_EditorClassIdentifier: 
-  SceneName: 0
+  SceneName: 
   LastCheckPointPosition: {x: 0, y: 0, z: 0}

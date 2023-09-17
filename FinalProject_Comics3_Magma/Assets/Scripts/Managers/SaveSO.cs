@@ -8,3 +8,10 @@ public class SaveSO : ScriptableObject
     public string SceneName;
     public Vector3 LastCheckPointPosition = Vector3.zero;
 }
+
+public class SaveJSON
+{
+
+    public string SceneName;
+    public Vector3 LastCheckPointPosition = Vector3.zero;
+}

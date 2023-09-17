@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName ="New Pickable", menuName = "ScriptableObject/New Pickable")]
+[Serializable]
 public class PickableScriptableObject : ScriptableObject
 {
     [Header("Meta Settings")]
@@ -60,12 +61,14 @@ public class PickableScriptableObject : ScriptableObject
 
 public enum EPickableEffectType
 {
-    AddAttackForce,
-    AddGhostTime,
-    AddMovementSpeed,
-    HealHourglass,
-    ThrowBomb,
-    StopHourglass,
-    ReduceDamageAndKnockback,
-    AddHourglass
+    none = 0,
+    AddAttackForce = 1,
+    AddGhostTime = 2,
+    AddMovementSpeed = 3,
+    HealHourglass = 4,
+    ThrowBomb = 5,
+    StopHourglass = 6,
+    ReduceDamageAndKnockback = 7,
+    AddHourglass = 8,
+    Key = 9
 }

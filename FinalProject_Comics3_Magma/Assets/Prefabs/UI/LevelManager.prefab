@@ -343,6 +343,16 @@ MonoBehaviour:
   errorPanel: {fileID: 5443694574113835233}
   errorText: {fileID: 2623457799623771454}
   animator: {fileID: 4047007919233319334}
+  pickableSOInstances:
+  - {fileID: 11400000, guid: 9e0b6593feeb5ad4a94b2580489977d1, type: 2}
+  - {fileID: 11400000, guid: 527893a647ee70d4caac3f8a9189c3f5, type: 2}
+  - {fileID: 11400000, guid: 3468edbba8725ce47a50f0adfb148174, type: 2}
+  - {fileID: 11400000, guid: bfa13243bb8a0a343944c705ea6d27a2, type: 2}
+  - {fileID: 11400000, guid: 3f60ce203541fa047a0348658c02ae7d, type: 2}
+  - {fileID: 11400000, guid: 14759e834923cf243b51452103f4ed9a, type: 2}
+  - {fileID: 11400000, guid: 6bb2b9f3b93a419459804d9a255da1aa, type: 2}
+  - {fileID: 11400000, guid: dfa9445b80d4e1b41b17c98ab50493a3, type: 2}
+  - {fileID: 11400000, guid: a6cdae768518a2d43b564349cf4b4efa, type: 2}
 --- !u!95 &4047007919233319334
 Animator:
   serializedVersion: 5

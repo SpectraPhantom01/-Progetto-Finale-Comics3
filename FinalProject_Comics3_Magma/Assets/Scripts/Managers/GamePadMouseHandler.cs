@@ -11,12 +11,7 @@ public class GamePadMouseHandler : MonoBehaviour
     Vector2 direction;
     public bool Active;
     public void SetDirection(Vector2 direc) { direction = direc; }
-    Camera mainCam;
-
-    private void Start()
-    {
-        mainCam = Camera.main;
-    }
+    
     private void Update()
     {
         if(Active)
@@ -36,7 +31,8 @@ public class GamePadMouseHandler : MonoBehaviour
             {
                 if(hit.gameObject.transform.TryGetComponent<Button>(out var button))
                 {
-                    button.onClick.Invoke();
+                    if(button.interactable)
+                        button.onClick.Invoke();
                     return;
                 }
             }

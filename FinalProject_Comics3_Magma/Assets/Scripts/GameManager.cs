@@ -146,10 +146,26 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     private void Start()
     {
-        if(saveAsset.SceneName != string.Empty 
-            && SceneManager.GetActiveScene().name == saveAsset.SceneName 
-            && saveAsset.LastCheckPointPosition != Vector3.zero)
-            Player.PlayerManager.Respawn(saveAsset.LastCheckPointPosition);
+        try
+        {
+            var so = JsonUtility.FromJson<SaveJSON>(File.ReadAllText(Application.persistentDataPath + "\\save.txt"));
+            if (so != null)
+            {
+                saveAsset.SceneName = so.SceneName;
+                saveAsset.LastCheckPointPosition = so.LastCheckPointPosition;
+
+                if (saveAsset.SceneName != string.Empty
+                    && SceneManager.GetActiveScene().name == saveAsset.SceneName
+                    && saveAsset.LastCheckPointPosition != Vector3.zero)
+                    Player.PlayerManager.Respawn(saveAsset.LastCheckPointPosition);
+
+            }
+        }
+        catch
+        {
+
+        }
+
 
         gameStart = true;
         StartCoroutine(WaitForEndOfFrameCoroutine(() => EnablePlayerInputs(true)));
@@ -561,12 +577,22 @@ public class GameManager : MonoBehaviour, ISubscriber
 
     public void Save()
     {
-        saveAsset.SceneName = SceneManager.GetActiveScene().name;
+        try
+        {
+            saveAsset.SceneName = SceneManager.GetActiveScene().name;
+
+            var json = JsonUtility.ToJson(saveAsset);
+            File.WriteAllText(Application.persistentDataPath + "\\save.txt", json);
+        }
+        catch
+        {
+
+        }
     }
 
     public void SetCheckPoint(CheckPoint checkPoint)
     {
-        saveAsset.LastCheckPointPosition = checkPoint.transform.position;
+        saveAsset.LastCheckPointPosition = new Vector3(checkPoint.transform.position.x, checkPoint.transform.position.y, 0);
         if (gameStart)
             checkPoint.LoadRooms();
     }

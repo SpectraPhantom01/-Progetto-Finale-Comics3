@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
@@ -15,6 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject errorPanel;
     [SerializeField] TextMeshProUGUI errorText;
     [SerializeField] Animator animator;
+    [SerializeField] List<PickableScriptableObject> pickableSOInstances;
     GameObject loaderCanvas;
     Image progressBar;
     float _target;
@@ -238,4 +240,8 @@ public class LevelManager : MonoBehaviour
         return true;
     }
 
+    public PickableScriptableObject GetPickable(EPickableEffectType effectType)
+    {
+        return pickableSOInstances.FirstOrDefault(x => x.PickableEffectType == effectType);
+    }
 }

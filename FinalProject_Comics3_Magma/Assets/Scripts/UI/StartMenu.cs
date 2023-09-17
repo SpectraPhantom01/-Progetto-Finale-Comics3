@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -13,16 +14,32 @@ public class StartMenu : MonoBehaviour, ISubscriber
     private GamePadMouseHandler gamePadMouseHandler;
     private void Awake()
     {
-        if (saveAsset.SceneName != string.Empty)
-            continueButton.interactable = true;
-
         Publisher.Subscribe(this, typeof(InputDeviceChangedMessage));
 
         gamePadMouseHandler = GetComponent<GamePadMouseHandler>();
+
+        if(!File.Exists(Application.persistentDataPath + "\\save.txt"))
+        {
+            File.Create(Application.persistentDataPath + "\\save.txt");
+        }
     }
 
     private void Start()
     {
+        var saveAssetJson = File.ReadAllText(Application.persistentDataPath + "\\save.txt");
+        if(saveAssetJson != null)
+        {
+            var so = JsonUtility.FromJson<SaveJSON>(saveAssetJson);
+
+            if (so != null)
+            {
+                saveAsset.SceneName = so.SceneName;
+                saveAsset.LastCheckPointPosition = so.LastCheckPointPosition;
+                continueButton.interactable = true;
+            }
+
+        }
+
         SetInputToPads();
     }
 

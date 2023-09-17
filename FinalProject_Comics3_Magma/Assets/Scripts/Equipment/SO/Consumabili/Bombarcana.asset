@@ -20,7 +20,7 @@ MonoBehaviour:
   IsConsumable: 1
   IsKeyObject: 0
   QuantityOnPick: 3
-  PickableEffectType: 4
+  PickableEffectType: 5
   EffectInPercentage: 0
   EffectInTime: 0
   Bomb: {fileID: 823488385171496030, guid: 029cbea011be4d9448de7c1c9420a073, type: 3}
